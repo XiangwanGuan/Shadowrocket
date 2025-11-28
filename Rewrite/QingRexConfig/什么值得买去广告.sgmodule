@@ -7,7 +7,7 @@
 #!tag=去广告
 #!loon_version=3.2.4(787)
 #!homepage=https://hub.kelee.one
-#!date=2025-11-12 04:00:04
+#!date=2025-11-27 21:44:57
 
 [Rule]
 DOMAIN,adx-api.zdmimg.com,REJECT,extended-matching,pre-matching
@@ -38,7 +38,7 @@ http-response-jq ^https:\/\/s-api\.smzdm\.com\/sou\/list_v10\? '.data.rows |= ma
 http-response-jq ^https:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? 'delpaths([["data","search_faxian"]])'
 http-response-jq ^https:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? 'delpaths([["data","tonglan"]])'
 http-response-jq ^https:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? 'delpaths([["data","hongbao"]])'
-http-response-jq ^https:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? '.data.search_hot.home |= map(select(.article_tag.article_title != "广告"))'
+http-response-jq ^https:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? '.data.search_hot.home |= map(select(.article_tag.article_title != "广告")) | .data.search_hot.home |= map(select(has("pos")))'
 http-response-jq ^https:\/\/haojia-api\.smzdm\.com\/detail\/\d+\? 'delpaths([["data","quan_log"]])'
 http-response-jq ^https:\/\/haojia-cdn\.smzdm\.com\/preload\/\d+\/fiphone\/v\d+_\d+_\d+\/wx\d+\/im\d+\/[0-9a-z]+\/[0-9a-z]+\.json$ 'delpaths([["data","quan_log"]])'
 http-response-jq ^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list\? 'delpaths([["data","tuiguang_ad"]])'

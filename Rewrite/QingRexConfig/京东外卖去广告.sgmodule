@@ -1,0 +1,26 @@
+#!name=京东外卖去广告
+#!desc=移除首页推广、点评页面非美食内容、购物车及我的页面推荐、搜索发现、搜索榜单，精简我的页面。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/JDWaimai.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id6752605146
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-28 02:52:04
+
+[Body Rewrite]
+http-response-jq ^https:\/\/color\.jddj\.com\/client\.action\?functionId=hours_home$ 'del(.result.config.searchFloor.data[].searchWords) | .result.data |= map(if .tnConfigVO?.businessCode == "nearby_HourlyGo_Operation_Tags" then empty else . end)'
+http-response-jq ^https:\/\/color\.jddj\.com\/client\.action\?functionId=wmHome$ '(.floors |= map(del(.data.tnData.newsInfo?))) | .floors |= (map(select(.mId != "newWalletIdFloor" and .mId != "recommendfloor"))) | .floors |= (map(.data |= (if .tnData? then del(.tnData.cardList, .tnData.cardListStatic, .tnData.walletList) else . end)))'
+http-response-jq ^https:\/\/api\.m\.jd\.com\/client\.action$ 'delpaths([["data","searchDTO","searchWords"]])'
+http-response-jq ^https:\/\/api\.m\.jd\.com\/client\.action$ 'delpaths([["data","wishlistDTO","bubbleTip"]])'
+http-response-jq ^https:\/\/api\.m\.jd\.com\/client\.action$ '.data.tabList |= (map(select(.code == "recommendation" or .code == "find_food")) | map(if .code == "recommendation" then .dpHomeFeedTabResultDTOList = .dpHomeFeedTabResultDTOList[0:2] else . end | .dpHomeBannerResultDTOList = []))'
+
+[Map Local]
+^https:\/\/color\.jddj\.com\/client\.action\?functionId=uniformRecommend data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/color\.jddj\.com\/client\.action\?functionId=search_recommendRanking$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% color.jddj.com, api.m.jd.com
+
