@@ -1,0 +1,8 @@
+#!name=平安证券
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/pacdn\.m\.stock\.pingan\.com\/images\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% pacdn.m.stock.pingan.com

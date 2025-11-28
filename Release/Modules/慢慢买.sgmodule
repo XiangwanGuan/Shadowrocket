@@ -1,0 +1,8 @@
+#!name=慢慢买
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/apapia-sqk\.manmanbuy\.com\/index_json\.ashx$ - reject-dict
+
+[MITM]
+hostname = %APPEND% apapia-sqk.manmanbuy.com

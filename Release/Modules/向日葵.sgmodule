@@ -1,0 +1,10 @@
+#!name=向日葵
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/client-api-v2\.oray\.com\/materials\/SLCC_IOS_DEVICE - reject-dict
+^https?:\/\/client-api-v2\.oray\.com\/materials\/SLCC_IOS_STARTUP - reject-dict
+^https?:\/\/client-api-v2\.oray\.com\/materials\/SUNLOGIN_CLIENT_IOS_PROMOTION - reject-dict
+
+[MITM]
+hostname = %APPEND% client-api-v2.oray.com

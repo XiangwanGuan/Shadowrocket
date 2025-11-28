@@ -1,0 +1,8 @@
+#!name=欧易
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.okx\.com\/v\d\/support\/home\/app\/updateInfo - reject
+
+[MITM]
+hostname = %APPEND% www.okx.com

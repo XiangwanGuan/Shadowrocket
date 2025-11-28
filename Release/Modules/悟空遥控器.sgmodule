@@ -1,0 +1,8 @@
+#!name=悟空遥控器
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/img\.wukongtv\.com\/wkremote\/AD\/iOS\/.*.(jpg|png|jpeg) - reject-200
+
+[MITM]
+hostname = %APPEND% img.wukongtv.com

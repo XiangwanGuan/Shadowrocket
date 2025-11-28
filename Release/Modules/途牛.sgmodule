@@ -1,0 +1,8 @@
+#!name=途牛
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/m\.tuniu\.com\/api\/operation\/splash\/ - reject-200
+
+[MITM]
+hostname = %APPEND% m.tuniu.com

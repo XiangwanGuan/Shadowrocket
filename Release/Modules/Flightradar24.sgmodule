@@ -1,0 +1,8 @@
+#!name=Flightradar24
+#!desc=2025-09-09 10:10:26
+
+[Script]
+Flightradar24 =type=http-response, pattern=^https?:\/\/mobile\.flightradar24\.com\/mobile\/(user-session|subscribe), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/Flightradar24.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% mobile.flightradar24.com

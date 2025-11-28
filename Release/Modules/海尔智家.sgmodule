@@ -1,0 +1,25 @@
+#!name=海尔智家
+#!desc=2025-11-11 14:47:13
+
+[Rule]
+DOMAIN-SUFFIX, ehaier.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/dualstack-(arestapi|restios)\.amap\.com\/v\d\/iasdkauth\?key= - reject-200
+^https?:\/\/dualstack-logs\.amap\.com\/ws\/log\/upload\?product - reject-200
+^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.zip$ - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/ad\/ - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/start\/advertising\?approach - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/visualize\/recommend\?dataType - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/weather\/query\?areaId - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/upmapi\/appmanage\/publish\/getRecommendVersion$ - reject-200
+^https?:\/\/zj\.haier\.net\/omsappapi\/ad\/ - reject-200
+^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/resBagList$ - reject-200
+^https?:\/\/zj\.haier\.net\/omssceneapi\/house\/v\d\/recommend\/listByRoom$ - reject-200
+
+[Script]
+haier =type=http-response, pattern=^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.json$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/haier.js, requires-body=true, max-size=0
+haier =type=http-response, pattern=^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/get\/resourceBag$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/haier.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% dualstack-arestapi.amap.com,dualstack-logs.amap.com,dualstack-restios.amap.com,oss-zjrs.haier.net,zj.haier.net

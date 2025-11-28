@@ -1,0 +1,17 @@
+#!name=脉脉
+#!desc=2025-11-11 14:47:14
+
+[Rule]
+DOMAIN-SUFFIX, track.mm.taou.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/adshow\? - reject-dict
+^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/go_gossip_darwin\/external\/v2\/query_flow_cards\? - reject-dict
+^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/pay\/v5\/check_gift\? - reject-dict
+
+[Script]
+maimai_ads =type=http-response, pattern=^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/maimai_ads.js, requires-body=true, max-size=0
+maimai_ads =type=http-response, pattern=^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v6\/detail_recommend_feeds\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/maimai_ads.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% h3.open.taou.com,open.taou.com

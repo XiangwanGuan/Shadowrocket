@@ -1,0 +1,8 @@
+#!name=丰巢 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/webchatapp\.fcbox\.com\/fcboxactivityweb\/api\/v\d\/clientPage - reject
+
+[MITM]
+hostname = %APPEND% webchatapp.fcbox.com

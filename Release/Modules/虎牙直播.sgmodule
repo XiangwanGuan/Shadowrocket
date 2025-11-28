@@ -1,0 +1,17 @@
+#!name=虎牙直播
+#!desc=2025-11-11 14:47:13
+
+[Rule]
+DOMAIN, huyafile.msstatic.com, REJECT, extended-matching, pre-matching
+DOMAIN, livewebbs2.msstatic.com, REJECT, extended-matching, pre-matching
+DOMAIN, livewebbs2pcdn.msstatic.com, REJECT, extended-matching, pre-matching
+DOMAIN, pp-cdnfile2pcdn.msstatic.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, v1d.szbdyd.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/cdn\.wup\.huya\.com\/launch\/queryHttpDns$ - reject
+^https?:\/\/cdnfile1\.msstatic\.com\/cdnfile\/appad\/ - reject-img
+^https?:\/\/live-ads\.huya\.com/live/getAllEntrance.*$ - reject-dict
+
+[MITM]
+hostname = %APPEND% cdn.wup.huya.com,cdnfile1.msstatic.com,live-ads.huya.com

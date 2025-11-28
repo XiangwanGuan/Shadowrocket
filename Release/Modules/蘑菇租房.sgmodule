@@ -1,0 +1,8 @@
+#!name=蘑菇租房
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.mgzf\.com\/renter-operation\/home\/startHomePage - reject
+
+[MITM]
+hostname = %APPEND% api.mgzf.com

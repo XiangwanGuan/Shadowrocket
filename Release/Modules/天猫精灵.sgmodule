@@ -1,0 +1,9 @@
+#!name=天猫精灵
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ossgw.alicdn.com\/creatives-assets\/image\/ - reject-200
+^https?:\/\/zconfig\.alibabausercontent\.com\/zconfig - reject
+
+[MITM]
+hostname = %APPEND% ossgw.alicdn.com,zconfig.alibabausercontent.com

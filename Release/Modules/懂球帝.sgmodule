@@ -1,0 +1,11 @@
+#!name=懂球帝
+#!desc=2025-11-11 14:47:12
+
+[Rule]
+DOMAIN-KEYWORD, apimg.qunliao.info, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/ap\.dongdianqiu\.com\/plat\/v4 - reject
+
+[MITM]
+hostname = %APPEND% ap.dongdianqiu.com

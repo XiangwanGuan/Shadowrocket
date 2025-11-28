@@ -1,0 +1,8 @@
+#!name=友邦
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/e-static\.aia\.com\.cn\/kyh\/resourcefolder\/ads - reject-dict
+
+[MITM]
+hostname = %APPEND% e-static.aia.com.cn

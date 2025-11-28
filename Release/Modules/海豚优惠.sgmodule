@@ -1,0 +1,8 @@
+#!name=海豚优惠
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/.*\.townmalls\.cn:1890\/mossapi\/mossp\.BannerManager\/activityList.* - reject
+
+[MITM]
+hostname = %APPEND% *.townmalls.cn

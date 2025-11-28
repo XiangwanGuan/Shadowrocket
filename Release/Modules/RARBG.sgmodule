@@ -1,0 +1,11 @@
+#!name=RARBG
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/dyncdn\.me\/static\/\d{0,2}\/js\/expla\d{0,4}\.js$ - reject-200
+
+[Body Rewrite]
+http-response ^https?:\/\/dyncdn\.me\/static\/\d{0,2}\/js\/showads\.js$ true false
+
+[MITM]
+hostname = %APPEND% dyncdn.me

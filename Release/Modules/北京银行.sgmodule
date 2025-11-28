@@ -1,0 +1,8 @@
+#!name=北京银行
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/cdnmobibank\.bankofbeijing\.com\.cn\/cdn\/MarketingCloud\/.+\/.+\/99_1\/.+\.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% cdnmobibank.bankofbeijing.com.cn

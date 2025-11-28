@@ -1,0 +1,8 @@
+#!name=JavDB
+#!desc=2025-09-21 18:05:55
+
+[Script]
+javdb =type=http-response, pattern=^https?:\/\/api\.btyjscl\.com\/api\/v\d\/(ads|startup|users|movies), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/javdb.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.btyjscl.com

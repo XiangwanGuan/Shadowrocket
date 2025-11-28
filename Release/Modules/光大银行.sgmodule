@@ -1,0 +1,9 @@
+#!name=光大银行
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mobile\.cebbank\.com\/cebclient\/ClientNoticeList - reject-200
+^https?:\/\/yghsh\.cebbank\.com\/static\/picture\/.*.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% mobile.cebbank.com,yghsh.cebbank.com

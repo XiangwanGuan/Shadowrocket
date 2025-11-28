@@ -1,0 +1,10 @@
+#!name=去哪儿
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd - reject
+^https?:\/\/homefront\.qunar\.com\/front\/splash\/ad - reject-dict
+^https?:\/\/qde\.qunar\.com\/preload - reject-200
+
+[MITM]
+hostname = %APPEND% client.qunar.com,homefront.qunar.com,qde.qunar.com

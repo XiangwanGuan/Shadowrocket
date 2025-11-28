@@ -1,0 +1,10 @@
+#!name=天猫养车
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.ncarzone\.com\/superapi\/canary\/appHomeFacade\/getNewUserPlateActivity - reject-200
+^https?:\/\/api\.ncarzone\.com\/superapi\/canary\/bannerFacade\/app\/list - reject-200
+^https?:\/\/api\.ncarzone\.com\/superapi\/canary\/popupDialogFacade\/popupDialogList - reject-200
+
+[MITM]
+hostname = %APPEND% api.ncarzone.com

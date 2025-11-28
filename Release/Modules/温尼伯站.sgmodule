@@ -1,0 +1,8 @@
+#!name=温尼伯站
+#!desc=2025-09-09 10:10:26
+
+[Script]
+wnbz =type=http-response, pattern=^https?:\/\/vue3-api\.zhixiny\.cn\/v1\/initui\?key=index, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/wnbz.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% vue3-api.zhixiny.cn

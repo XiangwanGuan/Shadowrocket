@@ -1,0 +1,33 @@
+#!name=得间小说去广告
+#!desc=移除开屏广告、章末广告，移除扉页广告提示、听书界面广告提示、搜索栏填充词。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/iReaderDejian.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1454487240
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-09-04 22:36:17
+
+[Rule]
+DOMAIN,smad.ms.zhangyue.net,REJECT,extended-matching,pre-matching
+DOMAIN,saad.ms.zhangyue.net,REJECT,extended-matching,pre-matching
+
+[Body Rewrite]
+http-response-jq ^https:\/\/dj\.palmestore\.com\/zybk\/api\/powerup\/userGroup\? 'delpaths([["body","sevenDaysAd"]])'
+http-response-jq ^https:\/\/dj\.palmestore\.com\/zybk\/api\/powerup\/userGroup\? 'delpaths([["body","shortPlayShow"]])'
+http-response-jq ^https:\/\/dj\.palmestore\.com\/zybk\/api\/powerup\/userGroup\? 'delpaths([["body","sdkShortPlayAB"]])'
+http-response-jq ^https:\/\/dj\.palmestore\.com\/zybk\/api\/search\/index\? 'delpaths([["body","keywords"]])'
+
+[Map Local]
+^https:\/\/dj\.palmestore\.com\/djad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/dj\.palmestore\.com\/zybk\/api\/ad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/dj\.palmestore\.com\/zyapi\/bookstore\/ad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/dj\.palmestore\.com\/zybk\/api\/bookshelf\/index\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% dj.palmestore.com
+

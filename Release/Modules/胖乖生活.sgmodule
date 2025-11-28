@@ -1,0 +1,17 @@
+#!name=胖乖生活
+#!desc=2025-11-11 20:46:01
+
+[URL Rewrite]
+^https?:\/\/userapi\.qiekj\.com\/appTitle\/get$ - reject-dict
+^https?:\/\/userapi\.qiekj\.com\/integralGoods\/queryIntegralGoodsPage$ - reject-dict
+^https?:\/\/userapi\.qiekj\.com\/integralRecord\/integralDailStatistics$ - reject-dict
+^https?:\/\/userapi\.qiekj\.com\/local-life\/category$ - reject-dict
+^https?:\/\/userapi\.qiekj\.com\/slot\/get$ - reject-dict
+^https?:\/\/userapi\.qiekj\.com\/task\/list$ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/userapi\.qiekj\.com\/integralGoods\/queryIntegralGoodsCategoryList$ 'if (getpath([]) | has("data")) then (setpath(["data"]; [])) else . end'
+http-response-jq ^https?:\/\/userapi\.qiekj\.com\/local-life\/tab-order$ 'if (getpath([]) | has("data")) then (setpath(["data"]; [])) else . end'
+
+[MITM]
+hostname = %APPEND% userapi.qiekj.com

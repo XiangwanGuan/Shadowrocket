@@ -1,0 +1,8 @@
+#!name=美食杰
+#!desc=2025-09-09 10:10:26
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/newapi\.meishi\.cc\/indexnew\/home_feeds 'if .data.items then .data.items |= map(select(.type | . != "101" and . != "12")) else . end'
+
+[MITM]
+hostname = %APPEND% newapi.meishi.cc

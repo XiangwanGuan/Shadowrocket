@@ -1,0 +1,15 @@
+#!name=悠洗
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/api\.ulife\.group\/auth\/account\/entrance - reject-dict
+^https?:\/\/api\.ulife\.group\/auth\/account\/getUpgradeStrategy - reject-dict
+^https?:\/\/api\.ulife\.group\/market\/frontEntrance\/getThirdAdvertising\?displayPort=1&type=15 - reject-dict
+^https?:\/\/api\.ulife\.group\/market\/memberCard\/listMemberCard\?isShowSecondaryCard=1 - reject-dict
+^https?:\/\/api\.ulife\.group\/signintask\/adServing - reject-dict
+
+[Script]
+yx =type=http-response, pattern=^https?:\/\/api\.ulife\.group\/market\/homeIconDetail\/list\/v7, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/yx.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.ulife.group

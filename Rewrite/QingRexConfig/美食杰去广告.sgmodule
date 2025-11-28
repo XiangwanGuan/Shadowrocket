@@ -1,0 +1,17 @@
+#!name=美食杰去广告
+#!desc=移除开屏广告和信息流广告。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MeiShiJie.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id399423833
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-05-13 15:17:08
+
+[Body Rewrite]
+http-response-jq ^https:\/\/newapi\.meishi\.cc\/indexnew\/home_feeds 'if .data.items then .data.items |= map(select(.type | . != "101" and . != "12")) else . end'
+
+[MITM]
+hostname = %APPEND% newapi.meishi.cc
+

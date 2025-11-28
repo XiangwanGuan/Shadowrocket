@@ -1,0 +1,18 @@
+#!name=同程旅行
+#!desc=2025-11-11 14:47:15
+
+[Rule]
+DOMAIN, vstlog.17usoft.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/mobileapi\.ly\.com\/wlfrontend\/app\/scenicMain - reject-dict
+^https?:\/\/mobilehotelapi\.elong\.com\/appHotel\/adx\/advert\/getAdvert - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/appindexnew\/index\/gethotrecommend - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/appindexnew\/index\/getindexlayoutcelllist - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/appindexnew\/index\/openscreen - reject-dict
+^https?:\/\/wx\.17u\.cn\/crapi\/query\/ad - reject-dict
+^https?:\/\/wx\.17u\.cn\/crapi\/query\/getAdImgUrlByCode - reject-dict
+^https?:\/\/wx\.17u\.cn\/xcxhomeapi\/((aggregator\/index)|(home\/(screen|banner|converge)))$ - reject
+
+[MITM]
+hostname = %APPEND% *.17u.cn,*.17usoft.com,*.ly.com,mobilehotelapi.elong.com,quic-tcmapi.elong.com

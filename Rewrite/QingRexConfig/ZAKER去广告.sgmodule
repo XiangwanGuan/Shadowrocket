@@ -1,0 +1,26 @@
+#!name=ZAKER去广告
+#!desc=移除开屏广告、置顶轮播图广告和文末广告。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ZAKER.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id462149227
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-06-30 23:34:19
+
+[Body Rewrite]
+http-response-jq ^https:\/\/iphone\.myzaker\.com\/zaker\/article_mongo_sec\.php\? 'delpaths([["data","ad_url"]])'
+http-response-jq ^https:\/\/ggs\.myzaker\.com\/zk_article_ad\.php\? 'delpaths([["data","article_bottom"]])'
+http-response-jq ^https:\/\/ggs\.myzaker\.com\/zk_article_ad\.php\? 'delpaths([["data","recommend_ad"]])'
+http-response-jq ^https:\/\/iphone\.myzaker\.com\/zaker\/follow_promote\.php\? '.data.list |= map(select(.type != "web"))'
+http-response-jq ^https:\/\/iphone\.myzaker\.com\/zaker\/car_tab\/index\.php\? '.data.gallery |= map(select(.type != "web"))'
+
+[Map Local]
+^https:\/\/iphone\.myzaker\.com\/zaker\/cover\.php\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/iphone\.myzaker\.com\/zaker\/block_top_ad\.php\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% iphone.myzaker.com, ggs.myzaker.com
+

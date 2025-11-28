@@ -1,0 +1,20 @@
+#!name=迅雷去广告
+#!desc=移除开屏广告、首页横幅广告、左上角广告入口，精简我的页面。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/XunLei.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1503466530
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-07-10 21:25:29
+
+[Body Rewrite]
+http-response-jq ^https:\/\/conf-m-ssl\.xunlei\.com\/external\/ 'delpaths([["values","me_config","entrance_list_vertical_enable"]])'
+http-response-jq ^https:\/\/conf-m-ssl\.xunlei\.com\/external\/ 'delpaths([["values","me_config","common_service_list"]])'
+http-response-jq ^https:\/\/conf-m-ssl\.xunlei\.com\/external\/ 'delpaths([["values","me_config","banner_service_list"]])'
+http-response-jq ^https:\/\/api-shoulei-ssl\.xunlei\.com\/flowhub\/v1\/slots:batchGet$ '.slots |= map(select(.id == "xl_ios_mytab_vipicon" or (.native.assets.title.text.value? and (.native.assets.title.text.value | . == "清理助手" or . == "云盘容量" or . == "远程设备"))))'
+
+[MITM]
+hostname = %APPEND% conf-m-ssl.xunlei.com, api-shoulei-ssl.xunlei.com
+

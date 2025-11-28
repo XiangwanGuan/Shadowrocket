@@ -1,0 +1,12 @@
+#!name=领英
+#!desc=2025-11-11 14:47:14
+
+[Rule]
+DOMAIN-SUFFIX, ads.linkedin.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/www\.linkedin\.com\/voyager\/api\/graphql\?queryId=voyagerAdstracking - reject-dict
+^https?:\/\/www\.linkedin\.com\/voyager\/api\/voyagerConfiguration - reject
+
+[MITM]
+hostname = %APPEND% www.linkedin.com

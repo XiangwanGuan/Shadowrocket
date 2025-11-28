@@ -1,0 +1,8 @@
+#!name=故宫博物馆 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/gugongmini\.dpm\.org\.cn\/gugong_applet\/open-screen - reject-dict
+
+[MITM]
+hostname = %APPEND% gugongmini.dpm.org.cn

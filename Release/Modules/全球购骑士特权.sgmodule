@@ -1,0 +1,9 @@
+#!name=全球购骑士特权
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/facade-api\.black-unique\.com\/advertise\/v1\/get\?.* - reject-dict
+^https?:\/\/facade-api\.black-unique\.com\/app\/v1\/startScreen\?.* - reject-dict
+
+[MITM]
+hostname = %APPEND% facade-api.black-unique.com

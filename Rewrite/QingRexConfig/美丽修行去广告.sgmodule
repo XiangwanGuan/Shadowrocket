@@ -1,0 +1,39 @@
+#!name=美丽修行去广告
+#!desc=移除开屏广告、首页广告、发现页广告、美修盒页面广告、下拉广告、搜索推广、版本更新弹窗及我的页面广告。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Meizhixiuxing.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1089854728
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-21 12:23:49
+
+[Body Rewrite]
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","versionPopUp"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","isShowSearchLabel"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","isShowSearchFeedBack"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","centerBannerAdvert"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","programmaticAdvertising"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","mattsData"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","questionnaireMap"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ 'delpaths([["result","appPullDownAdvert"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/feed$ 'delpaths([["result","banners"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/appmain\/app\/home\/feed$ '. | .result.returnList |= (map(select(.tname == "userPart"))) | .result.returnList |= map(select(. | has("adId") | not))'
+http-response-jq ^https:\/\/api\.bevol\.com\/trialbox\/shop\/app\/homePage$ 'delpaths([["result","firstPersonActivity"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/trialbox\/shop\/app\/homePage$ 'delpaths([["result","mainActivity"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/trialbox\/shop\/app\/homePage$ 'delpaths([["result","brandZone"]])'
+http-response-jq ^https:\/\/api\.bevol\.com\/trialbox\/shop\/app\/homePage$ 'delpaths([["result","imageAD2"]])'
+
+[Map Local]
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/launch$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/popup$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.bevol\.com\/personal\/page$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.bevol\.com\/seach\/foundAndTopSearch$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% api.bevol.com
+

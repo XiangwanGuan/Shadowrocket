@@ -1,0 +1,8 @@
+#!name=今日头条
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/p(b)?\d\.pstatp.com\/origin - reject
+
+[MITM]
+hostname = %APPEND% *.pstatp.com

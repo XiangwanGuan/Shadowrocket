@@ -1,0 +1,16 @@
+#!name=飞客
+#!desc=2025-09-10 09:03:32
+
+[URL Rewrite]
+^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?module=advis - reject-dict
+^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?module=basicdata&type=appinfo - reject-dict
+
+[Body Rewrite]
+http-response ^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?.*module=basicdata&type=forumlist adv adv0
+http-response ^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?.*module=threadpost relatedrecommend relatedrecommend0
+
+[Script]
+flyert =type=http-response, pattern=^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*plugin, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/flyert.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% www.flyert.com,www.flyert.com.cn,www.flyetrip.com,www.flyetrip.com.cn

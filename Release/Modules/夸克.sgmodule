@@ -1,0 +1,12 @@
+#!name=夸克
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/huichuan\.sm\.cn\/nativead - reject
+^https?:\/\/stars\.shuqireader\.com\/kkios\/render\/load\/resource\/appConfig - reject-dict
+
+[Script]
+quark =type=http-response, pattern=^https?:\/\/open-cms-api\.quark\.cn\/open-cms, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/quark.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% *.shuqireader.com,huichuan.sm.cn,open-cms-api.quark.cn

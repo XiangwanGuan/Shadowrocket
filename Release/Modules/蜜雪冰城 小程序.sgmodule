@@ -1,0 +1,8 @@
+#!name=蜜雪冰城 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mxsa\.mxbc\.net\/api\/v\d\/adinfo\/adplace\/query - reject-dict
+
+[MITM]
+hostname = %APPEND% mxsa.mxbc.net

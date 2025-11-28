@@ -1,0 +1,26 @@
+#!name=智联招聘去广告
+#!desc=移除开屏广告、弹窗、职位页面推广和各类横幅推广。此插件需要IPA签名方可使用，App Store用户请勿使用此插件，务必点击下方主页链接查看详细教程。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ZhiLianZhaoPin.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id488033535
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://getupnote.com/share/notes/zSn1ShBmzNYISKcTgjXE5oHMrNf2/34bf3aad-7872-497d-b239-198e27e8c84c
+#!date=2025-05-13 15:17:08
+
+[Rule]
+URL-REGEX,"^https:\/\/(ask|cgate)\.zhaopin\.com\/operation\/ad\/",REJECT,extended-matching
+
+[URL Rewrite]
+^https:\/\/cgate\.zhaopin\.com\/bdp\/commercial\/queryLinkData$ - reject
+
+[Body Rewrite]
+http-response-jq ^https:\/\/ask\.zhaopin\.com\/plat-zqa-server\/home\/\d\.\d\.\d\/getHomeContents\? 'delpaths([["data","templates",0,"data","banner"]])'
+
+[Map Local]
+^https:\/\/cgate\.zhaopin\.com\/resumeapi\/resumeCheck\/positionDetailBottomTipCheck$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% ask.zhaopin.com, cgate.zhaopin.com
+

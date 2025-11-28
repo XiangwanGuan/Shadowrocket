@@ -1,0 +1,8 @@
+#!name=ETC助手 小程序
+#!desc=2025-10-11 08:28:47
+
+[URL Rewrite]
+^https?:\/\/gw\.etczs\.net\/api\/marketing\/marketing_plan\/release\/get - reject-dict
+
+[MITM]
+hostname = %APPEND% gw.etczs.net

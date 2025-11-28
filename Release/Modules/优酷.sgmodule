@@ -1,0 +1,36 @@
+#!name=优酷
+#!desc=2025-11-19 08:44:32
+
+[Rule]
+DOMAIN, dorangesource.alicdn.com, DIRECT, extended-matching
+DOMAIN, push.m.youku.com, DIRECT, extended-matching
+DOMAIN, un-acs.youku.com, DIRECT, extended-matching
+DOMAIN, adsmind.ugdtimg.com, REJECT, extended-matching, pre-matching
+DOMAIN, adx-core.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, adx-open-service.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, amdc.m.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, cad.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, dr-danmu.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, group-ssl-danmu-ori.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, h-adashx.ut.taobao.com, REJECT, extended-matching, pre-matching
+DOMAIN, m.atm.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, mc.atm.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, nbsdk-baichuan.alicdn.com, REJECT, extended-matching, pre-matching
+DOMAIN, pre-acs.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, vali-g1.cp31.ott.cibntv.net, REJECT, extended-matching, pre-matching
+DOMAIN, vali-ugc.cp31.ott.cibntv.net, REJECT, extended-matching, pre-matching
+DOMAIN, yk-ssp.ad.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, ykad-data.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN, youku-acs.m.taobao.com, REJECT, extended-matching, pre-matching
+DOMAIN, youku-crm-product.youku.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, iyes.youku.com, REJECT, extended-matching, pre-matching
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? 'delpaths([["data","tipContent"]])'
+http-response-jq ^https?:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? 'delpaths([["data","tipContentNew"]])'
+http-response-jq ^https?:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get 'delpaths([["data","data","ad"]])'
+http-response-jq ^https?:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get 'delpaths([["data","data","watermark"]])'
+http-response-jq ^https?:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get 'delpaths([["data","data","ykad"]])'
+
+[MITM]
+hostname = %APPEND% push.m.youku.com,un-acs.youku.com

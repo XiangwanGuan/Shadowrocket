@@ -1,0 +1,8 @@
+#!name=小特
+#!desc=2025-09-09 10:10:26
+
+[Body Rewrite]
+http-response ^https?:\/\/lcen\.xiaote\.net\/api\/graphql screenSplashAd random-response
+
+[MITM]
+hostname = %APPEND% lcen.xiaote.net

@@ -1,0 +1,25 @@
+#!name=收银通商户端去广告
+#!desc=移除开屏广告和首页推广
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ShouYinTongMerchant.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1539897140
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-05-13 15:17:08
+
+[Map Local]
+^https:\/\/syt\.leshuazf\.com\/merchant\/merchant\/showOpenScreenAd$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/m\.fqfin\.cn\/cls\/leshuapay\/preCredit\.json$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/syt\.leshuazf\.com\/merchant\/messageCenter\/stationLetterList$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/syt\.leshuazf\.com\/merchant\/merchant\/getBannerConfig$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/syt\.leshuazf\.com\/merchant\/popup\/getPopupInfo$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% syt.leshuazf.com, m.fqfin.cn
+

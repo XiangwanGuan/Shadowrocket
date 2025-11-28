@@ -1,0 +1,12 @@
+#!name=小鹏汽车
+#!desc=2025-11-11 14:48:58
+
+[Rule]
+DOMAIN, apps-booster.xiaopeng.com, REJECT, extended-matching, pre-matching
+DOMAIN, collect.xiaopeng.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/ext-svc\.xiaopeng\.com\/api\/log\/open\/get\/image - reject-dict
+
+[MITM]
+hostname = %APPEND% ext-svc.xiaopeng.com

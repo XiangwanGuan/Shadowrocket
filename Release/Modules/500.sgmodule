@@ -1,0 +1,8 @@
+#!name=500
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/evs\.500\.com\/esinfo\/loading\/loading - reject
+
+[MITM]
+hostname = %APPEND% evs.500.com

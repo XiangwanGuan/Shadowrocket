@@ -1,0 +1,18 @@
+#!name=薄荷健康
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.boohee\.com\/app-interface\/v1\/search\/search\? - reject-dict
+^https?:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/page_float_bubbles\? - reject-dict
+^https?:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/sensor-banners\? - reject-dict
+^https?:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/tool_buttons\? - reject-dict
+^https?:\/\/bohe\.sfo-tx-shanghai-01\.saas\.sensorsdata\.cn\/api\/v2\/sfo\/user_popup_configs\? - reject-dict
+^https?:\/\/status\.boohee\.com\/api\/v1\/merged_messages$ - reject-dict
+
+[Script]
+bohe_ads =type=http-response, pattern=^https?:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/bohe_ads.js, requires-body=true, max-size=0
+bohe_ads =type=http-response, pattern=^https?:\/\/api\.boohee\.com\/meta-interface\/v2\/index\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/bohe_ads.js, requires-body=true, max-size=0
+bohe_ads =type=http-response, pattern=^https?:\/\/api\.boohee\.com\/open-interface\/v1\/string\/market_page\?title=metabolism_config$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/bohe_ads.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.boohee.com,bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn,lego.boohee.com,status.boohee.com

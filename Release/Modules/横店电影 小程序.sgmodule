@@ -1,0 +1,10 @@
+#!name=横店电影 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.hengdianfilm\.com\/\/cinema\/queryAvailableBannerInfo\/1 https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/hengdian.json 302
+^https?:\/\/api\.hengdianfilm\.com\/\/cinema\/queryAvailableBannerInfo\/2\?cid= - reject-dict
+^https?:\/\/api\.hengdianfilm\.com\/\/cinema\/queryAvailableBannerInfo\/4\?cid= - reject-dict
+
+[MITM]
+hostname = %APPEND% api.hengdianfilm.com

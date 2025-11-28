@@ -1,0 +1,8 @@
+#!name=Upwork
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.upwork\.com\/api\/v\d\/client-app-config\/platform\/ios\/app\/freelancer\/version - reject-dict
+
+[MITM]
+hostname = %APPEND% www.upwork.com

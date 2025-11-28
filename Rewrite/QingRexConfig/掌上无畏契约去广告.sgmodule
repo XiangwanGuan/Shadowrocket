@@ -1,0 +1,21 @@
+#!name=掌上无畏契约去广告
+#!desc=移除开屏广告、弹窗推广、搜索热搜、搜索热榜。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ValorantBible.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id6474118091
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-14 02:04:54
+
+[Map Local]
+^https:\/\/app\.mval\.qq\.com\/go\/recommend\/platflashbox\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/app\.mval\.qq\.com\/go\/mlol_news\/search\/varcache_hotV\d\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/app\.mval\.qq\.com\/go\/customize_search\/article_rank_tab\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% app.mval.qq.com
+

@@ -1,0 +1,10 @@
+#!name=漫画人
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/.*mangaapi\.manhuaren\.\w{2,4}\/v\d\/ad - reject
+^https?:\/\/.*mangaapi\.manhuaren\.\w{2,4}\/v\d\/public\/(getStartUpMessage|getStartPageAds|getShelfActivity) - reject
+^https?:\/\/mangaapi\.manhuaren\.com\/v\d\/public\/getStartPageAds - reject
+
+[MITM]
+hostname = %APPEND% *mangaapi.manhuaren.*

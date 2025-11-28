@@ -1,0 +1,8 @@
+#!name=12306
+#!desc=2025-09-09 10:10:26
+
+[Script]
+12306 =type=http-request, pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/12306.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% ad.12306.cn

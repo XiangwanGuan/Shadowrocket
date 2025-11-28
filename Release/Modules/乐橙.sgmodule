@@ -1,0 +1,8 @@
+#!name=乐橙
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/dl-cu-hz\.lechange\.cn\/oms-online\/advertisementPush - reject
+
+[MITM]
+hostname = %APPEND% dl-cu-hz.lechange.cn

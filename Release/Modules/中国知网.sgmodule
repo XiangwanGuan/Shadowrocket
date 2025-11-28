@@ -1,0 +1,8 @@
+#!name=中国知网
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/xyz\.cnki\.net\/resourcev7\/api\/manualpush\/SlidsList$ - reject-200
+
+[MITM]
+hostname = %APPEND% xyz.cnki.net

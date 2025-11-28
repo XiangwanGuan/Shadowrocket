@@ -1,0 +1,24 @@
+#!name=宝宝树
+#!desc=2025-11-11 14:47:12
+
+[Rule]
+DOMAIN, titan.babytree.com, REJECT, extended-matching, pre-matching
+DOMAIN, titan01.babytree.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/api\.babytree\.com\/api\/(advertising|mobile_activity) - reject
+^https?:\/\/api\.babytree\.com\/preg_intf\/index_content\/index_banner - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/app_index\/get_ceramic_chip_area - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/cms_second_tab\/topic_tab_list - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/feeds - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/index_activity - reject
+^https?:\/\/go\.babytree\.com\/go_tool\/api\/feeding_record\/get_home_banner_info - reject
+^https?:\/\/go\.babytree\.com\/go_tool\/api\/tools\/get_third_privacy_msgbox_list - reject
+^https?:\/\/mapiweb\.babytree\.com\/newapi\/luban\/behavior\/receive - reject-200
+^https?:\/\/plough\.babytree\.com\/plough\.do - reject-dict
+
+[Script]
+babytree =type=http-response, pattern=^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/(app_index|cms_column), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/babytree.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.babytree.com,go.babytree.com,mapiweb.babytree.com,plough.babytree.com

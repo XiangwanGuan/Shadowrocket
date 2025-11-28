@@ -1,0 +1,8 @@
+#!name=小牛电动
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/app-api\.niu\.com\/v\d\/advertisement\/ - reject
+
+[MITM]
+hostname = %APPEND% app-api.niu.com

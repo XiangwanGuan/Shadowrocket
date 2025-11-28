@@ -1,0 +1,8 @@
+#!name=小利生活
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mpos-pic\.helipay\.com\/upload\/images\/advertisment\/image - reject
+
+[MITM]
+hostname = %APPEND% mpos-pic.helipay.com

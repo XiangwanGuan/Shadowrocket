@@ -1,0 +1,8 @@
+#!name=邮储信用卡
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/d\.psbc\.com:\d+\/mcc\/resources\/.+\.(jpg|jpeg|png) - reject-200
+
+[MITM]
+hostname = %APPEND% d.psbc.com

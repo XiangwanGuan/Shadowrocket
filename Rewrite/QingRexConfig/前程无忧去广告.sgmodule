@@ -1,0 +1,36 @@
+#!name=前程无忧去广告
+#!desc=移除开屏广告、弹窗、信息流推广、职位页面推广和各类横幅推广。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/51Job.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id415443644
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-07-11 17:40:27
+
+[Body Rewrite]
+http-response-jq ^https:\/\/cupid\.51jobapp\.com\/open\/noauth\/recommend\/job-tab-dynamic\? 'delpaths([["resultbody","adsTabFeeds"]])'
+http-response-jq ^https:\/\/cupid\.51jobapp\.com\/open\/user-task\/user\/task\/ 'delpaths([["resultbody","availableTaskList"]])'
+http-response-jq ^https:\/\/cupid\.51jobapp\.com\/open\/tab\/good-job\/modules\? 'delpaths([["resultbody","bannerList"]])'
+
+[Map Local]
+^https:\/\/appapi\.51jobapp\.com\/api\/market\/get_launch\.php\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/open\/operation\/get\/latest\/banner-list\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/open\/51job-activities\/secJob\/queryHomeSecondConfigV2\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/open\/noauth\/jobs\/detail\/sesame-competitive\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/open\/noauth\/jobs\/job-detail\/user-rights\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/open\/resume\/strategy\/resume-build\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/launch-hub\/open\/noauth\/popUp\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/cupid\.51jobapp\.com\/launch-hub\/open\/noauth\/popUp\/getHomePagePopUp\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% appapi.51jobapp.com, cupid.51jobapp.com
+

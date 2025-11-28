@@ -1,0 +1,15 @@
+#!name=新浪
+#!desc=2025-11-11 14:48:58
+
+[Rule]
+DOMAIN, sax.sina.com.cn, REJECT, extended-matching, pre-matching
+DOMAIN, saxn.sina.com.cn, REJECT, extended-matching, pre-matching
+DOMAIN, saxs.sina.com.cn, REJECT, extended-matching, pre-matching
+DOMAIN, u1.img.mobile.sina.cn, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, beacon.sina.com.cn, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/edit\.sinaapp\.com\/ua\?t=adv - reject-200
+
+[MITM]
+hostname = %APPEND% edit.sinaapp.com

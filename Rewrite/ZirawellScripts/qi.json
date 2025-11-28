@@ -1,0 +1,23 @@
+{
+    "result": true,
+    "data":
+    {
+        "id": 0,
+        "minVersion": 0,
+        "version": 1,
+        "appStore": "https://itunes.apple.com/app/id6651841743",
+        "others":
+        {
+            "help": "mqqapi://card/show_pslcard?src_type=internal&version=1&uin=724659717&card_type=group&source=qrcode"
+        },
+        "testVersion": 0,
+        "type": 0,
+        "versionName": "1.0.0",
+        "clientID": 0,
+        "name": "奇点阅读"
+    },
+    "success": true,
+    "count": 0,
+    "code": 0,
+    "hasMore": false
+}

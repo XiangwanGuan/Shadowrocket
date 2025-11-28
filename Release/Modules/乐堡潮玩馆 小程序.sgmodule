@@ -1,0 +1,8 @@
+#!name=乐堡潮玩馆 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/tbgapplet\.carlsberg\.asia\/tuborg\/banner\/(loading|index) - reject-dict
+
+[MITM]
+hostname = %APPEND% tbgapplet.carlsberg.asia

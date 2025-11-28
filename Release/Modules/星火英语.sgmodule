@@ -1,0 +1,8 @@
+#!name=星火英语
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\d\.sparke\.cn\/admodel\/list\?adspace=spgg&flag=\d$ - reject
+
+[MITM]
+hostname = %APPEND% api*.sparke.cn

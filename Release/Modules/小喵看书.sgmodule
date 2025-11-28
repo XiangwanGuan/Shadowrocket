@@ -1,0 +1,8 @@
+#!name=小喵看书
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.miaomiaoyd\.com\/book\/config\/getAdsSettings$ - reject
+
+[MITM]
+hostname = %APPEND% api.miaomiaoyd.com

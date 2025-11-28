@@ -1,0 +1,15 @@
+#!name=马蜂窝
+#!desc=2025-11-11 14:47:14
+
+[Rule]
+DOMAIN, advert.mafengwo.cn, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/mapi\.mafengwo\.cn\/user\/growth\/get_growth_tip\/v1\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/mapi\.mafengwo\.cn\/discovery\/get_index\/v7\? '.data.list |= map(select(.data.business_type != "gdcpm"))'
+http-response-jq ^https?:\/\/mapi\.mafengwo\.cn\/sales\/home\/get_header\/v3\? '.data.list[] |= ( .data |= del(.banners) )'
+
+[MITM]
+hostname = %APPEND% mapi.mafengwo.cn

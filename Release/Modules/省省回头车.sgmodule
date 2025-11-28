@@ -1,0 +1,8 @@
+#!name=省省回头车
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.ymm56\.com\/short-distance-match-app\/openAppAd - reject-dict
+
+[MITM]
+hostname = %APPEND% www.ymm56.com

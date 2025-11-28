@@ -1,0 +1,40 @@
+#!name=Line
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/a\.line\.me\/cs\/v\d\/oa$ - reject
+^https?:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image - reject-img
+^https?:\/\/a\.line\.me\/er\/lads\/v\d\/ei\? - reject-img
+^https?:\/\/a\.line\.me\/lass\/api\/v\d\/ads$ - reject
+^https?:\/\/a\.line\.me\/oa\/v\d\/e$ - reject
+^https?:\/\/ad\.line-scdn\.net\/0h - reject
+^https?:\/\/buy\.line\.me\/api\/graphql\?variables - reject
+^https?:\/\/cix\.line-apps\.com\/R4\? - reject
+^https?:\/\/crs-event\.line\.me\/v\d\/imp - reject
+^https?:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) - reject-img
+^https?:\/\/ec-bot-obs\.line-scdn\.net\/0h[-0-9a-zA-Z_]{50,} - reject-img
+^https?:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ - reject
+^https?:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ - reject
+^https?:\/\/gw\.line\.naver\.jp\/tr\/event$ - reject
+^https?:\/\/lan\.line\.me\/v1\/line\/ios - reject
+^https?:\/\/legy\.line-apps\.com:443\/ext\/lgfp\/lad\/v1$ - reject
+^https?:\/\/legy\.line-apps\.com:443\/ext\/smartch\/banner\/sch\/v1$ - reject
+^https?:\/\/legy\.line-apps\.com:443\/tr\/event$ - reject
+^https?:\/\/legy\.line-apps\.com\/line\.gcs\.GcsModuleService\/GetModulesByModuleIds$ - reject
+^https?:\/\/nelo2-col\.linecorp\.com\/_store$ - reject
+^https?:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$ - reject
+^https?:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$ - reject
+^https?:\/\/obs\.line-scdn\.net\/0hGH\d - reject
+^https?:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$ - reject-img
+^https?:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json - reject
+^https?:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/ - reject
+^https?:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ - reject
+^https?:\/\/sch\.line\.me\/api\/v\d\/ads$ - reject
+^https?:\/\/static\.line-scdn\.net\/ad-sdk\/ - reject
+^https?:\/\/uts-front\.line-apps\.com\/event$ - reject
+^https?:\/\/uts-front\.line-apps\.com\/settings$ - reject
+^https?:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ - reject
+^https?:\/\/web-mmap-pay\.line-apps\.com\/tw\/liff\/campaign\/v1\/aggregate\/ad\/banner\/ - reject-img
+
+[MITM]
+hostname = %APPEND% a.line.me,ad.line-scdn.net,buy.line.me,cix.line-apps.com,crs-event.line.me,d.line-scdn.net,ec-bot-obs.line-scdn.net,gw.line.naver.jp,lan.line.me,legy.line-apps.com,nelo2-col.linecorp.com,obs.line-scdn.net,scdn.line-apps.com,sch.line.me,static.line-scdn.net,uts-front.line-apps.com,w.line.me

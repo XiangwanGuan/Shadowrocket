@@ -1,0 +1,9 @@
+#!name=豆瓣
+#!desc=2025-11-28 22:16:39
+
+[URL Rewrite]
+^https?:\/\/api\.douban\.com\/b.*\/common_ads\? - reject
+^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ - reject
+
+[MITM]
+hostname = %APPEND% api.douban.com

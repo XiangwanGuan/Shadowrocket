@@ -1,0 +1,13 @@
+#!name=中国移动
+#!desc=2025-11-12 13:30:13
+
+[Rule]
+IP-CIDR, 120.240.95.37/32, REJECT, no-resolve
+
+[URL Rewrite]
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/emotionMarket - reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/explorePage\/getAdverList - reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/init\/startInit - reject
+
+[MITM]
+hostname = %APPEND% app.10086.cn,client.app.coc.10086.cn

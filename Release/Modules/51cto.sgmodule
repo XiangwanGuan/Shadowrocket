@@ -1,0 +1,12 @@
+#!name=51cto
+#!desc=2025-11-11 14:47:11
+
+[Rule]
+DOMAIN, smartop-sdkapi-ipv6.jiguang.cn, REJECT, extended-matching, pre-matching
+DOMAIN, smartop-sdkapi.jiguang.cn, REJECT, extended-matching, pre-matching
+
+[Script]
+51cto =type=http-response, pattern=^https?:\/\/edu\.51cto\.com\/app\.php\?$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/51cto.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% edu.51cto.com

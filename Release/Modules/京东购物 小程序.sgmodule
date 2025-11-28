@@ -1,0 +1,8 @@
+#!name=京东购物 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.m\.jd\.com\/\?loginType=11 - reject-dict
+
+[MITM]
+hostname = %APPEND% api.m.jd.com

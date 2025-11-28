@@ -1,0 +1,11 @@
+#!name=美图秀秀
+#!desc=2025-11-11 14:47:14
+
+[Rule]
+DOMAIN, adui.tg.meitu.com, REJECT, extended-matching, pre-matching
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.posters\.meitu\.com\/common\/init\.json 'delpaths([["data","vip"]])'
+
+[MITM]
+hostname = %APPEND% api.posters.meitu.com

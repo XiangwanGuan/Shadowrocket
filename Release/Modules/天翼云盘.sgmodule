@@ -1,0 +1,8 @@
+#!name=天翼云盘
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.cloud\.189\.cn\/guns\/(img\/recommendedPosition|getOpenscreenBanners) - reject-dict
+
+[MITM]
+hostname = %APPEND% api.cloud.189.cn

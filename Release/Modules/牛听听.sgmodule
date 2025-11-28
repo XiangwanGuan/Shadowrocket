@@ -1,0 +1,9 @@
+#!name=牛听听
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/gateway\.benewtech\.cn\/resources-app\/app\/startup\/prepage - reject-dict
+^https?:\/\/ntt-app\.benewtech\.cn\/v6\/user\/\d+\/messages\/event - reject-dict
+
+[MITM]
+hostname = %APPEND% gateway.benewtech.cn,ntt-app.benewtech.cn

@@ -1,0 +1,18 @@
+#!name=TubeMax
+#!desc=2025-11-11 14:47:15
+
+[Rule]
+DOMAIN-SUFFIX, adcanvas.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, adjust.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, adsmoloco.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, app-measurement.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, appier.net, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, applovin.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, applvn.com, REJECT, extended-matching, pre-matching
+DOMAIN-SUFFIX, pangle.io, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/.*\.i18n-pglstatp\.com\/obj\/ad-pattern-sg - reject
+
+[MITM]
+hostname = %APPEND% *.i18n-pglstatp.com

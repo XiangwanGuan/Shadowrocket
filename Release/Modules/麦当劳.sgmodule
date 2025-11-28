@@ -1,0 +1,8 @@
+#!name=麦当劳
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/(home\/splash|richpop) - reject-200
+
+[MITM]
+hostname = %APPEND% api.mcd.cn

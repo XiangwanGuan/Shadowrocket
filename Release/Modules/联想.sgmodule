@@ -1,0 +1,8 @@
+#!name=联想
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.club\.lenovo\.cn\/common\/open_ad - reject
+
+[MITM]
+hostname = %APPEND% api.club.lenovo.cn

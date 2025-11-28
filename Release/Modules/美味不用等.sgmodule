@@ -1,0 +1,8 @@
+#!name=美味不用等
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/capi\.mwee\.cn\/app-api\/V\d{2}\/app\/(ad|getstartad) - reject
+
+[MITM]
+hostname = %APPEND% capi.mwee.cn

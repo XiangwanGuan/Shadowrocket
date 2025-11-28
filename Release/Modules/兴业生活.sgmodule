@@ -1,0 +1,8 @@
+#!name=兴业生活
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/file\.cibfintech\.com\/file\/M0[1-9]{1}\/*\/*\/.*.zip - reject-img
+
+[MITM]
+hostname = %APPEND% file.cibfintech.com

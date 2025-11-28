@@ -1,0 +1,8 @@
+#!name=巴士管家
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mobileapi\.chebada\.com\/publicv\d\/api\/v\d+\/infodeliver\/getmerchantad - reject
+
+[MITM]
+hostname = %APPEND% mobileapi.chebada.com

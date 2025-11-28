@@ -1,0 +1,8 @@
+#!name=360儿童卫士
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ad\.life\.360\.cn\/v2\/app\/advertisement\/config\?sdk_ver= - reject-dict
+
+[MITM]
+hostname = %APPEND% ad.life.360.cn

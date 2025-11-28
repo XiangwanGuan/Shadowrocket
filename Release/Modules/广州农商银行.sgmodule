@@ -1,0 +1,8 @@
+#!name=广州农商银行
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mbank\.grcbank\.com\/ydyh\/resources\/startpage\/.*.(jpg|png) - reject-200
+
+[MITM]
+hostname = %APPEND% mbank.grcbank.com

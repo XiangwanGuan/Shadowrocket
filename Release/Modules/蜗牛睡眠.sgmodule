@@ -1,0 +1,9 @@
+#!name=蜗牛睡眠
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/snailsleep\.net\/snail\/v\d\/adTask\/ - reject
+^https?:\/\/snailsleep\.net\/snail\/v\d\/screen\/qn\/get\? - reject
+
+[MITM]
+hostname = %APPEND% snailsleep.net

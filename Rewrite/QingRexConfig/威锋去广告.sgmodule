@@ -1,0 +1,20 @@
+#!name=威锋去广告
+#!desc=移除开屏广告、信息流广告、文末广告、首页轮播图推广。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/WPForum.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1411932809
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-07-16 02:49:51
+
+[Body Rewrite]
+http-response-jq ^https:\/\/api\.wfdata\.club\/v2\/yesfeng\/slideshow\? '.data |= map(select(.protocolId == 1))'
+
+[Map Local]
+^https:\/\/api\.wfdata\.club\/v2\/yesfeng\/yesList\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% api.wfdata.club
+

@@ -1,0 +1,11 @@
+#!name=微脉圈
+#!desc=2025-11-11 19:47:51
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/confssl\d?\.iweimai\.cn\/wm_ios_update\.json\? 'delpaths([["ad"]])'
+http-response-jq ^https?:\/\/confssl\d?\.iweimai\.cn\/wm_ios_update\.json\? 'delpaths([["adBanners"]])'
+http-response-jq ^https?:\/\/confssl\d?\.iweimai\.cn\/wm_ios_update\.json\? 'delpaths([["launchAd"]])'
+http-response-jq ^https?:\/\/confssl\d?\.iweimai\.cn\/wm_ios_update\.json\? 'if (getpath([]) | has("isShowCJAd")) then (setpath(["isShowCJAd"]; 0)) else . end'
+
+[MITM]
+hostname = %APPEND% confssl*.iweimai.cn

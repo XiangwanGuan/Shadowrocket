@@ -1,0 +1,12 @@
+#!name=滴滴青桔 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=cms\.htw\.delivery - reject-dict
+^https?:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.(combineHomepageInfo|mallRecommend) - reject-dict
+
+[Script]
+wechatApplet =type=http-response, pattern=^https?:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.homeConfig, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/wechatApplet.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% htwkop.xiaojukeji.com

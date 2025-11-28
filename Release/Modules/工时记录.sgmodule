@@ -1,0 +1,9 @@
+#!name=工时记录
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ - reject
+^https?:\/\/yun\.tuitiger\.com\/mami-media - reject-200
+
+[MITM]
+hostname = %APPEND% open.e.kuaishou.com,yun.tuitiger.com

@@ -1,0 +1,10 @@
+#!name=医考帮
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/api\.yikaobang\.com\.cn\/client\/main\/homePageSmallAd - reject
+^https?:\/\/api\.yikaobang\.com\.cn\/index\.php\/Client\/main\/startPage - reject
+^https?:\/\/api\.yikaobang\.com\.cn\/index\.php\/version\/version\/check - reject
+
+[MITM]
+hostname = %APPEND% api.yikaobang.com.cn

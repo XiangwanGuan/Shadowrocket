@@ -1,0 +1,8 @@
+#!name=天山云TV
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.tsytv\.com\.cn\/api\/app\/ios\/ads - reject-img
+
+[MITM]
+hostname = %APPEND% www.tsytv.com.cn

@@ -1,0 +1,8 @@
+#!name=大智慧
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ssp\.dzh\.com\.cn/v2api/adgroupjson - reject
+
+[MITM]
+hostname = %APPEND% ssp.dzh.com.cn

@@ -1,0 +1,8 @@
+#!name=首旅如家
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/app\.homeinns\.com\/api\/landing - reject
+
+[MITM]
+hostname = %APPEND% app.homeinns.com

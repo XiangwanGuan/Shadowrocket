@@ -1,0 +1,23 @@
+#!name=配音秀去广告
+#!desc=移除开屏广告、弹窗、横幅、各类关注推荐。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DubbingShow.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id746925035
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-05-13 15:17:08
+
+[Body Rewrite]
+http-response-jq ^https:\/\/iosapi\.peiyinxiu\.com\/Api\/live\/LiveList 'delpaths([["data","banners"]])'
+http-response-jq ^https:\/\/iosapi\.peiyinxiu\.com\/api\/live\/FollowList 'delpaths([["obj","data"]])'
+http-response-jq ^https:\/\/iosapi\.peiyinxiu\.com\/Api\/Friend\/GetRecommendUsers 'delpaths([["obj","data"]])'
+http-response-jq ^https:\/\/iosapi\.peiyinxiu\.com\/api\/Union\/HomeData 'delpaths([["obj","data"]])'
+
+[Script]
+移除首页底部弹窗 = type=http-response, pattern=^https:\/\/iosapi\.peiyinxiu\.com\/Api\/Film\/GetConfigValue, script-path=https://kelee.one/Resource/JavaScript/DubbingShow/DubbingShow_remove_ads.js, requires-body=true
+
+[MITM]
+hostname = %APPEND% iosapi.peiyinxiu.com
+

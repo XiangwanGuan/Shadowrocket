@@ -1,0 +1,17 @@
+#!name=YY语音
+#!desc=2025-11-26 08:40:18
+
+[Rule]
+DOMAIN, yuyin-httpdns.gslb.yy.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/web\.yy\.com\/yyvoice_task_sys\/bar\.html\? - reject
+^https?:\/\/yuyin-api\.baizhanlive\.com\/homepage\/flashscreen\/get\? - reject-dict
+^https?:\/\/yuyin-api\.baizhanlive\.com\/homepage\/homepage\/banner\? - reject-dict
+^https?:\/\/yuyin-api\.baizhanlive\.com\/search\/search\/hotword\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/yuyin-api\.baizhanlive\.com\/postsquare\/college\/page\/tabsV3\? '.data.tabList |= map(select(.code == "post" or .code == "teamup" or .code == "college" or .code == "aiSecretRoom"))'
+
+[MITM]
+hostname = %APPEND% web.yy.com,yuyin-api.baizhanlive.com

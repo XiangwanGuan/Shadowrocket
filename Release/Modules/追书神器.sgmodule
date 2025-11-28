@@ -1,0 +1,11 @@
+#!name=追书神器
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/(api|b)\.zhuishushenqi\.com\/advert - reject-200
+^https?:\/\/api\.zhuishushenqi\.com\/notification\/shelfMessage - reject-200
+^https?:\/\/api\.zhuishushenqi\.com\/splashes\/ios - reject-200
+^https?:\/\/api\.zhuishushenqi\.com\/user\/bookshelf-updated - reject-200
+
+[MITM]
+hostname = %APPEND% api.zhuishushenqi.com,b.zhuishushenqi.com

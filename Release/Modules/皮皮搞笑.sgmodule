@@ -1,0 +1,8 @@
+#!name=皮皮搞笑
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/adapi\.izuiyou\.com\/ad\/fetch_api_ads\? - reject-dict
+
+[MITM]
+hostname = %APPEND% adapi.izuiyou.com

@@ -1,0 +1,16 @@
+#!name=Foodie去广告
+#!desc=移除开屏广告和弹窗广告
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Foodie.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1336411132
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-09-28 00:17:10
+
+[Rule]
+DOMAIN,api-ad.kajicam.com,REJECT,extended-matching,pre-matching
+DOMAIN,zjres-ad.kajicam.com,REJECT,extended-matching,pre-matching
+DOMAIN,popup-api.b612kaji.com,REJECT,extended-matching,pre-matching
+

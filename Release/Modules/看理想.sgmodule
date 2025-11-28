@@ -1,0 +1,8 @@
+#!name=看理想
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.vistopia\.com\.cn\/api\/v\d\/home\/advertisement - reject
+
+[MITM]
+hostname = %APPEND% api.vistopia.com.cn

@@ -1,0 +1,8 @@
+#!name=德邦快递 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.deppon\.com\/gwapi\/memberService\/eco\/member\/grade\/commonInterface - reject-dict
+
+[MITM]
+hostname = %APPEND% www.deppon.com

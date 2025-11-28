@@ -1,0 +1,8 @@
+#!name=超星学习通
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/learn\.chaoxing\.com\/apis\/service\/appConfig\? - reject
+
+[MITM]
+hostname = %APPEND% learn.chaoxing.com

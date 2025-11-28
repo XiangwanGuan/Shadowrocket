@@ -1,0 +1,352 @@
+name: Sync-RewriteFiles
+on:
+  schedule:
+    - cron: '22 22 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  Sync-RewriteFiles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create necessary directories
+        run: |
+          mkdir -p Rewrite/JavaScript
+          mkdir -p Rewrite/MiscConfig
+          mkdir -p Rewrite/NaisiConfig
+          mkdir -p Rewrite/NaisiScripts
+          mkdir -p Rewrite/QingRexConfig
+          mkdir -p Rewrite/ZirawellConfig
+          mkdir -p Rewrite/ZirawellScripts
+
+      - name: Define file paths and links
+        run: |
+          echo "Rewrite/MiscConfig/Bilibili.conf|https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/release/loon/plugin/bilibili.lpx" > download_file_links.list
+          echo "Rewrite/MiscConfig/Spotify.conf|https://raw.githubusercontent.com/001ProMax/Surge/refs/heads/main/Module/AD/Spotify.sgmodule" >> download_file_links.list
+          echo "Rewrite/MiscConfig/YouTube.conf|https://raw.githubusercontent.com/Maasea/sgmodule/refs/heads/master/YouTube.Enhance.sgmodule" >> download_file_links.list
+          echo "Rewrite/NaisiConfig/Filter.conf|https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list" >> download_file_links.list
+          echo "Rewrite/NaisiConfig/Loon.conf|https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/plugin/blockAds.plugin" >> download_file_links.list
+          echo "Rewrite/NaisiConfig/QuanX.conf|https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/rewrite.snippet" >> download_file_links.list
+          echo "Rewrite/NaisiConfig/Surge.conf|https://raw.githubusercontent.com/fmz200/wool_scripts/main/Surge/module/blockAds.module" >> download_file_links.list
+          echo "Rewrite/ZirawellConfig/AllAdBlock.conf|https://raw.githubusercontent.com/zirawell/R-Store/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" >> download_file_links.list
+          echo "Rewrite/ZirawellConfig/AllAdRewrite.conf|https://raw.githubusercontent.com/zirawell/R-Store/main/Rule/QuanX/Adblock/All/rewrite/allAdRewrite.conf" >> download_file_links.list
+
+      - name: Download MiscConfig & NaisiConfig & ZirawellConfig files
+        run: |
+          while IFS='|' read -r download_filepath download_url; do
+            echo "Downloading: $download_url -> $download_filepath"
+            curl -fsS -o "$download_filepath" "$download_url" || (echo "Retrying..." && curl -fsS -o "$download_filepath" "$download_url") || true
+          done < download_file_links.list
+
+      - name: Download QingRexConfig files
+        run: |
+          download_all() {
+            api_url="$1"
+            curl -s "$api_url" \
+              | grep '"download_url":' | cut -d '"' -f 4 | grep '\.sgmodule$' \
+              | while read -r raw_url; do
+                  filename=$(basename "$raw_url")
+                  echo "Downloading $filename"
+                  curl -fsSL "$raw_url" -o "Rewrite/QingRexConfig/$filename" || (echo "Retrying..." && curl -fsSL "$raw_url" -o "Rewrite/QingRexConfig/$filename") || true
+                done
+          }
+          download_all "https://api.github.com/repos/QingRex/LoonKissSurge/contents/Surge"
+
+      - name: Clear previous JSInventory.md contents
+        run: |
+          > Rewrite/JSInventory.md
+
+      - name: Preprocess Naisi Scripts
+        run: |
+          naisi_files_to_check=(
+            "Rewrite/NaisiConfig/Loon.conf"
+            "Rewrite/NaisiConfig/QuanX.conf"
+            "Rewrite/NaisiConfig/Surge.conf"
+          )
+          declare -A naisi_downloaded_urls
+          declare -A naisi_downloaded_files
+          > NaisiScripts.list
+          > NaisiScriptsMap.list
+          for naisi_file in "${naisi_files_to_check[@]}"; do
+            if [ -f "$naisi_file" ]; then
+              echo "Processing: $naisi_file"
+              sed 's/#.*//' "$naisi_file" | grep -Eo 'https?://[^ ]+\.(js|json|jq)' | sort -u >> NaisiScripts.list
+            fi
+          done
+          sort -u NaisiScripts.list -o NaisiScripts.list
+          while IFS= read -r naisi_url; do
+            if [[ "$naisi_url" =~ ^http://script.hub/convert/_start_/(.*)/_end_/.*$ ]]; then
+              naisi_raw_url="${BASH_REMATCH[1]}"
+            else
+              naisi_raw_url="$naisi_url"
+            fi
+            if echo "$naisi_raw_url" | grep -q "https://github.com/.*/raw/"; then
+              naisi_raw_url=$(echo "$naisi_raw_url" | sed 's#https://github.com/\(.*\)/raw/\(.*\)#https://raw.githubusercontent.com/\1/\2#g')
+            fi
+            if [[ -n "${naisi_downloaded_urls[$naisi_raw_url]}" ]]; then
+              continue
+            fi
+            naisi_filename=$(basename "$naisi_raw_url")
+            naisi_filepath="Rewrite/NaisiScripts/$naisi_filename"
+            if [[ -n "${naisi_downloaded_files[$naisi_filename]}" && "${naisi_downloaded_files[$naisi_filename]}" != "$naisi_raw_url" ]]; then
+              basename_noext="${naisi_filename%.*}"
+              ext="${naisi_filename##*.}"
+              naisi_filepath="Rewrite/NaisiScripts/${basename_noext}_2.${ext}"
+              echo "$naisi_filename ${basename_noext}_2.${ext} ${naisi_downloaded_files[$naisi_filename]} $naisi_raw_url" >> NaisiScriptsMap.list
+            fi
+            curl -fsS -o "$naisi_filepath" "$naisi_raw_url" || (echo "Retrying..." && curl -fsS -o "$naisi_filepath" "$naisi_raw_url") || echo "Download failed: $naisi_raw_url"
+            naisi_downloaded_urls[$naisi_raw_url]=1
+            naisi_downloaded_files[$naisi_filename]="$naisi_raw_url"
+          done < NaisiScripts.list
+
+      - name: Copy selected NaisiScripts to JavaScript
+        run: |
+          build_conf_file="Rewrite/JSGenerator.conf"
+          sed -i -e '$a\' "$build_conf_file"
+          naisi_selected_scripts=()
+          in_section=0
+          while IFS= read -r line; do
+            line="${line%%#*}"
+            line="${line%%;*}"
+            line="$(echo -e "${line}" | tr -d '[:space:]')"
+            if [[ "$line" == "[NaisiScripts]" ]]; then
+              in_section=1
+              continue
+            fi
+            if [[ "$line" == \[*] ]]; then
+              in_section=0
+            fi
+            if [[ $in_section -eq 1 && -n "$line" ]]; then
+              naisi_selected_scripts+=("$line")
+            fi
+          done < "$build_conf_file"
+          naisi_original_links=""
+          declare -A seen_urls=()
+          for naisi_script in "${naisi_selected_scripts[@]}"; do
+            naisi_src="Rewrite/NaisiScripts/$naisi_script"
+            naisi_dst="Rewrite/JavaScript/$naisi_script"
+            if [[ "$naisi_script" =~ ^(.+)_2\.(js|json|jq)$ ]]; then
+              base_name="${BASH_REMATCH[1]}"
+              ext="${BASH_REMATCH[2]}"
+              original_url=$(awk -v s="$naisi_script" '$2 == s {print $4}' NaisiScriptsMap.list)
+              if [[ -z "$original_url" ]]; then
+                original_url=$(grep -F "$naisi_script" NaisiScripts.list | head -n 1 || true)
+              fi
+            else
+              original_url=$(grep -F "$naisi_script" NaisiScripts.list | head -n 1 || true)
+            fi
+            if [ -f "$naisi_src" ]; then
+              cp "$naisi_src" "$naisi_dst"
+              if [[ -n "$original_url" && -z "${seen_urls[$original_url]}" ]]; then
+                naisi_original_links="${naisi_original_links}${original_url}<br>\n"
+                seen_urls[$original_url]=1
+              fi
+            fi
+          done
+          {
+            echo "## JavaScript Inventory <br>"
+            echo ""
+            echo "### fmz200: <br>"
+            echo -e "$naisi_original_links"
+          } >> Rewrite/JSInventory.md
+
+      - name: Preprocess Zirawell Scripts
+        run: |
+          zirawell_file="Rewrite/ZirawellConfig/AllAdRewrite.conf"
+          if [ -f "$zirawell_file" ]; then
+            > ZirawellScripts.list
+            grep -Eo 'https?://[^ ]+\.(js|json|jq)' "$zirawell_file" | sort -u >> ZirawellScripts.list
+            declare -A zirawell_downloaded_files
+            while IFS= read -r zirawell_url; do
+              zirawell_filename=$(basename "$zirawell_url")
+              zirawell_filepath="Rewrite/ZirawellScripts/$zirawell_filename"
+              if [[ -n "${zirawell_downloaded_files[$zirawell_filename]}" && "${zirawell_downloaded_files[$zirawell_filename]}" != "$zirawell_url" ]]; then
+                base="${zirawell_filename%.*}"
+                ext="${zirawell_filename##*.}"
+                zirawell_filepath="Rewrite/ZirawellScripts/${base}_2.${ext}"
+              fi
+              curl -fsS -o "$zirawell_filepath" "$zirawell_url" || (echo "Retrying..." && curl -fsS -o "$zirawell_filepath" "$zirawell_url") || echo "Download failed: $zirawell_url"
+              zirawell_downloaded_files[$zirawell_filename]="$zirawell_url"
+            done < ZirawellScripts.list
+          fi
+
+      - name: Copy selected ZirawellScripts to JavaScript
+        run: |
+          build_conf_file="Rewrite/JSGenerator.conf"
+          sed -i -e '$a\' "$build_conf_file"
+          zirawell_selected_scripts=()
+          in_section=0
+          while IFS= read -r line; do
+            line="${line%%#*}"
+            line="${line%%;*}"
+            line="$(echo -e "${line}" | tr -d '[:space:]')"
+            if [[ "$line" == "[ZirawellScripts]" ]]; then
+              in_section=1
+              continue
+            fi
+            if [[ "$line" == \[*] ]]; then
+              in_section=0
+            fi
+            if [[ $in_section -eq 1 && -n "$line" ]]; then
+              zirawell_selected_scripts+=("$line")
+            fi
+          done < "$build_conf_file"
+          zirawell_original_links=""
+          for zirawell_script in "${zirawell_selected_scripts[@]}"; do
+            zirawell_src="Rewrite/ZirawellScripts/$zirawell_script"
+            zirawell_dst="Rewrite/JavaScript/$zirawell_script"
+            zirawell_original_url=$(grep -Eo 'https?://[^ ]+\.(js|json|jq)' ZirawellScripts.list | grep -F "$zirawell_script" || true)
+            if [ -f "$zirawell_src" ]; then
+              cp "$zirawell_src" "$zirawell_dst"
+              zirawell_original_links="${zirawell_original_links}${zirawell_original_url}<br>\n"
+            fi
+          done
+          if [[ -n "$zirawell_original_links" ]]; then
+            {
+              echo "### zirawell: <br>"
+              echo -e "$zirawell_original_links"
+            } >> Rewrite/JSInventory.md
+          fi
+
+      - name: Preprocess Local Scripts
+        run: |
+          build_conf_file="Rewrite/JSGenerator.conf"
+          sed -i -e '$a\' "$build_conf_file"
+          local_files_to_check=()
+          in_section=0
+          while IFS= read -r line; do
+            line="${line%%#*}"
+            line="${line%%;*}"
+            line="$(echo -e "${line}" | tr -d '[:space:]')"
+            if [[ "$line" == "[LocalScripts]" ]]; then
+              in_section=1
+              continue
+            fi
+            if [[ "$line" == \[*] ]]; then
+              in_section=0
+            fi
+            if [[ $in_section -eq 1 && -n "$line" ]]; then
+              local_files_to_check+=("Rewrite/XiangwanConfig/$line")
+            fi
+          done < "$build_conf_file"
+          declare -A local_downloaded_files
+          > LocalScripts.list
+          for local_file in "${local_files_to_check[@]}"; do
+            [ -f "$local_file" ] && grep -Eo 'https?://[^ ]+\.(js|json|jq)' "$local_file" >> LocalScripts.list
+          done
+          sort -u -o LocalScripts.list LocalScripts.list
+          local_original_links=""
+          while IFS= read -r local_url; do
+            if echo "$local_url" | grep -Eq "XiangwanGuan/Shadowrocket/main/Rewrite/JavaScript/|xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/"; then
+              continue
+            fi
+            local_filename=$(basename "$local_url")
+            local_filepath="Rewrite/JavaScript/$local_filename"
+            if [[ -n "${local_downloaded_files[$local_filename]}" && "${local_downloaded_files[$local_filename]}" != "$local_url" ]]; then
+              base_noext="${local_filename%.*}"
+              ext="${local_filename##*.}"
+              local_filepath="Rewrite/JavaScript/${base_noext}2.${ext}"
+            fi
+            curl -fsS -o "$local_filepath" "$local_url" || (echo "Retrying..." && curl -fsS -o "$local_filepath" "$local_url") || echo "Download failed: $local_url"
+            local_downloaded_files[$local_filename]="$local_url"
+            local_original_links+="$local_url<br>\n"
+          done < LocalScripts.list
+          if [[ -n "$local_original_links" ]]; then
+            {
+              echo "### local: <br>"
+              echo -e "$local_original_links"
+            } >> Rewrite/JSInventory.md
+          fi
+
+      - name: Clean up unused local script files
+        run: |
+          build_conf_file="Rewrite/JSGenerator.conf"
+          sed -i -e '$a\' "$build_conf_file"
+          keep_files=()
+          in_section=""
+          while IFS= read -r line; do
+            line="${line%%#*}"
+            line="${line%%;*}"
+            line="$(echo -e "${line}" | tr -d '[:space:]')"
+            if [[ "$line" == "[NaisiScripts]" ]]; then
+              in_section="NaisiScripts"
+              continue
+            elif [[ "$line" == "[ZirawellScripts]" ]]; then
+              in_section="ZirawellScripts"
+              continue
+            elif [[ "$line" =~ ^\[.*\]$ ]]; then
+              in_section=""
+              continue
+            fi
+            if [[ -n "$line" && ( "$in_section" == "NaisiScripts" || "$in_section" == "ZirawellScripts" ) ]]; then
+              keep_files+=("$line")
+            fi
+          done < "$build_conf_file"
+          in_section=""
+          local_files=()
+          while IFS= read -r line; do
+            line="${line%%#*}"
+            line="${line%%;*}"
+            line="$(echo -e "${line}" | tr -d '[:space:]')"
+            if [[ "$line" == "[LocalScripts]" ]]; then
+              in_section="LocalScripts"
+              continue
+            elif [[ "$line" =~ ^\[.*\]$ ]]; then
+              in_section=""
+              continue
+            fi
+            if [[ -n "$line" && "$in_section" == "LocalScripts" ]]; then
+              local_files+=("Rewrite/XiangwanConfig/$line")
+            fi
+          done < "$build_conf_file"
+          local_script_files=()
+          for file in "${local_files[@]}"; do
+            if [[ -f "$file" ]]; then
+              while IFS= read -r url; do
+                if echo "$url" | grep -Eq "XiangwanGuan/Shadowrocket/main/Rewrite/JavaScript/|xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/"; then
+                  continue
+                fi
+                filename=$(basename "$url")
+                local_script_files+=("$filename")
+              done < <(grep -Eo 'https?://[^ ]+\.(js|json|jq)' "$file" | sort -u)
+            fi
+          done
+          declare -A keep_map
+          for f in "${keep_files[@]}"; do
+            keep_map["$f"]=1
+          done
+          for f in "${local_script_files[@]}"; do
+            keep_map["$f"]=1
+          done
+          for f in Rewrite/JavaScript/*; do
+            [ -e "$f" ] || continue
+            filename=$(basename "$f")
+            if [[ -z "${keep_map[$filename]}" ]]; then
+              echo "Deleting unused local script file: $filename"
+              rm -f "$f"
+            fi
+          done
+
+      - name: Stash and rebase
+        run: |
+          git diff --quiet || git stash
+          git pull --rebase origin main
+          if git stash list | grep -q .; then git stash pop; fi
+
+      - name: Commit & Copy RewriteFiles
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'GitHub Actions'
+          author_email: 'actions@github.com'
+          message: 'Sync-RewriteFiles'
+          add: 'Rewrite/**'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

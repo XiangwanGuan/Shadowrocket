@@ -1,0 +1,27 @@
+#!name=掌上英雄联盟去广告
+#!desc=移除开屏广告、弹窗推广、搜索热搜、搜索热榜、底栏推广图标。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/LOL_Bible.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id475666808
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-14 02:24:43
+
+[Map Local]
+^https:\/\/mlol\.qt\.qq\.com\/go\/recommend\/platstrongshell\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/mlol\.qt\.qq\.com\/go\/club\/match\/get_ai_search_words$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/mlol\.qt\.qq\.com\/go\/mlol_news\/search\/varcache_hotV\d\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/mlol\.qt\.qq\.com\/go\/customize_search\/article_rank_tab\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/mlol\.qt\.qq\.com\/go\/customize_search\/article_rank\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/mlol\.qt\.qq\.com\/go\/zone\/bottomtab_tip\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% mlol.qt.qq.com
+

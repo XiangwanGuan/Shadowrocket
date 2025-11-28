@@ -1,0 +1,8 @@
+#!name=盈宝证券
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/api\.winbull8\.com\/v\d\/marketing\/(advert|activity)\/(list|page) - reject-dict
+
+[MITM]
+hostname = %APPEND% api.winbull8.com

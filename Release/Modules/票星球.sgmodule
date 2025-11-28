@@ -1,0 +1,8 @@
+#!name=票星球
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/appapi\.caiyicloud\.com\/cyy_gatewayapi\/home\/pub\/v3\/banners\/app_start_page - reject-dict
+
+[MITM]
+hostname = %APPEND% appapi.caiyicloud.com

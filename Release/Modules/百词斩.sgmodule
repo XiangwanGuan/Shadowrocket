@@ -1,0 +1,12 @@
+#!name=百词斩
+#!desc=2025-11-11 14:47:12
+
+[Rule]
+DOMAIN, advertise.baicizhan.com, REJECT, extended-matching, pre-matching
+DOMAIN, advertise.baicizhan.org, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/7n\.bczcdn\.com\/launchad\/ - reject-200
+
+[MITM]
+hostname = %APPEND% 7n.bczcdn.com

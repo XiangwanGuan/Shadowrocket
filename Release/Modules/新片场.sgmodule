@@ -1,0 +1,8 @@
+#!name=新片场
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/app\.xinpianchang\.com\/open_screen\? - reject
+
+[MITM]
+hostname = %APPEND% app.xinpianchang.com

@@ -1,0 +1,8 @@
+#!name=猿辅导
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/xyst\.yuanfudao\.com\/iphone\/splashesV\d - reject-200
+
+[MITM]
+hostname = %APPEND% xyst.yuanfudao.com

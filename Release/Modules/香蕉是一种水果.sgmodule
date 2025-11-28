@@ -1,0 +1,8 @@
+#!name=香蕉是一种水果
+#!desc=2025-09-09 10:10:27
+
+[Script]
+xjsp =type=http-response, pattern=^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/index|getGlobalData|(\/|)vod\/reqplay\/), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/xjsp.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% *.fuliapps.com,*.pipiapps.com,*.xiangjiaoapps.com,*.xiangxiangapps.com

@@ -1,0 +1,8 @@
+#!name=闪现一下
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.gameplus\.qq\.com\/community\.OnloadSrv\/GetPreloadScreenInfo - reject-200
+
+[MITM]
+hostname = %APPEND% api.gameplus.qq.com

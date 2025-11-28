@@ -1,0 +1,8 @@
+#!name=百度网盘 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/pan\.baidu\.com\/buy\/ad\/ - reject-200
+
+[MITM]
+hostname = %APPEND% pan.baidu.com

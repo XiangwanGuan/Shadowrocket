@@ -1,0 +1,8 @@
+#!name=完美世界电竞
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.wmpvp\.com\/api\/v\d\/config\/promote - reject
+
+[MITM]
+hostname = %APPEND% api.wmpvp.com

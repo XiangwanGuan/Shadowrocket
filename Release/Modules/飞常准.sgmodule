@@ -1,0 +1,14 @@
+#!name=飞常准
+#!desc=2025-11-11 14:47:12
+
+[Rule]
+DOMAIN, adv-adlog.variflight.com, REJECT, extended-matching, pre-matching
+DOMAIN, adv-ads.variflight.com, REJECT, extended-matching, pre-matching
+DOMAIN, app-ad.variflight.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/app\.variflight\.com\/ad\/ - reject
+^https?:\/\/app\.variflight\.com\/v\d\/advert\/ - reject
+
+[MITM]
+hostname = %APPEND% app.variflight.com

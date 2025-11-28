@@ -1,0 +1,10 @@
+#!name=U净
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ads\.zhinengxiyifang\.cn\/api\/v1\.1\/ads\/* - reject-200
+^https?:\/\/adsoss\.zhinengxiyifang\.cn\/ads - reject
+^https?:\/\/api-marketing\.zhinengxiyifang\.cn\/api\/v2\/cloudcode\/wechat\/bid - reject
+
+[MITM]
+hostname = %APPEND% ads.zhinengxiyifang.cn,adsoss.zhinengxiyifang.cn,api-marketing.zhinengxiyifang.cn

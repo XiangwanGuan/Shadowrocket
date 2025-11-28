@@ -1,0 +1,8 @@
+#!name=澎湃新闻
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/adpai\.thepaper\.cn\/.+&ad= - reject
+
+[MITM]
+hostname = %APPEND% adpai.thepaper.cn

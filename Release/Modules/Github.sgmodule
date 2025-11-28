@@ -1,0 +1,9 @@
+#!name=Github
+#!desc=2025-10-28 14:54:42
+
+[Header Rewrite]
+http-request ^https?:\/\/(raw|gist)\.githubusercontent\.com\/ header-replace Accept-Language en-us
+http-request ^https?:\/\/github\.com\/ header-replace Accept-Language en-us
+
+[MITM]
+hostname = %APPEND% gist.githubusercontent.com,github.com,raw.githubusercontent.com

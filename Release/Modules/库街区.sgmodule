@@ -1,0 +1,11 @@
+#!name=库街区
+#!desc=2025-11-26 08:40:15
+
+[URL Rewrite]
+^https?:\/\/api\.kurobbs\.com\/config\/getOpenScreen$ - reject-dict
+^https?:\/\/api\.kurobbs\.com\/config\/index\/windows$ - reject-dict
+^https?:\/\/api\.kurobbs\.com\/config\/search\/getSearchConfig\? - reject-dict
+^https?:\/\/api\.kurobbs\.com\/forum\/app\/topic\/hotlist\? - reject-dict
+
+[MITM]
+hostname = %APPEND% api.kurobbs.com

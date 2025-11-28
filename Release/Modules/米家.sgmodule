@@ -1,0 +1,12 @@
+#!name=米家
+#!desc=2025-11-11 14:47:14
+
+[Rule]
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(banner|carousel\/banners|myTab|openingBanner) - reject-dict
+^https?:\/\/home\.mi\.com\/cgi-op\/api\/v1\/resource\/realtime\/openingBanner - reject-dict
+
+[MITM]
+hostname = %APPEND% home.mi.com

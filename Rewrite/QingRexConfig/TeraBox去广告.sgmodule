@@ -1,0 +1,26 @@
+#!name=TeraBox去广告
+#!desc=移除开屏广告、应用内悬浮窗、弹窗广告及横幅广告。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/TeraBox.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1509453185
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-12 06:09:13
+
+[Rule]
+DOMAIN,ymg-api.terabox.com,REJECT,extended-matching,pre-matching
+
+[Map Local]
+^https:\/\/www\.terabox\.com\/adx\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/www\.terabox\.com\/api\/ad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/www\.terabox\.com\/api\/page\/tips\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/www\.terabox\.com\/rest\/1\.0\/task\/common\/inttips\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% www.terabox.com
+

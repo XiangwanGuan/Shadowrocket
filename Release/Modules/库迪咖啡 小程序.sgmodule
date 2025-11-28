@@ -1,0 +1,12 @@
+#!name=库迪咖啡 小程序
+#!desc=2025-11-26 17:59:00
+
+[URL Rewrite]
+^https?:\/\/gateway\.cotticoffee\.com\/cotti-capi\/customer\/position\/adSortList - reject-dict
+^https?:\/\/gateway\.cotticoffee\.com\/cotti-capi\/person\/homeLoginPrompt - reject
+
+[Script]
+cotti =type=http-request, pattern=^https?:\/\/gateway\.cotticoffee\.com\/cotti-capi\/customer\/position\/list$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/cotti.js, requires-body=true, max-size=0, binary-body-mode=true
+
+[MITM]
+hostname = %APPEND% gateway.cotticoffee.com

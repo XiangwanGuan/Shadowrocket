@@ -1,0 +1,8 @@
+#!name=希尔顿
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/wcprd\.hilton\.com\.cn\/app-middleware\/graphql\?type=splashAd - reject-200
+
+[MITM]
+hostname = %APPEND% wcprd.hilton.com.cn

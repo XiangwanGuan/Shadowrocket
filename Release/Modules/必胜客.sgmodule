@@ -1,0 +1,9 @@
+#!name=必胜客
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/res\.pizzahut\.com\.cn\/CRM\/phad\/apphome\/apphome - reject
+^https?:\/\/res\.pizzahut\.com\.cn\/CRM\/phad\/member\/app\/member - reject-200
+
+[MITM]
+hostname = %APPEND% res.pizzahut.com.cn

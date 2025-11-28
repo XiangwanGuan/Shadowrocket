@@ -1,0 +1,8 @@
+#!name=搜电充电 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/wxs-weixin\.sd\.zhumanggroup\.com\/api\/v2\/ad - reject-dict
+
+[MITM]
+hostname = %APPEND% wxs-weixin.sd.zhumanggroup.com

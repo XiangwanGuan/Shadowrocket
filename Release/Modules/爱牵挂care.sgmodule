@@ -1,0 +1,8 @@
+#!name=爱牵挂care
+#!desc=2025-10-07 17:53:35
+
+[URL Rewrite]
+^https?:\/\/manager\.aiqiangua\.com:8080\/AqgNews\/api\/start_ad\.do - reject-dict
+
+[MITM]
+hostname = %APPEND% manager.aiqiangua.com

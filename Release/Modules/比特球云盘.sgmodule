@@ -1,0 +1,10 @@
+#!name=比特球云盘
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/pan-api\.bitqiu\.com\/activity\/getPromoteGuide$ - reject-dict
+^https?:\/\/pan-api\.bitqiu\.com\/activity\/getUrlList$ - reject-dict
+^https?:\/\/pan-api\.bitqiu\.com\/activity\/guides$ - reject-dict
+
+[MITM]
+hostname = %APPEND% pan-api.bitqiu.com

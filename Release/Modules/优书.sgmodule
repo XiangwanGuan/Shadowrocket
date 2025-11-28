@@ -1,0 +1,8 @@
+#!name=优书
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/gongdu\.youshu\.cc\/m\/open_screen\/list_by_udid - reject
+
+[MITM]
+hostname = %APPEND% gongdu.youshu.cc

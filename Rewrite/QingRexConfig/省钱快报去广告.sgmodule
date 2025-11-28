@@ -1,0 +1,26 @@
+#!name=省钱快报去广告
+#!desc=移除开屏广告、横幅广告、商品推荐，精简我的页面。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YueDanBa.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1116025300
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-06-01 19:49:56
+
+[Body Rewrite]
+http-response-jq ^https:\/\/api\.17gwx\.com\/operate\/elements\? '.data |= with_entries(select(.key | test("home_mid_many|home_mid_banner_multi|user_center_slide_show_pic|newfeed_detail_oper_middle|main_rebate_banner|zhekou_coupon_detail_oper|zhekou_jdcoupon_detail_oper|zhekou_vipcoupon_detail_oper|zhekou_pddcoupon_detail_oper") | not))'
+
+[Map Local]
+^https:\/\/api\.17gwx\.com\/v2\/base\/app\/ad\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.17gwx\.com\/v2\/growth\/popup\/remind$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.17gwx\.com\/v2\/recommend\/feed\/list\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.17gwx\.com\/v2\/homepage\/feed\/similarList\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% api.17gwx.com
+

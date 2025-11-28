@@ -1,0 +1,8 @@
+#!name=亚马逊
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/api-cslp-emt\.amazon\.cn\/gateway\/(recommend|content\/widget\/popup|config\/getUpdatePopupConfig) - reject-dict
+
+[MITM]
+hostname = %APPEND% api-cslp-emt.amazon.cn

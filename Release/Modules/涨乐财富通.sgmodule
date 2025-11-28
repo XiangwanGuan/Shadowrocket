@@ -1,0 +1,10 @@
+#!name=涨乐财富通
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/c\.zhangle\.com\/pic\/mktg\/diversity\/.+\.jpg$ - reject-dict
+^https?:\/\/geetest\.htsc\.com:8888\/pre_get_token - reject-200
+^https?:\/\/live\.inst-service\.htsc\.com\/live - reject-dict
+
+[MITM]
+hostname = %APPEND% c.zhangle.com,geetest.htsc.com,live.inst-service.htsc.com

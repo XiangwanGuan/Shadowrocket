@@ -1,0 +1,9 @@
+#!name=Dlabel云标签
+#!desc=2025-11-28 22:23:27
+
+[URL Rewrite]
+^https?:\/\/dudian-oss\.oss-cn-shenzhen\.aliyuncs\.com\/dlabel\/1\/startpage - reject
+^https?:\/\/imagepc\.ctaiot\.com\/dlabel\/0\/startpage - reject
+
+[MITM]
+hostname = %APPEND% dudian-oss.oss-cn-shenzhen.aliyuncs.com,imagepc.ctaiot.com

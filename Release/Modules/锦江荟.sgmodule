@@ -1,0 +1,8 @@
+#!name=锦江荟
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/booking\.bestwehotel\.com\/proxy\/trip-hotel-banner\/activity\/getActivityInfo - reject-200
+
+[MITM]
+hostname = %APPEND% booking.bestwehotel.com

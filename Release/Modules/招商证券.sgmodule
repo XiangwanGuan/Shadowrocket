@@ -1,0 +1,8 @@
+#!name=招商证券
+#!desc=2025-09-09 10:10:27
+
+[Script]
+cmschina =type=http-response, pattern=^https?:\/\/marketing\.cmschina\.com\/mkt\/api\/v1\?.*, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/cmschina.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% marketing.cmschina.com

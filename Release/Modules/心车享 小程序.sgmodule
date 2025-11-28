@@ -1,0 +1,8 @@
+#!name=心车享 小程序
+#!desc=2025-10-22 15:27:14
+
+[URL Rewrite]
+^https?:\/\/smsp\.epicc\.com\.cn\/WAS\/(pop|float)Windows\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% smsp.epicc.com.cn

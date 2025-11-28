@@ -1,0 +1,8 @@
+#!name=住这儿
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/z\.onewo\.com\/passer\/api\/ads\/v1\/8\/list - reject-200
+
+[MITM]
+hostname = %APPEND% z.onewo.com

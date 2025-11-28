@@ -1,0 +1,28 @@
+#!name=乐播投屏去广告
+#!desc=移除开屏广告、首页横幅推广、全网全网热投榜，移除我的页面横幅推广。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/TV_Assistant.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1116038378
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-05-13 15:17:08
+
+[Map Local]
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_home_pop_up data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_home_tips data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_index_operate2 data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-rabbit\/app-card\/list data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app-user-banner data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[Script]
+移除底栏视频标签 = type=http-response, pattern=^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_tab_red_dot\?user-tag=1$, script-path=https://kelee.one/Resource/JavaScript/TV_Assistant/TV_Assistant_remove_ads.js, requires-body=true
+
+[MITM]
+hostname = %APPEND% saas.hpplay.cn
+

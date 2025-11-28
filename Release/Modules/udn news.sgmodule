@@ -1,0 +1,9 @@
+#!name=udn news
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/pagead2.googleadservices.com/pagead/adview - reject
+^https?:\/\/pubads.g.doubleclick.net/gampad/ads - reject
+
+[MITM]
+hostname = %APPEND% pagead2.googleadservices.com,pubads.g.doubleclick.net

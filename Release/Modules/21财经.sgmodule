@@ -1,0 +1,8 @@
+#!name=21财经
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.21jingji\.com\/ad\/ - reject
+
+[MITM]
+hostname = %APPEND% api.21jingji.com

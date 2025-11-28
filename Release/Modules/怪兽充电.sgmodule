@@ -1,0 +1,9 @@
+#!name=怪兽充电
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/aag\.enmonster\.com\/apa\/index\/advert\/skin - reject
+^https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) - reject-dict
+
+[MITM]
+hostname = %APPEND% aag.enmonster.com,awg.enmonster.com

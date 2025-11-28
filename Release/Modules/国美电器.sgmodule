@@ -1,0 +1,9 @@
+#!name=国美电器
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/prom\.mobile\.gome\.com\.cn\/mobile\/promotion\/promscms\/\w+\.jsp - reject
+^https?:\/\/prom\.mobile\.gome\.com\.cn\/mobile\/promotion\/promscms\/sale\w+\.jsp - reject
+
+[MITM]
+hostname = %APPEND% prom.mobile.gome.com.cn

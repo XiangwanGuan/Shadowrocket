@@ -1,0 +1,8 @@
+#!name=嗨学
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.haixue\.com\/advert\/app\/adInfo\/v1\/queryAdByPositionCode - reject-dict
+
+[MITM]
+hostname = %APPEND% www.haixue.com

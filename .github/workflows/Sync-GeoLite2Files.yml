@@ -1,0 +1,57 @@
+name: Sync-GeoLite2Files
+on:
+  schedule:
+    - cron: '22 22 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  Sync-GeoLite2Files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create necessary directories
+        run: mkdir -p GeoLite2
+
+      - name: Download GeoLite2/ASN.mmdb
+        env:
+          LICENSE_KEY: ${{ secrets.MAXMIND_LICENSE_KEY }}
+        run: |
+          url="https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=${LICENSE_KEY}&suffix=tar.gz"
+          filepath="GeoLite2-ASN.tar.gz"
+          curl -fsSL -o "$filepath" "$url" || (echo "Retrying..." && sleep 3 && curl -fsSL -o "$filepath" "$url") || (echo "::error ::Download failed: $url" && exit 1)
+          tar -xzf "$filepath" --strip-components=1 --wildcards --no-anchored '*.mmdb'
+          mv *.mmdb GeoLite2/ASN.mmdb
+
+      - name: Download GeoLite2/Country.mmdb
+        env:
+          LICENSE_KEY: ${{ secrets.MAXMIND_LICENSE_KEY }}
+        run: |
+          url="https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${LICENSE_KEY}&suffix=tar.gz"
+          filepath="GeoLite2-Country.tar.gz"
+          curl -fsSL -o "$filepath" "$url" || (echo "Retrying..." && sleep 3 && curl -fsSL -o "$filepath" "$url") || (echo "::error ::Download failed: $url" && exit 1)
+          tar -xzf "$filepath" --strip-components=1 --wildcards --no-anchored '*.mmdb'
+          mv *.mmdb GeoLite2/Country.mmdb
+
+      - name: Stash and rebase
+        run: |
+          git diff --quiet || git stash
+          git pull --rebase origin main
+          if git stash list | grep -q .; then git stash pop; fi
+
+      - name: Commit and push GeoLite2Files
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'GitHub Actions'
+          author_email: 'actions@github.com'
+          message: 'Sync-GeoLite2Files'
+          add: 'GeoLite2/**'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

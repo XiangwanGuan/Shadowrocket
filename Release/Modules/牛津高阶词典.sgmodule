@@ -1,0 +1,9 @@
+#!name=牛津高阶词典
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/oxadmin\.cp\.com\.cn\/api\/advertise\/banner - reject-dict
+^https?:\/\/oxadmin\.cp\.com\.cn\/api\/hot\/index - reject-dict
+
+[MITM]
+hostname = %APPEND% oxadmin.cp.com.cn

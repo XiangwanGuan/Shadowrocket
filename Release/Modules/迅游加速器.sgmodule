@@ -1,0 +1,9 @@
+#!name=迅游加速器
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/portal-xunyou\.qingcdn\.com\/api\/v\d\/ios\/ads\/ - reject-200
+^https?:\/\/portal-xunyou\.qingcdn\.com\/api\/v\d\/ios\/configs\/(splash_ad|ad_urls) - reject-200
+
+[MITM]
+hostname = %APPEND% portal-xunyou.qingcdn.com

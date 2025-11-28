@@ -1,0 +1,8 @@
+#!name=飞智游戏厅
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.flydigi\.com\/android\/v2\/ad - reject-dict
+
+[MITM]
+hostname = %APPEND% api.flydigi.com

@@ -1,0 +1,8 @@
+#!name=红版报
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/fbchina\.flipchina\.cn\/v\d\/ad\/query - reject
+
+[MITM]
+hostname = %APPEND% fbchina.flipchina.cn

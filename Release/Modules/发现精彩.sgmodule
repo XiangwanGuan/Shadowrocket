@@ -1,0 +1,13 @@
+#!name=发现精彩
+#!desc=2025-11-11 14:47:13
+
+[Rule]
+DOMAIN, union.chinalifeonline.com.cn, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/static\.95508\.com\/mmg\/ciop\/202402\/button\/.*\.gif$ - reject-img
+^https?:\/\/static\.95508\.com\/mmg\/ciop\/sysabbr\/cmep\/images\/(app)?popupads - reject-dict
+^https?:\/\/static\.95508\.com\/mmg\/images\/ads\/(?!(2024031|20241205)) - reject
+
+[MITM]
+hostname = %APPEND% static.95508.com

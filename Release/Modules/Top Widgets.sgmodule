@@ -1,0 +1,8 @@
+#!name=Top Widgets
+#!desc=2025-09-15 08:59:01
+
+[URL Rewrite]
+^https?:\/\/top-widgets-api\.xiaozujian\.com\/api\/ad\/config - reject
+
+[MITM]
+hostname = %APPEND% top-widgets-api.xiaozujian.com

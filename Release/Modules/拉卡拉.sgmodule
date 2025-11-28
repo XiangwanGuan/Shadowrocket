@@ -1,0 +1,8 @@
+#!name=拉卡拉
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/(?:gmp|wallet)\.lakala\.com\/(?:gmp\/openapi\/v2\/resource_space\/getResourceSpace|m\/(?:a\/lama\/mgt\/activity\/biz\/query\/byMerInfo|lama\/mgt\/activity\/(?:bank|biz)\/query\/list)) - reject-dict
+
+[MITM]
+hostname = %APPEND% gmp.lakala.com,wallet.lakala.com

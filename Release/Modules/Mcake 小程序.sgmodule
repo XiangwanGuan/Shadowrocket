@@ -1,0 +1,8 @@
+#!name=Mcake 小程序
+#!desc=2025-09-12 13:36:05
+
+[URL Rewrite]
+^https?:\/\/interface\.mcake\.com\/api\/popup\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% interface.mcake.com

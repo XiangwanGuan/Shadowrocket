@@ -1,0 +1,8 @@
+#!name=谷歌广告
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.google\.com\/ads - reject-dict
+
+[MITM]
+hostname = %APPEND% www.google.com

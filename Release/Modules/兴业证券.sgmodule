@@ -1,0 +1,8 @@
+#!name=兴业证券
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/static.xyzq.cn\/image\/splash\/opera3.*.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% static.xyzq.cn

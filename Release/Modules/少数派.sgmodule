@@ -1,0 +1,8 @@
+#!name=少数派
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ios\.sspai\.com\/api\/v\d\/recommend\/page\/get\?ad\.*ios_home_modal - reject
+
+[MITM]
+hostname = %APPEND% ios.sspai.com

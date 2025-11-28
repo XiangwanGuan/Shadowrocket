@@ -1,0 +1,8 @@
+#!name=福享太平
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ecloud\.tppension\.cntaiping\.com\/fxtpplatform\/common\/anonymous\/common\/page\/queryStartPageNew\?language=zh-CN - reject-dict
+
+[MITM]
+hostname = %APPEND% ecloud.tppension.cntaiping.com

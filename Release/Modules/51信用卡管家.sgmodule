@@ -1,0 +1,12 @@
+#!name=51信用卡管家
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.u51\.com\/(generic-config-gateway|rs-resys)\/api\/v\d\/(creditpage-config|recommend) - reject-200
+
+[Script]
+51card =type=http-response, pattern=^https?:\/\/api\.u51\.com\/generic-config-gateway\/api\/v\d\/guanjia\/me-tab2\/config, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/51card.js, requires-body=true, max-size=0
+51card =type=http-response, pattern=^https?:\/\/api\.u51\.com\/liabilitygateway\/api\/v\d\/homepage\/liabilityline, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/51card.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.u51.com

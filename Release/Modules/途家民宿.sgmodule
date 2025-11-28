@@ -1,0 +1,8 @@
+#!name=途家民宿
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/client\.tujia\.com\/bnbapp-node - reject-dict
+
+[MITM]
+hostname = %APPEND% client.tujia.com

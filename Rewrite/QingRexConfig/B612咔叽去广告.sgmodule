@@ -1,0 +1,16 @@
+#!name=B612咔叽去广告
+#!desc=移除开屏广告、弹窗及拍摄页面底部横幅广告。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/SnowCamera.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1125855154
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-07-05 01:31:35
+
+[Rule]
+DOMAIN,api-ad.kajicam.com,REJECT,extended-matching,pre-matching
+DOMAIN,zjres-ad.kajicam.com,REJECT,extended-matching,pre-matching
+DOMAIN,popup-api.b612kaji.com,REJECT,extended-matching,pre-matching
+

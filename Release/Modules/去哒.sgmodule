@@ -1,0 +1,8 @@
+#!name=去哒
+#!desc=2025-09-09 10:10:26
+
+[Script]
+QuDa =type=http-response, pattern=^https?:\/\/iqushangwang\.8quan\.com\/index\.php\/i\/index\/index, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/QuDa.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% iqushangwang.8quan.com

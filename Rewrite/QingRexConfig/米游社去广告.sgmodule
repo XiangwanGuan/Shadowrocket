@@ -1,0 +1,31 @@
+#!name=米游社去广告
+#!desc=移除开屏广告、搜索栏热搜及资讯、青少年模式弹窗。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/miHoYoBBS.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1470182559
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-20 01:12:36
+
+[Body Rewrite]
+http-response-jq ^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppStartupData$ 'delpaths([["data","resp_map","/teenager/api/info"]])'
+http-response-jq ^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppStartupData$ 'delpaths([["data","resp_map","/apihub/api/getAppConfig","data","get_app_config_response","config","is_show_teenager_mode_btn"]])'
+http-response-jq ^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppStartupData$ 'delpaths([["data","resp_map","/apihub/api/getAppConfig","data","get_app_config_response","config","teenager_popup_freq_type"]])'
+http-response-jq ^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppConfig$ 'if (getpath(["data","config"]) | has("teenager_popup_freq_type")) then (setpath(["data","config","teenager_popup_freq_type"]; 0)) else . end'
+http-response-jq ^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppConfig$ 'if (getpath(["data","config"]) | has("is_show_teenager_mode_btn")) then (setpath(["data","config","is_show_teenager_mode_btn"]; 0)) else . end'
+http-response-jq ^https:\/\/bbs-api-ab\.miyoushe\.com\/teenager\/api\/info$ 'if (getpath(["data"]) | has("is_enabled")) then (setpath(["data","is_enabled"]; false)) else . end'
+http-response-jq ^https:\/\/bbs-api-ab\.miyoushe\.com\/teenager\/api\/info$ 'if (getpath(["data"]) | has("is_teenager")) then (setpath(["data","is_teenager"]; false)) else . end'
+http-response-jq ^https:\/\/bbs-api-ab\.miyoushe\.com\/teenager\/api\/info$ 'if (getpath(["data"]) | has("is_force")) then (setpath(["data","is_force"]; false)) else . end'
+
+[Map Local]
+^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppSplash$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getHotKeywordAndEvent$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/bbs-api-static\.miyoushe\.com\/search\/api\/search\/pre_keyword\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% bbs-api.miyoushe.com, bbs-api-ab.miyoushe.com
+

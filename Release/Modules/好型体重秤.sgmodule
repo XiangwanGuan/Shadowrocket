@@ -1,0 +1,8 @@
+#!name=好型体重秤
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/open\.fitdays\.cn\/uploads\/ad\/ - reject
+
+[MITM]
+hostname = %APPEND% open.fitdays.cn

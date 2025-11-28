@@ -1,0 +1,32 @@
+#!name=YY去广告
+#!desc=移除开屏广告、应用内弹窗，精简底栏和我的页面。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YY_Voice.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id427941017
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-06-02 01:02:42
+
+[Rule]
+DOMAIN,splash.yy.com,REJECT,extended-matching,pre-matching
+DOMAIN,dsp-ad.yy.com,REJECT,extended-matching,pre-matching
+DOMAIN,ysad.yy.com,REJECT,extended-matching,pre-matching
+
+[Body Rewrite]
+http-response-jq ^https:\/\/yyapp-idx\.yy\.com\/mobyy\/nav\/index\/idx\? '.data[].modules |= map(select(.name != "新版本滚动条" and .name != "通栏轮播" and .name != "新静默位"))'
+http-response-jq ^https:\/\/tab\.yy\.com\/tabs\? 'delpaths([["data","tabsForSelect"]])'
+http-response-jq ^https:\/\/tab\.yy\.com\/tabs\? '.data.tabs |= map(select(.alias == "follow" or .alias == "im" or .alias == "me"))'
+http-response-jq ^https:\/\/personal-center\.yy\.com\/personalCenter\/list\? '.data.modules |= map(select(.moduleName != "Banner轮播")) | .data.modules |= map(if has("entrances") then .entrances |= map(select(.bizCode|IN("jishijiedaikuan","duxiaoman2","chongzhi","freeData")|not)) else . end)'
+
+[Map Local]
+^https:\/\/yyapp-fastnet\.yy\.com\/dispatch\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/data\.3g\.yy\.com\/popup\/topLiveCardPopup\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/yyapp-act-entrance\.yy\.com\/entrance\/list\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% yyapp-act-entrance.yy.com, yyapp-fastnet.yy.com, personal-center.yy.com, tab.yy.com, data.3g.yy.com, yyapp-idx.yy.com
+

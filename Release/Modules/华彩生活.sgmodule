@@ -1,0 +1,8 @@
+#!name=华彩生活
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/static\.creditcard\.hxb\.com\.cn\/mcube\/apps\/group\d\/M00\/00\/2[A-Z0-9]{1}\/amRG7WO.+\.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% static.creditcard.hxb.com.cn

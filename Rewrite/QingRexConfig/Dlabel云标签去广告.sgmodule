@@ -1,0 +1,19 @@
+#!name=Dlabel云标签去广告
+#!desc=移除开屏广告及首页横幅。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Dlabel.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1397719437
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-07-22 04:45:08
+
+[Map Local]
+^https:\/\/dlabel\.ctaiot\.com\/api\/spreadstart\/list\.json\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/dlabel\.ctaiot\.com\/api\/spread\/journey\/select\.json\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% dlabel.ctaiot.com
+

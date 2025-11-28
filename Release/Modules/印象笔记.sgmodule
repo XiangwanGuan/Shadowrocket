@@ -1,0 +1,8 @@
+#!name=印象笔记
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/app\.yinxiang\.com\/ads\/ - reject-200
+
+[MITM]
+hostname = %APPEND% app.yinxiang.com

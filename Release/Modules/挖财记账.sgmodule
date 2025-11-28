@@ -1,0 +1,10 @@
+#!name=挖财记账
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/jz\.wacaijizhang\.com\/api\/banners\/list\? - reject-dict
+^https?:\/\/jz\.wacaijizhang\.com\/api\/banners\/ribbon\? - reject-dict
+^https?:\/\/jz\.wacaijizhang\.com\/api\/resource\/universal\/fetch$ - reject-dict
+
+[MITM]
+hostname = %APPEND% jz.wacaijizhang.com

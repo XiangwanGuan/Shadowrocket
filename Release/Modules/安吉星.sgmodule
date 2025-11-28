@@ -1,0 +1,9 @@
+#!name=安吉星
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.shanghaionstar\.com\/sos\/contentinfo\/v1\/public\/landingpage - reject-dict
+^https?:\/\/www\.onstar\.com\.cn\/mssos\/sos\/social\/v1\/community\/article\/page - reject-dict
+
+[MITM]
+hostname = %APPEND% api.shanghaionstar.com,www.onstar.com.cn

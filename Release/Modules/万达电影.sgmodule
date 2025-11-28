@@ -1,0 +1,9 @@
+#!name=万达电影
+#!desc=2025-09-09 10:10:26
+
+[Body Rewrite]
+http-response ^https?:\/\/misc-api-prd-mx\.wandafilm\.com\/commend\/common_banner_batch\.api\?bannerInfos=%5B%7B%22cinemaI "WX_index_mp-&-boxAD" "WX_index_mp-&-boxAD0"
+http-response-jq ^https?:\/\/misc-api-prd-mx\.wandafilm\.com\/commend\/common_banner_batch\.api '.data.objects["OpenAPP-&-FlashAD"] = [] | .data.objects["InTheaters-&-BoxAD"] = []'
+
+[MITM]
+hostname = %APPEND% misc-api-prd-mx.wandafilm.com

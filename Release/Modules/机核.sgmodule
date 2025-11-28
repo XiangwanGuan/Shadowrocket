@@ -1,0 +1,8 @@
+#!name=机核
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.gcores\.com\/gapi\/v1\/app-start-pages\?page - reject-dict
+
+[MITM]
+hostname = %APPEND% www.gcores.com

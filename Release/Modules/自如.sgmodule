@@ -1,0 +1,9 @@
+#!name=自如
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/ztoread\.ziroom\.com\/foka-card-api\/popup\/v2\/get - reject-dict
+^https?:\/\/ztoread\.ziroom\.com\/ymerApi\/v\d\/index\/open - reject-dict
+
+[MITM]
+hostname = %APPEND% ztoread.ziroom.com

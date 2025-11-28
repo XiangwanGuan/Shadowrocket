@@ -1,0 +1,9 @@
+#!name=货拉拉 小程序
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/appuser-static\.huolala\.cn\/imgs - reject-dict
+^https?:\/\/qapi\.huolala\.cn\/(ads|home_new_user|get_service_list) - reject-dict
+
+[MITM]
+hostname = %APPEND% appuser-static.huolala.cn,qapi.huolala.cn

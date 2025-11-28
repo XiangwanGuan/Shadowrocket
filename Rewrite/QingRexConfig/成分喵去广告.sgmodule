@@ -1,0 +1,27 @@
+#!name=成分喵去广告
+#!desc=移除首页推广活动、广告组件请求、移除被查商品购买链接、搜索发现。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ChengFenMiao.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id6444000785
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-11-21 13:02:33
+
+[Body Rewrite]
+http-response-jq ^https:\/\/app\.chengfenmiao\.com\/helper\/setting\? 'delpaths([["detail_buy_sites"]])'
+http-response-jq ^https:\/\/app\.chengfenmiao\.com\/helper\/setting\? 'delpaths([["bottom_sites"]])'
+
+[Map Local]
+^https:\/\/app\.chengfenmiao\.com\/Listing\/LiveHots\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/app\.chengfenmiao\.com\/helper\/VersionCheck\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/app\.chengfenmiao\.com\/item\/closet\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/app\.chengfenmiao\.com\/Helper\/HotWords\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% app.chengfenmiao.com
+

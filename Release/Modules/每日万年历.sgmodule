@@ -1,0 +1,8 @@
+#!name=每日万年历
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/app-cdn\.2q10\.com\/app\/ical\/honored\? - reject
+
+[MITM]
+hostname = %APPEND% app-cdn.2q10.com

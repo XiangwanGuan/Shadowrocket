@@ -1,0 +1,17 @@
+#!name=有道云笔记去广告
+#!desc=移除开屏广告、弹窗广告及横幅广告。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YoudaoNote.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id353115739
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-09-21 16:43:19
+
+[Map Local]
+^https:\/\/silk\.lx\.netease\.com\/api\/open\/advertOpen\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% silk.lx.netease.com
+

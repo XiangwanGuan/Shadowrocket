@@ -1,0 +1,14 @@
+#!name=小芒
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mgesq.api.mgtv.com/v2/user/center/icon - reject-dict
+^https?:\/\/mgesq\.api\.mgtv\.com\/search\/goods\/rank - reject-dict
+^https?:\/\/mgesq\.api\.mgtv\.com\/user\/center\/config - reject-dict
+^https?:\/\/mgesq\.api\.mgtv\.com\/v2\/goods\/guess_you_like - reject-dict
+
+[Script]
+xmApp =type=http-response, pattern=^https?:\/\/mgesq.api.mgtv.com/dsl/index.+, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/xmApp.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% *.hitv.com,*.mgtv.com

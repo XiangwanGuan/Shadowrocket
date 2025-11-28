@@ -1,0 +1,8 @@
+#!name=美团众包
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage - reject-200
+
+[MITM]
+hostname = %APPEND% peisongapi.meituan.com

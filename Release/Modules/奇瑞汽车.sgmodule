@@ -1,0 +1,8 @@
+#!name=奇瑞汽车
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mobile-consumer-sapp\.chery\.cn\/web\/position\/getShowList\?displayPlatform=1&tabType=0& - reject-dict
+
+[MITM]
+hostname = %APPEND% mobile-consumer-sapp.chery.cn

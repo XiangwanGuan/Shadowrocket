@@ -1,0 +1,8 @@
+#!name=郑好办
+#!desc=2025-09-09 10:10:27
+
+[Body Rewrite]
+http-response ^https?:\/\/app-izz\.zhengzhou\.gov\.cn:10019\/bizgw\/gateway\.do "imgUrl19_5x9":".+?" "imgUrl19_5x9":""
+
+[MITM]
+hostname = %APPEND% app-izz.zhengzhou.gov.cn

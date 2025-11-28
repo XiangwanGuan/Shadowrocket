@@ -1,0 +1,8 @@
+#!name=友邻优课
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/new-app-api\.ylyk\.com\/v\d\/user\/myinfo\/adviser - reject
+
+[MITM]
+hostname = %APPEND% new-app-api.ylyk.com

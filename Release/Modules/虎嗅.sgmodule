@@ -1,0 +1,8 @@
+#!name=虎嗅
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api-ad-product\.huxiu\.com\/Api\/Product\/SDK\/Advert\/Query\/queryAdvertListInfo - reject
+
+[MITM]
+hostname = %APPEND% api-ad-product.huxiu.com

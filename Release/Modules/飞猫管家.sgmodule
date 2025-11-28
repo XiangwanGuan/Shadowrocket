@@ -1,0 +1,8 @@
+#!name=飞猫管家
+#!desc=2025-11-20 18:59:27
+
+[URL Rewrite]
+^https?:\/\/app\.flymodem\.com\.cn\/Appapi\/Public\/welecome - reject
+
+[MITM]
+hostname = %APPEND% app.flymodem.com.cn

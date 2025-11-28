@@ -1,0 +1,8 @@
+#!name=四川航空
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mapi\.sichuanair\.com\/zt\/tribeport\/encrypt_translate_key - reject-200
+
+[MITM]
+hostname = %APPEND% mapi.sichuanair.com

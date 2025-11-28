@@ -1,0 +1,8 @@
+#!name=神马
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/editor\.sm\.cn\/launch_picture - reject
+
+[MITM]
+hostname = %APPEND% editor.sm.cn

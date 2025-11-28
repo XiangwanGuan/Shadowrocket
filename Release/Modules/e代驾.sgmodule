@@ -1,0 +1,8 @@
+#!name=e代驾
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/pic\.edaijia\.cn\/adsplash\/ - reject-200
+
+[MITM]
+hostname = %APPEND% pic.edaijia.cn

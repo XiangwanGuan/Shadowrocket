@@ -1,0 +1,8 @@
+#!name=磁力宅
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/cili\.xfuse\.fun\/s\/ - reject
+
+[MITM]
+hostname = %APPEND% cili.xfuse.fun

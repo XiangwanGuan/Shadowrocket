@@ -1,0 +1,8 @@
+#!name=苏周到
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/szdmobile\.suzhou\.gov\.cn\/thirdapp-center\/appUpdate\/update - reject-dict
+
+[MITM]
+hostname = %APPEND% szdmobile.suzhou.gov.cn

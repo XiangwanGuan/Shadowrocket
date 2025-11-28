@@ -1,0 +1,11 @@
+#!name=盒马鲜生 小程序
+#!desc=2025-10-24 21:23:10
+
+[URL Rewrite]
+^https?:\/\/acs\.m\.shyhhema\.com\/h5\/mtop\.wdk\.fc\.recommend\.feeds - reject-dict
+
+[Script]
+freshippo =type=http-response, pattern=^https?:\/\/acs\.m\.shyhhema\.com\/h5\/mtop\.wdk\.render\.query(index|my)page, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/freshippo.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% acs.m.shyhhema.com

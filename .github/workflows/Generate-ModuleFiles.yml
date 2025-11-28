@@ -1,0 +1,47 @@
+name: Generate-ModuleFiles
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        pip install ipaddress
+
+    - name: Run Python script
+      run: |
+        python Generator/Builder.py
+
+    - name: Stash and rebase
+      run: |
+        git diff --quiet || git stash
+        git pull --rebase origin main
+        if git stash list | grep -q .; then git stash pop; fi
+
+    - name: Commit & push generated ModuleRules
+      uses: EndBug/add-and-commit@v9
+      with:
+        author_name: 'GitHub Actions'
+        author_email: 'actions@github.com'
+        message: 'Generate-ModuleFiles'
+        add: 'Release/**'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

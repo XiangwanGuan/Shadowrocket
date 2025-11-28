@@ -1,0 +1,26 @@
+#!name=漫客栈去广告
+#!desc=移除开屏广告、漫画广告、小说章末广告，精简我的页面。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MKZ.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1189885433
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-05-13 15:17:08
+
+[Map Local]
+^https:\/\/base\.mkzcdn\.com\/advert\/app\/read\/v\d data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/base\.mkzcdn\.com\/advert\/app\/story\/read\/v\d data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/base\.mkzcdn\.com\/advert\/app\/task\/motivate\/v\d data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/base\.mkzcdn\.com\/advert\/app\/user\/slide\d\/v\d\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[Script]
+配置修改 = type=http-response, pattern=^https:\/\/base\.mkzcdn\.com\/app\/config\/, script-path=https://kelee.one/Resource/JavaScript/MKZ/MKZ_remove_ads.js, requires-body=true
+
+[MITM]
+hostname = %APPEND% base.mkzcdn.com
+

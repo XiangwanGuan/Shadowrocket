@@ -1,0 +1,8 @@
+#!name=韭菜公社
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/jiucaigongshe\.oss-cn-beijing\.aliyuncs\.com\/[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}\.png - reject-200
+
+[MITM]
+hostname = %APPEND% jiucaigongshe.oss-cn-beijing.aliyuncs.com

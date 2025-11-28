@@ -1,0 +1,8 @@
+#!name=CoCo点单+ 小程序
+#!desc=2025-09-09 10:10:26
+
+[Script]
+wechatApplet =type=http-response, pattern=^https?:\/\/coco-com\.e\.verystar\.net\/v\d\/home\/info, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/wechatApplet.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% coco-com.e.verystar.net

@@ -1,0 +1,12 @@
+#!name=彩云天气
+#!desc=2025-11-11 14:47:12
+
+[Rule]
+DOMAIN, ad.cyapi.cn, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/biz\.cyapi\.cn\/(p\/v1\/entries|p\/v1\/trial_card\/info|v2\/product) - reject-200
+^https?:\/\/starplucker\.cyapi\.cn\/v3\/(config\/cypage\/\w+\/conditions|notification\/message_center|operation\/homefeatures) - reject-200
+
+[MITM]
+hostname = %APPEND% biz.cyapi.com,starplucker.cyapi.cn

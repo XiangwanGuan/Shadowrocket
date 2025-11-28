@@ -1,0 +1,8 @@
+#!name=财联社
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api3\.cls\.cn\/v1\/boot\/ad - reject
+
+[MITM]
+hostname = %APPEND% api3.cls.cn

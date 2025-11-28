@@ -1,0 +1,8 @@
+#!name=招财猫直聘
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/beehiveapi\.58\.com\/adplace\/zcm - reject-dict
+
+[MITM]
+hostname = %APPEND% beehiveapi.58.com

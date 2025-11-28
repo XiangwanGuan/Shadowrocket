@@ -1,0 +1,8 @@
+#!name=莱充
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/(mobile|shop)\.laichon\.com\/api\/(v1\/goods\/goodsList|exposureAdvStatistics|getWebAdvList) - reject
+
+[MITM]
+hostname = %APPEND% mobile.laichon.com,shop.laichon.com

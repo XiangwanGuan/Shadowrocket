@@ -1,0 +1,97 @@
+{
+    "fixedTemplates":
+    [
+        {
+            "remark": "42456",
+            "badge": 0,
+            "title": "办卡",
+            "imageUrl": "https://pic.u51.com/sfs-gateway/api/v1/download/800d3c06122e4532b455f85d2b9bc744da75",
+            "categoryId": "credit_page_default",
+            "eventData":
+            {
+                "c_tp_id": 42456,
+                "c_form_type": 0,
+                "c_form_id": 10758,
+                "c_tp_type": 3,
+                "c_id": 9864
+            },
+            "type": -1,
+            "eventAction":
+            {
+                "clickTrack": "C_jgw_01",
+                "exposureTrack": "C_jgw_01_conview"
+            },
+            "externalId": 42456,
+            "schemeUrl": "en51cc://app.u51.com/weex?url=https%3A%2F%2Fweb.u51.com%2Fbanka-weex%2Fjs%2Findex.weex.js%3Ffrom_type%3Dgj_wd%26c_id%3D9864%26c_form_type%3D0%26c_form_id%3D10758%26c_tp_type%3D3%26c_tp_id%3D42456%26event_remark%3Dresource"
+        },
+        {
+            "remark": "40021",
+            "badge": 0,
+            "title": "极速还款",
+            "imageUrl": "https://pic.u51.com/sfs-gateway/api/v1/download/6b4fc9abbb864f12acaad9cc2d5ad8e421b9",
+            "categoryId": "credit_page_default",
+            "eventData":
+            {
+                "c_tp_id": 40021,
+                "c_form_type": 0,
+                "c_form_id": 10758,
+                "c_tp_type": 3,
+                "c_id": 9864
+            },
+            "type": -1,
+            "eventAction":
+            {
+                "clickTrack": "C_jgw_01",
+                "exposureTrack": "C_jgw_01_conview"
+            },
+            "externalId": 40021,
+            "schemeUrl": "en51cc://app.u51.com/user_bill/repay/fast_repay"
+        },
+        {
+            "remark": "40024",
+            "badge": 0,
+            "title": "年费",
+            "imageUrl": "https://pic.u51.com/sfs-gateway/api/v1/download/c32744b80d4c427cba6f811917f70e7955f2",
+            "categoryId": "credit_page_default",
+            "eventData":
+            {
+                "c_tp_id": 40024,
+                "c_form_type": 0,
+                "c_form_id": 10758,
+                "c_tp_type": 3,
+                "c_id": 9864
+            },
+            "type": -1,
+            "eventAction":
+            {
+                "clickTrack": "C_jgw_01",
+                "exposureTrack": "C_jgw_01_conview"
+            },
+            "externalId": 40024,
+            "schemeUrl": "en51cc://app.u51.com/weex?url=https%3A%2F%2Fweb.u51.com%2Fcard-annuity%2Fjs%2Findex.weex.js%3Fc_id%3D9864%26c_form_type%3D0%26c_form_id%3D10758%26c_tp_type%3D3%26c_tp_id%3D40024%26event_remark%3Dresource"
+        },
+        {
+            "remark": "40023",
+            "badge": 0,
+            "title": "卡包",
+            "imageUrl": "https://pic.u51.com/sfs-gateway/api/v1/download/0a2aae7fcea4431e9bd9655b24a79252968f",
+            "categoryId": "credit_page_default",
+            "eventData":
+            {
+                "c_tp_id": 40023,
+                "c_form_type": 0,
+                "c_form_id": 10758,
+                "c_tp_type": 3,
+                "c_id": 9864
+            },
+            "type": -1,
+            "eventAction":
+            {
+                "clickTrack": "C_jgw_01",
+                "exposureTrack": "C_jgw_01_conview"
+            },
+            "externalId": 40023,
+            "schemeUrl": "en51cc://app.u51.com/user_bill/card_package?tab_index=http%3A%2F%2Fapp.51.nb%2Frouter%2F%23%2Fprotocoldetail%3Fprotocol%3D48"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "模块助手",
+  "short_name": "模块助手",
+  "description": "模块助手：是一个用于查看、安装 Shadowrocket 模块的应用",
+  "start_url": "/Shadowrocket/Static/ModuleHelper.html",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "pwa-icon.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "result" : {
+    "msgcn" : "成功！",
+    "msgen" : "OK!",
+    "code" : 0
+  },
+  "data" : {
+    "rows" : [
+      {
+        "status" : 0,
+        "id" : 17,
+        "value" : "2015/2/6",
+        "name" : "AC_startTime",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 18,
+        "value" : "2015/2/14",
+        "name" : "AC_endTime",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 19,
+        "value" : "0",
+        "name" : "AC_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 20,
+        "value" : "http://www.iyunmai.com/qqGame/turntableGame/index.html",
+        "name" : "AC_url",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 21,
+        "value" : "0",
+        "name" : "Data_showAllScale",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 22,
+        "value" : "0",
+        "name" : "AC_Sina_LoseWeight",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 23,
+        "value" : "2",
+        "name" : "AC_textGroupAB",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 24,
+        "value" : "103064210,108700476,104452096,110778802",
+        "name" : "AC_Operation_UserId",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 25,
+        "value" : "新品招募",
+        "name" : "AC_challenge_tip",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 1,
+        "id" : 26,
+        "value" : "13",
+        "name" : "AC_challenge_tip_id",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 27,
+        "value" : "1",
+        "name" : "AC_Web_Post_Enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 28,
+        "value" : "iyunmai.com,weibo.com,sina.com.cn,alipay.com,tmall.com,taobao.com,weixin.com,weixin.qq.com,a.app.qq.com,tenpay.com,www.wjx.cn,www.wjx.top,www.wenjuan.com,beian.miit.gov.cn,feishu.cn,wj.qq.com",
+        "name" : "AC-access_domain",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 29,
+        "value" : "1",
+        "name" : "AC_Allow_OuterLink",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 30,
+        "value" : "3.30.2",
+        "name" : "AC_Home_Coachwindow",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 31,
+        "value" : "0",
+        "name" : "APP_StoreEnable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 32,
+        "value" : "0",
+        "name" : "AC_pt_tip_id",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 33,
+        "value" : " ",
+        "name" : "AC_pt_tip",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 35,
+        "value" : "1",
+        "name" : "AC_pt_go_tmall_jd",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 51,
+        "value" : "http://images.iyunmai.com/backgroud/ios.png",
+        "name" : "AC_share_recommendUrl",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 56,
+        "value" : "https://images.iyunmai.com/backgroud/common/20218269563.png",
+        "name" : "AC_share_recommendUrl_2",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 60,
+        "value" : "100",
+        "name" : "protocolVersion",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 62,
+        "value" : "{\"bmiLimit\":\"22.5\",\"isShow\":\"1\"}",
+        "name" : "AC_Lead_Habit",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 63,
+        "value" : "0",
+        "name" : "AC_xmas_isOpen",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 65,
+        "value" : "{\"isShow\":0,\"showStartTime\":1605754800,\"offlineDate\":1608595200}",
+        "name" : "AC_dietplan_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 68,
+        "value" : "1",
+        "name" : "AC_elogin_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 70,
+        "value" : "1",
+        "name" : "AC_appscore_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 71,
+        "value" : "{\"icon_url\":\"https://images.iyunmai.com/activity/202206/c6a9e6b36e8a87b99af5db32616a832f.png\",\"startTime\":1655720554,\"endTime\":1656597600,\"redirect_type\":\"A_Web\",\"redirect_url\":\"https://sq.iyunmai.com/activity/punchSummer/\",\"isShow\":1}",
+        "name" : "month7_activity",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 74,
+        "value" : "0",
+        "name" : "AC_webcache_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 76,
+        "value" : "https://images.iyunmai.com/backgroud/common/hq_app_store_qr_v4.png",
+        "name" : "AC_share_recommendUrl_3",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 78,
+        "value" : "1",
+        "name" : "AC_oldweekreport_tips_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 80,
+        "value" : "1",
+        "name" : "AC_food_upload_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 82,
+        "value" : "1",
+        "name" : "AC_food_image_upload_enable",
+        "desc" : " ",
+        "type" : 1
+      },
+      {
+        "status" : 0,
+        "id" : 84,
+        "value" : "https://shop40317240.m.youzan.com/wscgoods/detail/3nua2nv154ty8tj",
+        "name" : "AC_food_scale_url",
+        "desc" : " ",
+        "type" : 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+#!name=掌上穿越火线
+#!desc=2025-11-14 13:36:32
+
+[URL Rewrite]
+^https?:\/\/app\.mval\.qq\.com\/go\/customize_search\/article_rank\? - reject-dict
+^https?:\/\/app\.mval\.qq\.com\/go\/mlol_news\/search\/varcache_hotV\d\? - reject-dict
+^https?:\/\/app\.mval\.qq\.com\/go\/recommend\/platflashbox\? - reject-dict
+
+[MITM]
+hostname = %APPEND% app.mval.qq.com

@@ -1,0 +1,8 @@
+#!name=华鑫星途
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/app\.chinahxzq\.com\.cn(:\d+)?\/starway(-api)?\/ad - reject-dict
+
+[MITM]
+hostname = %APPEND% app.chinahxzq.com

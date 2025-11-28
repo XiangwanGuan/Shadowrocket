@@ -1,0 +1,14 @@
+#!name=笑容加
+#!desc=2025-09-12 13:36:05
+
+[URL Rewrite]
+^https?:\/\/myusmile\.online\/user\/version\/requestAppUpdate - reject-dict
+^https?:\/\/myusmile\.online\/user\/version\/requestFirmwareUpdate\/ - reject
+^https?:\/\/wemallh5\.usmile\.com\/api\/sp-portal\/store\/usmile\/activity\/dayCheck\?pop - reject-dict
+^https?:\/\/www\.myusmile\.online\/user\/userTagRecord\/popup - reject
+
+[Script]
+usmile =type=http-response, pattern=^https?:\/\/www\.myusmile\.online\/user\/plaqueTopic\/selectByType, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/usmile.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% myusmile.online,wemallh5.usmile.com,www.myusmile.online

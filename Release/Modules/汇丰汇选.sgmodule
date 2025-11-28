@@ -1,0 +1,8 @@
+#!name=汇丰汇选
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/m\.prod\.app\.hsbcfts\.com\.cn\/api\/sapp\/biz\/config\/open\/queryappversion\?channelCode= - reject-dict
+
+[MITM]
+hostname = %APPEND% m.prod.app.hsbcfts.com.cn

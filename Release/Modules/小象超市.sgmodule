@@ -1,0 +1,12 @@
+#!name=小象超市
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/mall\.meituan\.com\/api\/c\/homepage\/splash - reject-dict
+^https?:\/\/portal-portm\.meituan\.com\/horn_ios - reject-dict
+
+[Map Local]
+^https?:\/\/mall\.meituan\.com\/api\/c\/homepage\/bubble\/operate\/info data-type=json data="{"code": 0}" status-code=200 header="content-type: application/json"
+
+[MITM]
+hostname = %APPEND% mall.meituan.com,portal-portm.meituan.com

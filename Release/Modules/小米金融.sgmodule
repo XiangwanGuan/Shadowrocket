@@ -1,0 +1,9 @@
+#!name=小米金融
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.jr\.mi\.com\/jr\/api\/playScreen - reject-200
+^https?:\/\/api\.jr\.mi\.com\/v\d\/adv\/ - reject-200
+
+[MITM]
+hostname = %APPEND% api.jr.mi.com

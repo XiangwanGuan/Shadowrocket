@@ -1,0 +1,8 @@
+#!name=神舟汽车
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/img\d+\.10101111cdn\.com\/adpos\/ - reject
+
+[MITM]
+hostname = %APPEND% img*.10101111cdn.com

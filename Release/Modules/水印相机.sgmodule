@@ -1,0 +1,8 @@
+#!name=水印相机
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.xiangji\.qq\.com\/splash$ - reject-dict
+
+[MITM]
+hostname = %APPEND% api.xiangji.qq.com

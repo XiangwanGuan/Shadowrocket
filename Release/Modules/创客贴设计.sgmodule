@@ -1,0 +1,8 @@
+#!name=创客贴设计
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/gw\.chuangkit\.com\/team\/app\/common\/ad\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% gw.chuangkit.com

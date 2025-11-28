@@ -1,0 +1,12 @@
+#!name=IT之家
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/api\.zuihuimai\.com\/static\/.*\/hongbao - reject
+^https?:\/\/dat\.ruanmei\.com\/ithome\/money\/acd\.json$ - reject
+
+[Script]
+ithome =type=http-response, pattern=^https?:\/\/napi\.ithome\.com\/api\/(news\/index|topmenu\/getfeeds), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/ithome.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.zuihuimai.com,dat.ruanmei.com,napi.ithome.com

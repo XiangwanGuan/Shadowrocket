@@ -1,0 +1,8 @@
+#!name=TT语音
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/ga-album-cdnqn\.52tt\.com\/prod-yunying\/.+.jpg - reject-dict
+
+[MITM]
+hostname = %APPEND% ga-album-cdnqn.52tt.com

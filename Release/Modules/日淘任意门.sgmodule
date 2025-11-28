@@ -1,0 +1,8 @@
+#!name=日淘任意门
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/app\.meruki\.cn\/\?n=Sig\.Front\.AppFront\.GetOpenAdDoorzo - reject-dict
+
+[MITM]
+hostname = %APPEND% app.meruki.cn

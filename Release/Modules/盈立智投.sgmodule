@@ -1,0 +1,8 @@
+#!name=盈立智投
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/hz\.yxzq\.com\/news-configserver\/api\/v1\/query\/banner_advertisement - reject-dict
+
+[MITM]
+hostname = %APPEND% hz.yxzq.com

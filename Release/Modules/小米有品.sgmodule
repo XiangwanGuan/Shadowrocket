@@ -1,0 +1,11 @@
+#!name=小米有品
+#!desc=2025-11-11 14:48:57
+
+[Rule]
+DOMAIN, stat.youpin.mi.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/shopapi\.io\.mi\.com\/mtop\/mf\/resource\/homePage\/pageConfig - reject-200
+
+[MITM]
+hostname = %APPEND% shopapi.io.mi.com

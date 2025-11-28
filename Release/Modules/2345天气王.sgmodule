@@ -1,0 +1,8 @@
+#!name=2345天气王
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/tianqi\.2345\.com\/api\/content\/getContentFeeds\.php - reject-dict
+
+[MITM]
+hostname = %APPEND% tianqi.2345.com

@@ -1,0 +1,9 @@
+#!name=云宝宝大数据
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/nnapp\.cloudbae\.cn:\d+\/mc\/api\/advert/ - reject
+^https?:\/\/nnapp\.cloudbae\.cn\/mc\/api\/advert/ - reject
+
+[MITM]
+hostname = %APPEND% nnapp.cloudbae.cn

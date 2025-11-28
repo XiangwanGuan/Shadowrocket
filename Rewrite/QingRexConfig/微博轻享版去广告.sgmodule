@@ -1,0 +1,39 @@
+#!name=微博轻享版去广告
+#!desc=移除开屏广告、时间线广告及评论区广告，移除发现页面横幅推广、最常访问、主页访客及热门视频，移除搜索填充词。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Weibo_intl.png
+#!category=iKeLee
+#!openUrl=https://apps.apple.com/app/id1215210046
+#!tag=去广告
+#!loon_version=3.2.4(787)
+#!homepage=https://hub.kelee.one
+#!date=2025-07-09 14:07:46
+
+[Body Rewrite]
+http-response-jq ^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=trends 'delpaths([["data","banner"]])'
+http-response-jq ^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=trends 'delpaths([["data","user_footprint"]])'
+http-response-jq ^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=trends 'delpaths([["data","profile_accessrecord"]])'
+http-response-jq ^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=trends 'delpaths([["data","native_content"]])'
+http-response-jq ^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=trends '.data.discover |= map(select(.schema != "尊享会员"))'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/friends\/timeline$ 'delpaths([["advertises"]])'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/friends\/timeline$ 'delpaths([["ad"]])'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/friends\/timeline$ 'delpaths([["ad_version_2_weibo"]])'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/friends\/timeline$ '.statuses|=map(select(.ad_marked!=true))'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/unread_hot_timeline$ 'delpaths([["ad"]])'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/unread_hot_timeline$ 'delpaths([["ad_version_2_weibo"]])'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/statuses\/unread_hot_timeline$ '.statuses|=map(select(.ad_marked!=true))'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/comments\/build_comments\? '.datas[].data.ad_from_comment? = true'
+http-response-jq ^https:\/\/api\.weibo\.cn\/2\/cardlist\?aid= '.cards |= map(select((.mblog?|(.ad_marked?|type=="boolean")and.ad_marked==true)or(.card_group?|type=="array"and any(.[]?;.mblog?|(.ad_marked?|type=="boolean")and.ad_marked==true))|not))'
+
+[Map Local]
+^https:\/\/bootpreload\.uve\.weibo\.com\/v1\/ad\/preload$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.weibo\.cn\/2\/cardlist\?v_f=2 data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/api\.weibo\.cn\/2\/ad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=get_searching_info data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% bootpreload.uve.weibo.com, weibointl.api.weibo.cn, api.weibo.cn
+

@@ -1,0 +1,8 @@
+#!name=开源中国
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/www\.oschina\.net\/action\/apiv2\/get_launcher - reject-img
+
+[MITM]
+hostname = %APPEND% www.oschina.net

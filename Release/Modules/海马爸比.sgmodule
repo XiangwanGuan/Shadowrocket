@@ -1,0 +1,9 @@
+#!name=海马爸比
+#!desc=2025-09-17 08:25:58
+
+[URL Rewrite]
+^https?:\/\/hmbaby\.simshine\.cn\/admin\/filter\/advert\/getAdvertLists - reject-dict
+^https?:\/\/hmbaby\.simshine\.cn\/admin\/filter\/crowdFunding\/getNewProductData - reject-dict
+
+[MITM]
+hostname = %APPEND% hmbaby.simshine.cn

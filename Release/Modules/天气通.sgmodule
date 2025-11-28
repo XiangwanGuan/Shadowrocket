@@ -1,0 +1,9 @@
+#!name=天气通
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/tqt\.weibo\.cn\/.*advert - reject
+^https?:\/\/tqt\.weibo\.cn\/overall\/redirect\.php\?r=(tqt_sdkad|tqtad) - reject
+
+[MITM]
+hostname = %APPEND% tqt.weibo.cn

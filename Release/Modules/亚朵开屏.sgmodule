@@ -1,0 +1,8 @@
+#!name=亚朵开屏
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/api2\.yaduo\.com\/atourlife\/activity\/appLaunch - reject-dict
+
+[MITM]
+hostname = %APPEND% api2.yaduo.com

@@ -1,0 +1,8 @@
+#!name=爱范儿
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/sso\.ifanr\.com\/jiong\/IOS\/appso\/splash\/ - reject
+
+[MITM]
+hostname = %APPEND% sso.ifanr.com

@@ -1,0 +1,13 @@
+#!name=小米音箱
+#!desc=2025-11-11 14:48:57
+
+[Rule]
+DOMAIN-SUFFIX, mistat.xiaomi.com, REJECT, extended-matching, pre-matching
+
+[URL Rewrite]
+^https?:\/\/(info\.mina\.xiaoaisound|marketing-aibox\.v\.mitvos)\.com\/advertise(?!\/banner) - reject
+^https?:\/\/(info\.mina\.xiaoaisound|marketing-aibox\.v\.mitvos)\.com\/payGuide\/userCenter - reject
+^https?:\/\/(info\.mina\.xiaoaisound|marketing-aibox\.v\.mitvos)\.com\/popup - reject-dict
+
+[MITM]
+hostname = %APPEND% info.mina.xiaoaisound.com,marketing-aibox.v.mitvos.com

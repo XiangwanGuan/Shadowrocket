@@ -1,0 +1,11 @@
+#!name=黄油相机
+#!desc=2025-09-15 20:52:41
+
+[URL Rewrite]
+^https?:\/\/api\d\.bybutter\.com\/v\d\/app\/placements\/\d\/advertisements - reject
+
+[Script]
+bybutter =type=http-response, pattern=^https?:\/\/api\d\.bybutter\.com\/v\d, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/bybutter.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api*.bybutter.com

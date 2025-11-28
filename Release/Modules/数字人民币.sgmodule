@@ -1,0 +1,13 @@
+#!name=数字人民币
+#!desc=2025-11-12 13:30:12
+
+[Rule]
+DOMAIN, mdap.wallet.pbcdci.cn, REJECT, extended-matching, pre-matching
+DOMAIN, mdc.wallet.pbcdci.cn, REJECT, extended-matching, pre-matching
+IP-CIDR, 1.202.85.193/32, REJECT, no-resolve
+
+[Script]
+ecny =type=http-response, pattern=^https?:\/\/mgs\.wallet\.pbcdci\.cn:\d+\/mgw\.htm$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/ecny.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% mgs.wallet.pbcdci.cn

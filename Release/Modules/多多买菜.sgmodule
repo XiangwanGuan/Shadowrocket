@@ -1,0 +1,8 @@
+#!name=多多买菜
+#!desc=2025-09-09 10:10:26
+
+[Body Rewrite]
+http-response ^https?:\/\/mobile\.yangkeduo\.com\/proxy\/api\/api\/express\/post\/waybill\/red_packet\/goods_list$ "list":\[.+\] "list":[]
+
+[MITM]
+hostname = %APPEND% mobile.yangkeduo.com

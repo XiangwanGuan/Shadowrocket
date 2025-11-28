@@ -1,0 +1,8 @@
+#!name=众邦银行
+#!desc=2025-09-09 10:10:27
+
+[URL Rewrite]
+^https?:\/\/direct\.z-bank\.com\/portal\/AdvertImageDownLoad4Mobile\.do - reject-200
+
+[MITM]
+hostname = %APPEND% direct.z-bank.com

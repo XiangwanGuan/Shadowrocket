@@ -1,0 +1,8 @@
+#!name=冠寓
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/guanyu\.longfor\.com\/app-server\/api\/v1\/main\/start - reject
+
+[MITM]
+hostname = %APPEND% guanyu.longfor.com

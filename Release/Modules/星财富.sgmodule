@@ -1,0 +1,8 @@
+#!name=星财富
+#!desc=2025-09-09 10:10:26
+
+[URL Rewrite]
+^https?:\/\/operationapi\.fosunhanig\.com\/ad\/v\d\/(PopupAdList|ScreenAdList|BannerList) - reject-200
+
+[MITM]
+hostname = %APPEND% operationapi.fosunhanig.com
