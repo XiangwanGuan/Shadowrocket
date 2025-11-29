@@ -1,5 +1,5 @@
 #!name=什么值得买
-#!desc=2025-11-13 08:27:43
+#!desc=2025-11-29 10:55:01
 
 [Rule]
 DOMAIN, adx-api.zdmimg.com, REJECT, extended-matching, pre-matching
@@ -31,7 +31,7 @@ http-response-jq ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_m
 http-response-jq ^https?:\/\/homepage-api\.smzdm\.com\/v3\/home\? '   .data.component |= map(    if (.zz_content | type) == "array" then     .zz_content |= map(       select(         ( (.ad_campaign_id? | type == "string" and length > 0)// false ) or         ( (.tag? | type == "string" and length > 0)// false ) or         ( (.model_type? == "ads" and (type == "string"))// false )         | not       )     )   else . end )  | .data.component |= map(   select(.zz_type == "circular_banner" or .zz_type == "filter" or .zz_type == "list") )  | .data.component |= map(   .zz_content |= (     if type == "array" then       map(         if type == "object" and (.article_channel_type// "") == "questionnaire" then           empty         else           .         end       )     else       .     end   ) )   | del(.data.theme)  | .data.component |= map(   if .zz_content | type == "object" then     .zz_content |= del(.circular_banner_option)   else     .   end )'
 http-response-jq ^https?:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list\? 'delpaths([["data","activity_banner"]])'
 http-response-jq ^https?:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list\? 'delpaths([["data","tuiguang_ad"]])'
-http-response-jq ^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? '.data.search_hot.home |= map(select(.article_tag.article_title != "广告"))'
+http-response-jq ^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? '.data.search_hot.home |= map(select(.article_tag.article_title != "广告")) | .data.search_hot.home |= map(select(has("pos")))'
 http-response-jq ^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? 'delpaths([["data","hongbao"]])'
 http-response-jq ^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? 'delpaths([["data","search_faxian"]])'
 http-response-jq ^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags\? 'delpaths([["data","tonglan"]])'
