@@ -1,5 +1,5 @@
 #!name=融合模块
-#!desc=2025-11-29 11:14:46
+#!desc=2025-12-01 08:06:03
 #!arguments=YouTube ·屏蔽上传按钮:true, YouTube ·屏蔽选段按钮:true, YouTube ·屏蔽短片按钮:false, YouTube ·字幕翻译语言:off, YouTube ·歌词翻译语言:off
 #!arguments-desc=\n 参数说明：\n YouTube翻译语言：默认关闭，填入zh-Hans开启；\n 
 
@@ -1538,7 +1538,7 @@ URL-REGEX, "^https?:\/\/w{32}\.jddebug\.com\/diagnose\?", REJECT
 ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/getHomeAdPop - reject
 ^https?:\/\/mall\.meituan\.com\/api\/c\/homepage\/splash - reject-dict
 ^https?:\/\/manager\.aiqiangua\.com:8080\/AqgNews\/api\/start_ad\.do - reject-dict
-^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Recommend|MoreRecommend|Flash|ListFlash|GetBubbles|GetActivityTab|GetCommonBanner|GetComicConfigPicList|SearchBanner) - reject-200
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(?:Recommend|MoreRecommend|Flash|ListFlash|GetBubbles|GetActivityTab|GetCommonBanner|GetComicConfigPicList|SearchBanner|AppInit) - reject-200
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Shop\/GetShopItems - reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/novel\.v\d\.Novel\/MoreRecommend - reject-dict
 ^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.Read\/ActInfo - reject-200
