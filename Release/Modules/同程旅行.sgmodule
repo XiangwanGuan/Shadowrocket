@@ -1,11 +1,11 @@
 #!name=同程旅行
-#!desc=2025-12-01 10:26:31
+#!desc=2025-12-01 13:30:57
 
 [Rule]
 DOMAIN, vstlog.17usoft.com, REJECT, extended-matching, pre-matching
 
 [URL Rewrite]
-^https:\/\/m\.ly\.com\/visa\/fetch\/home\/getAdvDialogData - reject-dict
+^https?:\/\/m\.ly\.com\/visa\/fetch\/home\/getAdvDialogData - reject-dict
 ^https?:\/\/mobile-api2011\.elong\.com\/adgateway\/newad\/list - reject-dict
 ^https?:\/\/mobileapi\.ly\.com\/wlfrontend\/app\/scenicMain - reject-dict
 ^https?:\/\/mobilehotelapi\.elong\.com\/appHotel\/adx\/advert\/getAdvert - reject-dict

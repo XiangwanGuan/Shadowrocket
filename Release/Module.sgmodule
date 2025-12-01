@@ -1,5 +1,5 @@
 #!name=融合模块
-#!desc=2025-12-01 10:57:32
+#!desc=2025-12-01 13:31:00
 #!arguments=YouTube ·屏蔽上传按钮:true, YouTube ·屏蔽选段按钮:true, YouTube ·屏蔽短片按钮:false, YouTube ·字幕翻译语言:off, YouTube ·歌词翻译语言:off
 #!arguments-desc=\n 参数说明：\n YouTube翻译语言：默认关闭，填入zh-Hans开启；\n 
 
@@ -396,7 +396,6 @@ URL-REGEX, "^https?:\/\/w{32}\.jddebug\.com\/diagnose\?", REJECT
 
 [URL Rewrite]
 ^(^https?:\/\/www\.vgtime\.com\/app\/topic\/\d+\.jhtml\?.*?&close_ad=)false(&page=\d&sign=\w+&timestamp=\d+&font_size=\d$) $1true$2 302
-^https:\/\/m\.ly\.com\/visa\/fetch\/home\/getAdvDialogData - reject-dict
 ^https?:\/\/((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\/music\/common\/upload\/t_splash_info\/ - reject
 ^https?:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/(?:ad-|pendragon) - reject-200
 ^https?:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/artistview\/v1\/artist\/(.*)&platform=iphone https://spclient.wg.spotify.com/artistview/v1/artist/$1&platform=ipad header
@@ -1507,6 +1506,7 @@ URL-REGEX, "^https?:\/\/w{32}\.jddebug\.com\/diagnose\?", REJECT
 ^https?:\/\/m\.dianping\.com\/wxmapi\/shop\/friendslike - reject-dict
 ^https?:\/\/m\.fqfin\.cn\/cls\/leshuapay\/preCredit\.json$ - reject-dict
 ^https?:\/\/m\.ibuscloud\.com\/v\d\/app\/getStartPage - reject
+^https?:\/\/m\.ly\.com\/visa\/fetch\/home\/getAdvDialogData - reject-dict
 ^https?:\/\/m\.prod\.app\.hsbcfts\.com\.cn\/api\/sapp\/biz\/config\/open\/queryappversion\?channelCode= - reject-dict
 ^https?:\/\/m\.qianbao\.qq\.com\/pages\/walletHome\?invisible - reject
 ^https?:\/\/m\.qianbao\.qq\.com\/services\/walletHome\/get(QQshop|Game|Foot)Data - reject-dict
