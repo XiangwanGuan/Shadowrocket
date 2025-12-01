@@ -1,5 +1,5 @@
 #!name=盒马
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:10
 
 [URL Rewrite]
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.alibaba\.emas\.publish\.update\.get - reject-dict
@@ -11,7 +11,7 @@
 ^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.sg\.querysinglescene - reject-dict
 
 [Script]
-freshippo =type=http-response, pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(indexpage|mypage|tabfeedstream), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/freshippo.js, requires-body=true, max-size=0
+freshippo =type=http-response, pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(?:indexpage|mypage|tabfeedstream), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/freshippo.js, requires-body=true, max-size=0
 
 [MITM]
 hostname = %APPEND% acs-m.freshippo.com,acs.m.taobao.com

@@ -1,9 +1,9 @@
 #!name=腾讯新闻
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:31
 
 [URL Rewrite]
-^https?:\/\/r\.inews\.qq\.com\/(adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - reject
-^https?:\/\/r\.inews\.qq\.com\/(getBannerAds|getNewsRemoteConfig|getSplash|searchHotCatList|upLoadLoc) - reject
+^https?:\/\/r\.inews\.qq\.com\/(?:adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - reject
+^https?:\/\/r\.inews\.qq\.com\/(?:getBannerAds|getNewsRemoteConfig|getSplash|searchHotCatList|upLoadLoc) - reject
 
 [Script]
 qq-news =type=http-response, pattern=^https?:\/\/(news\.ssp\.qq\.com\/app|r\.inews\.qq\.com\/(get(QQNewsUnreadList|TagFeedList)|gw\/page\/event_detail|news_feed\/hot_module_list)), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/qq-news.js, requires-body=true, max-size=0

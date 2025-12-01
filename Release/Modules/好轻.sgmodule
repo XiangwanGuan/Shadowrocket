@@ -1,8 +1,8 @@
 #!name=好轻
-#!desc=2025-11-17 09:51:24
+#!desc=2025-12-01 10:26:10
 
 [URL Rewrite]
-^https?:\/\/restapi\.iyunmai\.com\/(app|ad-)?api\/ios\/(tips|ad) - reject
+^https?:\/\/restapi\.iyunmai\.com\/(?:app|ad-)?api\/ios\/(?:tips|ad) - reject
 ^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/credit\/credit-family - reject-dict
 ^https?:\/\/restapi\.iyunmai\.com\/behaviour\/ios\/recommend - reject-dict
 ^https?:\/\/restapi\.iyunmai\.com\/fellow-service\/ios\/popUp - reject-dict

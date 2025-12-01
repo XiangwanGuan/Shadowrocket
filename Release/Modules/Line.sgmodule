@@ -1,5 +1,5 @@
 #!name=Line
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:29
 
 [URL Rewrite]
 ^https?:\/\/a\.line\.me\/cs\/v\d\/oa$ - reject
@@ -11,7 +11,7 @@
 ^https?:\/\/buy\.line\.me\/api\/graphql\?variables - reject
 ^https?:\/\/cix\.line-apps\.com\/R4\? - reject
 ^https?:\/\/crs-event\.line\.me\/v\d\/imp - reject
-^https?:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png) - reject-img
+^https?:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(?:jpg|jpeg|png) - reject-img
 ^https?:\/\/ec-bot-obs\.line-scdn\.net\/0h[-0-9a-zA-Z_]{50,} - reject-img
 ^https?:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ - reject
 ^https?:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ - reject
@@ -31,8 +31,7 @@
 ^https?:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/ - reject
 ^https?:\/\/sch\.line\.me\/api\/v\d\/ads$ - reject
 ^https?:\/\/static\.line-scdn\.net\/ad-sdk\/ - reject
-^https?:\/\/uts-front\.line-apps\.com\/event$ - reject
-^https?:\/\/uts-front\.line-apps\.com\/settings$ - reject
+^https?:\/\/uts-front\.line-apps\.com\/(?:settings|event)$ - reject
 ^https?:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/ - reject
 ^https?:\/\/web-mmap-pay\.line-apps\.com\/tw\/liff\/campaign\/v1\/aggregate\/ad\/banner\/ - reject-img
 

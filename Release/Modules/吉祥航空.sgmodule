@@ -1,8 +1,8 @@
 #!name=吉祥航空
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:10
 
 [URL Rewrite]
-^https?:\/\/hoapp\.juneyaoair\.com\/data\/index\/(queryPopUpWinPic|getLoadPic|getRecommendProduct) - reject
+^https?:\/\/hoapp\.juneyaoair\.com\/data\/index\/(?:queryPopUpWinPic|getLoadPic|getRecommendProduct) - reject
 ^https?:\/\/hoapp\.juneyaoair\.com\/data\/index\/getPictureList - reject-img
 ^https?:\/\/hoapp\.juneyaoair\.com\/version - reject-200
 

@@ -1,10 +1,9 @@
 #!name=广发银行
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:52:21
 
 [URL Rewrite]
-^https?:\/\/mps\.95508\.com\/mps\/club\/cardPortals\/adv\/\d{25}\.(png|jpg) - reject-img
-^https?:\/\/static\.95508\.com\/icppweb\/images\/modelMaterial\/accurate\/202\d{5}\/.*.(png|jpg) - reject-200
-^https?:\/\/static\.95508\.com\/icppweb\/images\/modelMaterial\/advertising\/202\d{5}\/.*.(png|jpg) - reject-200
+^https?:\/\/mps\.95508\.com\/mps\/club\/cardPortals\/adv\/\d{25}\.(?:png|jpg) - reject-img
+^https?:\/\/static\.95508\.com\/icppweb\/images\/modelMaterial\/(?:advertising|accurate)\/202\d{5}\/.*.(?:png|jpg) - reject-200
 
 [MITM]
 hostname = %APPEND% mps.95508.com,static.95508.com

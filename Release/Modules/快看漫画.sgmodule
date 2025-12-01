@@ -1,5 +1,5 @@
 #!name=快看漫画
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:11
 
 [URL Rewrite]
 ^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ad - reject
@@ -11,8 +11,8 @@
 ^https?:\/\/(cdn-)?h5\.kuaikanmanhua\.com\/game-h5\/new-user-welfare\/index\.html - reject-200
 ^https?:\/\/(cdn-)?h5\.kuaikanmanhua\.com\/user\/scene\/api\/new_user\/sign_in\/list - reject-dict
 ^https?:\/\/(cdn-)?h5\.kuaikanmanhua\.com\/v\d\/kb\/recharge_good\/list_h5 - reject-dict
-^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/kb\/(wallet|comic_page_banner) - reject-dict
-^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/vip\/(banner|charge)_tip_list - reject-dict
+^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/kb\/(?:wallet|comic_page_banner) - reject-dict
+^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/vip\/(?:banner|charge)_tip_list - reject-dict
 ^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/vip\/platform_base\/popups_display - reject-dict
 ^https?:\/\/(cdn-)?shop\.kkmh\.com\/mbff\/popup_administration - reject-dict
 ^https?:\/\/(cdn-)?topic\.kkmh\.com\/gamecard\/v\d\/activityModule\/fetchButtonInfo\?buttonConfigId - reject-dict

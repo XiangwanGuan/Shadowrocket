@@ -1,12 +1,12 @@
 #!name=微信
-#!desc=2025-11-11 14:48:57
+#!desc=2025-12-01 10:26:31
 
 [Rule]
 DOMAIN, badjs.weixinbridge.com, REJECT, extended-matching, pre-matching
 DOMAIN-SUFFIX, wxs.qq.com, REJECT, extended-matching, pre-matching
 
 [URL Rewrite]
-^https?:\/\/mp\.weixin\.qq\.com\/mp\/(ad_|advertisement|getappmsgad|cps_product_info|masonryfeed|relatedarticle|relatedsearchword|searchkeywordreport|geticon|getainfo|jsmonitor) - reject-dict
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/(?:ad_|advertisement|getappmsgad|cps_product_info|masonryfeed|relatedarticle|relatedsearchword|searchkeywordreport|geticon|getainfo|jsmonitor) - reject-dict
 
 [Script]
 UnblockURLinWeChat =type=http-response, pattern=^https?:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/UnblockURLinWeChat.js, requires-body=true, max-size=0

@@ -1,9 +1,9 @@
 #!name=人民日报
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:30
 
 [URL Rewrite]
-^https?:\/\/adstatic\.peopleapp\.com\/upload\/AppLoad\/.*.(jpg|png) - reject-200
-^https?:\/\/app\.peopleapp\.com\/Api\/\d+/HomeApi\/(adv|getAdvertImage) - reject
+^https?:\/\/adstatic\.peopleapp\.com\/upload\/AppLoad\/.*.(?:jpg|png) - reject-200
+^https?:\/\/app\.peopleapp\.com\/Api\/\d+/HomeApi\/(?:adv|getAdvertImage) - reject
 ^https?:\/\/stat\.peopleapp\.com\/ - reject
 
 [MITM]

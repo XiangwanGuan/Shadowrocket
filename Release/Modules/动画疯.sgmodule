@@ -1,11 +1,11 @@
 #!name=动画疯
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:10
 
 [URL Rewrite]
 ^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d\/anime_get_question\.php - reject-dict
 
 [Script]
-BahamutAnimeAds =type=http-response, pattern=^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(token|m3u8).php\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/BahamutAnimeAds.js, requires-body=true, max-size=0
+BahamutAnimeAds =type=http-response, pattern=^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(?:token|m3u8).php\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/BahamutAnimeAds.js, requires-body=true, max-size=0
 
 [MITM]
 hostname = %APPEND% api.gamer.com.tw

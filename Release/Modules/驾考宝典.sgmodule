@@ -1,10 +1,10 @@
 #!name=驾考宝典
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:10
 
 [URL Rewrite]
 ^https?:\/\/\w+\.kakamobi\.cn\/api\/open\/v\d\/advert-sdk\/ - reject
 ^https?:\/\/cheyouquan\.kakamobi\.com\/api\/open\/group\/recommend-subscribe-tag - reject-dict
-^https?:\/\/jiakao-misc\.kakamobi\.cn\/api\/open\/my-tab-config\/(banner|selection)-list - reject-dict
+^https?:\/\/jiakao-misc\.kakamobi\.cn\/api\/open\/my-tab-config\/(?:banner|selection)-list - reject-dict
 ^https?:\/\/jiaxiao-awd\.kakamobi\.cn\/api\/h5\/v\d\/home-lead-advertise\/abtest - reject-dict
 ^https?:\/\/mcbd\.maiche\.com\/api\/open\/v\d\/jiakao-business\/get-naben-advert - reject-dict
 ^https?:\/\/mcbd\.maiche\.com\/api\/open\/v\d\/user\/get-popup-window - reject

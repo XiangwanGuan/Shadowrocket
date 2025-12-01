@@ -1,0 +1,9 @@
+#!name=百果园 小程序
+#!desc=2025-12-01 10:26:09
+
+[URL Rewrite]
+^https?:\/\/dsxcx\.tencent-prod\.pagoda\.com\.cn\/exc\/wxapp\/homePage\/v\d\/get(?:HomeLaunchDialog|Floating) - reject-dict
+^https?:\/\/eshop-api-wx-mini\.eshop\.tencent-prod\.pagoda\.com\.cn\/api\/v\d\/memberPage\/launchDialog - reject-dict
+
+[MITM]
+hostname = %APPEND% dsxcx.tencent-prod.pagoda.com,eshop-api-wx-mini.eshop.tencent-prod.pagoda.com

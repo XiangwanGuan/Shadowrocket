@@ -1,12 +1,12 @@
 #!name=上海交通卡
-#!desc=2025-11-11 14:47:15
+#!desc=2025-12-01 10:26:30
 
 [Rule]
 DOMAIN-SUFFIX, medproad.com, REJECT, extended-matching, pre-matching
 
 [URL Rewrite]
 ^https?:\/\/jiguang\.sptcc\.com\/smartop\/\d/getEvent - reject
-^https?:\/\/online\.sptcc\.com:\d+\/handapp_app\/(ActivityGetServlet|queryWebUrlConfig) - reject
+^https?:\/\/online\.sptcc\.com:\d+\/handapp_app\/(?:ActivityGetServlet|queryWebUrlConfig) - reject
 ^https?:\/\/online\.sptcc\.com:\d+\/handapp_zx\/rss_info - reject
 
 [Script]

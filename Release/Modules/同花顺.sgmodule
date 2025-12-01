@@ -1,9 +1,9 @@
 #!name=同花顺
-#!desc=2025-09-09 10:10:26
+#!desc=2025-12-01 10:26:31
 
 [URL Rewrite]
 ^https?:\/\/adm\.10jqka\.com\.cn\/interface\/ad\/recommend - reject-200
-^https?:\/\/iphone\.ac\.qq\.com\/.*\/Support\/(getSystemConf|bootScreen) - reject
+^https?:\/\/iphone\.ac\.qq\.com\/.*\/Support\/(?:getSystemConf|bootScreen) - reject
 ^https?:\/\/stat\.10jqka\.com\.cn\/q\?ld=mobile&id=ad - reject-dict
 
 [MITM]
