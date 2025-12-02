@@ -20,7 +20,7 @@ if (url.includes("/linglong")) {
         const traceKey = Object.keys(header).find(key => /^(ai|dt|al|u)$/i.test(key));
         removeFlag = traceKey ? true : false;
         // 针对会员权益图片的修复
-        if (url.endsWith("@1sc") {
+        if (url.endsWith("@1sc")) {
             removeFlag = false;
         }
     } else {
