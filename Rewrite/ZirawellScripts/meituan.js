@@ -19,6 +19,10 @@ if (url.includes("/linglong")) {
         const header = $request.headers;
         const traceKey = Object.keys(header).find(key => /^(ai|dt|al|u)$/i.test(key));
         removeFlag = traceKey ? true : false;
+        // 针对会员权益图片的修复
+        if (url.endsWith("@1sc") {
+            removeFlag = false;
+        }
     } else {
         const dimStr = extractAfterAt(url);
         if ("-1" != dimStr && compareDimensions(dimStr)) {
