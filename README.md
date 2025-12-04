@@ -12,11 +12,9 @@
 ---
 
 ### [配置文件](#配置文件)
-使用加密的**DoH**与**DoT**进行域名解析，并对未加密的DNS请求进行加密转发；  
-**主流服务**（苹果/微软/谷歌）已独立分流，避免与通用规则冲突；  
-海外主流**AI平台**已独立分流，保障访问速度与稳定性；  
-**微信**与**电报**已单独分流，降低因策略调整导致封号或异常的风险；  
-针对**国内**与**国外**的**媒体**及**规则**，分别使用独立的分流策略，实现更灵活的控制；  
+使用加密的**DoH/DoT**解析域名，并加密转发未加密的DNS请求；  
+**主流服务**、**AI平台**、**微信**和**电报**均已独立分流，保障访问稳定性；  
+**国内**、**国外**的**媒体**及**规则**，使用独立分流策略，实现灵活控制；  
 
 本项目所使用的**规则集**源自[blackmatrix7](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Shadowrocket)的仓库，由[GitHub Actions](https://github.com/XiangwanGuan/Shadowrocket/blob/main/.github/workflows/Sync-RuleFiles.yml)**每日自动同步**；  
 本项目所使用的**GeoLite2数据库**源自[MaxMind](https://www.maxmind.com)提供的免费版本，由[GitHub Actions](https://github.com/XiangwanGuan/Shadowrocket/blob/main/.github/workflows/Sync-GeoLite2Files.yml)**每日自动同步**；  
@@ -70,7 +68,6 @@
 如需使用[融合模块](#融合模块)来净化应用，**必须开启HTTPS解密**，否则模块将不能正常工作；  
 建议添加**证书模块**，避免因配置变化导致HTTPS解密功能失效；  
 证书信任之后，**请勿在设置中移除证书**，否则HTTPS解密功能将会失效；  
-证书模块启用后，HTTPS解密功能默认**强制开启**，配置中的“HTTPS解密开关”将不再生效；  
 
 证书模块制作办法：  
 **配置** > 点击**配置文件**的 **ⓘ图标** > **HTTPS解密** > **证书** > **生成新的CA证书** > **安装证书**；  
