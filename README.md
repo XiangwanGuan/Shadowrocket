@@ -1,5 +1,5 @@
 ## [项目简介](#项目简介)
-本[项目](https://github.com/XiangwanGuan/Shadowrocket)由[向晚](https://t.me/xiangwanguan)维护，提供[Shadowrocket](https://apps.apple.com/app/shadowrocket/id932747118)的[配置文件](#配置文件)与[模块资源](#模块资源)；  
+本[项目](https://github.com/XiangwanGuan/Shadowrocket)由[向晚](https://t.me/xiangwanguan)维护，提供[Shadowrocket](https://apps.apple.com/app/shadowrocket/id932747118)的[配置文件](#配置文件)与[融合模块](#融合模块)；  
 如果此项目对您有帮助，欢迎给予Star；若有其他需求或问题，请提交Issues！  
 
 ---
@@ -46,12 +46,10 @@
 
 ---
 
-### [模块资源](#模块资源)
+### [融合模块](#融合模块)
 使用须知：使用融合模块，**必须开启MitM**，教程参考下方的[推荐设置](#推荐设置)；  
-特别警告：融合模块**已移除“解锁类”功能**，请支持开发者！  
-如果本项目侵犯了您的利益，或不希望我收集您的规则，请提交Issues，我会第一时间进行移除，谢谢！  
+如不希望本项目收集您的规则，请发表Issues，我会第一时间进行移除，谢谢！  
 
-#### [融合模块](#融合模块)
 [融合模块](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Release/Module.sgmodule)由[GitHub Actions](https://github.com/XiangwanGuan/Shadowrocket/blob/main/.github/workflows/Generate-ModuleFiles.yml)调用[生成器](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Generator/Builder.py)依据[规则列表](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Generator/Generate.conf)而构建，随规则变化，不定期更新；  
 规则构成：以[向晚](https://t.me/xiangwanguan)基于[*@fmz200*](https://github.com/fmz200/wool_scripts) [*@QingRex*](https://github.com/QingRex/LoonKissSurge) [*@zirawell*](https://github.com/zirawell/R-Store)的项目定制，并持续手动维护的[重写合集](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/XiangwanConfig/Collection.conf)为基础，融合了[小红书](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/XiangwanConfig/Rednote.conf)、[哔哩哔哩](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/XiangwanConfig/Bilibili.conf)、[YouTube](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/XiangwanConfig/YouTube.conf)、[高德地图](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/XiangwanConfig/Amap.js)、[一汽大众](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/XiangwanConfig/FAWVW.conf)的专用规则；  
 所有[远程资源](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/JSInventory.md)由[GitHub Actions](https://github.com/XiangwanGuan/Shadowrocket/blob/main/.github/workflows/Sync-RewriteFiles.yml)依据[构建列表](https://github.com/XiangwanGuan/Shadowrocket/blob/main/Rewrite/JSGenerator.conf)每日自动构建&监测&清理，所有列表内指向的资源已重定向至[当前项目](https://github.com/XiangwanGuan/Shadowrocket/tree/main/Rewrite/JavaScript)；  
@@ -69,7 +67,7 @@
 
 ### [推荐设置](#推荐设置)
 #### [证书模块](#证书模块)
-如需使用[模块资源](#模块资源)来净化应用，**必须开启HTTPS解密**，否则模块将不能正常工作；  
+如需使用[融合模块](#融合模块)来净化应用，**必须开启HTTPS解密**，否则模块将不能正常工作；  
 建议添加**证书模块**，避免因配置变化导致HTTPS解密功能失效；  
 证书信任之后，**请勿在设置中移除证书**，否则HTTPS解密功能将会失效；  
 证书模块启用后，HTTPS解密功能默认**强制开启**，配置中的“HTTPS解密开关”将不再生效；  
