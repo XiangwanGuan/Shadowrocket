@@ -144,6 +144,10 @@ if (url.includes("/gw/mtop.taobao.idlemtopsearch.search")) {
     if (obj.data?.resultPrefixBar) {
       delete obj.data.resultPrefixBar;
     }
+    
+    if (obj.data?.topList) {
+      obj.data.topList = [];
+    }
 }
 
 
