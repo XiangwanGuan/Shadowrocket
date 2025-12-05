@@ -200,7 +200,7 @@ def generate_main_sgmodule(sources, parent_dir):
     merged_rules = "\n".join(filter(None, (load_source(u) for u in sources)))
     if not merged_rules: return print("No valid rules found — module generation skipped.")
     content = build_sgmodule(merged_rules, "融合模块")
-    if content: save_sgmodule(content, os.path.join(parent_dir, "Release", "Module.sgmodule")); print(content)
+    if content: save_sgmodule(content, os.path.join(parent_dir, "Release", "Module.sgmodule"))
     generate_app_modules(merged_rules, parent_dir)
 
 def main():
@@ -210,5 +210,6 @@ def main():
             entries = [l.strip() for l in f if l.strip() and not l.startswith('#')]
     except Exception as e: return print(f"Failed to read input file: {e}")
     generate_main_sgmodule(entries, parent_dir)
+    print("Execution completed!")
 
 if __name__=="__main__": main()
