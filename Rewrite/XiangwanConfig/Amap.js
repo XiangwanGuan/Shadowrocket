@@ -3,7 +3,7 @@
 # 高德地图应用净化；
 # 原作者：@iKeLee，@RuCu6，由向晚重写维护；
 
-# 更新时间: 20251112
+# 更新时间: 20251205
 # 规则链接: https://raw.githubusercontent.com/XiangwanGuan/Shadowrocket/main/Rewrite/XiangwanConfig/Amap.js
 
 [filter_local]
@@ -13,7 +13,6 @@ DOMAIN, free-aos-cdn-image.amap.com, REJECT, extended-matching, pre-matching
 DOMAIN-SUFFIX, v.smtcdns.com, REJECT, extended-matching, pre-matching
 
 [rewrite_local]
-^https?:\/\/ai\.amap\.com\/v1\/ai_rec\/home_qs\? url reject-dict
 ^https?:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? url reject-dict
 ^https?:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan) url reject-dict
 ^https?:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? url jsonjq-response-body 'delpaths([["data","commonMaterial"], ["data","tipsOperationLocation"], ["data","resourcePlacement"]])'
@@ -29,6 +28,7 @@ DOMAIN-SUFFIX, v.smtcdns.com, REJECT, extended-matching, pre-matching
 ^https?:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:order\/car\/(?:feedback\/get_card_questions|feedback\/viptips|king_toolbox_car_bubble|remark\/satisfactionConf|rights_information)|tips\/onscene_visual_optimization) url reject-dict
 ^https?:\/\/m5-zb\.amap\.com\/ws\/boss\/(?:pay\/web\/paySuccess\/info\/request|transportation\/diversion\/resource\/driving) url reject-dict
 ^https?:\/\/m5-zb\.amap\.com\/ws\/sharedtrip\/taxi\/order_detail_car_tips\? url jsonjq-response-body 'delpaths([["data","carTips","data","popupInfo"]])'
+^https?:\/\/ai\.amap\.com\/v1\/ai_rec\/home_qs\? url reject-dict
 
 ^https?:\/\/m5\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi\? url script-response-body https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/Amap.js
 ^https?:\/\/m5\.amap\.com\/ws\/bus\/plan\/integrate\? url script-response-body https://xiangwanguan.github.io/Shadowrocket/Rewrite/JavaScript/Amap.js
@@ -461,6 +461,7 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     "portal_entrance", // 高德旅游版块 引流到旅游频道
     // "question_answer_card", // 问问 地点附近的热门问题
     "quickLink", // 地点详情页图标 酒店 景点 热榜
+    "quickLinksPortal", // 房产频道
     "relatedRecommends", // 附近同类型酒店
     // "realtorRealStep",
     "renthouse",
