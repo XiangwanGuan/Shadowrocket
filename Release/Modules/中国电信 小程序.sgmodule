@@ -1,8 +1,0 @@
-#!name=中国电信 小程序
-#!desc=2025-12-05 09:24:49
-
-[Body Rewrite]
-http-response ^https?:\/\/wcmp\.189\.cn\/xcxApiService\/api\/gateway adItems random_body
-
-[MITM]
-hostname = %APPEND% wcmp.189.cn
