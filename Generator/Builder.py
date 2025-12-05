@@ -12,7 +12,8 @@ def load_source(url):
         except Exception: print(f"Failed to download {url}"); return None
     for file_path in candidate_paths:
         if os.path.isfile(file_path):
-            try: return open(file_path, encoding='utf-8').read()
+            try:
+                with open(file_path, encoding='utf-8') as f: return f.read()
             except Exception: print(f"Failed to read {file_path}"); return None
     print(f"Local file not found: {candidate_paths[-1]}"); return None
 
@@ -167,7 +168,8 @@ def build_sgmodule(rule_text, project_name):
     return sgmodule_content
 
 def save_sgmodule(content, path):
-    try: open(path, 'w', encoding='utf-8').write(content)
+    try:
+        with open(path, 'w', encoding='utf-8') as f: f.write(content)
     except Exception as e: print(f"Failed to save output file: {path}: {e}")
 
 def generate_app_modules(rules, parent_dir):
@@ -182,15 +184,16 @@ def generate_app_modules(rules, parent_dir):
     if current_app and buffer_lines: apps_dict[current_app] = "\n".join(buffer_lines)
     existing_files = set(os.listdir(dir_modules))
     for filename in existing_files:
-        if filename.replace(".sgmodule", "") not in apps_dict: os.remove(os.path.join(dir_modules, filename))
+        if filename.replace(".sgmodule", "") not in apps_dict:
+            try: os.remove(os.path.join(dir_modules, filename))
+            except Exception: pass
     for app_name, text in apps_dict.items():
         full_content = build_sgmodule(text, app_name).rstrip("\n") + "\n"
         strip = lambda s: "\n".join(l for l in s.splitlines() if not l.startswith('#!desc=')) + "\n"
         filepath = os.path.join(dir_modules, f"{app_name}.sgmodule")
         if os.path.exists(filepath):
-            with open(filepath, encoding="utf-8") as f: content = f.read()
-            if strip(content) != strip(full_content): os.remove(filepath)
-            else: continue
+            with open(filepath, encoding="utf-8") as f:
+                if strip(f.read()) == strip(full_content): continue
         save_sgmodule(full_content, filepath)
 
 def generate_main_sgmodule(sources, parent_dir):
@@ -202,7 +205,9 @@ def generate_main_sgmodule(sources, parent_dir):
 
 def main():
     parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    try: entries=[l.strip() for l in open(os.path.join(parent_dir,"Generator","Generate.conf")) if l.strip() and not l.startswith('#')]
+    try:
+        with open(os.path.join(parent_dir, "Generator", "Generate.conf"), encoding='utf-8') as f:
+            entries = [l.strip() for l in f if l.strip() and not l.startswith('#')]
     except Exception as e: return print(f"Failed to read input file: {e}")
     generate_main_sgmodule(entries, parent_dir)
 
