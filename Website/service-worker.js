@@ -1,5 +1,6 @@
 const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
+  "/Shadowrocket/Website/Redirect.html", 
   "/Shadowrocket/Website/ModuleHelper.html",
   "/Shadowrocket/Website/style.css",
   "/Shadowrocket/Website/script.js",

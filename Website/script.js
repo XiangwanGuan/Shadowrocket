@@ -310,7 +310,7 @@ if ("serviceWorker" in navigator) {
       if (state.pendingInstall) {
         const parts = state.pendingInstall.relativePath.split("/");
         const encodedPath = parts.map(encodeURIComponent).join("/");
-        const url = `https://xiangwanguan.github.io/Shadowrocket/Website/Redirect.html?url=shadowrocket://install?module=https://xiangwanguan.github.io/Shadowrocket/Release/${encodedPath}`;
+        const url = `Redirect.html?url=${encodeURIComponent(`shadowrocket://install?module=https://xiangwanguan.github.io/Shadowrocket/Release/${encodedPath}`)}`;
         window.open(url, "_blank");
       }
       closeModal("#confirmModal");
