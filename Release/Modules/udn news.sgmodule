@@ -1,0 +1,9 @@
+#!name=独立模块-udn news
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/pagead2.googleadservices.com/pagead/adview - reject
+^https?:\/\/pubads.g.doubleclick.net/gampad/ads - reject
+
+[MITM]
+hostname = %APPEND% pagead2.googleadservices.com,pubads.g.doubleclick.net

@@ -1,0 +1,11 @@
+#!name=独立模块-ofo共享单车
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/activity2\.api\.ofo\.com\/ofo\/Api\/v2\/ads - reject
+^https?:\/\/ma\.ofo\.com\/adImage\/ - reject
+^https?:\/\/ma\.ofo\.com\/ads - reject
+^https?:\/\/supportda\.ofo\.com\/adaction\? - reject
+
+[MITM]
+hostname = %APPEND% activity2.api.ofo.com,ma.ofo.com,supportda.ofo.com

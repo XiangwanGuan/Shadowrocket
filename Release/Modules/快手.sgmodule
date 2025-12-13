@@ -1,0 +1,21 @@
+#!name=独立模块-快手
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/ad\/ - reject-dict
+^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/live\/feed\/info\/simplelive\/card\? - reject-dict
+^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/nearby\/widget\/info\? - reject-dict
+^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/taskCenter\/task\/report\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/im\/wd\/top\/navigation\/getRecommendedSession\? 'delpaths([["data","operationRecommendationList"]])'
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/feed\/(selection|selectionFast)\? 'if (.feeds | type) == "array" then .feeds |= map(select(.ad | not)) else . end'
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/user\/profile\/v2\? 'delpaths([["postRecommends"]])'
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? '.sidebarExSquareStyle.commonlyUsedList |= map(select(.title == "设置" or .title == "历史记录" or .title == "草稿箱" or .title == "我的钱包" or .title == "小程序" or .title == "未成年人模式" or .title == "官方客服" or .title == "内容偏好" or .title == "离线模式" or .title == "稍后再看" or .title == "举报中心" or .title == "挂件"))'
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? 'delpaths([["reskinConfig"]])'
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? 'delpaths([["sidebarExSquareStyle","moreList"]])'
+http-response-jq ^https?:\/\/(apissl|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? 'delpaths([["sidebarExSquareStyle","topList"]])'
+http-response-jq ^https?:\/\/(apissl|az\d-live|az\d-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/n\/live\/feed\/square\/refresh\? 'delpaths([["data","banners"]])'
+
+[MITM]
+hostname = %APPEND% apissl.gifshow.com,apissl.ksapisrv.com,az*-api-idc.ksapisrv.com,az*-api-js.gifshow.com,az*-api.ksapisrv.com,az*-live.ksapisrv.com,az4-api-idc.ksapisrv.com

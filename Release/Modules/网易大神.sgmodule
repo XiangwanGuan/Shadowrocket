@@ -1,0 +1,21 @@
+#!name=独立模块-网易大神
+#!desc=2025-12-11 16:17:40
+
+[Rule]
+DOMAIN, httpdns-sdk.n.netease.com, REJECT,pre-matching
+DOMAIN, httpdns.music.163.com, REJECT,pre-matching
+DOMAIN, httpdns.n.netease.com, REJECT,pre-matching
+DOMAIN, httpdns.yunxindns.com, REJECT,pre-matching
+DOMAIN, lofter.httpdns.c.163.com, REJECT,pre-matching
+DOMAIN, music.httpdns.c.163.com, REJECT,pre-matching
+IP-CIDR, 59.111.239.61/32, REJECT,no-resolve
+IP-CIDR, 59.111.239.62/32, REJECT,no-resolve
+IP-CIDR, 115.236.121.51/32, REJECT,no-resolve
+IP-CIDR, 115.236.121.195/32, REJECT,no-resolve
+
+[URL Rewrite]
+^https?:\/\/god\.gameyw\.netease\.com\/v\d\/ad - reject-dict
+^https?:\/\/ok\.166\.net\/reunionpub\/202[2-9]{1}-[0-9]{2}-[0-9]{2}\/ntesgod_cms\/.*.jpg$ - reject-200
+
+[MITM]
+hostname = %APPEND% god.gameyw.netease.com,ok.166.net

@@ -1,0 +1,12 @@
+#!name=独立模块-Pikpak
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, open-pixon.ads-pixiv.net, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/access.mypikpak.com/access_controller/v1/area_accessible - reject
+^https?:\/\/d\.socdm\.com\/adsv\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% access.mypikpak.com,d.socdm.com

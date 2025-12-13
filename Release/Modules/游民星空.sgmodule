@@ -1,0 +1,12 @@
+#!name=独立模块-游民星空
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/.+\.gamersky.com/v1/statisticAd - reject-dict
+^https?:\/\/.+\.gamersky\.com\/.+\/adSystem\/ad\/.+ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/.+\.gamersky.com/.+/lists/getListElements '.listElements |= map(select(has("adCategory") | not))'
+
+[MITM]
+hostname = %APPEND% *.gamersky.com

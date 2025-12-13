@@ -1,0 +1,12 @@
+#!name=独立模块-好轻
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/restapi\.iyunmai\.com\/(?:app|ad-)?api\/ios\/(?:tips|ad) - reject
+^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/credit\/credit-family - reject-dict
+^https?:\/\/restapi\.iyunmai\.com\/behaviour\/ios\/recommend - reject-dict
+^https?:\/\/restapi\.iyunmai\.com\/fellow-service\/ios\/popUp - reject-dict
+^https?:\/\/sq\.iyunmai\.com\/api\/ios\/adlunbo - reject
+
+[MITM]
+hostname = %APPEND% restapi.iyunmai.com,sq.iyunmai.com

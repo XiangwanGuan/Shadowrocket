@@ -1,0 +1,18 @@
+#!name=独立模块-Yahoo
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, admarketing.yahoo.net, REJECT,pre-matching
+DOMAIN, ads.auctions.yahoo.com, REJECT,pre-matching
+DOMAIN, ads.finance.yahoo.com, REJECT,pre-matching
+DOMAIN-SUFFIX, adserver.yahoo.com, REJECT,pre-matching
+DOMAIN-SUFFIX, adspecs.yahoo.com, REJECT,pre-matching
+DOMAIN-SUFFIX, advertising.yahoo.com, REJECT,pre-matching
+DOMAIN-SUFFIX, gemini.yahoo.com, REJECT,pre-matching
+DOMAIN-KEYWORD, ads.yahoo, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/m\.yap\.yahoo\.com\/v\d{2}\/getAds\.do - reject
+
+[MITM]
+hostname = %APPEND% m.yap.yahoo.com

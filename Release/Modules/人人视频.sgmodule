@@ -1,0 +1,20 @@
+#!name=独立模块-人人视频
+#!desc=2025-12-12 13:37:31
+
+[URL Rewrite]
+^https?:\/\/api.rr.tv/storage/business/rootName/app/homePage\?dataType=JSON - reject-dict
+^https?:\/\/api\.rr\.tv\/.*?Version - reject
+
+[Script]
+rrtv_json =type=http-response, pattern=^https?:\/\/api.rr.tv/user/profile, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api.rr.tv/v3plus/index/channel\?pageNum=1&position=CHANNEL_INDEX, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api.rr.tv/watch/v4, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api\.rr\.tv\/\w{3}\/level\/info, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api\.rr\.tv\/ad\/getAll, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api\.rr\.tv\/app\/config\/h5NativeBar, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api\.rr\.tv\/drama\/app\/get_combined_drama_detail, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api\.rr\.tv\/user\/privilege\/list, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+rrtv_json =type=http-response, pattern=^https?:\/\/api\.rr\.tv\/v3plus\/index\/channel\?pageNum=1&position=CHANNEL_MY, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/rrtv_json.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.rr.tv

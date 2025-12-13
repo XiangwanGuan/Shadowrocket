@@ -1,0 +1,15 @@
+#!name=独立模块-快影
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/banner\/common\/getBannerByType\? - reject-dict
+^https?:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/merchant\/ad\/ - reject-dict
+^https?:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/resource\/activity\/pendant\? - reject-dict
+^https?:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/resource\/get\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/banner\/common\/getAllBannerPage\? 'del(.data[] | select(.bannerChannelName == "活动"))'
+http-response-jq ^https?:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/banner\/common\/getBannerByTypeV2\? 'del(.list[] | select(.bannerChannelName == "活动"))'
+
+[MITM]
+hostname = %APPEND% api.kmovie.gifshow.com

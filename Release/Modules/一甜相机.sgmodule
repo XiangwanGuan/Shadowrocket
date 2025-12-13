@@ -1,0 +1,13 @@
+#!name=独立模块-一甜相机
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/(m2u-api\.getkwai|api-m2u\.kuaishou)\.com\/api-server\/api\/v1\/ad\/ - reject-dict
+^https?:\/\/(m2u-api\.getkwai|api-m2u\.kuaishou)\.com\/api-server\/api\/v4\/op\/actPositions\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(m2u-api\.getkwai|api-m2u\.kuaishou)\.com\/api-server\/api\/v1\/system\/configs\? 'delpaths([["data","incentiveCfgList"]])'
+http-response-jq ^https?:\/\/(m2u-api\.getkwai|api-m2u\.kuaishou)\.com\/api-server\/api\/v1\/system\/configs\? 'delpaths([["data","shouldUseLMAdFirst"]])'
+
+[MITM]
+hostname = %APPEND% api-m2u.kuaishou.com,m2u-api.getkwai.com

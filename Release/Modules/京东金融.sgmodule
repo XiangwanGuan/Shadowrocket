@@ -1,0 +1,11 @@
+#!name=独立模块-京东金融
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/m.360buyimg\.com\/mobilecms\/s1125x2436_jfs\/ - reject-200
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/(new)?na\/m\/(?:getLoadingPicture|getPageMutilDataForHomePage|getTopCard|getBottomNavigation) - reject
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/app\/(new)?na\/m\/getLaunchImageList - reject-dict
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/(new)?na\/m\/adInfo - reject-200
+
+[MITM]
+hostname = %APPEND% m.360buyimg.com,ms.jr.jd.com

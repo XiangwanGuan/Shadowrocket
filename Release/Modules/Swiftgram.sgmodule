@@ -1,0 +1,8 @@
+#!name=独立模块-Swiftgram
+#!desc=2025-12-09 14:29:02
+
+[Body Rewrite]
+http-response ^https?:\/\/api\.swiftgram\.app\/v0\/settings announcements_data random_body
+
+[MITM]
+hostname = %APPEND% api.swiftgram.app

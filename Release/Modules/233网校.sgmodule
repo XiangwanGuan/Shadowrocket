@@ -1,0 +1,8 @@
+#!name=独立模块-233网校
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/japi\.233\.com\/ess-ecms-api\/advert - reject-200
+
+[MITM]
+hostname = %APPEND% japi.233.com

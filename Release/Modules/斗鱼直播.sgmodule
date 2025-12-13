@@ -1,0 +1,29 @@
+#!name=独立模块-斗鱼直播
+#!desc=2025-12-11 16:17:37
+
+[Rule]
+DOMAIN, stun1.douyucdn.cn, REJECT,pre-matching
+DOMAIN, stun1.qvb.qcloud.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/capi\.douyucdn\.cn\/api\/ios_app\/check_update - reject-img
+^https?:\/\/capi\.douyucdn\.cn\/api\/v1\/getStartSend?client_sys=ios - reject-img
+^https?:\/\/capi\.douyucdn\.cn\/lapi\/sign\/app(api)?\/getinfo\?client_sys=ios - reject
+^https?:\/\/daoyu\.sdo\.com\/api\/userCommon\/getAppStartAd - reject
+^https?:\/\/douyucdn\.cn\/.+\/appapi\/getinfo - reject
+^https?:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo - reject-dict
+^https?:\/\/staticlive\.douyucdn\.cn\/.+?\/getStartSend - reject-img
+^https?:\/\/staticlive\.douyucdn\.cn\/upload\/signs\/ - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/apiv2\.douyucdn\.cn\/japi\/entrance\/roomRes\/nc\/m\/list 'delpaths([["data","entrance_d"]])'
+http-response-jq ^https?:\/\/apiv2\.douyucdn\.cn\/japi\/entrance\/roomRes\/nc\/m\/list 'delpaths([["data","pendant_a"]])'
+http-response-jq ^https?:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config 'if (getpath([]) | has("bringGoodsSwitch")) then (setpath(["bringGoodsSwitch"]; 0)) else . end'
+http-response-jq ^https?:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config 'if (getpath([]) | has("followMoreAnchorEntrance")) then (setpath(["followMoreAnchorEntrance"]; 0)) else . end'
+http-response-jq ^https?:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config 'if (getpath([]) | has("greatGodGameSitterSwitch")) then (setpath(["greatGodGameSitterSwitch"]; 0)) else . end'
+http-response-jq ^https?:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config 'if (getpath([]) | has("homeActFloatSwitch")) then (setpath(["homeActFloatSwitch"]; 0)) else . end'
+http-response-jq ^https?:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config 'if (getpath([]) | has("qqGameSwitch")) then (setpath(["qqGameSwitch"]; 0)) else . end'
+http-response-jq ^https?:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config 'if (getpath([]) | has("sdklivebanner")) then (setpath(["sdklivebanner"]; 0)) else . end'
+
+[MITM]
+hostname = %APPEND% apiv2.douyucdn.cn,capi.douyucdn.cn,daoyu.sdo.com,rtbapi.douyucdn.cn,staticlive.douyucdn.cn,venus.douyucdn.cn

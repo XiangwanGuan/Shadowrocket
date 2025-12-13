@@ -1,0 +1,42 @@
+#!name=独立模块-喜马拉雅
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, adbehavior.wsa.ximalaya.com, REJECT,pre-matching
+DOMAIN, adbehavior.ximalaya.com, REJECT,pre-matching
+DOMAIN, adse.wsa.ximalaya.com, REJECT,pre-matching
+DOMAIN, adse.ximalaya.com, REJECT,pre-matching
+DOMAIN, adsehera.ximalaya.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/(live|livewsa)\.ximalaya\.com\/lamia\/v1\/subscribe\/status$ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/app-skin-service\/skin\/setting\/info\/ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/business-sale-promotion-guide-mobile-web\/popup\/ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-feed\/v\d\/scene\/listen\/refresh\? - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/firework-portal\/v\d+\/sync\? - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-playpage\/playpage\/recommendContentV\d\/ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-playpage\/playpage\/recommend\/resource\/allocation\/ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/purchased\/recommend\/ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/social-web\/follow-stream\/category\/\d+$ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/subscribe\/v\d\/subscribe\/recommend\? - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/subscribe\/v\d\/subscribe\/tagAlbumList$ - reject-dict
+^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/track-feed\/v\d\/chase\/recommend\/ - reject-dict
+^https?:\/\/(m|mwsa)\.ximalaya\.com\/x-web-activity\/signIn\/getHomePageSignInInfo\/ - reject-dict
+^https?:\/\/(search|searchwsa)\.ximalaya\.com\/hub\/(guideWord|hotWord)V\d\/ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-category\/customCategories\/ '.categoryList |= map(.itemList |= map(select(.title | test("直播|123狂欢节|SVIP"; "i") | not))) | .customCategoryList |= map(select(.title | test("直播|123狂欢节|SVIP"; "i") | not))'
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-feed\/v\d\/mix\/ '.heData |= map(select(.item.list[].bizType != "SceneListenCard"))'
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/football-portal\/diff2\/batch\? 'delpaths([["json","ad"]])'
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/football-portal\/diff2\/batch\? 'delpaths([["json","toc"]])'
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/homePage\/ '.data.serviceModule.entrances |= map(select(.name == "全部服务"))'
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/homePage\/ 'delpaths([["data","freeListenV2"]])'
+http-response-jq ^https?:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/nexus-web\/v\d\/tabs\/customTabs\? '.data.feedTabs |= map(select(.name != "大赛"))'
+http-response-jq ^https?:\/\/mobwsa\.ximalaya\.com\/mobile-playpage\/playpage\/tabs\/v2\/ 'delpaths([["data","playpage","resourceMap","defaultResource"]])'
+http-response-jq ^https?:\/\/mobwsa\.ximalaya\.com\/mobile-playpage\/playpage\/tabs\/v2\/ 'delpaths([["data","playpage","resourceMap","playPageTip"]])'
+
+[Map Local]
+^https?:\/\/(m|mwsa)\.ximalaya\.com\/community\/square\/v\d\/stream\? data-type=text data="{"data":{"cards":[{"content":{},"type":"RECOMMENDS"}]},"ret":0}" status-code=200 header="content-type: application/json"
+
+[MITM]
+hostname = %APPEND% gslbali.ximalaya.com,m.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,mwsa.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com

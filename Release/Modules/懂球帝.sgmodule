@@ -1,0 +1,11 @@
+#!name=独立模块-懂球帝
+#!desc=2025-12-11 16:17:37
+
+[Rule]
+DOMAIN-KEYWORD, apimg.qunliao.info, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/ap\.dongdianqiu\.com\/plat\/v4 - reject
+
+[MITM]
+hostname = %APPEND% ap.dongdianqiu.com

@@ -1,0 +1,12 @@
+#!name=独立模块-天府银行 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/chl\.tf\.cn\/channelmg\/sys\/socso\/socsonew\/queryIsRealNameAdertInfo - reject-dict
+^https?:\/\/wechat\.tf\.cn\/mini-financial\/model\/queryPopup - reject-dict
+
+[Body Rewrite]
+http-response ^https?:\/\/chl\.tf\.cn\/channelmg\/sys\/socso\/order\/queryOrderInfo "imgUrl" response-body
+
+[MITM]
+hostname = %APPEND% chl.tf.cn,wechat.tf.cn

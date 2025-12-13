@@ -1,0 +1,8 @@
+#!name=独立模块-京东云无线宝
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/router-app-api\.jdcloud\.com\/v\d\/board\/routerAppSplash - reject-200
+
+[MITM]
+hostname = %APPEND% router-app-api.jdcloud.com

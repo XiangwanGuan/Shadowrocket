@@ -1,0 +1,8 @@
+#!name=独立模块-花小猪
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/res\.hongyibo\.com\.cn\/os\/gs\/resapi\/activity\/mget\?_t - reject-dict
+
+[MITM]
+hostname = %APPEND% res.hongyibo.com.cn

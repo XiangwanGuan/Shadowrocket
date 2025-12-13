@@ -1,0 +1,18 @@
+#!name=独立模块-驾考宝典
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/\w+\.kakamobi\.cn\/api\/open\/v\d\/advert-sdk\/ - reject
+^https?:\/\/cheyouquan\.kakamobi\.com\/api\/open\/group\/recommend-subscribe-tag - reject-dict
+^https?:\/\/jiakao-misc\.kakamobi\.cn\/api\/open\/my-tab-config\/(?:banner|selection)-list - reject-dict
+^https?:\/\/jiaxiao-awd\.kakamobi\.cn\/api\/h5\/v\d\/home-lead-advertise\/abtest - reject-dict
+^https?:\/\/mcbd\.maiche\.com\/api\/open\/v\d\/jiakao-business\/get-naben-advert - reject-dict
+^https?:\/\/mcbd\.maiche\.com\/api\/open\/v\d\/user\/get-popup-window - reject
+^https?:\/\/monkey\.kakamobi\.cn\/api\/open\/live-room\/get-resource - reject-dict
+^https?:\/\/monkey\.kakamobi\.cn\/api\/open\/live\/get-recommend-live-protocol - reject-dict
+^https?:\/\/smart\.789\.image\.mucang\.cn\/advert - reject-img
+^https?:\/\/squirrel\.kakamobi\.cn\/api\/open\/recommend-goods\/get-my-page-banner - reject-dict
+^https?:\/\/swallow\.kakamobi\.cn\/api\/open\/config\/get-config - reject-dict
+
+[MITM]
+hostname = %APPEND% *.kakamobi.cn,cheyouquan.kakamobi.com,mcbd.maiche.com,smart.789.image.mucang.cn

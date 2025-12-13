@@ -1,0 +1,28 @@
+#!name=独立模块-猫耳FM
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/app\.missevan\.com\/x\/recommend\/get-popup$ - reject-dict
+^https?:\/\/data\.missevan\.com\/site\/ad-track$ - reject-dict
+^https?:\/\/fm\.missevan\.com\/api\/v2\/chatroom\/sound\/recommend\? - reject-dict
+^https?:\/\/fm\.missevan\.com\/api\/v2\/meta\/banner$ - reject-dict
+^https?:\/\/fm\.missevan\.com\/api\/v2\/recommended\/top\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/app\.missevan\.com\/discovery\/list$ '.info |= map(map(select(.title != "免流服务")))'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ '.info.cronet |= (fromjson | .quic=false | tojson)'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["0"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["false"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["info","enable_tab_bar_live_notice"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["info","homepage_top_task_button"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["info","httpdns"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["info","tab_bar_live"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/config$ 'delpaths([["info","teenager_popup_mode"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/get-top$ 'delpaths([["info","search_words"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/icons\? '.info.icons |= map(select(.title as $t | $t == "直播" or $t == "必听剧" or $t == "免费榜" or $t == "夜猫子" or $t == "启动音"))'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/launch\? 'delpaths([["info","splash"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/launch\? 'delpaths([["info","splash_ready"]])'
+http-response-jq ^https?:\/\/app\.missevan\.com\/site\/tabs\? '.info.tabs |= map(select(.title as $t | ["直播", "发现", "广播剧", "听书", "分类"] | index($t) != null))'
+
+[MITM]
+hostname = %APPEND% app.missevan.com,data.missevan.com,fm.missevan.com

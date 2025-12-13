@@ -1,0 +1,21 @@
+#!name=独立模块-得间小说
+#!desc=2025-12-11 16:17:37
+
+[Rule]
+DOMAIN, saad.ms.zhangyue.net, REJECT,pre-matching
+DOMAIN, smad.ms.zhangyue.net, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/dj\.palmestore\.com\/djad\/ - reject-dict
+^https?:\/\/dj\.palmestore\.com\/zyapi\/bookstore\/ad\/ - reject-dict
+^https?:\/\/dj\.palmestore\.com\/zybk\/api\/ad\/ - reject-dict
+^https?:\/\/dj\.palmestore\.com\/zybk\/api\/bookshelf\/index\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/dj\.palmestore\.com\/zybk\/api\/powerup\/userGroup\? 'delpaths([["body","sdkShortPlayAB"]])'
+http-response-jq ^https?:\/\/dj\.palmestore\.com\/zybk\/api\/powerup\/userGroup\? 'delpaths([["body","sevenDaysAd"]])'
+http-response-jq ^https?:\/\/dj\.palmestore\.com\/zybk\/api\/powerup\/userGroup\? 'delpaths([["body","shortPlayShow"]])'
+http-response-jq ^https?:\/\/dj\.palmestore\.com\/zybk\/api\/search\/index\? 'delpaths([["body","keywords"]])'
+
+[MITM]
+hostname = %APPEND% dj.palmestore.com

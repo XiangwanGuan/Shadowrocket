@@ -1,0 +1,8 @@
+#!name=独立模块-两步路
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - reject
+
+[MITM]
+hostname = %APPEND% helper.2bulu.com

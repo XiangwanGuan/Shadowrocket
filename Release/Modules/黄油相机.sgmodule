@@ -1,0 +1,11 @@
+#!name=独立模块-黄油相机
+#!desc=2025-12-12 13:37:29
+
+[URL Rewrite]
+^https?:\/\/api\d\.bybutter\.com\/v\d\/app\/placements\/\d\/advertisements - reject
+
+[Script]
+bybutter =type=http-response, pattern=^https?:\/\/api\d\.bybutter\.com\/v\d, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/bybutter.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api*.bybutter.com

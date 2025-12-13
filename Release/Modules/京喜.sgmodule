@@ -1,0 +1,12 @@
+#!name=独立模块-京喜
+#!desc=2025-12-12 13:37:29
+
+[Body Rewrite]
+http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_SmartPush pushData SUCCEED
+http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising jdLiteAdvertisingVO SUCCEED
+
+[Script]
+jingxiAd =type=http-response, pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/jingxiAd.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.m.jd.com

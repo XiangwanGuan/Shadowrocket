@@ -1,0 +1,14 @@
+#!name=独立模块-易车
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, adx.yiche.com, REJECT,pre-matching
+DOMAIN, log.ycapp.yiche.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/api\.ycapp\.yiche\.com\/appnews\/getadlist - reject-img
+^https?:\/\/api\.ycapp\.yiche\.com\/yicheapp\/getadlist - reject-img
+^https?:\/\/cheyouapi\.ycapp\.yiche\.com\/appforum\/getusermessagecount - reject-img
+
+[MITM]
+hostname = %APPEND% api.ycapp.yiche.com,cheyouapi.ycapp.yiche.com

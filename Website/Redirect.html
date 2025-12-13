@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>URL Redirect</title>
+    <link
+      rel="icon"
+      href="favicon-light.png"
+      media="(prefers-color-scheme: dark)"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="favicon-dark.png"
+      media="(prefers-color-scheme: light)"
+      type="image/png"
+    />
+
+    <style>
+      :root {
+        --bg-color: #f7f9fc;
+        --text-color: #333;
+        --subtext-color: #666;
+        --link-bg: #007aff;
+        --link-hover: #0051ba;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #1e1e1e;
+          --text-color: #e0e0e0;
+          --subtext-color: #888888;
+          --link-bg: #0a84ff;
+          --link-hover: #006fde;
+        }
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: var(--bg-color);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 40px 10px;
+        box-sizing: border-box;
+        color: var(--text-color);
+        min-height: calc(100vh - 80px);
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        color: var(--text-color);
+        margin: 0 0 20px;
+      }
+
+      #message {
+        font-size: 1rem;
+        color: var(--subtext-color);
+        margin: 0 0 30px;
+      }
+
+      a#redirect-link {
+        display: none;
+        padding: 9px 18px;
+        font-size: 0.9rem;
+        background-color: var(--link-bg);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+      }
+
+      a#redirect-link:hover {
+        background-color: var(--link-hover);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="title">即将跳转至Shadowrocket</h1>
+    <p id="message"></p>
+    <a id="redirect-link" href="#">点击此处 手动跳转</a>
+
+    <script>
+      function getQueryParam(param) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(param);
+      }
+
+      function decodeUrl(url) {
+        try {
+          return decodeURIComponent(url);
+        } catch {
+          return url;
+        }
+      }
+
+      function isValidUrlScheme(url) {
+        return /^[a-zA-Z][a-zA-Z0-9+\-.]*:/.test(url);
+      }
+
+      function initRedirect() {
+        const rawUrl = getQueryParam("url");
+        const targetUrl = decodeUrl(rawUrl);
+
+        const redirectLink = document.getElementById("redirect-link");
+        const message = document.getElementById("message");
+        const title = document.getElementById("title");
+
+        if (targetUrl && isValidUrlScheme(targetUrl)) {
+          redirectLink.href = targetUrl;
+          redirectLink.style.display = "inline-block";
+          message.textContent = "";
+
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 1500);
+        } else {
+          title.style.display = "none";
+          message.textContent = "无效！请检查参数是否正确！";
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", initRedirect);
+    </script>
+  </body>
+</html>

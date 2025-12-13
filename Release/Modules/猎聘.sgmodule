@@ -1,0 +1,14 @@
+#!name=独立模块-猎聘
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, apmplus.volces.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/api-ac\.liepin\.com\/api\/com\.liepin\.cyclops\.live\.get-ad-cards - reject-dict
+^https?:\/\/api-ac\.liepin\.com\/api\/com\.liepin\.pupa\.discover\.click-tab - reject-dict
+^https?:\/\/api-c\.liepin\.com\/api\/com\.liepin\.pupa\.discover\.city\.get-ad-comps - reject-dict
+^https?:\/\/api-wanda\.liepin\.com\/api\/com\.liepin\.cbp\.baizhong\.op\.v\d-show-4app - reject-200
+
+[MITM]
+hostname = %APPEND% api-ac.liepin.com,api-c.liepin.com,api-wanda.liepin.com

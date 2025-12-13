@@ -1,0 +1,8 @@
+#!name=独立模块-下厨房
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/res1\.hubcloud\.com\.cn - reject-200
+
+[MITM]
+hostname = %APPEND% res1.hubcloud.com.cn

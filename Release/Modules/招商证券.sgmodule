@@ -1,0 +1,8 @@
+#!name=独立模块-招商证券
+#!desc=2025-12-12 13:37:32
+
+[Script]
+cmschina =type=http-response, pattern=^https?:\/\/marketing\.cmschina\.com\/mkt\/api\/v1\?.*, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/cmschina.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% marketing.cmschina.com

@@ -1,0 +1,8 @@
+#!name=独立模块-中羽在线
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/app\.badmintoncn\.com\/mag\/operative\/v\d\/ad\/listNotEndByPlace\?place=first_page - reject-200
+
+[MITM]
+hostname = %APPEND% app.badmintoncn.com

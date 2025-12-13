@@ -1,0 +1,8 @@
+#!name=独立模块-鲁班到家
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/order-app-api\.lbdj\.com\/lbdj\/apporder\/ad\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% order-app-api.lbdj.com

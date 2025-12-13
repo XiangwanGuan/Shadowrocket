@@ -1,0 +1,10 @@
+#!name=独立模块-掌上生活
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/intellicc\.bas\.cmbchina\.com\/Edge\/api\/mlife\.intelli\.render\.api\.render\/getDynamicDataSec - reject
+^https?:\/\/intellicc\.bcs\.cmbchina\.com\/Edge\/api\/mlife\.intelli\.adrender\.api\.AdWork\/getAdsBySlotId - reject-dict
+^https?:\/\/mbasecc\.(bas|bcs)\.cmbchina\.com\/Edge\/api\/mlife\.clientface\.clientservice\.api\.advertiseService\/preCacheAdvertiseSec - reject-dict
+
+[MITM]
+hostname = %APPEND% intellicc.bas.cmbchina.com,intellicc.bcs.cmbchina.com,mbasecc.bas.cmbchina.com,mbasecc.bcs.cmbchina.com

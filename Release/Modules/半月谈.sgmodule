@@ -1,0 +1,8 @@
+#!name=独立模块-半月谈
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/www\.banyuetanapp\.com\/byt-api\/ad\/getAdvertList\?adSpaceId=100000002 - reject-200
+
+[MITM]
+hostname = %APPEND% www.banyuetanapp.com

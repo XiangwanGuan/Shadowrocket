@@ -1,0 +1,12 @@
+#!name=独立模块-腾讯新闻
+#!desc=2025-12-12 13:37:31
+
+[URL Rewrite]
+^https?:\/\/r\.inews\.qq\.com\/(?:adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - reject
+^https?:\/\/r\.inews\.qq\.com\/(?:getBannerAds|getNewsRemoteConfig|getSplash|searchHotCatList|upLoadLoc) - reject
+
+[Script]
+qq-news =type=http-response, pattern=^https?:\/\/(news\.ssp\.qq\.com\/app|r\.inews\.qq\.com\/(get(QQNewsUnreadList|TagFeedList)|gw\/page\/event_detail|news_feed\/hot_module_list)), script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/qq-news.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% news.ssp.qq.com,r.inews.qq.com

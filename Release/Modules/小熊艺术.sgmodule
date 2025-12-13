@@ -1,0 +1,8 @@
+#!name=独立模块-小熊艺术
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/www\.xiaoxiongmeishu\.com\/api\/(home\/v1\/config\/appInit|s\/v1\/popup\/createCouponPopup) - reject
+
+[MITM]
+hostname = %APPEND% www.xiaoxiongmeishu.com

@@ -1,0 +1,8 @@
+#!name=独立模块-爱思助手
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/list-app-m\.i4\.cn\/(adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
+
+[MITM]
+hostname = %APPEND% list-app-m.i4.cn

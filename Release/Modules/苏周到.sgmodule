@@ -1,0 +1,8 @@
+#!name=独立模块-苏周到
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/szdmobile\.suzhou\.gov\.cn\/thirdapp-center\/appUpdate\/update - reject-dict
+
+[MITM]
+hostname = %APPEND% szdmobile.suzhou.gov.cn

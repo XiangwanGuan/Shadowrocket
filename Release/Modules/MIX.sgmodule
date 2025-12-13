@@ -1,0 +1,8 @@
+#!name=独立模块-MIX
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/dispatcher\.camera360\.com\/api\/v\d\/list$ - reject
+
+[MITM]
+hostname = %APPEND% dispatcher.camera360.com

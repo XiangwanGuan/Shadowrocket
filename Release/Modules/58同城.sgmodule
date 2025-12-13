@@ -1,0 +1,15 @@
+#!name=独立模块-58同城
+#!desc=2025-12-11 16:17:35
+
+[Rule]
+DOMAIN, track.58.com, REJECT,pre-matching
+DOMAIN, tracklog.58.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/.+?\.58cdn\.com\.cn\/brandads\/ - reject-200
+^https?:\/\/app\.58\.com\/api\/home\/(advertising|appadv)\/ - reject
+^https?:\/\/app\.58\.com\/api\/home\/invite\/popupAdv - reject-200
+^https?:\/\/app\.58\.com\/api\/log\/ - reject
+
+[MITM]
+hostname = %APPEND% *.58cdn.com.cn,app.58.com

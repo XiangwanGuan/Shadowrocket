@@ -1,0 +1,13 @@
+#!name=独立模块-DREAME
+#!desc=2025-12-10 08:40:01
+
+[URL Rewrite]
+^https?:\/\/cn-mall\.dreame\.tech\/dreame-mall\/api\/v1\/tag\/list$ - reject-dict
+^https?:\/\/cn-wxmall\.dreame\.tech\/main\/goods\/get-topgoods$ - reject-dict
+^https?:\/\/cn\.iot\.dreame\.tech:13267\/dreame-product\/public\/advertisement\/ - reject-dict
+
+[Map Local]
+^https?:\/\/cn\.iot\.dreame\.tech:13267\/dreame-product\/public\/common-plugin$ data-type=json data="{"code":0,"success":true,"data":{"version":881,"appVer":19,"url":"https://kelee.one/Resource/Zip/1fac49e02bbed88e594d6d7247469136_3f98a0c192ec2ba7962777a11d869c66___UNI__EDB922E.zip","md5":"a763cf226a81705b62908034c9e8cc72","validDate":"","changeLog":"","status":""},"msg":"操作成功"}" status-code=200 header="content-type: application/json"
+
+[MITM]
+hostname = %APPEND% cn-mall.dreame.tech,cn-wxmall.dreame.tech,cn.iot.dreame.tech

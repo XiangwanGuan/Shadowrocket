@@ -1,0 +1,8 @@
+#!name=独立模块-兴业证券
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/static.xyzq.cn\/image\/splash\/opera3.*.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% static.xyzq.cn

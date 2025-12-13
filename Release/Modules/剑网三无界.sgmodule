@@ -1,0 +1,8 @@
+#!name=独立模块-剑网三无界
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/jx3comm\.xoyocdn\.com\/jx3gc\/zhcn\/login_ad\/WebCareer\/WebCareerTab\.txt - reject
+
+[MITM]
+hostname = %APPEND% jx3comm.xoyocdn.com

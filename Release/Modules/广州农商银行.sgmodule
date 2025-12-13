@@ -1,0 +1,8 @@
+#!name=独立模块-广州农商银行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/mbank\.grcbank\.com\/ydyh\/resources\/startpage\/.*.(?:jpg|png) - reject-200
+
+[MITM]
+hostname = %APPEND% mbank.grcbank.com

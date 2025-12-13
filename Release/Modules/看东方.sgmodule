@@ -1,0 +1,9 @@
+#!name=独立模块-看东方
+#!desc=2025-12-09 14:29:01
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/bp-api\.bestv\.cn\/cms\/api\/c\/search\/hot\/v(2|4) '.dt.hot = [] | .dt.recommand = [] | .dt.bannerList = []'
+http-response-jq ^https?:\/\/bp-api\.bestv\.cn\/cms\/api\/free\/open\/advertisingV2 '.dt = []'
+
+[MITM]
+hostname = %APPEND% bp-api.bestv.cn

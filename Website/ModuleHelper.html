@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>模块助手</title>
+    <link
+      rel="icon"
+      href="favicon-light.png"
+      media="(prefers-color-scheme: dark)"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="favicon-dark.png"
+      media="(prefers-color-scheme: light)"
+      type="image/png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="brand">
+          <img
+            src="favicon-light.png"
+            class="logo light"
+            width="24"
+            height="24"
+            alt="logo"
+          />
+          <img
+            src="favicon-dark.png"
+            class="logo dark"
+            width="24"
+            height="24"
+            alt="logo"
+          />
+          <h1>模块助手</h1>
+        </div>
+
+        <div class="controls-row">
+          <div class="controls">
+            <input id="q" type="text" placeholder="输入应用名称" autofocus />
+            <button id="reload" class="btn">重新拉取</button>
+          </div>
+          <div class="progress-row">
+            <div class="progress"><i id="bar"></i></div>
+            <span id="status" class="badge">已就绪</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="results" class="grid"></div>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>原始模块</h3>
+          <span class="modal-close" id="modalClose">✕</span>
+        </div>
+        <pre id="modalBody"></pre>
+      </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+      <div class="modal-content small">
+        <div class="modal-header">
+          <h3>确认安装</h3>
+          <span class="modal-close" id="confirmClose">✕</span>
+        </div>
+        <div id="confirmBody">是否安装此模块？</div>
+        <div class="confirm-actions">
+          <button id="confirmCancel" class="btn">取消</button>
+          <button id="confirmOk" class="btn">确认</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <button id="backToTop" title="返回顶部">TOP</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+#!name=独立模块-中关村在线
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN-SUFFIX, afp.zol-img.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, apppv.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, cpro.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, dynamic.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, imp.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, js.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, mstat.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pic.zol-img.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pv.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pvc.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pvm.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pvmsite.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pvnapp.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pvsite.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, pvtest.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, wappv.zol.com.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, ydjs.zol.com.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/apicloud\.zol\.com\.cn\/Article\/WapLaunchLogo - reject-dict
+
+[MITM]
+hostname = %APPEND% apicloud.zol.com.cn

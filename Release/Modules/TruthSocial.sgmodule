@@ -1,0 +1,8 @@
+#!name=独立模块-TruthSocial
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/truthsocial\.com\/api\/v\d\/truth\/ads - reject
+
+[MITM]
+hostname = %APPEND% truthsocial.com

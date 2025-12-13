@@ -1,0 +1,8 @@
+#!name=独立模块-爱桐乡
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/mapi\.txcmapp\.com\/api\/open\/atx2\/ad\.php - reject-200
+
+[MITM]
+hostname = %APPEND% mapi.txcmapp.com

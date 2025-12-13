@@ -1,0 +1,12 @@
+#!name=独立模块-闪动校园
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ad\.shunchangzhixing\.com\/getAd - reject-dict
+^https?:\/\/api\.huachenjie\.com\/run-front\/ad - reject-dict
+^https?:\/\/api\.huachenjie\.com\/run-front\/ai\/getAICategory - reject-dict
+^https?:\/\/api\.huachenjie\.com\/run-front\/home\/sports\/getPopup - reject-dict
+^https?:\/\/open\.e\.kuaishou\.cn\/rest\/e\/v3\/open - reject-dict
+
+[MITM]
+hostname = %APPEND% ad.shunchangzhixing.com,api.huachenjie.com,open.e.kuaishou.cn

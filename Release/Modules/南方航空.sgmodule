@@ -1,0 +1,15 @@
+#!name=独立模块-南方航空
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/3g\.csair\.com\/CSMBP\/bookProcess\/homepopup\/queryAdvertisement - reject-200
+^https?:\/\/3g\.csair\.com\/CSMBP\/data\/homePage\/getLaunchInfoNew - reject-dict
+^https?:\/\/3g\.csair\.com\/CSMBP\/personalCenter\/ads\/getEasterEggTaskOrAds - reject-dict
+^https?:\/\/3g\.csair\.com\/CSMBP\/personalCenter\/peronsalCenterAds\/getAdvertMcmsNew - reject
+^https?:\/\/3g\.csair\.com\/CSMBP\/promotion\/personalCenterAds - reject-dict
+^https?:\/\/3g\.csair\.com\/extraClient\/data\/mytrip\/getMinPriceFlight - reject-dict
+^https?:\/\/3g\.csair\.com\/extraClient\/data\/mytrip\/getTripAdvertisement - reject-dict
+^https?:\/\/3g\.csair\.com\/extraClient\/data\/preSelecteSeat\/xproduct\/getXProductList - reject-dict
+
+[MITM]
+hostname = %APPEND% 3g.csair.com

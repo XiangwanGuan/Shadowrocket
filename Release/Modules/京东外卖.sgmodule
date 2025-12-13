@@ -1,0 +1,16 @@
+#!name=独立模块-京东外卖
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/color\.jddj\.com\/client\.action\?functionId=search_recommendRanking$ - reject-dict
+^https?:\/\/color\.jddj\.com\/client\.action\?functionId=uniformRecommend - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action$ '.data.tabList |= (map(select(.code == "recommendation" or .code == "find_food")) | map(if .code == "recommendation" then .dpHomeFeedTabResultDTOList = .dpHomeFeedTabResultDTOList[0:2] else . end | .dpHomeBannerResultDTOList = []))'
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action$ 'delpaths([["data","searchDTO","searchWords"]])'
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action$ 'delpaths([["data","wishlistDTO","bubbleTip"]])'
+http-response-jq ^https?:\/\/color\.jddj\.com\/client\.action\?functionId=hours_home$ 'del(.result.config.searchFloor.data[].searchWords) | .result.data |= map(if .tnConfigVO?.businessCode == "nearby_HourlyGo_Operation_Tags" then empty else . end)'
+http-response-jq ^https?:\/\/color\.jddj\.com\/client\.action\?functionId=wmHome$ '(.floors |= map(del(.data.tnData.newsInfo?))) | .floors |= (map(select(.mId != "newWalletIdFloor" and .mId != "recommendfloor"))) | .floors |= (map(.data |= (if .tnData? then del(.tnData.cardList, .tnData.cardListStatic, .tnData.walletList) else . end)))'
+
+[MITM]
+hostname = %APPEND% api.m.jd.com,color.jddj.com

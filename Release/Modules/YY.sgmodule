@@ -1,0 +1,21 @@
+#!name=独立模块-YY
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, dsp-ad.yy.com, REJECT,pre-matching
+DOMAIN, splash.yy.com, REJECT,pre-matching
+DOMAIN, ysad.yy.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/data\.3g\.yy\.com\/popup\/topLiveCardPopup\? - reject-dict
+^https?:\/\/yyapp-act-entrance\.yy\.com\/entrance\/list\? - reject-dict
+^https?:\/\/yyapp-fastnet\.yy\.com\/dispatch\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/personal-center\.yy\.com\/personalCenter\/list\? '.data.modules |= map(select(.moduleName != "Banner轮播")) | .data.modules |= map(if has("entrances") then .entrances |= map(select(.bizCode|IN("jishijiedaikuan","duxiaoman2","chongzhi","freeData")|not)) else . end)'
+http-response-jq ^https?:\/\/tab\.yy\.com\/tabs\? '.data.tabs |= map(select(.alias == "follow" or .alias == "im" or .alias == "me"))'
+http-response-jq ^https?:\/\/tab\.yy\.com\/tabs\? 'delpaths([["data","tabsForSelect"]])'
+http-response-jq ^https?:\/\/yyapp-idx\.yy\.com\/mobyy\/nav\/index\/idx\? '.data[].modules |= map(select(.name != "新版本滚动条" and .name != "通栏轮播" and .name != "新静默位"))'
+
+[MITM]
+hostname = %APPEND% data.3g.yy.com,personal-center.yy.com,tab.yy.com,yyapp-act-entrance.yy.com,yyapp-fastnet.yy.com,yyapp-idx.yy.com

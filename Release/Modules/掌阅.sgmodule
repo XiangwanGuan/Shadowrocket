@@ -1,0 +1,20 @@
+#!name=独立模块-掌阅
+#!desc=2025-12-11 16:17:42
+
+[Rule]
+DOMAIN, saad.ms.zhangyue.net, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/bookstore\/ad\/ - reject-dict
+^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/zyam\/app\/app\.php\? - reject-dict
+^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/zyapi\/bookstore\/ad\/ - reject-dict
+^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/zyapi\/bookstore\/user\/mytab\? - reject-dict
+^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/zybk\/api\/pop\/index\? - reject-dict
+^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/zyboot\/activity\/mytab\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/bookstore\/read\/visual\/channel\/list\? '.body.list |= map(select(.id | contains("ad_") | not))'
+http-response-jq ^https?:\/\/(webboot\.zhangyue\.com|ih2\.ireader\.com)\/zybook4\/iphone\/u\/p\/api\.php\? 'delpaths([["Splash"]])'
+
+[MITM]
+hostname = %APPEND% ih2.ireader.com,webboot.zhangyue.com

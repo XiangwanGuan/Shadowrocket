@@ -1,0 +1,14 @@
+#!name=独立模块-讯飞
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN-KEYWORD, bj.imp.voiceads.cn, REJECT,pre-matching
+DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT,pre-matching
+DOMAIN-KEYWORD, m.panda.voiceads.cn, REJECT,pre-matching
+DOMAIN-KEYWORD, ossp.voicecloud.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/imeclient\.openspeech\.cn\/adservice\/ - reject-200
+
+[MITM]
+hostname = %APPEND% imeclient.openspeech.cn

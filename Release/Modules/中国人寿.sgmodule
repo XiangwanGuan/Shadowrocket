@@ -1,0 +1,8 @@
+#!name=独立模块-中国人寿
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ecssmobile\.e-chinalife\.com:8082\/ecss\/web\/appupdate\/customization\/getFlashScreenInfo - reject-dict
+
+[MITM]
+hostname = %APPEND% ecssmobile.e-chinalife.com

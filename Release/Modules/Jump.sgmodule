@@ -1,0 +1,9 @@
+#!name=独立模块-Jump
+#!desc=2025-12-09 14:29:01
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/switch.jumpvg.com\/jump\/getlaunchad\/v2$ 'del(.data.adList)|.data.launchAd.showType=0'
+http-response-jq ^https?:\/\/switch.jumpvg.com\/jump\/recommend\/ad_conf$ '.data=[]'
+
+[MITM]
+hostname = %APPEND% switch.jumpvg.com

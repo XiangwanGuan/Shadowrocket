@@ -1,0 +1,8 @@
+#!name=独立模块-友邦
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/e-static\.aia\.com\.cn\/kyh\/resourcefolder\/ads - reject-dict
+
+[MITM]
+hostname = %APPEND% e-static.aia.com.cn

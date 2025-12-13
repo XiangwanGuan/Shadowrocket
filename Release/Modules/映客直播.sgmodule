@@ -1,0 +1,8 @@
+#!name=独立模块-映客直播
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/service\.busi\.inke\.cn\/api\/flash\/screen - reject
+
+[MITM]
+hostname = %APPEND% service.busi.inke.cn

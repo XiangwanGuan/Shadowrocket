@@ -1,0 +1,9 @@
+#!name=独立模块-GoFun出行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/gateway\.shouqiev\.com(:\d+)?\/app\/startUp - reject-dict
+^https?:\/\/gateway\.shouqiev\.com(:\d+)?\/fsda\/app\/(?:bootImage|loadPic|appBannerList) - reject-dict
+
+[MITM]
+hostname = %APPEND% gateway.shouqiev.com

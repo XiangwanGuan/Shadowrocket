@@ -1,0 +1,8 @@
+#!name=独立模块-神仙外企
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/backservice\.offerxiansheng\.com\/api\/backend-service\/bkd\/version-control\/new-version - reject-dict
+
+[MITM]
+hostname = %APPEND% backservice.offerxiansheng.com

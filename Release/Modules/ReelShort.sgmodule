@@ -1,0 +1,14 @@
+#!name=独立模块-ReelShort
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/(v-api\.crazymaplestudios\.com|d1k8g7qaebqd28\.cloudfront\.net)\/api\/video\/app\/getSplashScreenConfig$ - reject-dict
+^https?:\/\/(v-api\.crazymaplestudios\.com|d1k8g7qaebqd28\.cloudfront\.net)\/api\/video\/book\/getPayModeV2$ - reject-dict
+^https?:\/\/(v-api\.crazymaplestudios\.com|d1k8g7qaebqd28\.cloudfront\.net)\/api\/video\/hall\/landingPage$ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(v-api\.crazymaplestudios\.com|d1k8g7qaebqd28\.cloudfront\.net)\/api\/video\/book\/getBookDetailV2$ 'delpaths([["data","ad_vip"]])'
+http-response-jq ^https?:\/\/(v-api\.crazymaplestudios\.com|d1k8g7qaebqd28\.cloudfront\.net)\/api\/video\/hall\/infoV3$ 'delpaths([["data","search_keyword_list"]])'
+
+[MITM]
+hostname = %APPEND% d1k8g7qaebqd28.cloudfront.net,v-api.crazymaplestudios.com

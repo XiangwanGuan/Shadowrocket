@@ -1,0 +1,8 @@
+#!name=独立模块-香蕉是一种水果
+#!desc=2025-12-12 13:37:32
+
+[Script]
+xjsp =type=http-response, pattern=^https?:\/\/.+?\.(pipi|fuli|xiang(jiao|xiang))apps\.com\/(ucp\/index|getGlobalData|(\/|)vod\/reqplay\/), script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/xjsp.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% *.fuliapps.com,*.pipiapps.com,*.xiangjiaoapps.com,*.xiangxiangapps.com

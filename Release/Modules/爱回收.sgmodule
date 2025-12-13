@@ -1,0 +1,8 @@
+#!name=独立模块-爱回收
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/gw\.aihuishou\.com\/app-portal\/home\/getadvertisement - reject
+
+[MITM]
+hostname = %APPEND% gw.aihuishou.com

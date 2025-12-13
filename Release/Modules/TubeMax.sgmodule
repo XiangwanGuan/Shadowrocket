@@ -1,0 +1,18 @@
+#!name=独立模块-TubeMax
+#!desc=2025-12-11 16:17:40
+
+[Rule]
+DOMAIN-SUFFIX, adcanvas.com, REJECT,pre-matching
+DOMAIN-SUFFIX, adjust.com, REJECT,pre-matching
+DOMAIN-SUFFIX, adsmoloco.com, REJECT,pre-matching
+DOMAIN-SUFFIX, app-measurement.com, REJECT,pre-matching
+DOMAIN-SUFFIX, appier.net, REJECT,pre-matching
+DOMAIN-SUFFIX, applovin.com, REJECT,pre-matching
+DOMAIN-SUFFIX, applvn.com, REJECT,pre-matching
+DOMAIN-SUFFIX, pangle.io, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/.*\.i18n-pglstatp\.com\/obj\/ad-pattern-sg - reject
+
+[MITM]
+hostname = %APPEND% *.i18n-pglstatp.com

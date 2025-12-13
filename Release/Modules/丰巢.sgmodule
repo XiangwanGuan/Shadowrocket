@@ -1,0 +1,10 @@
+#!name=独立模块-丰巢
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/dsp\.fcbox\.com\/adSearch\/get\? - reject
+^https?:\/\/external\.fcbox\.com\/wxgw\/post\/suggestion\/query - reject
+^https?:\/\/rtm\.fcbox\.com\/rtsWeb\/api\/resource\/ad\/queryAd - reject
+
+[MITM]
+hostname = %APPEND% dsp.fcbox.com,external.fcbox.com,rtm.fcbox.com

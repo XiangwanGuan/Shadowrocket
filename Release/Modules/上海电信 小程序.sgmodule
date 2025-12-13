@@ -1,0 +1,10 @@
+#!name=独立模块-上海电信 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/m\.sh\.189\.cn\/business-appletapi\/applet\/query\/(?:items|banners|getAdItemList) - reject-dict
+^https?:\/\/m\.sh\.189\.cn\/business-appletapi\/packBinds\/getAadvertisement - reject
+^https?:\/\/m\.sh\.189\.cn\/business-appletapi\/packageQuery\/(?:getUserAdvertising|getLiveSessionList|getTop|getssplabelinfo|getsspmaterielinfo|sspQueryOperationInfo) - reject-dict
+
+[MITM]
+hostname = %APPEND% m.sh.189.cn

@@ -1,0 +1,8 @@
+#!name=独立模块-淘宝闪购 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/waimai-guide\.ele\.me\/h5\/mtop\.ele\.growth\.fission\.client\.etmd\.et\.getmainpageicon - reject-dict
+
+[MITM]
+hostname = %APPEND% waimai-guide.ele.me

@@ -1,0 +1,11 @@
+#!name=独立模块-360智慧生活
+#!desc=2025-12-11 16:17:35
+
+[Rule]
+DOMAIN, ad.iot.360.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/app\.home\.360\.cn\/v1\/config\/custom_config - reject-dict
+
+[MITM]
+hostname = %APPEND% app.home.360.cn

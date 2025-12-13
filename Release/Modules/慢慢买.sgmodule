@@ -1,0 +1,8 @@
+#!name=独立模块-慢慢买
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/apapia-sqk\.manmanbuy\.com\/index_json\.ashx$ - reject-dict
+
+[MITM]
+hostname = %APPEND% apapia-sqk.manmanbuy.com

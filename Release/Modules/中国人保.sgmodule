@@ -1,0 +1,14 @@
+#!name=独立模块-中国人保
+#!desc=2025-12-12 13:37:32
+
+[URL Rewrite]
+^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/guessYouLike\/v - reject-dict
+^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/update\/startupPage\/v - reject-dict
+^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/h\/headlines\/queryHeadlines - reject
+
+[Script]
+picc_ads =type=http-response, pattern=^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/homeInit\/v, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/picc_ads.js, requires-body=true, max-size=0
+picc_ads =type=http-response, pattern=^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/mpageconfig\/myPageConfigList\/v, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/picc_ads.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% zgrb.epicc.com.cn

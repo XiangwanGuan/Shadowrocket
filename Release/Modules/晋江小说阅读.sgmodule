@@ -1,0 +1,9 @@
+#!name=独立模块-晋江小说阅读
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/ios\.jjwxc\.com\/appAdIos - reject-dict
+^https?:\/\/ios\.jjwxc\.com\/app\.jjwxc\/ios\/reading\/WapAdvertises - reject-dict
+
+[MITM]
+hostname = %APPEND% ios.jjwxc.com

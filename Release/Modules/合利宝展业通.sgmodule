@@ -1,0 +1,8 @@
+#!name=独立模块-合利宝展业通
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/promote-trx\.helipay\.com\/promote-business-client\/pos\/appAdvertisement\/appAdvertisementList - reject-200
+
+[MITM]
+hostname = %APPEND% promote-trx.helipay.com

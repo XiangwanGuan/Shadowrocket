@@ -1,0 +1,8 @@
+#!name=独立模块-公考雷达
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.gongkaoleida\.com\/api\/v2\/ad\/info - reject-dict
+
+[MITM]
+hostname = %APPEND% api.gongkaoleida.com

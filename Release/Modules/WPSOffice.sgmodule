@@ -1,0 +1,11 @@
+#!name=独立模块-WPSOffice
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/\w+?\.kingsoft-office-service\.com\/ad - reject-200
+^https?:\/\/ios\.wps\.cn\/ad-statistics-service - reject
+^https?:\/\/ovs-shopwindow-server.*\.wps\.com\/api\/v\d\/shop_window\/type\/ios - reject-dict
+^https?:\/\/tiance\.wps\.cn\/dce\/exec\/api\/market\/activity - reject-dict
+
+[MITM]
+hostname = %APPEND% *.kingsoft-office-service.com,ios.wps.cn,ovs-shopwindow-server*.wps.com,tiance.wps.cn

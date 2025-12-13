@@ -1,0 +1,13 @@
+#!name=独立模块-小桔充电
+#!desc=2025-12-10 08:40:04
+
+[URL Rewrite]
+^https?:\/\/energy\.xiaojukeji\.com\/energy\/hummer\/api\/resource\/display($|\?) - reject-dict
+^https?:\/\/energy\.xiaojukeji\.com\/lego\/api\/orderSprint\/stair\/info($|\?) - reject-dict
+^https?:\/\/energy\.xiaojukeji\.com\/station-api\/search\/preWords$ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/energy\.xiaojukeji\.com\/am\/marketing\/api\/member\/facade\/charge\/personal\/center\? 'delpaths([["data"]])'
+
+[MITM]
+hostname = %APPEND% am.didistatic.com,energy.xiaojukeji.com

@@ -1,0 +1,9 @@
+#!name=独立模块-豆瓣
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.douban\.com\/b.*\/common_ads\? - reject
+^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ - reject
+
+[MITM]
+hostname = %APPEND% api.douban.com

@@ -1,0 +1,13 @@
+#!name=独立模块-银盛小Y管家
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, ads.ysepay.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/ya-sdn\.ysepay\.com\/ma_gate\/advertisement - reject
+^https?:\/\/ya-sdn\.ysepay\.com\/ma_gate\/popupAds - reject
+^https?:\/\/ya-sdn\.ysepay\.com\/ma_gate\/version\/updateAppVersion - reject
+
+[MITM]
+hostname = %APPEND% ya-sdn.ysepay.com

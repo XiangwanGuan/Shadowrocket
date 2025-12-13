@@ -1,0 +1,9 @@
+#!name=独立模块-智慧苏州
+#!desc=2025-12-09 14:29:02
+
+[Map Local]
+^https?:\/\/newapp2\.szsmk\.com\/app\/config\/(queryCarousel|queryRecommendation)\/ data-type=text data="{"code":"000000","message":"操作成功","list":[]}" status-code=200 header="content-type: application/json"
+^https?:\/\/newapp2\.szsmk\.com\/app\/config\/queryMainAd data-type=text data="{"message":"操作成功","main_ad_list":[],"code":"000000"}" status-code=200 header="content-type: application/json"
+
+[MITM]
+hostname = %APPEND% newapp2.szsmk.com

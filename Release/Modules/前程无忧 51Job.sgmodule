@@ -1,0 +1,20 @@
+#!name=独立模块-前程无忧 51Job
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/appapi\.51jobapp\.com\/api\/market\/get_launch\.php\? - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/launch-hub\/open\/noauth\/popUp\/ - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/launch-hub\/open\/noauth\/popUp\/getHomePagePopUp\? - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/open\/51job-activities\/secJob\/queryHomeSecondConfigV2\? - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/open\/noauth\/jobs\/detail\/sesame-competitive\/ - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/open\/noauth\/jobs\/job-detail\/user-rights\? - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/open\/operation\/get\/latest\/banner-list\? - reject-dict
+^https?:\/\/cupid\.51jobapp\.com\/open\/resume\/strategy\/resume-build\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/cupid\.51jobapp\.com\/open\/noauth\/recommend\/job-tab-dynamic\? 'delpaths([["resultbody","adsTabFeeds"]])'
+http-response-jq ^https?:\/\/cupid\.51jobapp\.com\/open\/tab\/good-job\/modules\? 'delpaths([["resultbody","bannerList"]])'
+http-response-jq ^https?:\/\/cupid\.51jobapp\.com\/open\/user-task\/user\/task\/ 'delpaths([["resultbody","availableTaskList"]])'
+
+[MITM]
+hostname = %APPEND% appapi.51jobapp.com,cupid.51jobapp.com

@@ -1,0 +1,12 @@
+#!name=独立模块-百词斩
+#!desc=2025-12-11 16:17:36
+
+[Rule]
+DOMAIN, advertise.baicizhan.com, REJECT,pre-matching
+DOMAIN, advertise.baicizhan.org, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/7n\.bczcdn\.com\/launchad\/ - reject-200
+
+[MITM]
+hostname = %APPEND% 7n.bczcdn.com

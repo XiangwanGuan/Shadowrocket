@@ -1,0 +1,13 @@
+#!name=独立模块-财新网
+#!desc=2025-12-12 13:37:28
+
+[Rule]
+DOMAIN-SUFFIX, apollo.caixin.com, REJECT,pre-matching
+DOMAIN-SUFFIX, logstat.caixin.com, REJECT,pre-matching
+DOMAIN-SUFFIX, promote.caixin.com, REJECT,pre-matching
+
+[Script]
+caixinAd =type=http-response, pattern=^https?:\/\/gg\.caixin\.com\/s\?z=caixin&op=1&c=3362, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/caixinAd.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% gg.caixin.com

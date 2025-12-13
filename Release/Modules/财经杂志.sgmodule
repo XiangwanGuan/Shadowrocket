@@ -1,0 +1,8 @@
+#!name=独立模块-财经杂志
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.caijingmobile\.com\/(ad|advert)\/ - reject
+
+[MITM]
+hostname = %APPEND% api.caijingmobile.com

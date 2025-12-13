@@ -1,0 +1,17 @@
+#!name=独立模块-途虎养车
+#!desc=2025-12-12 13:37:31
+
+[URL Rewrite]
+^https?:\/\/cl-gateway\.tuhu\.cn\/cl-common-api\/api\/personalCenter\/getAutoSuperConfig - reject
+^https?:\/\/mkt-gateway\.tuhu\.cn\/mkt-cms\/circle\/recommend\/ - reject
+^https?:\/\/mkt-gateway\.tuhu\.cn\/mkt-push-message-box\/banner\/cms\/getIndexBanner - reject
+^https?:\/\/mkt-gateway\.tuhu\.cn\/mkt-scene-marketing-service\/api\/scene\/queryScheme - reject
+^https?:\/\/mkt-gateway\.tuhu\.cn\/mlp-product-search-api\/search\/helper\/defaultAndHotWord - reject
+
+[Script]
+tuhu =type=http-response, pattern=^https?:\/\/cl-gateway\.tuhu\.cn\/cl-common-api\/api\/personalCenter\/getCmsModuleList, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/tuhu.js, requires-body=true, max-size=0
+tuhu =type=http-response, pattern=^https?:\/\/cl-gateway\.tuhu\.cn\/cl-homepage-service\/homePage\/getHomePageInfo, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/tuhu.js, requires-body=true, max-size=0
+tuhu =type=http-response, pattern=^https?:\/\/cl-gateway\.tuhu\.cn\/cl-shop-api\/shopTab\/getModuleForC, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/tuhu.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% cl-gateway.tuhu.cn,mkt-gateway.tuhu.cn

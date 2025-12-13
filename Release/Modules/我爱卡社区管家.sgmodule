@@ -1,0 +1,11 @@
+#!name=独立模块-我爱卡社区管家
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.51credit\.com\/app\/popup\/appPopup - reject-dict
+^https?:\/\/api\.51credit\.com\/bbs\/app\/api\/v\d\/task\/operationalCredit - reject-dict
+^https?:\/\/api\.51credit\.com\/bbs\/app\/api\/v\d\/topic\/chat - reject-dict
+^https?:\/\/api\.51credit\.com\/ks\/a\/list\? - reject-dict
+
+[MITM]
+hostname = %APPEND% api.51credit.com

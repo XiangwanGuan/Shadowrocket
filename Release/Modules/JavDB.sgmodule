@@ -1,0 +1,8 @@
+#!name=独立模块-JavDB
+#!desc=2025-12-12 13:37:29
+
+[Script]
+javdb =type=http-response, pattern=^https?:\/\/api\.btyjscl\.com\/api\/v\d\/(?:ads|startup|users|movies), script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/javdb.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.btyjscl.com

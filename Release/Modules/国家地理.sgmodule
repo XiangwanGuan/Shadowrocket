@@ -1,0 +1,9 @@
+#!name=独立模块-国家地理
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/dili\.bdatu\.com\/jiekou\/ad\/ - reject
+^https?:\/\/wap\.ngchina\.cn\/news\/adverts\/ - reject-200
+
+[MITM]
+hostname = %APPEND% dili.bdatu.com,wap.ngchina.cn

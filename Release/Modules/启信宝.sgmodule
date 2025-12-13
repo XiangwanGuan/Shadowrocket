@@ -1,0 +1,17 @@
+#!name=独立模块-启信宝
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/appc-v6\.qixin\.com\/v4\/enterprise\/getRecommendEnts$ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/enterprise\/getRecommendation$ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/enterprise\/homePageRecommend\/recommendCard\d+ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/general\/getAppBanners$ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/general\/getAppBottomBanners$ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/general\/getAppFloatAd$ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/user\/getRecommendPersons$ - reject-dict
+^https?:\/\/appc-v6\.qixin\.com\/v4\/user\/getUserActivitys$ - reject-dict
+^https?:\/\/appc\.qixin\.com\/v4\/general\/getSearchPlaceholderRedirect$ - reject-dict
+^https?:\/\/qxb-minicode-pic-osscache\.qixin\.com\/web\/ - reject
+
+[MITM]
+hostname = %APPEND% appc-v6.qixin.com,appc.qixin.com,qxb-minicode-pic-osscache.qixin.com

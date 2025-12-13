@@ -1,0 +1,10 @@
+#!name=独立模块-不背单词
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/(img|hwimg)\.beingfine\.cn\/(?:float_button|card) - reject-dict
+^https?:\/\/hwimg\.beingfine\.cn\/(?:card|Channel) - reject-dict
+^https?:\/\/learnywhere\.cn\/api\/activity\/23\/423dsj\/inapp\/bb\/promote - reject-dict
+
+[MITM]
+hostname = %APPEND% hwimg.beingfine.cn,img.beingfine.cn,learnywhere.cn

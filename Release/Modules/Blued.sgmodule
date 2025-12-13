@@ -1,0 +1,12 @@
+#!name=独立模块-Blued
+#!desc=2025-12-12 13:37:28
+
+[URL Rewrite]
+^https?:\/\/social\.blued\.cn\/users\/no_auth\/benefit - reject-dict
+^https?:\/\/social\.blued\.cn\/users\/recommend - reject-dict
+
+[Script]
+blued =type=http-response, pattern=^https?:\/\/social\.blued\.cn\/users\/.+\/more\/ios\?v=2, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/blued.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% social.blued.cn

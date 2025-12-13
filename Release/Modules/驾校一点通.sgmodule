@@ -1,0 +1,31 @@
+#!name=独立模块-驾校一点通
+#!desc=2025-12-11 16:17:38
+
+[Rule]
+DOMAIN, richmanapi.jxedt.com, REJECT,pre-matching
+DOMAIN, richmanmain.jxedt.com, REJECT,pre-matching
+DOMAIN, richmanrules.jxedt.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/gouche\.ksedt\.com\/config\/popup\/info$ - reject-dict
+^https?:\/\/op\.ksedt\.com\/jxedtLive\/liveIntroduceResource - reject-dict
+^https?:\/\/richmanrules\.ksedt\.com\/intellectWaterfallBidding\/find$ - reject-dict
+^https?:\/\/richmanrules\.ksedt\.com\/intellectWaterfall\/find$ - reject-dict
+^https?:\/\/richmanrules\.ksedt\.com\/serverConfig\/3\/adConfig\.json - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","abtest_h5url"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","adSdkSwitch4simulationExam"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","adSdkSwitch4testPointVideo"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","advert_interval"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","discover"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","examPageLoadADSwitch"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","gouche"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","goucheConfig"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","h5_promotion_page"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","homead"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","launchApp"]])'
+http-response-jq ^https?:\/\/api\.ksedt\.com\/api\/config\/ 'delpaths([["result","mainLiveConfig"]])'
+
+[MITM]
+hostname = %APPEND% api.ksedt.com,gouche.ksedt.com,muses.ksedt.com,op.ksedt.com,richmanrules.ksedt.com

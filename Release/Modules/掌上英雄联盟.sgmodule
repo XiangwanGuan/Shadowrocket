@@ -1,0 +1,13 @@
+#!name=独立模块-掌上英雄联盟
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/mlol\.qt\.qq\.com\/go\/club\/match\/get_ai_search_words$ - reject-dict
+^https?:\/\/mlol\.qt\.qq\.com\/go\/customize_search\/article_rank\? - reject-dict
+^https?:\/\/mlol\.qt\.qq\.com\/go\/customize_search\/article_rank_tab\? - reject-dict
+^https?:\/\/mlol\.qt\.qq\.com\/go\/mlol_news\/search\/varcache_hotV\d\? - reject-dict
+^https?:\/\/mlol\.qt\.qq\.com\/go\/recommend\/platstrongshell\? - reject-dict
+^https?:\/\/mlol\.qt\.qq\.com\/go\/zone\/bottomtab_tip\? - reject-dict
+
+[MITM]
+hostname = %APPEND% mlol.qt.qq.com

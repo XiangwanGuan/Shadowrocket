@@ -1,0 +1,8 @@
+#!name=独立模块-神舟汽车
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/img\d+\.10101111cdn\.com\/adpos\/ - reject
+
+[MITM]
+hostname = %APPEND% img*.10101111cdn.com

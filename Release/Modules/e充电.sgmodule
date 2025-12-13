@@ -1,0 +1,8 @@
+#!name=独立模块-e充电
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cdn-evone-ceph\.echargenet\.com\/gw-emas-cdn\/63c4e3b558bb610008969f89 - reject-200
+
+[MITM]
+hostname = %APPEND% cdn-evone-ceph.echargenet.com

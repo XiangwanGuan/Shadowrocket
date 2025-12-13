@@ -1,0 +1,17 @@
+#!name=独立模块-网上国网
+#!desc=2025-12-11 16:17:40
+
+[Rule]
+DOMAIN, csc-apm.sgcc.com.cn, REJECT,pre-matching
+DOMAIN, mdap.mpaas.cn-hangzhou.aliyuncs.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/(?:csc|osg)-service\.sgcc\.com\.cn:\d+\/.*\/app_api\/selectInfoByCondition - reject-dict
+^https?:\/\/(?:csc|osg)-service\.sgcc\.com\.cn:\d+\/.*\/inner\/cache - reject
+^https?:\/\/(?:csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-appset-front\/appForceUpdate - reject
+^https?:\/\/(?:csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-appset-front\/appSync\/getAppForceUpgrade - reject
+^https?:\/\/(?:csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-appset-front\/bootpageoutter\/ - reject-dict
+^https?:\/\/(?:csc|osg)-service\.sgcc\.com\.cn:\d+\/emss-pfa-homepage-front\/member - reject-dict
+
+[MITM]
+hostname = %APPEND% csc-service.sgcc.com.cn,osg-service.sgcc.com.cn

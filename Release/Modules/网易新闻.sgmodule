@@ -1,0 +1,10 @@
+#!name=独立模块-网易新闻
+#!desc=2025-12-12 13:37:31
+
+[Script]
+163news =type=http-response, pattern=^https?:\/\/gw\.m\.163\.com\/nc\/api\/v\d\/feed\/dynamic\/headline-list\?, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/163news.js, requires-body=true, max-size=0
+163news =type=http-response, pattern=^https?:\/\/gw\.m\.163\.com\/nc\/api\/v\d\/search\/hot-word, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/163news.js, requires-body=true, max-size=0
+163news =type=http-response, pattern=^https?:\/\/nex\.163\.com\/q, script-path=https://xiangwanguan.github.io/Shadowrocket/JavaScript/163news.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% gw.m.163.com,nex.163.com

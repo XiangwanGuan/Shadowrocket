@@ -1,0 +1,10 @@
+#!name=独立模块-萝卜快跑
+#!desc=2025-12-10 08:40:02
+
+[URL Rewrite]
+^https?:\/\/idgdata\.baidu\.com\/idgactivity\/api\/newuser\/info\? - reject-dict
+^https?:\/\/idgdata\.baidu\.com\/mc\/app\/api\/listterminal\? - reject-dict
+^https?:\/\/idgdata\.baidu\.com\/operation\/api\/announce\/screen\/image_manage\? - reject-dict
+
+[MITM]
+hostname = %APPEND% idgdata.baidu.com

@@ -1,0 +1,15 @@
+#!name=独立模块-交管12123
+#!desc=2025-12-11 16:17:35
+
+[Rule]
+DOMAIN-SUFFIX, alexametrics.com, REJECT,pre-matching
+DOMAIN-SUFFIX, new.xiongzhangad.com, REJECT,pre-matching
+DOMAIN-SUFFIX, v3.fstats.xyz, REJECT,pre-matching
+DOMAIN-SUFFIX, wss.haoyundmn.com, REJECT,pre-matching
+DOMAIN-KEYWORD, in-page-push, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver - reject
+
+[MITM]
+hostname = %APPEND% gab.122.gov.cn

@@ -1,0 +1,8 @@
+#!name=独立模块-浦大喜奔
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/image\.spdbccc\.com\.cn\/group\d\/M00\/[A-Z0-9]{2}\/[A-Z0-9]{2}\/.+(?:4038|0571|M511|V-008|g549|b0628|fg817|5w501|Jo341|Z4583|oo845|i4905|MY245|YU472|Y401|w428|s000) - reject-dict
+
+[MITM]
+hostname = %APPEND% image.spdbccc.com.cn

@@ -1,0 +1,21 @@
+#!name=独立模块-最右
+#!desc=2025-12-09 14:29:03
+
+[Rule]
+URL-REGEX, "^https?:\/\/file-share\.izuiyou\.com\/octopus\/media\/templates\/search_home_page_(nv|nv_v2)\/search_home_page_nv", REJECT
+URL-REGEX, "^https?:\/\/mercury-gateway\.ixiaochuan\.cn\/mercury\/v1\/ad\/", REJECT-TINYGIF
+
+[URL Rewrite]
+^https?:\/\/203\.107\.1\.1/\d+/ss - reject
+^https?:\/\/203\.107\.1\.33/\d+/ss - reject
+^https?:\/\/203\.107\.1\.66/\d+/ss - reject
+^https?:\/\/203\.107\.1\.67/\d+/ss - reject
+^https?:\/\/203\.107\.1\.97/\d+/ss - reject
+^https?:\/\/2401:b180:2000:20::10\/\d+\/d - reject
+^https?:\/\/2401:b180:2000:30::1c\/\d+\/d - reject
+^https?:\/\/api\.izuiyou\.com\/ad\/ - reject
+^https?:\/\/api\.izuiyou\.com\/config\/get_banner - reject-200
+^https?:\/\/zyfile\.izuiyou\.com\/zyfile\/c2\/a0\/[a-z0-9-]+\.json - reject-200
+
+[MITM]
+hostname = %APPEND% 203.107.1.1,203.107.1.33,203.107.1.66,203.107.1.67,203.107.1.97,api.izuiyou.com,zyfile.izuiyou.com

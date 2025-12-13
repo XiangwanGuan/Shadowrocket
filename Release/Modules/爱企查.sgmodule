@@ -1,0 +1,18 @@
+#!name=独立模块-爱企查
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/aiqicha\.baidu\.com\/app\/bannerPicAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/app\/commonstatusAjax - reject
+^https?:\/\/aiqicha\.baidu\.com\/app\/getAppPopSettingAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/app\/getExpertVideoAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/app\/getHotTopicAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/app\/getNewsReportAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/app\/getPopConfigAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/apps\/getHomeMonitorDataAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/apps\/getHotRecommendV2Ajax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/apps\/searchRecommendAjax - reject-dict
+^https?:\/\/aiqicha\.baidu\.com\/m\/getLoginWordsAjax - reject-dict
+
+[MITM]
+hostname = %APPEND% aiqicha.baidu.com

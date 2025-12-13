@@ -1,0 +1,11 @@
+#!name=独立模块-永辉生活 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/activity\.yonghuivip\.com\/api\/\/web\/shensuan\/ad - reject
+^https?:\/\/activity\.yonghuivip\.com\/api\/app\/fp\/homepage\/pop - reject
+^https?:\/\/api\.yonghuivip\.com\/api\/fp\/homepage\/pop - reject
+^https?:\/\/sauron-report\.yonghuivip\.com\/collect - reject
+
+[MITM]
+hostname = %APPEND% activity.yonghuivip.com,api.yonghuivip.com,sauron-report.yonghuivip.com

@@ -1,0 +1,12 @@
+#!name=独立模块-苏e行
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ad\.shunchangzhixing\.com\/getAd - reject-dict
+^https?:\/\/api\.bwton\.com\/bas\/ad - reject-200
+^https?:\/\/api\.bwton\.com\/bff\/app\/h5\/v1\/station\/goods - reject-dict
+^https?:\/\/api\.bwton\.com\/bff\/app\/index\/goods - reject-dict
+^https?:\/\/api\.bwton\.com\/bff\/app\/index\/recommend - reject-dict
+
+[MITM]
+hostname = %APPEND% ad.shunchangzhixing.com,api.bwton.com

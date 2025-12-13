@@ -1,0 +1,8 @@
+#!name=独立模块-联想
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.club\.lenovo\.cn\/common\/open_ad - reject
+
+[MITM]
+hostname = %APPEND% api.club.lenovo.cn

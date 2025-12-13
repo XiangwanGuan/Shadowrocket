@@ -1,0 +1,8 @@
+#!name=独立模块-飞猫管家
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/app\.flymodem\.com\.cn\/Appapi\/Public\/welecome - reject
+
+[MITM]
+hostname = %APPEND% app.flymodem.com.cn
