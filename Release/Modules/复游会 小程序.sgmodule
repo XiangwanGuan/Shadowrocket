@@ -1,0 +1,8 @@
+#!name=独立模块-复游会 小程序
+#!desc=2025-12-25 15:02:56
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/apis\.folidaymall\.com\/online\/capi\/component\/getPageComponents 'if .data.pageComponents then .data.pageComponents |= map(select([.componentCode] | inside(["TCMP_home_followingadvertising"]) | not)) else . end'
+
+[MITM]
+hostname = %APPEND% apis.folidaymall.com

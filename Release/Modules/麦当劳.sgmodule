@@ -1,0 +1,8 @@
+#!name=独立模块-麦当劳
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.mcd\.cn\/bff\/portal\/(home\/splash|richpop) - reject-200
+
+[MITM]
+hostname = %APPEND% api.mcd.cn

@@ -1,0 +1,19 @@
+#!name=独立模块-得物
+#!desc=2025-12-10 08:40:00
+
+[URL Rewrite]
+^https?:\/\/app\.dewu\.com\/api\/v1\/app\/advertisement\/ - reject-dict
+^https?:\/\/app\.dewu\.com\/api\/v1\/app\/search\/lexicon\/v1\/rank_words\? - reject-dict
+^https?:\/\/app\.dewu\.com\/api\/v1\/app\/search\/lexicon\/v3\/background_words\? - reject-dict
+^https?:\/\/app\.dewu\.com\/hacking-newbie\/v1\/app\/coupon\/module\? - reject-dict
+^https?:\/\/app\.dewu\.com\/sns-rec\/v1\/attention\/feed\? - reject-dict
+^https?:\/\/app\.dewu\.com\/sns-rec\/v1\/search\/hotword-list\? - reject-dict
+^https?:\/\/app\.dewu\.com\/sns-rec\/v1\/search\/word-skip\/new-list\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/app\.dewu\.com\/api\/v1\/app\/account\/wallet\/page\/entrance\? '.data.groupInfoDTOS |= map(.moduleInfoDTO = {assetModule: .moduleInfoDTO.assetModule}) | .data.moduleNames = [.data.moduleNames[] | select(. == "assetModule")] | . as $full | $full | .data.groupNames |= (map(select(. == "MAIN" or . == "ASYNC_COMMON" or . == "ASYNC_GOODS_FEEDS")))'
+http-response-jq ^https?:\/\/app\.dewu\.com\/api\/v1\/app\/biz-aggregate\/me\/user-index\? '.data.modules |= map(if .key == "wallet" then .data.menus |= map(select(.key == "coupon" or .key == "allowance" or .key == "gift" or .key == "balance")) else . end) | .data.modules |= map(select(.key != "merchant" and .key != "discountCoupon"))'
+http-response-jq ^https?:\/\/app\.dewu\.com\/identify-discovery\/v1\/discovery\/index\? '.data.groups |= map(.items |= map(select(.title == "消息中心")))'
+
+[MITM]
+hostname = %APPEND% app.dewu.com

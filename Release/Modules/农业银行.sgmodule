@@ -1,0 +1,13 @@
+#!name=独立模块-农业银行
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, msmp.abchina.com.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/enjoy\.cdn-static\.abchina\.com\/yx-engine-web\/file\/download\/(?!7dc2|fe96|cea3|06a8|1b11|d57b|6918|61db|2d58|aa23|) - reject-200
+^https?:\/\/firefly\.abchina\.com\.cn\/firefly-collection\/Collect - reject-200
+^https?:\/\/midc\.cdn-static\.abchina\.com\.cn\/distributecenterimg\/file\/download\/(ed64|74b5) - reject
+
+[MITM]
+hostname = %APPEND% enjoy.cdn-static.abchina.com,firefly.abchina.com.cn,midc.cdn-static.abchina.com.cn

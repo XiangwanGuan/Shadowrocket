@@ -1,0 +1,12 @@
+#!name=独立模块-彩云天气
+#!desc=2025-12-11 16:17:36
+
+[Rule]
+DOMAIN, ad.cyapi.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/biz\.cyapi\.cn\/(p\/v1\/entries|p\/v1\/trial_card\/info|v2\/product) - reject-200
+^https?:\/\/starplucker\.cyapi\.cn\/v3\/(config\/cypage\/\w+\/conditions|notification\/message_center|operation\/homefeatures) - reject-200
+
+[MITM]
+hostname = %APPEND% biz.cyapi.com,starplucker.cyapi.cn

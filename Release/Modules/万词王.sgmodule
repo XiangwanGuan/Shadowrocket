@@ -1,0 +1,11 @@
+#!name=独立模块-万词王
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/recite\.perfectlingo\.com\/api\/recite\/app-act\/act-list.+ - reject-dict
+^https?:\/\/recite\.perfectlingo\.com\/api\/recite\/content-recommend\/v\d\/get-by-uid.+ - reject-dict
+^https?:\/\/recite\.perfectlingo\.com\/api\/recite\/floating-window\/v\d\/get-show.+ - reject-dict
+^https?:\/\/wanciwangdata\.oss-cn-beijing\.aliyuncs\.com\/startup\/resource\/content.+ - reject
+
+[MITM]
+hostname = %APPEND% recite.perfectlingo.com,wanciwangdata.oss-cn-beijing.aliyuncs.com

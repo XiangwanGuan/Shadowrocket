@@ -1,0 +1,8 @@
+#!name=独立模块-Manner 小程序
+#!desc=2025-12-24 14:59:50
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/triangle\.wearemanner\.com\/mp-api\/v\d\/ads '.data? |= (if . != null then .myAnims=[], .homeAds=[], .orderPopups=[], .homePopups=[], .broadcasts=[], .menuPopups=[], .giftCardAds=[], .myPopups=[], .menuAnims=[], .orderAnims=[], .pmPopups=[], .goodsCategoryAds=[], .shopAds=[], .ooAds=[], .homeAnims=[], .startAds=[] else . end)'
+
+[MITM]
+hostname = %APPEND% triangle.wearemanner.com

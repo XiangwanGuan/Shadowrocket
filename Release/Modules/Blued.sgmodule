@@ -1,0 +1,12 @@
+#!name=独立模块-Blued
+#!desc=2025-12-24 14:59:49
+
+[URL Rewrite]
+^https?:\/\/social\.blued\.cn\/users\/no_auth\/benefit - reject-dict
+^https?:\/\/social\.blued\.cn\/users\/recommend - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/social\.blued\.cn\/users\/.+\/more\/ios\?v=2 '.data[0]? |= (.banner={}, .service=[], .healthy={}, .healthy_banner=[], .emotions=[])'
+
+[MITM]
+hostname = %APPEND% social.blued.cn

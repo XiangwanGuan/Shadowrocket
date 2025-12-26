@@ -1,0 +1,15 @@
+#!name=独立模块-成分喵
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/app\.chengfenmiao\.com\/Helper\/HotWords\? - reject-dict
+^https?:\/\/app\.chengfenmiao\.com\/Listing\/LiveHots\? - reject-dict
+^https?:\/\/app\.chengfenmiao\.com\/helper\/VersionCheck\? - reject-dict
+^https?:\/\/app\.chengfenmiao\.com\/item\/closet\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/app\.chengfenmiao\.com\/helper\/setting\? 'delpaths([["bottom_sites"]])'
+http-response-jq ^https?:\/\/app\.chengfenmiao\.com\/helper\/setting\? 'delpaths([["detail_buy_sites"]])'
+
+[MITM]
+hostname = %APPEND% app.chengfenmiao.com

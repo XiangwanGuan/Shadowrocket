@@ -1,0 +1,10 @@
+#!name=独立模块-顺丰速运
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/ad\/ - reject-dict
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/bms\/queryRecommend - reject-dict
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-video\/video\/app\/video\/labelClusterList - reject-dict
+
+[MITM]
+hostname = %APPEND% ccsp-egmas.sf-express.com

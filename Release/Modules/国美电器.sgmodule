@@ -1,0 +1,9 @@
+#!name=独立模块-国美电器
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/prom\.mobile\.gome\.com\.cn\/mobile\/promotion\/promscms\/\w+\.jsp - reject
+^https?:\/\/prom\.mobile\.gome\.com\.cn\/mobile\/promotion\/promscms\/sale\w+\.jsp - reject
+
+[MITM]
+hostname = %APPEND% prom.mobile.gome.com.cn

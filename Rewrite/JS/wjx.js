@@ -1,0 +1,12 @@
+const resp = {};
+if (!$response.body) $done({});
+var parser = new DOMParser();
+let body = $response.body;
+body = body.replace(/^isRandShowAward =1;/g, "isRandShowAward =0;");
+var doc = parser.parseFromString(body, "text/html");
+var element = doc.getElementById("divAward");
+element.parentNode.removeChild(element);
+element = doc.getElementById("divPromoteVas");
+element.parentNode.removeChild(element);
+resp.body = doc.documentElement.outerHTML;
+$done(resp);

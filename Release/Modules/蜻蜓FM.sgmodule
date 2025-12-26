@@ -1,0 +1,25 @@
+#!name=独立模块-蜻蜓FM
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, ad-cdn.qingting.fm, REJECT,pre-matching
+DOMAIN, ad.qingting.fm, REJECT,pre-matching
+DOMAIN, adlaunch.qingting.fm, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/app\.qtfm\.cn\/m-bff\/v\d\/i_listen\/guess_you_like\? - reject-dict
+^https?:\/\/app\.qtfm\.cn\/recommendapi\/v\d\/emotion$ - reject
+^https?:\/\/recpage-c\.qtfm\.cn\/v\d\/favorites$ - reject-dict
+^https?:\/\/search\.qtfm\.cn\/v\d\/keyword\/default$ - reject
+^https?:\/\/user\.qtfm\.cn\/u\d\/api\/v\d\/user\/following_podcaster\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/app\.qtfm\.cn\/m-bff\/v\d\/channel\/\d{6}\/playpage\/\d{8} 'delpaths([["data","related_recommend"]])'
+http-response-jq ^https?:\/\/app\.qtfm\.cn\/m-bff\/v\d\/mylistenpage 'delpaths([["data","banner"]])'
+http-response-jq ^https?:\/\/app\.qtfm\.cn\/m-bff\/v\d\/signin\/show_homepage_icon$ 'if (getpath(["data"]) | has("display_icon")) then (setpath(["data","display_icon"]; false)) else . end'
+http-response-jq ^https?:\/\/app\.qtfm\.cn\/m-bff\/v\d\/subscribed_channels\? 'delpaths([["data","recommends"]])'
+http-response-jq ^https?:\/\/app\.qtfm\.cn\/recommendapi\/v\d\/hotpage\? 'del(.data.head[].data[] | select(.title == "超级会员")) | del(.data.head[].data[] | select(.link.type == "RadioStation")) | del(.data.head[] | select(.title == "听头条")) | del(.data.feeds[] | select(.type == "ListenListRadio"))'
+http-response-jq ^https?:\/\/entry\.qtfm\.cn\/api\/v\d\/personal\/\?carrier 'delpaths([["data", "membership"], ["data", "level_info"]]) | .data.discovery.entries |= map(select(.title != "借钱"))'
+
+[MITM]
+hostname = %APPEND% app.qtfm.cn,entry.qtfm.cn,recpage-c.qtfm.cn,search.qtfm.cn,user.qtfm.cn

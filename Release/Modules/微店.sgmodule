@@ -1,0 +1,8 @@
+#!name=独立模块-微店
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/thor\.weidian\.com\/ares\/home\.splash - reject-200
+
+[MITM]
+hostname = %APPEND% thor.weidian.com

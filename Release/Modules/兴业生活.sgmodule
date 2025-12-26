@@ -1,0 +1,8 @@
+#!name=独立模块-兴业生活
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/file\.cibfintech\.com\/file\/M0[1-9]{1}\/*\/*\/.*.zip - reject-img
+
+[MITM]
+hostname = %APPEND% file.cibfintech.com

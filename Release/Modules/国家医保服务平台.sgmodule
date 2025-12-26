@@ -1,0 +1,8 @@
+#!name=独立模块-国家医保服务平台
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/fuwu\.nhsa\.gov\.cn\/ebus\/fuwu\/api\/base\/cms\/iep\/web\/cms\/hmpgcfg\/queryAppHmpgCfgByApp - reject
+
+[MITM]
+hostname = %APPEND% fuwu.nhsa.gov.cn

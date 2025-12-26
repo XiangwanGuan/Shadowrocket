@@ -1,0 +1,9 @@
+#!name=独立模块-腾讯文档
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/h5\.qzone\.qq\.com\/p\/adboss\/api\/json\/ts_access\/GetAds$ - reject-dict
+^https?:\/\/tianshu\.qq\.com\/open\/ts_access\/GetAds\? - reject-dict
+
+[MITM]
+hostname = %APPEND% h5.qzone.qq.com,tianshu.qq.com

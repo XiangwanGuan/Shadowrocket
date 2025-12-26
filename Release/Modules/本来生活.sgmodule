@@ -1,0 +1,8 @@
+#!name=独立模块-本来生活
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/img0[1-9]{1}\.benlailife\.com\/AppHomePageImage\/upload\/files\/.*.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% img0*.benlailife.com

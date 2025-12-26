@@ -1,0 +1,14 @@
+#!name=独立模块-飞常准
+#!desc=2025-12-11 16:17:37
+
+[Rule]
+DOMAIN, adv-adlog.variflight.com, REJECT,pre-matching
+DOMAIN, adv-ads.variflight.com, REJECT,pre-matching
+DOMAIN, app-ad.variflight.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/app\.variflight\.com\/ad\/ - reject
+^https?:\/\/app\.variflight\.com\/v\d\/advert\/ - reject
+
+[MITM]
+hostname = %APPEND% app.variflight.com

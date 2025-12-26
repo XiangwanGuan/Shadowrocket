@@ -1,0 +1,8 @@
+#!name=独立模块-怪兽充电
+#!desc=2025-12-15 10:26:50
+
+[URL Rewrite]
+^https?:\/\/awg\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) - reject-dict
+
+[MITM]
+hostname = %APPEND% awg.enmonster.com

@@ -1,0 +1,8 @@
+#!name=独立模块-美味不用等
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/capi\.mwee\.cn\/app-api\/V\d{2}\/app\/(?:ad|getstartad) - reject
+
+[MITM]
+hostname = %APPEND% capi.mwee.cn

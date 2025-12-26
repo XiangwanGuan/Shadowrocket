@@ -1,0 +1,10 @@
+#!name=独立模块-交通银行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/download1\.bankcomm\.com\/_cdn\/mobs\/home\/oss\/pub\/file\/file\/public\/config\/pageConfig - reject
+^https?:\/\/download1\.bankcomm\.com\/chngweb\/CHNRCSP\/media - reject-200
+^https?:\/\/download1\.bankcomm\.com\/mobs6-inner\/offline\/static\/releaseConf - reject
+
+[MITM]
+hostname = %APPEND% *.bankcomm.com

@@ -1,0 +1,12 @@
+#!name=独立模块-QQ音乐
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\/music\/common\/upload\/t_splash_info\/ - reject
+^https?:\/\/.+?\/music\/common\/upload\/t_splash_info\/ - reject
+^https?:\/\/us\.l\.qq\.com\/exapp - reject-200
+^https?:\/\/y\.gtimg\.cn\/music\/common\/upload\/kg_ad/.*?\d{4}\.jpg - reject-img
+^https?:\/\/y\.gtimg\.cn\/music\/common\/upload\/targeted_ads - reject-img
+
+[MITM]
+hostname = %APPEND% us.l.qq.com,y.gtimg.cn

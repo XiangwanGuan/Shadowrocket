@@ -1,0 +1,16 @@
+#!name=独立模块-小米商城
+#!desc=2025-12-24 14:47:52
+
+[URL Rewrite]
+^https?:\/\/api\.m\.mi\.com\/v\d\/app\/popup_info$ - reject-dict
+^https?:\/\/api\.m\.mi\.com\/v\d\/app\/start - reject-200
+^https?:\/\/api\.m\.mi\.com\/v\d\/home\/page_feed(_v5)?$ - reject-dict
+^https?:\/\/api\.m\.mi\.com\/v\d\/misearch\/search_input$ - reject-dict
+^https?:\/\/api\.m\.mi\.com\/v\d\/search\/search_default$ - reject-dict
+^https?:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(rec\/merge\/|skywheel\/mishop\/splash) - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.m\.mi\.com\/v\d\/order\/expressView 'if .data.bottom then .data.bottom |= del(.ad_info) else . end'
+
+[MITM]
+hostname = %APPEND% api.m.mi.com,shop-api.retail.mi.com

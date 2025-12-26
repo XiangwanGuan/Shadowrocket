@@ -1,0 +1,21 @@
+#!name=独立模块-网易有道词典
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/gorgon\.youdao\.com\/gorgon\/brand\/prefetch\.s\? - reject-dict
+^https?:\/\/gorgon\.youdao\.com\/gorgon\/request\.s\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","icon","iconList",1,"bubble"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","icon","iconList",2,"bubble"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","icon","iconList",8,"bubble"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","icon","promotionList"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","newBanner"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","popup"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","searchSuggestList"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/home\? 'delpaths([["data","tab"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/course\/tab\/translateTab\? 'delpaths([["data"]])'
+http-response-jq ^https?:\/\/dict\.youdao\.com\/homepage\/toolbar\/get\? 'delpaths([["data","vipTag"]])'
+
+[MITM]
+hostname = %APPEND% dict.youdao.com,gorgon.youdao.com

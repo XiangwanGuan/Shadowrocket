@@ -1,0 +1,14 @@
+#!name=独立模块-苏打校园
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.sodalife\.xyz\/hydr\/v\d\/poster\/posters - reject-dict
+^https?:\/\/api\.sodalife\.xyz\/v\d\/goods - reject-dict
+^https?:\/\/api\.sodalife\.xyz\/v\d\/posters\?location=SODA_APP%3AHOME%3ABOTTOM - reject-dict
+^https?:\/\/api\.sodalife\.xyz\/v\d\/posters\?location=SODA_APP%3AHOME%3ACENTER - reject-dict
+^https?:\/\/api\.sodalife\.xyz\/v\d\/posters\?location=SODA_APP%3AHOME%3ATOP - reject-dict
+^https?:\/\/api\.sodalife\.xyz\/v\d\/posters\?location=SODA_APP%3AMINE%3ABOTTOM - reject-dict
+^https?:\/\/api\.sodalife\.xyz\/v\d\/posters\?location=SODA_APP%3AREWARDS%3ACENTER - reject-dict
+
+[MITM]
+hostname = %APPEND% api.sodalife.xyz

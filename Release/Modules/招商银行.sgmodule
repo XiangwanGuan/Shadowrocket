@@ -1,0 +1,13 @@
+#!name=独立模块-招商银行
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, mbads.paas.cmbchina.com, REJECT,pre-matching
+DOMAIN, yl.zh.cmbchina.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/mbmodule-openapi\.paas\.cmbchina\.com\/graphic\/v2\/module\/graphic - reject-dict
+^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig - reject-200
+
+[MITM]
+hostname = %APPEND% mbmodule-openapi.paas.cmbchina.com,webappcfg.paas.cmbchina.com

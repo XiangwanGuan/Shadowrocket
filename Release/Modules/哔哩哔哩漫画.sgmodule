@@ -1,0 +1,21 @@
+#!name=独立模块-哔哩哔哩漫画
+#!desc=2025-12-19 08:22:49
+
+[URL Rewrite]
+^https?:\/\/i\d\.hdslb\.com\/bfs\/fawkes - reject-dict
+^https?:\/\/i\d\.hdslb\.com\/bfs\/manga-static\/\w+\.(?:jpg|png)$ - reject-200
+^https?:\/\/i\d\.hdslb\.com\/bfs\/manga-static\/\w+\.(?:jpg|png)@1200w_1500h_1e_1c - reject-200
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(?:Recommend|MoreRecommend|Flash|ListFlash|GetBubbles|GetActivityTab|GetCommonBanner|GetComicConfigPicList|SearchBanner|AppInit) - reject-200
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Shop\/GetShopItems - reject-dict
+^https?:\/\/manga\.bilibili\.com\/twirp\/novel\.v\d\.Novel\/MoreRecommend - reject-dict
+^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.Read\/ActInfo - reject-200
+^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.SeasonV\d\/GetSeasonInfo - reject-dict
+
+[Script]
+bilibiliManga =type=http-response, pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comment\/Main, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/bilibiliManga.js, requires-body=true, max-size=0
+bilibiliManga =type=http-response, pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Home\/HomeFeed, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/bilibiliManga.js, requires-body=true, max-size=0
+bilibiliManga =type=http-response, pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/GetInitInfo, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/bilibiliManga.js, requires-body=true, max-size=0
+bilibiliManga =type=http-response, pattern=^https?:\/\/manga\.bilibili\.com\/twirp\/user\.v\d\.User\/UCenterConf, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/bilibiliManga.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% i*.hdslb.com,manga.bilibili.com

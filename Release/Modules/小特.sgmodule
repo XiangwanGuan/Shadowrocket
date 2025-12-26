@@ -1,0 +1,8 @@
+#!name=独立模块-小特
+#!desc=2025-12-09 14:29:02
+
+[Body Rewrite]
+http-response ^https?:\/\/lcen\.xiaote\.net\/api\/graphql screenSplashAd random-response
+
+[MITM]
+hostname = %APPEND% lcen.xiaote.net

@@ -1,0 +1,8 @@
+#!name=独立模块-小喵看书
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.miaomiaoyd\.com\/book\/config\/getAdsSettings$ - reject
+
+[MITM]
+hostname = %APPEND% api.miaomiaoyd.com

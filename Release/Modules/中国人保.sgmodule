@@ -1,0 +1,14 @@
+#!name=独立模块-中国人保
+#!desc=2025-12-24 15:22:02
+
+[URL Rewrite]
+^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/guessYouLike\/v - reject-dict
+^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/update\/startupPage\/v - reject-dict
+^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/h\/headlines\/queryHeadlines - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/a\/config\/homeInit\/v '.data? |= (if . != null then .startupPage={} | .templates? |= map(select(.name? | (tostring | test("主轮播图|保险推荐|专享|腰封轮播图|浮标配置|二楼营销位|首页主题") | not))) else . end)'
+http-response-jq ^https?:\/\/zgrb\.epicc\.com\.cn\/G-HAPP\/mpageconfig\/myPageConfigList\/v '.data? |= (if . != null then .YFList = [] else . end)'
+
+[MITM]
+hostname = %APPEND% zgrb.epicc.com.cn

@@ -1,0 +1,20 @@
+#!name=独立模块-米游社
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppSplash$ - reject-dict
+^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getHotKeywordAndEvent$ - reject-dict
+^https?:\/\/bbs-api-static\.miyoushe\.com\/search\/api\/search\/pre_keyword\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppConfig$ 'if (getpath(["data","config"]) | has("is_show_teenager_mode_btn")) then (setpath(["data","config","is_show_teenager_mode_btn"]; 0)) else . end'
+http-response-jq ^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppConfig$ 'if (getpath(["data","config"]) | has("teenager_popup_freq_type")) then (setpath(["data","config","teenager_popup_freq_type"]; 0)) else . end'
+http-response-jq ^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppStartupData$ 'delpaths([["data","resp_map","/apihub/api/getAppConfig","data","get_app_config_response","config","is_show_teenager_mode_btn"]])'
+http-response-jq ^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppStartupData$ 'delpaths([["data","resp_map","/apihub/api/getAppConfig","data","get_app_config_response","config","teenager_popup_freq_type"]])'
+http-response-jq ^https?:\/\/bbs-api(-ab)?\.miyoushe\.com\/apihub\/api\/getAppStartupData$ 'delpaths([["data","resp_map","/teenager/api/info"]])'
+http-response-jq ^https?:\/\/bbs-api-ab\.miyoushe\.com\/teenager\/api\/info$ 'if (getpath(["data"]) | has("is_enabled")) then (setpath(["data","is_enabled"]; false)) else . end'
+http-response-jq ^https?:\/\/bbs-api-ab\.miyoushe\.com\/teenager\/api\/info$ 'if (getpath(["data"]) | has("is_force")) then (setpath(["data","is_force"]; false)) else . end'
+http-response-jq ^https?:\/\/bbs-api-ab\.miyoushe\.com\/teenager\/api\/info$ 'if (getpath(["data"]) | has("is_teenager")) then (setpath(["data","is_teenager"]; false)) else . end'
+
+[MITM]
+hostname = %APPEND% bbs-api-ab.miyoushe.com,bbs-api.miyoushe.com

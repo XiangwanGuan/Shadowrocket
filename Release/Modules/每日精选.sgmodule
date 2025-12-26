@@ -1,0 +1,11 @@
+#!name=独立模块-每日精选
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/dili.sqcosmos.com\/jiekou\/endpage\/ad - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/dili.sqcosmos.com\/jiekou\/mains\/p\d+.html '.album |= map(select(.id != "4154" and .id != "4165"))'
+
+[MITM]
+hostname = %APPEND% dili.sqcosmos.com

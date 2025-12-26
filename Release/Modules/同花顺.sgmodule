@@ -1,0 +1,10 @@
+#!name=独立模块-同花顺
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/adm\.10jqka\.com\.cn\/interface\/ad\/recommend - reject-200
+^https?:\/\/iphone\.ac\.qq\.com\/.*\/Support\/(?:getSystemConf|bootScreen) - reject
+^https?:\/\/stat\.10jqka\.com\.cn\/q\?ld=mobile&id=ad - reject-dict
+
+[MITM]
+hostname = %APPEND% adm.10jqka.com.cn,iphone.ac.qq.com,stat.10jqka.com.cn

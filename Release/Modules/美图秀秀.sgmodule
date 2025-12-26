@@ -1,0 +1,11 @@
+#!name=独立模块-美图秀秀
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, adui.tg.meitu.com, REJECT,pre-matching
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.posters\.meitu\.com\/common\/init\.json 'delpaths([["data","vip"]])'
+
+[MITM]
+hostname = %APPEND% api.posters.meitu.com

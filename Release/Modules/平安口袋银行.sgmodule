@@ -1,0 +1,23 @@
+#!name=独立模块-平安口袋银行
+#!desc=2025-12-19 08:22:51
+
+[Rule]
+DOMAIN, dwtracking.jk.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/cdn\.sdb\.com\.cn\/app_com\/adversdk - reject-200
+^https?:\/\/cdn\.sdb\.com\.cn\/ibank\/upgrade\/plugins\/upgradefile\.ios\.simplify - reject-200
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/magic-module-sprite\/dialog-normal - reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/magic-module-sprite\/general-banner - reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/nps\/feedback\/ - reject
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/pb\/pb-plugins-rec-content-list - reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/pb\/pb-plugins-rec-mivideo - reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/pb\/pb-plugins-recomend-content - reject-dict
+^https?:\/\/rsb\.pingan\.com\.cn\/brcp\/bds\/cust\/ygfz\/up - reject-dict
+^https?:\/\/rsb\.pingan\.com\.cn\/brcp\/stp\/cust\/mobile\/source\/upgrade - reject-dict
+
+[Script]
+sdb =type=http-response, pattern=^https?:\/\/cdn\.sdb\.com\.cn\/bron-coms\/bron-coms\/material-image, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/sdb.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% cdn.sdb.com.cn,rsb.pingan.com.cn

@@ -1,0 +1,8 @@
+#!name=独立模块-猪八戒
+#!desc=2025-12-09 14:29:03
+
+[URL Rewrite]
+^https?:\/\/fastbuyer\.zbj\.com\/configure\/screenAdConfig\/ - reject-200
+
+[MITM]
+hostname = %APPEND% fastbuyer.zbj.com

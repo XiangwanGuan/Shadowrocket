@@ -1,0 +1,8 @@
+#!name=独立模块-易捷加油
+#!desc=2025-12-17 08:46:11
+
+[URL Rewrite]
+^https?:\/\/a\.sinopecsales\.com\/app\/cms - reject-dict
+
+[MITM]
+hostname = %APPEND% a.sinopecsales.com

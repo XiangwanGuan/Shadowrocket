@@ -1,0 +1,8 @@
+#!name=独立模块-界面新闻
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/img\.jiemian\.com\/ads\/ - reject
+
+[MITM]
+hostname = %APPEND% img.jiemian.com

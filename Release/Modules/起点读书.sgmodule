@@ -1,0 +1,30 @@
+#!name=独立模块-起点读书
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/adv\/ - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/booksearch\/hotWords\? - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/bookshelf\/getTopOperation$ - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/checkin\/simpleinfo\? - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/dailyrecommend\/recommendBook\? - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/followsubscribe\/showChapterEndModule\? - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/freshman\/bookshelfbtn$ - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/maintain\/playstrip$ - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/message\/getpushedmessagelist$ - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/push\/getdialog\? - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/young\/getconf$ - reject-dict
+^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v4\/client\/getsplashscreen\? - reject-dict
+^https?:\/\/ywab\.reader\.qq\.com\/user\/experiments\/v2\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/client\/getconf$ 'delpaths([["Data","ActivityIcon"]])'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/client\/getconf$ 'delpaths([["Data","ActivityPageBackPushNoticeFrequency"]])'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/client\/getconf$ 'delpaths([["Data","ActivityPopup"]])'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/client\/getconf$ 'delpaths([["Data","LuckBag"]])'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/client\/getconf$ 'if (getpath(["Data","CloudSetting"]) | has("TeenShowFreq")) then (setpath(["Data","CloudSetting","TeenShowFreq"]; 0)) else . end'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v1\/client\/getconf$ 'if (getpath(["Data"]) | has("WolfEye")) then (setpath(["Data","WolfEye"]; 0)) else . end'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v2\/dailyrecommend\/getdailyrecommend\? 'if (getpath(["Data"]) | has("Items")) then (setpath(["Data","Items"]; [])) else . end'
+http-response-jq ^https?:\/\/magev6\.if\.qidian\.com\/argus\/api\/v3\/user\/getaccountpage\? 'delpaths([["Data","BenefitButtonList"]])'
+
+[MITM]
+hostname = %APPEND% magev6.if.qidian.com,ywab.reader.qq.com

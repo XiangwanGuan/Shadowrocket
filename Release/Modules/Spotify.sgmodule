@@ -1,0 +1,15 @@
+#!name=独立模块-Spotify
+#!desc=2025-12-19 08:22:52
+
+[Rule]
+AND, ((PROTOCOL,QUIC),(DOMAIN-SUFFIX,spotify.com)), REJECT-NO-DROP
+
+[URL Rewrite]
+^https?:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/(?:ad-|pendragon) - reject-200
+^https?:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/artistview\/v1\/artist\/(.*)&platform=iphone https://spclient.wg.spotify.com/artistview/v1/artist/$1&platform=ipad header
+
+[Script]
+Spotify.Crack.Dev =type=http-request, pattern=^https?:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/(?:bootstrap|user-customization-service), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/Spotify.Crack.Dev.js, requires-body=true, max-size=0, binary-body-mode=true
+
+[MITM]
+hostname = %APPEND% *-spclient.spotify.com,spclient.wg.spotify.com

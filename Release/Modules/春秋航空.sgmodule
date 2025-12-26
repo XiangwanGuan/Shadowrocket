@@ -1,0 +1,11 @@
+#!name=独立模块-春秋航空
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/appmedia\.springairlines\.com\/cmsstatic\/.*\.gif - reject-img
+^https?:\/\/gaia\.ch\.com\/ECProduct\/homePageRevision\/queryRecommendInfo - reject
+^https?:\/\/gaia\.ch\.com\/ECProduct\/popupWindow - reject
+^https?:\/\/gaia\.ch\.com\/ECPromotion\/appFlash - reject
+
+[MITM]
+hostname = %APPEND% appmedia.springairlines.com,gaia.ch.com

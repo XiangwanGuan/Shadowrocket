@@ -1,0 +1,8 @@
+#!name=独立模块-嗨学
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/www\.haixue\.com\/advert\/app\/adInfo\/v1\/queryAdByPositionCode - reject-dict
+
+[MITM]
+hostname = %APPEND% www.haixue.com

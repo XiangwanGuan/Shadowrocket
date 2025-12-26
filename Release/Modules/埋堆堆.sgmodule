@@ -1,0 +1,14 @@
+#!name=独立模块-埋堆堆
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/conf-darwin\.xycdn\.com - reject-dict
+^https?:\/\/mob\.mddcloud\.com\.cn\/adApi\/advert\/(?:first|third)part\/advertList - reject-dict
+^https?:\/\/mobads-pre-config\.cdn\.bcebos\.com\/preload\.php - reject-200
+^https?:\/\/sdk1xyajs\.data\.kuiniuca\.com - reject
+^https?:\/\/sfo\.mddcloud\.com\.cn\/api\/v\d\/sfo\/popup_displays? - reject-dict
+^https?:\/\/toblog\.ctobsnssdk\.com - reject-200
+^https?:\/\/tower\.ubixioe\.com\/mob\/mediation - reject
+
+[MITM]
+hostname = %APPEND% *.ubixioe.com,conf-darwin.xycdn.com,mob.mddcloud.com.cn,mobads-pre-config.cdn.bcebos.com,sdk1xyajs.data.kuiniuca.com,sfo.mddcloud.com.cn,toblog.ctobsnssdk.com

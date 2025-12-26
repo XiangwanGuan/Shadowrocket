@@ -1,0 +1,20 @@
+#!name=独立模块-同程旅行
+#!desc=2025-12-11 16:17:40
+
+[Rule]
+DOMAIN, vstlog.17usoft.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/m\.ly\.com\/visa\/fetch\/home\/getAdvDialogData - reject-dict
+^https?:\/\/mobile-api2011\.elong\.com\/adgateway\/newad\/list - reject-dict
+^https?:\/\/mobileapi\.ly\.com\/wlfrontend\/app\/scenicMain - reject-dict
+^https?:\/\/mobilehotelapi\.elong\.com\/appHotel\/adx\/advert\/getAdvert - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/appindexnew\/index\/(?:openscreen|getpopupimages|getindexlayoutcelllist|newmemberzone|getsearchboxtext|gethotrecommend) - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/backendActivity\/ori\/ordercenter\/recommend - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/foundation\/foundationHandler\.ashx - reject-dict
+^https?:\/\/tcmobileapi\.17usoft\.com\/userextend\/member\/myIndex - reject-200
+^https?:\/\/wx\.17u\.cn\/crapi\/query\/(?:ad|getAdImgUrlByCode) - reject-dict
+^https?:\/\/wx\.17u\.cn\/xcxhomeapi\/((aggregator\/index)|(home\/(?:screen|banner|converge)))$ - reject
+
+[MITM]
+hostname = %APPEND% m.ly.com,mobile-api2011.elong.com,mobileapi.ly.com,mobilehotelapi.elong.com,tcmobileapi.17usoft.com,wx.17u.cn

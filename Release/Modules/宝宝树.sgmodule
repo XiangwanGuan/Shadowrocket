@@ -1,0 +1,25 @@
+#!name=独立模块-宝宝树
+#!desc=2025-12-24 15:41:08
+
+[Rule]
+DOMAIN, titan.babytree.com, REJECT,pre-matching
+DOMAIN, titan01.babytree.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/api\.babytree\.com\/api\/(?:advertising|mobile_activity) - reject
+^https?:\/\/api\.babytree\.com\/preg_intf\/index_content\/index_banner - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/app_index\/get_ceramic_chip_area - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/cms_second_tab\/topic_tab_list - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/feeds - reject
+^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/index_activity - reject
+^https?:\/\/go\.babytree\.com\/go_tool\/api\/feeding_record\/get_home_banner_info - reject
+^https?:\/\/go\.babytree\.com\/go_tool\/api\/tools\/get_third_privacy_msgbox_list - reject
+^https?:\/\/mapiweb\.babytree\.com\/newapi\/luban\/behavior\/receive - reject-200
+^https?:\/\/plough\.babytree\.com\/plough\.do - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/app_index/get_app_tab '.data.selected_list? |= (if . != null then map(select(.name == "首页" or .name == "记录" or .name == "我")) else . end)'
+http-response-jq ^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/cms_column '.data? |= (if . != null then .bucket_id="", .test_id="", .log_content="", .list=[] else . end)'
+
+[MITM]
+hostname = %APPEND% api.babytree.com,go.babytree.com,mapiweb.babytree.com,plough.babytree.com

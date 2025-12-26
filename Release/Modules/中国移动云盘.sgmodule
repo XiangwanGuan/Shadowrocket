@@ -1,0 +1,16 @@
+#!name=独立模块-中国移动云盘
+#!desc=2025-12-25 18:18:32
+
+[Rule]
+DOMAIN, ad.mcloud.139.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/mcmm\.caiyun\.feixin\.10086\.cn:\d+\/mcmm\/api\/(IAdvert|v\d\/getAdverts) - reject-200
+^https?:\/\/middle\.yun\.139\.com\/openapi\/cardConfig\/queryCardInfoV - reject-200
+^https?:\/\/mrp\.mcloud\.139\.com\/mc\/mc-client-service\/openapi\/letter\/query - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent 'if .data | type == "array" then .data[].actsList?[]? |= (.putStartTime = "2090-12-31 00:00:00.0" | .putEndTime = "2090-12-31 23:59:59.0" | .adUrl = "") else . end'
+
+[MITM]
+hostname = %APPEND% jzts.cmpassport.com,mcmm.caiyun.feixin.10086.cn,middle.yun.139.com,mrp.mcloud.139.com

@@ -1,0 +1,10 @@
+#!name=独立模块-达达骑士版
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/delivery-api\.imdada\.cn\/v1_0\/transporter\/ad - reject-dict
+^https?:\/\/delivery-api\.imdada\.cn\/v1_0\/transporter\/screen\/ads_list - reject-dict
+^https?:\/\/delivery-api\.imdada\.cn\/v2_0\/dada\/promote\/imax\?privacyParam - reject-dict
+
+[MITM]
+hostname = %APPEND% delivery-api.imdada.cn

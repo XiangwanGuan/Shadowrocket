@@ -1,0 +1,12 @@
+#!name=独立模块-超格教育
+#!desc=2025-12-19 08:22:49
+
+[URL Rewrite]
+^https?:\/\/mapi\.chaogejiaoyu\.com\/api\/ad\/adCheck - reject-dict
+
+[Script]
+chaoge =type=http-response, pattern=^https?:\/\/mapi\.chaogejiaoyu\.com\/api\/ad\/getPageAdList, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/chaoge.js, requires-body=true, max-size=0
+chaoge =type=http-response, pattern=^https?:\/\/mapi\.chaogejiaoyu\.com\/api\/outline\/getAppBanner, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/chaoge.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% mapi.chaogejiaoyu.com

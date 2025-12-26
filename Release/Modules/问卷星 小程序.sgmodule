@@ -1,0 +1,11 @@
+#!name=独立模块-问卷星 小程序
+#!desc=2025-12-19 08:22:52
+
+[URL Rewrite]
+^https?:\/\/image\.wjx\.cn\/joinnew\/js\/joinawardactivitymobo - reject-dict
+
+[Script]
+wjx =type=http-response, pattern=^https?:\/\/kaoshi\.wjx\.top\/wjx\/join\/completemobile, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wjx.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% image.wjx.cn,kaoshi.wjx.top

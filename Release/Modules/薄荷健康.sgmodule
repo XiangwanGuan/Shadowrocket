@@ -1,0 +1,22 @@
+#!name=独立模块-薄荷健康
+#!desc=2025-12-25 14:31:57
+
+[URL Rewrite]
+^https?:\/\/.*\.boohee\.(?:cn|com).*(?:notification_template|advertisements|share_contents|app_square|plugins|notifications|start_up_with_ad|float_ad|data_file_entrance) - reject
+^https?:\/\/api\.boohee\.com\/app-interface\/v\d\/ad\/info - reject
+^https?:\/\/api\.boohee\.com\/app-interface\/v\d\/record\/record_tool(_pop)?_ad - reject-dict
+^https?:\/\/api\.boohee\.com\/app-interface\/v\d\/search\/search\? - reject-dict
+^https?:\/\/api\.boohee\.com\/meta-interface\/v\d\/index\/(?:discover_chosen|page_float_bubbles|sensor-banners|tool_buttons) - reject-dict
+^https?:\/\/api\.boohee\.com\/shop-interface\/api\/v\d\/home\/index - reject-dict
+^https?:\/\/bohe\.sfo-tx-shanghai-01\.saas\.sensorsdata\.cn\/api\/v\d\/sfo\/user_popup_configs - reject-dict
+^https?:\/\/status\.boohee\.com\/api\/v\d\/merged_messages$ - reject-dict
+
+[Body Rewrite]
+http-response ^https?:\/\/api\.boohee\.com\/meta-interface\/v\d\/index\/record_index articles random_body
+http-response-jq ^https?:\/\/api\.boohee\.com\/meta-interface\/v\d\/index\/plaza-flow\? 'if .data.contents then .data.contents |= map(select(.type? != 4)) else . end'
+http-response-jq ^https?:\/\/api\.boohee\.com\/meta-interface\/v\d\/index\/plaza\? 'del(.data.tabs[1]?.badge, .data.recommend_ads)'
+http-response-jq ^https?:\/\/api\.boohee\.com\/meta-interface\/v\d\/index\? 'del(.data.recom_cards, .data.recom_btns)'
+http-response-jq ^https?:\/\/api\.boohee\.com\/open-interface\/v\d\/string\/market_page\?title=metabolism_config$ 'del(.dtop_banner, .diagnos_config, .partner_hospital, .question_answer, .product, .brand_story)'
+
+[MITM]
+hostname = %APPEND% *.boohee.cn,*.boohee.com,bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn

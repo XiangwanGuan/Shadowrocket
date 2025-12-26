@@ -1,0 +1,9 @@
+#!name=独立模块-杭州市民
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/ads\.iconntech\.com\/resource-delivery\/*\/.*.(jpg|png) - reject-200
+^https?:\/\/smkmp\.96225\.com\/smkcenter\/ad/ - reject
+
+[MITM]
+hostname = %APPEND% ads.iconntech.com,smkmp.96225.com

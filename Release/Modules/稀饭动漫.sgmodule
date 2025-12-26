@@ -1,0 +1,8 @@
+#!name=独立模块-稀饭动漫
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/pzoap\.moedot\.net\/xgapp\.php\/v2\/top_notice - reject
+
+[MITM]
+hostname = %APPEND% pzoap.moedot.net

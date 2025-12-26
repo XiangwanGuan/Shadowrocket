@@ -1,0 +1,8 @@
+#!name=独立模块-住这儿
+#!desc=2025-12-09 14:29:03
+
+[URL Rewrite]
+^https?:\/\/z\.onewo\.com\/passer\/api\/ads\/v1\/8\/list - reject-200
+
+[MITM]
+hostname = %APPEND% z.onewo.com

@@ -1,0 +1,12 @@
+#!name=独立模块-亲邻开门
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, mall-dsp2.qinlinkeji.com, REJECT,pre-matching
+DOMAIN, mallapi2.qinlinkeji.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/qadx\.qinlinad\.com\/ad\/ - reject
+
+[MITM]
+hostname = %APPEND% qadx.qinlinad.com

@@ -1,0 +1,29 @@
+#!name=独立模块-网易云音乐
+#!desc=2025-12-19 08:22:52
+
+[Rule]
+DOMAIN, httpdns.music.163.com, REJECT,pre-matching
+DOMAIN, httpdns.n.netease.com, REJECT,pre-matching
+DOMAIN, iadmat.nosdn.127.net, REJECT,pre-matching
+DOMAIN, iadmatapk.nosdn.127.net, REJECT,pre-matching
+DOMAIN, iadmusicmat.music.126.net, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/(ipv4|interface\d?)\.music\.163.com\/w?e?api\/ad - reject-dict
+^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/(comment\/feed\/inserted|hotcomment\/collect|tips\/v\d\/get) - reject-dict
+^https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(mlivestream\/entrance\/playpage|link\/(position\/show\/strategy|scene\/show)|ios\/version|v\d\/content\/exposure\/comment\/banner) - reject-dict
+^https?:\/\/interface\d?\.music\.163.com\/w?e?api\/(search\/(chart|default|rcmd\/keyword|specialkeyword)|resource-exposure\/|activity\/bonus\/playpage\/time\/query) - reject-dict
+^https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(resource\/comments?\/musiciansaid|community\/friends\/fans-group\/artist\/group\/get|user\/sub\/artist|music\/songshare\/text\/recommend\/get|mine\/applet\/redpoint|resniche\/position\/play\/new\/get) - reject-dict
+^https?:\/\/interface\d?\.music\.163\.com\/w?e?api\/(side-bar\/mini-program\/music-service\/account|delivery\/(batch-deliver|deliver)|moment\/tab\/info\/get|yunbei\/account\/entrance\/get) - reject-dict
+
+[Script]
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/(batch|v\d\/resource\/comment\/floor\/get), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/(homepage\/block\/page|link\/page\/rcmd\/(resource\/show|block\/resource\/multi\/refresh)), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/link\/home\/framework\/tab, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/link\/page\/discovery\/resource\/show, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/link\/position\/show\/resource, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/song\/play\/more\/list\/v\d, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+wyres =type=http-response, pattern=^https?:\/\/(ipv4|interface\d?)\.music\.163\.com\/w?e?api\/user\/follow\/users\/mixed\/get, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wyres.js, requires-body=true, max-size=0, binary-body-mode=true
+
+[MITM]
+hostname = %APPEND% interface*.music.163.com,ipv4.music.163.com

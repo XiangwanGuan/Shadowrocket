@@ -1,0 +1,8 @@
+#!name=独立模块-澳觅
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/interface\.aomiapp\.com\/aomi-ads - reject
+
+[MITM]
+hostname = %APPEND% interface.aomiapp.com

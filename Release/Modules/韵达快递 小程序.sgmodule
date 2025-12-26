@@ -1,0 +1,11 @@
+#!name=独立模块-韵达快递 小程序
+#!desc=2025-12-19 08:22:53
+
+[URL Rewrite]
+^https?:\/\/ydmbpic\.yundasys\.com\/opserver\/statics\/uniAppImage\/selfCenter\/rightsPop - reject-dict
+
+[Script]
+yunda =type=http-request, pattern=^https?:\/\/mbpxapi\.yundasys\.com(:\d+)?\/gateway\/interface, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/yunda.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% mbpxapi.yundasys.com,ydmbpic.yundasys.com

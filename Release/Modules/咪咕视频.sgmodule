@@ -1,0 +1,17 @@
+#!name=独立模块-咪咕视频
+#!desc=2025-12-25 16:24:28
+
+[URL Rewrite]
+^https?:\/\/app-sc\.miguvideo\.com\/app-management\/v1\/staticcache\/settings\/miguvideo\/SHARE_PIC - reject-dict
+^https?:\/\/common-sc\.miguvideo\.com\/videoActivity\/activityList\/ - reject-dict
+^https?:\/\/ggc\.miguvideo\.com\/v1\/iflyad\/deliverysystem\/direct\/ - reject-img
+^https?:\/\/ggic\d+.miguvideo\.com\/ad\/ - reject-dict
+^https?:\/\/ggx.+\.miguvideo\.com\/request\/sdk.+[^?]*$ - reject-dict
+^https?:\/\/public-deliver9\.miguvideo\.com\/deliver\/site\/batchMatch\/mergeSpot\/miguvideo\/ - reject-dict
+^https?:\/\/recommend-dy\.miguvideo\.com\/recommend-dynamic\/dataSource\/v1\/recommend\/merge - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/display-sc\.miguvideo\.com\/display\/v3\/static\/PERSONAL_CENTER$ 'if .body.groups then .body.groups |= map(select(.name? | test("焦点轮播图")? | not)) else . end'
+
+[MITM]
+hostname = %APPEND% app-sc.miguvideo.com,common-sc.miguvideo.com,display*-sc.miguvideo.com,ggc.miguvideo.com,ggic*.miguvideo.com,ggx*.miguvideo.com,public-deliver9.miguvideo.com,recommend-dy.miguvideo.com

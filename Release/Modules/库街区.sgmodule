@@ -1,0 +1,11 @@
+#!name=独立模块-库街区
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.kurobbs\.com\/config\/getOpenScreen$ - reject-dict
+^https?:\/\/api\.kurobbs\.com\/config\/index\/windows$ - reject-dict
+^https?:\/\/api\.kurobbs\.com\/config\/search\/getSearchConfig\? - reject-dict
+^https?:\/\/api\.kurobbs\.com\/forum\/app\/topic\/hotlist\? - reject-dict
+
+[MITM]
+hostname = %APPEND% api.kurobbs.com

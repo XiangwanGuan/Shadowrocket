@@ -1,0 +1,8 @@
+#!name=独立模块-谷歌广告
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/www\.google\.com\/ads - reject-dict
+
+[MITM]
+hostname = %APPEND% www.google.com

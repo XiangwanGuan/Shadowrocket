@@ -1,0 +1,8 @@
+#!name=独立模块-松果出行 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.songguo7\.com\/(\w{3})?mp\/v\d\/misc\/(?:toast|user_operate_info|unlock_without_order|unlock_operate_info) - reject-dict
+
+[MITM]
+hostname = %APPEND% api.songguo7.com

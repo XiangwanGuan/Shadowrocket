@@ -1,0 +1,10 @@
+#!name=独立模块-易捷加油 小程序
+#!desc=2025-12-17 08:46:11
+
+[URL Rewrite]
+^https?:\/\/a\.sinopecsales\.com\/app\/cms - reject-dict
+^https?:\/\/egw\.ejoy\.sinopec\.com\/api\/interface\/queryEffectiveBulletin - reject-dict
+^https?:\/\/ocrifs\.ejoy\.sinopec\.com\/advertitfs\/advert\/findAdvertInfo - reject-200
+
+[MITM]
+hostname = %APPEND% a.sinopecsales.com,egw.ejoy.sinopec.com,ocrifs.ejoy.sinopec.com

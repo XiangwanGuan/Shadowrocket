@@ -1,0 +1,12 @@
+#!name=独立模块-51cto
+#!desc=2025-12-24 14:59:49
+
+[Rule]
+DOMAIN, smartop-sdkapi-ipv6.jiguang.cn, REJECT,pre-matching
+DOMAIN, smartop-sdkapi.jiguang.cn, REJECT,pre-matching
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/edu\.51cto\.com\/app\.php\?$ '.result? |= (.adv_summary={}, .hasAd="0", .indexAd={}, .showThird="0", .status="0", .appVersion="3.5.0", .ad={}, .isExist="0")'
+
+[MITM]
+hostname = %APPEND% edu.51cto.com

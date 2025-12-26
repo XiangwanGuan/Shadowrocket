@@ -1,0 +1,9 @@
+#!name=独立模块-广发银行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/mps\.95508\.com\/mps\/club\/cardPortals\/adv\/\d{25}\.(?:png|jpg) - reject-img
+^https?:\/\/static\.95508\.com\/icppweb\/images\/modelMaterial\/(?:advertising|accurate)\/202\d{5}\/.*.(?:png|jpg) - reject-200
+
+[MITM]
+hostname = %APPEND% mps.95508.com,static.95508.com

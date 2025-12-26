@@ -1,0 +1,22 @@
+#!name=独立模块-买单吧
+#!desc=2025-12-19 08:22:51
+
+[Rule]
+DOMAIN-SUFFIX, track.bankcomm.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/creditcard.*\.bankcomm\.(com|cn)\/.*Ads\.do - reject
+^https?:\/\/creditcard\.bankcomm\.(com|cn)\/tfimg\/public00\/M00\/4C\/6F - reject-img
+^https?:\/\/creditcard\.bankcomm\.(com|cn)\/tofimg\/bucket-pj-btss-tfcn-dmz\/OSS-F\/a8f2e8 - reject-img
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/CnsvMdbaptFinclipWeb - reject-dict
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb\/homepage(\/discovery)?\/promote - reject-dict
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_collection - reject
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/appInfo\/appNewestVersion - reject-200
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/common\/globalNotify - reject
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/qryHighRiskUser - reject
+
+[Script]
+mdb =type=http-response, pattern=^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/rcg\/index\.html\?callbackurl=rcg\/index\.html&orclogin=1&, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/mdb.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% *.bankcomm.cn,*.bankcomm.com

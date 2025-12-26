@@ -1,0 +1,8 @@
+#!name=独立模块-百信银行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/mres\.aibank\.com\/app\/resource\/cim\/cim0000001\/.+\.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% mres.aibank.com

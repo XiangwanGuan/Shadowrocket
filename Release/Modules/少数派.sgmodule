@@ -1,0 +1,8 @@
+#!name=独立模块-少数派
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ios\.sspai\.com\/api\/v\d\/recommend\/page\/get\?ad\.*ios_home_modal - reject
+
+[MITM]
+hostname = %APPEND% ios.sspai.com

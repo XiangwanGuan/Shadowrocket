@@ -1,0 +1,15 @@
+#!name=独立模块-稿定设计
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/www\.gaoding\.com\/api\/v\d\/cp\/search-words\/v2\/placeholder - reject-dict
+^https?:\/\/www\.gaoding\.com\/api\/v\d\/oc\/delivery-pits\/(?:template|mine|home)-page-dialog\/modules$ - reject-dict
+^https?:\/\/www\.gaoding\.com\/api\/v\d\/oc\/v\d\/delivery-pits\/ios-splash\/modules$ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/www\.gaoding\.com\/api\/v\d\/oc\/exhibitions\/(templates|all_editor_tools)\/resources$ 'walk(if type == "object" and .badge_img_url? then .badge_img_url="" else . end)'
+http-response-jq ^https?:\/\/www\.gaoding\.com\/api\/v\d\/oc\/exhibitions\/app_mine\/resources$ '.pits |= map(select(.module_type != "BANNER"))'
+http-response-jq ^https?:\/\/www\.gaoding\.com\/api\/v\d\/oc\/exhibitions\/template\/resources$ '.pits |= map(select(.module_type != "BANNER"))'
+
+[MITM]
+hostname = %APPEND% www.gaoding.com

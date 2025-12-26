@@ -1,0 +1,8 @@
+#!name=独立模块-妈妈网孕育
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/qimg\.cdnmama\.com\/rd - reject-dict
+
+[MITM]
+hostname = %APPEND% qimg.cdnmama.com

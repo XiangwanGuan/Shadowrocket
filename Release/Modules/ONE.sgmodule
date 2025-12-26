@@ -1,0 +1,10 @@
+#!name=独立模块-ONE
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.21ec74\.com\/v2\.5\/ad - reject
+^https?:\/\/app\.api\.d3yuiw4\.com\/api\/app\/ad - reject
+^https?:\/\/v3\.wufazhuce\.com:8000\/api\/adpreloadlist - reject-dict
+
+[MITM]
+hostname = %APPEND% api.21ec74.com,app.api.d3yuiw4.com,v3.wufazhuce.com

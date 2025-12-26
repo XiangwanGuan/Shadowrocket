@@ -1,0 +1,8 @@
+#!name=独立模块-Upwork
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/www\.upwork\.com\/api\/v\d\/client-app-config\/platform\/ios\/app\/freelancer\/version - reject-dict
+
+[MITM]
+hostname = %APPEND% www.upwork.com

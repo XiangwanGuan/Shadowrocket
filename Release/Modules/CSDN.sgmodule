@@ -1,0 +1,17 @@
+#!name=独立模块-CSDN
+#!desc=2025-12-11 16:17:36
+
+[Rule]
+DOMAIN-SUFFIX, ad.csdn.net, REJECT,pre-matching
+DOMAIN-SUFFIX, counter.csdn.net, REJECT,pre-matching
+DOMAIN-SUFFIX, dc.csdn.net, REJECT,pre-matching
+DOMAIN-SUFFIX, dc2.csdn.net, REJECT,pre-matching
+DOMAIN-SUFFIX, medal.blog.csdn.net, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/app-gw\.csdn\.net\/abtesting\/v2\/getList? - reject
+^https?:\/\/app-gw\.csdn\.net\/silkroad-api\/api\/v\d\/assemble\/list\/pub\/channel\/app_open_screen_ad - reject
+^https?:\/\/gw\.csdn\.net\/cms-app\/v\d+\/home_page\/open_advertisement - reject
+
+[MITM]
+hostname = %APPEND% app-gw.csdn.net,gw.csdn.net

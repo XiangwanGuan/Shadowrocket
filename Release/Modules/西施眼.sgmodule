@@ -1,0 +1,9 @@
+#!name=独立模块-西施眼
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/vapp\.tmuyun\.com\/api\/app_start_page\/list\/new - reject-dict
+^https?:\/\/vapp\.tmuyun\.com\/api\/buoy\/list - reject-dict
+
+[MITM]
+hostname = %APPEND% vapp.tmuyun.com

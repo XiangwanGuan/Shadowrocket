@@ -1,0 +1,8 @@
+#!name=独立模块-华宝智投
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.touker\.com\/v2\/IAdvertisementAPI\.queryStartAdvertisement - reject-200
+
+[MITM]
+hostname = %APPEND% api.touker.com

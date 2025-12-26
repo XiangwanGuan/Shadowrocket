@@ -1,0 +1,13 @@
+#!name=独立模块-云快充 小程序
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN, et.ykccn.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/gw3\.ykccn\.com\/api\/omp\/mt\/appAdvertising\/queryAdvertisingByParams - reject-dict
+^https?:\/\/gw3\.ykccn\.com\/api\/omp\/mt\/charge\/activity\/package\/newest - reject-dict
+^https?:\/\/gw3\.ykccn\.com\/api\/omp\/mt\/enterpriseWeChatConfig\/app\/queryCityConfig - reject-dict
+
+[MITM]
+hostname = %APPEND% gw3.ykccn.com

@@ -1,0 +1,8 @@
+#!name=独立模块-平安证券
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/pacdn\.m\.stock\.pingan\.com\/images\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% pacdn.m.stock.pingan.com

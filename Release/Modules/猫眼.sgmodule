@@ -1,0 +1,10 @@
+#!name=独立模块-猫眼
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) - reject
+^https?:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.gif - reject
+^https?:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ - reject
+
+[MITM]
+hostname = %APPEND% p0.pipi.cn

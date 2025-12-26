@@ -1,0 +1,20 @@
+#!name=独立模块-美颜相机
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, adui.tg.meitu.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/api\.meiyan\.com\/operation\/home_banner\.json\? - reject-dict
+^https?:\/\/api\.meiyan\.com\/vip\/permission_update_popup\.json\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.meiyan\.com\/operation\/get_config\.json\? 'delpaths([["response","bubble"]])'
+http-response-jq ^https?:\/\/api\.meiyan\.com\/operation\/get_config\.json\? 'delpaths([["response","person_center"]])'
+http-response-jq ^https?:\/\/api\.meiyan\.com\/operation\/get_config\.json\? 'delpaths([["response","time_limit"]])'
+http-response-jq ^https?:\/\/api\.meiyan\.com\/operation\/get_config\.json\? 'if (getpath(["response","function_pop","meiyan_style"]) | has("is_pop")) then (setpath(["response","function_pop","meiyan_style","is_pop"]; false)) else . end'
+http-response-jq ^https?:\/\/api\.meiyan\.com\/operation\/get_config\.json\? 'if (getpath(["response","onoff","vip_half_window_exit_remain_popup"]) | has("open")) then (setpath(["response","onoff","vip_half_window_exit_remain_popup","open"]; 0)) else . end'
+http-response-jq ^https?:\/\/api\.meiyan\.com\/operation\/get_config\.json\? 'if (getpath(["response","onoff"]) | has("vip_home_exit_remain_popup")) then (setpath(["response","onoff","vip_home_exit_remain_popup"]; 0)) else . end'
+
+[MITM]
+hostname = %APPEND% api.meiyan.com

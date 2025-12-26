@@ -1,0 +1,11 @@
+#!name=独立模块-当当云阅读
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.dangdang\.com\/mapi\d\/mobile\/init - reject
+^https?:\/\/e\.dangdang\.com\/.+?getDeviceStartPage - reject
+^https?:\/\/e\.dangdang\.com\/media\/api.+\?action=getDeviceStartPage - reject
+^https?:\/\/mapi\.dangdang\.com\/index\.php\?action=init - reject
+
+[MITM]
+hostname = %APPEND% api.dangdang.com,e.dangdang.com,mapi.dangdang.com

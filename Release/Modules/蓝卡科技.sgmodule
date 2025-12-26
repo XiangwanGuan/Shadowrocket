@@ -1,0 +1,8 @@
+#!name=独立模块-蓝卡科技
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cloud\.bluecardsoft\.com\/yuntingad\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% cloud.bluecardsoft.com

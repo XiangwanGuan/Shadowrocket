@@ -1,0 +1,20 @@
+#!name=独立模块-脉脉
+#!desc=2025-12-25 16:15:17
+
+[Rule]
+DOMAIN-SUFFIX, track.mm.taou.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/(?:launch_ad|ad?) - reject
+^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/go_gossip_darwin\/external\/v\d\/query_flow_cards - reject-dict
+^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/pay\/v\d\/check_gift - reject-dict
+^https?:\/\/api\.taou\.com\/sdk\/global\/splash_ad - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v\d\/detail_recommend_feeds\? 'del(.feeds)'
+http-response-jq ^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v\d\/feed_detail_comment\? 'if .lst then .lst |= map(select(.newAdStyle | not)) else . end'
+http-response-jq ^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/feed\/v\d\/focus_feed\? 'if .feeds then .feeds |= map(select(.newAdStyle | not)) else . end'
+http-response-jq ^https?:\/\/(h3\.)?open\.taou\.com\/maimai\/gossip\/v\d\/gossip_detail_comment\? 'if .comments.lst then .comments.lst |= map(select(.newAdStyle | not)) else . end'
+
+[MITM]
+hostname = %APPEND% api.taou.com,h3.open.taou.com,open.taou.com

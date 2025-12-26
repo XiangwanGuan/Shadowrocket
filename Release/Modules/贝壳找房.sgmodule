@@ -1,0 +1,18 @@
+#!name=独立模块-贝壳找房
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/apps\.api\.ke\.com\/config\/config\/bootpage\? - reject-dict
+^https?:\/\/apps\.api\.ke\.com\/config\/config\/getactivityconfig\? - reject-dict
+^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/userCenter\/feed\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/homepage\/feed\? '.data.list |= map(select(.cardType == "houseContainer" or .cardType == "houseV2" or .cardType == "houseV3" or .cardType == "rentHouseDiscount" or .cardType == "decorationCase"))'
+http-response-jq ^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/homepage\/initData\/mini\? 'delpaths([["data","bootpage"]])'
+http-response-jq ^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/homepage\/initData\/mini\? 'delpaths([["data","bottom_bar_activity"]])'
+http-response-jq ^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/myhome\/pagedetail\? '.data.moduleList |= map(select(.tab != "myHomeDecorV4"))'
+http-response-jq ^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/userCenter\/info\? 'del(.data.mainIcons.list[] | select(.indexKey == "coupon"))'
+http-response-jq ^https?:\/\/apps\.api\.ke\.com\/platform\/shellapp\/userCenter\/info\? 'delpaths([["data","islandModule"]])'
+
+[MITM]
+hostname = %APPEND% apps.api.ke.com

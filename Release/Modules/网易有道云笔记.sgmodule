@@ -1,0 +1,8 @@
+#!name=独立模块-网易有道云笔记
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/silk\.lx\.netease\.com\/api\/open\/advertOpen\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% silk.lx.netease.com

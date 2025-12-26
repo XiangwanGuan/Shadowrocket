@@ -1,0 +1,8 @@
+#!name=独立模块-广汽本田
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/gha\.ghac\.cn\:\w+\/base\/app\/api\/ad\/query - reject-200
+
+[MITM]
+hostname = %APPEND% gha.ghac.cn

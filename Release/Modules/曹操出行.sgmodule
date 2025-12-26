@@ -1,0 +1,9 @@
+#!name=独立模块-曹操出行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cap\.caocaokeji\.cn\/advert-bss\/ - reject
+^https?:\/\/ptmpcap\.caocaokeji\.cn\/advert-bss\/ - reject-img
+
+[MITM]
+hostname = %APPEND% cap.caocaokeji.cn,ptmpcap.caocaokeji.cn

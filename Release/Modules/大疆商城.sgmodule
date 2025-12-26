@@ -1,0 +1,8 @@
+#!name=独立模块-大疆商城
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/se-api\.djiits\.com\/api\/components\/launch_ad\.json\?abbrv_url=1&country=cn&language=zh-CN - reject-dict
+
+[MITM]
+hostname = %APPEND% se-api.djiits.com

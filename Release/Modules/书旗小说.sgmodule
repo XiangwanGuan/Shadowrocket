@@ -1,0 +1,20 @@
+#!name=独立模块-书旗小说
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/.+\.pglstatp-toutiao\.com - reject
+^https?:\/\/.+\.shuqireader\.com\/sapi\/.+ - reject
+^https?:\/\/101\.91\.69\.26:8080\/.+ - reject
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/.+ - reject
+^https?:\/\/feedback\.uc\.cn\/feedback\/api\/get_unread_status - reject
+^https?:\/\/img-tailor\.11222\.cn\/cms\/upload\/img\/.+ - reject
+^https?:\/\/img-tailor\.11222\.cn\/pm\/app\/.+\.gif - reject
+^https?:\/\/message\.shuqireader\.com\/message\/.+ - reject
+^https?:\/\/ocean\.shuqireader\.com\/api\/ad\/adserver\/.+ - reject
+^https?:\/\/ocean\.shuqireader\.com\/api\/route\/iosReadPage\/ad.+ - reject
+^https?:\/\/sf3-be-pack\.pglstatp-toutiao\.com\/img\/ad\.union\.api - reject
+^https?:\/\/sq\.sljkj\.com\/api\/sdk\/ads2 - reject
+^https?:\/\/ut2\.shuqistat\.com\/.+\.gif - reject
+
+[MITM]
+hostname = %APPEND% *.pangolin-sdk-toutiao.com,*.pglstatp-toutiao.com,*.shuqireader.com,101.91.69.26,feedback.uc.cn,img-tailor.11222.cn,sq.sljkj.com,ut2.shuqistat.com

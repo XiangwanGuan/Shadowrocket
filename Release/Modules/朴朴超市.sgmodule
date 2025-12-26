@@ -1,0 +1,28 @@
+#!name=独立模块-朴朴超市
+#!desc=2025-12-19 08:22:51
+
+[URL Rewrite]
+^https?:\/\/101\.42\.130\.147\/httpdns\/resolve\/ - reject
+^https?:\/\/106\.55\.220\.18:8053\/httpdns\/ - reject
+^https?:\/\/139\.196\.12\.179:8053\/httpdns\/ - reject
+^https?:\/\/54\.222\.159\.138:8053\/httpdns\/ - reject
+^https?:\/\/j1\.pupuapi\.com\/client\/assets\/discount\/order - reject-dict
+^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/search_input_ranking - reject-dict
+^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/channel\/global_redeem\/top_tip\/v2 - reject-dict
+^https?:\/\/j1\.pupuapi\.com\/client\/member_card\/index\/my - reject
+^https?:\/\/j1\.pupuapi\.com\/client\/member_card\/premium\/user_center - reject-dict
+^https?:\/\/j1\.pupuapi\.com\/client\/recommendation\/hub\/interests\/products\/v2 - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/j1\.pupuapi\.com\/client\/notification\/message_center\/unread_number '.data = []'
+
+[Script]
+PupuSplashAds =type=http-response, pattern=^https?:\/\/j1\.pupuapi\.com\/client\/app_resource\/resource_preload\/list_h5_resource, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/PupuSplashAds.js, requires-body=true, max-size=0
+PupuSplashAds =type=http-response, pattern=^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/v1, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/PupuSplashAds.js, requires-body=true, max-size=0
+PupuSplashAds =type=http-response, pattern=^https?:\/\/j1\.pupuapi\.com\/client\/order\/orders\/list\/v4, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/PupuSplashAds.js, requires-body=true, max-size=0
+PupuSplashAds =type=http-response, pattern=^https?:\/\/j1\.pupuapi\.com\/client\/order_settlement\/detail, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/PupuSplashAds.js, requires-body=true, max-size=0
+PupuSplashAds =type=http-response, pattern=^https?:\/\/j1\.pupuapi\.com\/client\/search\/hot_keywords\/v3, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/PupuSplashAds.js, requires-body=true, max-size=0
+PupuSplashAds =type=http-response, pattern=^https?:\/\/j1\.pupuapi\.com\/client\/search\/hub\/search_box\/products\/v6, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/PupuSplashAds.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% j1.pupuapi.com

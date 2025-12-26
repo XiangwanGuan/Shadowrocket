@@ -1,0 +1,8 @@
+#!name=独立模块-omofun
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/103\.91\.210\.141\:2515\/xgapp\.php\/v2\/top_notice - reject
+
+[MITM]
+hostname = %APPEND% 103.91.210.141

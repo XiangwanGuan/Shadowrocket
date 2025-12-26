@@ -1,0 +1,8 @@
+#!name=独立模块-多多买菜
+#!desc=2025-12-09 14:29:01
+
+[Body Rewrite]
+http-response ^https?:\/\/mobile\.yangkeduo\.com\/proxy\/api\/api\/express\/post\/waybill\/red_packet\/goods_list$ "list":\[.+\] "list":[]
+
+[MITM]
+hostname = %APPEND% mobile.yangkeduo.com

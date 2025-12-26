@@ -1,0 +1,9 @@
+#!name=独立模块-趣兜风
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/online\.aicarmap\.com\/club\/api\/user\/updateloc - reject-dict
+^https?:\/\/st7niu\.aicarmap\.com\/st_?!(a2|a3|e9)\w+\.webp$ - reject
+
+[MITM]
+hostname = %APPEND% online.aicarmap.com,st7niu.aicarmap.com

@@ -1,0 +1,8 @@
+#!name=独立模块-小白学习打印机
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.xbxxhz\.com\/big_data\/v1\/home_pages - reject
+
+[MITM]
+hostname = %APPEND% api.xbxxhz.com

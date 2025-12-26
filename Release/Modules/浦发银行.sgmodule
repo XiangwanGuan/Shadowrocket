@@ -1,0 +1,11 @@
+#!name=独立模块-浦发银行
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/lban\.spdb\.com\.cn\/mspmk-web-component\/getAdvList\.ah$ - reject
+^https?:\/\/lban\.spdb\.com\.cn\/mspmk-web-component\/getAdvertisementList\.ah - reject
+^https?:\/\/lban\.spdb\.com\.cn\/mspmk-web-component\/prefetchAdvList\.ah - reject
+^https?:\/\/wap\.spdb\.com\.cn\/mspmk-web-homeassist\/OpenScreenAdv\.ah$ - reject
+
+[MITM]
+hostname = %APPEND% lban.spdb.com.cn,wap.spdb.com.cn

@@ -1,0 +1,9 @@
+#!name=独立模块-向日葵
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/client-api-v\d\.oray\.com\/materials\/(?:SLCC_IOS_STARTUP|SLCC_IOS_DEVICE|SUNLOGIN_CLIENT_IOS_PROMOTION) - reject-dict
+^https?:\/\/slapi\.oray\.net\/(client\/)?ad - reject
+
+[MITM]
+hostname = %APPEND% client-api-v2.oray.com,slapi.oray.net

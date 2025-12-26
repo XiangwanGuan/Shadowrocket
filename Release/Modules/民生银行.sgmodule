@@ -1,0 +1,16 @@
+#!name=独立模块-民生银行
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN-KEYWORD, c-hzgt2.getui.com, REJECT,pre-matching
+DOMAIN-KEYWORD, cm-10-134.getui.com, REJECT,pre-matching
+DOMAIN-KEYWORD, cm-10-35.getui.com, REJECT,pre-matching
+DOMAIN-KEYWORD, sdk.open.talk.getui.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/rs.creditcard.cmbc.com.cn/mmc/img/126f35586ece469aa2daf2e451ba7b4d.jpg - reject-200
+^https?:\/\/www\.cmbc\.com\.cn\/m\/image\/banner\/.*.png - reject-200
+^https?:\/\/www\.cmbc\.com\.cn\/m\/image\/loadingpage\/ - reject-200
+
+[MITM]
+hostname = %APPEND% rs.creditcard.cmbc.com.cn,www.cmbc.com.cn

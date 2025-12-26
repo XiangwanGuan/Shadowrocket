@@ -1,0 +1,8 @@
+#!name=独立模块-浙里办
+#!desc=2025-12-09 14:29:03
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/portal\.zjzwfw\.gov\.cn\/app_api\/appHome\/selectStartPic 'if (getpath([]) | has("data")) then (setpath(["data"]; {})) else . end'
+
+[MITM]
+hostname = %APPEND% portal.zjzwfw.gov.cn

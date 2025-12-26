@@ -1,0 +1,8 @@
+#!name=独立模块-腾讯体育
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/sports3\.gtimg\.com\/community\/20cf93884470434eaf38b2e77ab7796a\.png - reject
+
+[MITM]
+hostname = %APPEND% sports3.gtimg.com

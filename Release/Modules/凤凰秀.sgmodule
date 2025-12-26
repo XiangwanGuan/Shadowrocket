@@ -1,0 +1,9 @@
+#!name=独立模块-凤凰秀
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.fengshows\.com\/api\/launchAD - reject-img
+^https?:\/\/dsa-mfp\.fengshows\.cn\/mfp\/mfpMultipleDelivery\.do\?.+?adunitid - reject
+
+[MITM]
+hostname = %APPEND% api.fengshows.com,dsa-mfp.fengshows.cn

@@ -1,0 +1,9 @@
+#!name=独立模块-云闪付
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/(tysdk|ads)\.95516\.com - reject-dict
+^https?:\/\/wallet\.95516\.com\/s\/wl\/icon\/long - reject
+
+[MITM]
+hostname = %APPEND% ads.95516.com,tysdk.95516.com,wallet.95516.com

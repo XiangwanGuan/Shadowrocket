@@ -1,0 +1,8 @@
+#!name=独立模块-掌上道具城
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/djcapp\.game\.qq\.com\/daoju\/igw\/main\/\?_service=welink\.ad\.list&_ret_key=result&site_set - reject-200
+
+[MITM]
+hostname = %APPEND% djcapp.game.qq.com

@@ -1,0 +1,9 @@
+#!name=独立模块-叮达出行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/img\.admobile\.top\/admobile-adRequest\/.*.(?:jpg|png) - reject-200
+^https?:\/\/webcdn\.m\.qq\.com\/qiantu\/upload\/202[0-9]{5}\/.*.(jpg|png) - reject-200
+
+[MITM]
+hostname = %APPEND% img.admobile.top,webcdn.m.qq.com

@@ -1,0 +1,8 @@
+#!name=独立模块-腾讯乘车码 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ccmsupport-sz\.tenpay\.com\/cgi-bin\/common\/ccm_page_element.cgi - reject
+
+[MITM]
+hostname = %APPEND% ccmsupport-sz.tenpay.com

@@ -1,0 +1,8 @@
+#!name=独立模块-指点天下
+#!desc=2025-12-09 14:29:03
+
+[URL Rewrite]
+^https?:\/\/zua\.zhidiantianxia\.cn\/api\/adverts - reject
+
+[MITM]
+hostname = %APPEND% zua.zhidiantianxia.cn

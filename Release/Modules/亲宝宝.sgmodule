@@ -1,0 +1,24 @@
+#!name=独立模块-亲宝宝
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN-SUFFIX, apilog.qbb6.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/api\.qbb6\.com\/ad\/ - reject-200
+^https?:\/\/api\.qbb6\.com\/baby\/and\/litclass\/list\/get - reject-dict
+^https?:\/\/api\.qbb6\.com\/baby\/relative\/visited - reject
+^https?:\/\/api\.qbb6\.com\/commons\/check\/app\/update - reject
+^https?:\/\/api\.qbb6\.com\/commons\/self\/button\/group\/get - reject-dict
+^https?:\/\/api\.qbb6\.com\/commons\/testflight\/check\/update - reject-dict
+^https?:\/\/api\.qbb6\.com\/commons\/widget\/info\/get - reject-dict
+^https?:\/\/api\.qbb6\.com\/mamiyin\/large\/view\/get - reject
+^https?:\/\/api\.qbb6\.com\/remind\/unread_count\/get - reject
+^https?:\/\/api\.qbb6\.com\/timeline\/item\/list\/get - reject-dict
+^https?:\/\/apicommunity\.qbb6\.com\/community\/category\/list\/get - reject-dict
+^https?:\/\/apipt\.qbb6\.com\/parenting\/pt\/home\/post\/card\/get - reject-dict
+^https?:\/\/stlib\.qbb6\.com\/content\/\w+\.webp - reject-img
+^https?:\/\/stlib\.qbb6\.com\/wclt\/js\/core\/popup - reject
+
+[MITM]
+hostname = %APPEND% api.qbb6.com,apicommunity.qbb6.com,apipt.qbb6.com,stlib.qbb6.com,webapi.qbb6.com

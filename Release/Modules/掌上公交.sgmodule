@@ -1,0 +1,11 @@
+#!name=独立模块-掌上公交
+#!desc=2025-12-19 08:22:54
+
+[URL Rewrite]
+^https?:\/\/quanguo\.mygolbs\.com:8081\/MyBusServer\/servlet\/MyGoServer\.HttpPool\.HttpHandlerServlet - reject-200
+
+[Script]
+zhangshanggongjiao =type=http-response, pattern=^https?:\/\/wx\.mygolbs\.com\/WxBusServer\/ApiData\.do, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhangshanggongjiao.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% quanguo.mygolbs.com,wx.mygolbs.com

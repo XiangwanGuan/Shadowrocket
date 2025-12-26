@@ -1,0 +1,8 @@
+#!name=独立模块-小Biu智家
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/shcss\.suning\.com\/shcss-web\/api\/appImage\/queryAppImage\.do - reject-200
+
+[MITM]
+hostname = %APPEND% shcss.suning.com

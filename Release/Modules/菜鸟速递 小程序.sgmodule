@@ -1,0 +1,8 @@
+#!name=独立模块-菜鸟速递 小程序
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cn-acs\.m\.cainiao\.com\/h5\/mtop\.cainiao\.guoguo\.tdwxgateway\.ads - reject-dict
+
+[MITM]
+hostname = %APPEND% cn-acs.m.cainiao.com

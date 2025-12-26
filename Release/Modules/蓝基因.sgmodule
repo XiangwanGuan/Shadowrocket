@@ -1,0 +1,11 @@
+#!name=独立模块-蓝基因
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN-KEYWORD, medicine.lanjiyin.com.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/tk\.lanjiyin\.com\.cn\/ad\/getAdList - reject
+
+[MITM]
+hostname = %APPEND% tk.lanjiyin.com.cn

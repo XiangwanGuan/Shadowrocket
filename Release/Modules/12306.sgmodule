@@ -1,0 +1,8 @@
+#!name=独立模块-12306
+#!desc=2025-12-26 08:25:29
+
+[Script]
+12306 =type=http-response, pattern=^https?:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/12306.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% mobile.12306.cn

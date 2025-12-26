@@ -1,0 +1,19 @@
+#!name=独立模块-京东
+#!desc=2025-12-19 08:22:50
+
+[Rule]
+URL-REGEX, "^https?:\/\/w{32}\.jddebug\.com\/diagnose\?", REJECT
+
+[URL Rewrite]
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts|apollo_style|jdaPreDownload) - reject-200
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=basicConfig 'if (getpath(["data","JDHttpToolKit","httpdns"]) | has("httpdns")) then (setpath(["data","JDHttpToolKit","httpdns","httpdns"]; "0")) else . end'
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=basicConfig 'if (getpath(["data","JDMessage","socketmonitor"]) | has("isSocketEstablishedAhead")) then (setpath(["data","JDMessage","socketmonitor","isSocketEstablishedAhead"]; "0")) else . end'
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=basicConfig 'if (getpath(["data","JDMessage","socketmonitor"]) | has("isSocketReport")) then (setpath(["data","JDMessage","socketmonitor","isSocketReport"]; "0")) else . end'
+
+[Script]
+jd =type=http-response, pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/jd.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.m.jd.com

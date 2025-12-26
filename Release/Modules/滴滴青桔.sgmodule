@@ -1,0 +1,9 @@
+#!name=独立模块-滴滴青桔
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/omgup[0-9]{1}\.xiaojukeji\.com\/api - reject-200
+^https?:\/\/pt-starimg\.didistatic\.com\/static\/starimg\/node\/.*.(jpg|png|gif) - reject-200
+
+[MITM]
+hostname = %APPEND% omgup*.xiaojukeji.com,pt-starimg.didistatic.com

@@ -1,0 +1,8 @@
+#!name=独立模块-丰巢 小程序
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/webchatapp\.fcbox\.com\/fcboxactivityweb\/api\/v\d\/clientPage - reject
+
+[MITM]
+hostname = %APPEND% webchatapp.fcbox.com

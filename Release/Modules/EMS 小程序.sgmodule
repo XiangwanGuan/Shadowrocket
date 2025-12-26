@@ -1,0 +1,14 @@
+#!name=独立模块-EMS 小程序
+#!desc=2025-12-19 08:22:50
+
+[URL Rewrite]
+^https?:\/\/ec\.ems\.com\.cn\/ecr-exp-web\/advert - reject
+^https?:\/\/ec\.ems\.com\.cn\/mailAd$ - reject
+^https?:\/\/ump\.ems\.com\.cn\/mailAd$ - reject
+
+[Script]
+wechatApplet =type=http-response, pattern=^https?:\/\/ec\.ems\.com\.cn\/ecr-qry-web\/redis\/pageInfoByChannel, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wechatApplet.js, requires-body=true, max-size=0
+wechatApplet =type=http-response, pattern=^https?:\/\/ump\.ems\.com\.cn\/new-generation-extend\/redis\/pageInfoByChannel, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/wechatApplet.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% ec.ems.com.cn,ump.ems.com.cn

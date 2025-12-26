@@ -1,0 +1,8 @@
+#!name=独立模块-扫描全能王
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.intsig\.net\/user\/cs\/operating\/app\/get_startpic\/ - reject-200
+
+[MITM]
+hostname = %APPEND% api.intsig.net

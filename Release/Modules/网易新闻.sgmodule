@@ -1,0 +1,10 @@
+#!name=独立模块-网易新闻
+#!desc=2025-12-25 14:13:19
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/gw\.m\.163\.com\/nc\/api\/v\d\/feed\/dynamic\/headline-list\? 'if .data.items then .data.items |= map(select(.tagList? | not or length == 0)) else . end'
+http-response-jq ^https?:\/\/gw\.m\.163\.com\/nc\/api\/v\d\/search\/hot-word '(if .data.special then .data.special=[] else . end) | (if .data.RollhotWordList then .data.RollhotWordList=[] else . end)'
+http-response-jq ^https?:\/\/nex\.163\.com\/q 'if .ads then .ads=[] else . end'
+
+[MITM]
+hostname = %APPEND% gw.m.163.com,nex.163.com

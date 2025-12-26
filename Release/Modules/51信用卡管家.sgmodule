@@ -1,0 +1,12 @@
+#!name=独立模块-51信用卡管家
+#!desc=2025-12-25 14:00:47
+
+[URL Rewrite]
+^https?:\/\/api\.u51\.com\/(generic-config-gateway|rs-resys)\/api\/v\d\/(creditpage-config|recommend) - reject-200
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.u51\.com\/generic-config-gateway\/api\/v\d\/guanjia\/me-tab2\/config '(if has("operationResourceDTO") then .operationResourceDTO=[] else . end) | (if .meTabConfigExts then .meTabConfigExts |= map(select(.meTabConfigs[0].title? == "设置")) else . end)'
+http-response-jq ^https?:\/\/api\.u51\.com\/liabilitygateway\/api\/v\d\/homepage\/liabilityline 'if has("operationResourceDTO") then .operationResourceDTO=[] else . end'
+
+[MITM]
+hostname = %APPEND% api.u51.com

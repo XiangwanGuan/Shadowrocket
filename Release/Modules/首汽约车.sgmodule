@@ -1,0 +1,11 @@
+#!name=独立模块-首汽约车
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/gw-passenger\.01zhuanche\.com\/gw-passenger\/car-rest\/webservice\/passenger\/recommendADs - reject-200
+^https?:\/\/gw-passenger\.01zhuanche\.com\/gw-passenger\/zhuanche-passenger-token\/leachtoken\/webservice\/homepage\/queryADs - reject
+^https?:\/\/gw-passenger\.01zhuanche\.com\/gw-passenger\/zhuanche-passengerController\/notk\/passenger\/recommendADs - reject
+^https?:\/\/img\.yun\.01zhuanche\.com\/statics\/app\/advertisement\/.+?-750-1334 - reject-img
+
+[MITM]
+hostname = %APPEND% gw-passenger.01zhuanche.com,img.yun.01zhuanche

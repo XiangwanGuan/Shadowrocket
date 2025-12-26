@@ -1,0 +1,23 @@
+#!name=独立模块-海尔智家
+#!desc=2025-12-25 17:53:52
+
+[Rule]
+DOMAIN-SUFFIX, ehaier.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.zip$ - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/ad\/ - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/start\/advertising\?approach - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/visualize\/recommend\?dataType - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/shpmResource\/servicePage\/weather\/query\?areaId - reject-200
+^https?:\/\/zj\.haier\.net\/api-gw\/upmapi\/appmanage\/publish\/getRecommendVersion$ - reject-200
+^https?:\/\/zj\.haier\.net\/omsappapi\/ad\/ - reject-200
+^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/resBagList$ - reject-200
+^https?:\/\/zj\.haier\.net\/omssceneapi\/house\/v\d\/recommend\/listByRoom$ - reject-200
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/oss-zjrs\.haier\.net\/resource\/confFile\/\d{22}\.json$ 'if .id == 595 then .detail? |= map(select(.aliasName? | IN("705首页顶部","版块标题","图文导航","705消息通知"))) elif .id == 169 then .detail?[0].na.items? |= map(select(.na.name? | IN("首页","智家","我的"))) elif (type == "array" and length == 1) then .[0].na.items? |= map(select(.na.name? | IN("首页","智家","我的"))) else . end'
+http-response-jq ^https?:\/\/zj\.haier\.net\/omsappapi\/resource\/v\d\/get\/resourceBag$ '.data.resource.md5 = null'
+
+[MITM]
+hostname = %APPEND% oss-zjrs.haier.net,zj.haier.net

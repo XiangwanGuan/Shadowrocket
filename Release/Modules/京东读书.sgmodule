@@ -1,0 +1,9 @@
+#!name=独立模块-京东读书
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/jdread-api\.jd\.com\/jdread\/api\/channel\/module\/opens - reject-200
+^https?:\/\/jdread-api\.jd\.com\/jdread\/api\/popup - reject-200
+
+[MITM]
+hostname = %APPEND% jdread-api.jd.com

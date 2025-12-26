@@ -1,0 +1,10 @@
+#!name=独立模块-华尔街见闻
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api-one-wscn\.awtmt\.com\/apiv\d\/advertising\/ - reject
+^https?:\/\/api\.wallstcn\.com\/apiv\d\/advertising\/ - reject
+^https?:\/\/api\.wallstreetcn\.com\/apiv\d\/advertising\/ - reject
+
+[MITM]
+hostname = %APPEND% api-one-wscn.awtmt.com,api.wallstcn.com,api.wallstreetcn.com

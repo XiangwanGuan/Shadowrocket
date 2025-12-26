@@ -1,0 +1,12 @@
+#!name=独立模块-配音秀
+#!desc=2025-12-24 18:26:30
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/iosapi\.peiyinxiu\.com\/Api\/Film\/GetConfigValue '.data |= (if type=="array" then map(select(.data? | (type=="string" and contains("金币哦") | not))) else . end)'
+http-response-jq ^https?:\/\/iosapi\.peiyinxiu\.com\/Api\/Friend\/GetRecommendUsers 'delpaths([["obj","data"]])'
+http-response-jq ^https?:\/\/iosapi\.peiyinxiu\.com\/Api\/live\/LiveList 'delpaths([["data","banners"]])'
+http-response-jq ^https?:\/\/iosapi\.peiyinxiu\.com\/api\/Union\/HomeData 'delpaths([["obj","data"]])'
+http-response-jq ^https?:\/\/iosapi\.peiyinxiu\.com\/api\/live\/FollowList 'delpaths([["obj","data"]])'
+
+[MITM]
+hostname = %APPEND% iosapi.peiyinxiu.com

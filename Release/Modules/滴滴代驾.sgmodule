@@ -1,0 +1,9 @@
+#!name=独立模块-滴滴代驾
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/as\.xiaojukeji\.com\/ep\/as\/conf\?ns=daijia-front&name= - reject-dict
+^https?:\/\/daijia\.kuaidadi\.com\/gateway\?api=prado\.cms\.delivery\.batch&apiVe - reject-dict
+
+[MITM]
+hostname = %APPEND% as.xiaojukeji.com,daijia.kuaidadi.com

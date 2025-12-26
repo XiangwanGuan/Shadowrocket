@@ -1,0 +1,33 @@
+#!name=独立模块-叮咚买菜
+#!desc=2025-12-11 16:17:37
+
+[Rule]
+DOMAIN, ddfs-public.ddimg.mobi, REJECT,pre-matching
+DOMAIN, rttrack.ddxq.mobi, REJECT,pre-matching
+DOMAIN, trackercollect.ddxq.mobi, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/guide-service\/userLike\/flowData$ - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/homeApi\/marketingNotice\? - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/homeApi\/userLike\? - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/order\/getRecommend$ - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/search\/hotKeyword\? - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/search\/rankingList\? - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/search\/rollHotKeyword\? - reject-dict
+^https?:\/\/imaicai\.api\.ddxq\.mobi\/vip\/getVipAd\/\? - reject-dict
+^https?:\/\/iuser\.api\.ddxq\.mobi\/userportal-service\/api\/v1\/user\/queryMyPage\/\? - reject-dict
+^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/getHomeAdPop - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/imaicai\.api\.ddxq\.mobi\/guide-service\/productApi\/productDetail\/info\? 'delpaths([["data","detail","chatEntry"]])'
+http-response-jq ^https?:\/\/imaicai\.api\.ddxq\.mobi\/homeApi\/categoriesNewDetail\? 'delpaths([["data","ad_info"]])'
+http-response-jq ^https?:\/\/imaicai\.api\.ddxq\.mobi\/tool\/getConfig\? 'delpaths([["data","ai_enter_config"]])'
+http-response-jq ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/bottomNavi 'del(.data.adId?) | if (.data.bottom_list? | length > 0) then .data.bottom_list |= map(select(.type != "eatwhat")) else . end'
+http-response-jq ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/homeFlowDetail 'walk(if type == "object" and has("list") then .list |= map(if type == "object" and has("multi_advertise_data_list") then del(.multi_advertise_data_list) else . end) else . end)'
+http-response-jq ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/newDetails\? '.data.list |= map(select(has("capsule_freedom_zone") | not))'
+http-response-jq ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/newDetails\? 'delpaths([["data","suspension"]])'
+http-response-jq ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/newDetails\? 'delpaths([["data","top_advert_data"]])'
+
+[MITM]
+hostname = %APPEND% maicai.api.ddxq.mobi,user.api.ddxq.mobi

@@ -1,0 +1,8 @@
+#!name=独立模块-正气助手
+#!desc=2025-12-09 14:29:03
+
+[URL Rewrite]
+^https?:\/\/apio\.zhengqi100\.com\/forum\/thread\/listsHome - reject-dict
+
+[MITM]
+hostname = %APPEND% apio.zhengqi100.com

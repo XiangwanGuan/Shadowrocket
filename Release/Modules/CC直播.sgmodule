@@ -1,0 +1,16 @@
+#!name=独立模块-CC直播
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.cc\.163\.com\/v1\/mpopuprecommend\/exit_room_conf$ - reject-dict
+^https?:\/\/appapi\.cc\.163\.com\/v\d\/mixfloatingwindow\/floating_windows\? - reject-dict
+^https?:\/\/cc\.163\.com\/act\/m\/daily\/ad_ - reject
+^https?:\/\/mshare\.cc\.163\.com\/mshare\/startadv_mobile_v\d\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.cc\.163\.com\/v\d\/entpage\/live_navbar_mobile\/ios\? '.data.top_nav |= map(select(.cn_name == "推荐" or .cn_name == "星秀" or .cn_name == "心动交友"))'
+http-response-jq ^https?:\/\/api\.cc\.163\.com\/v\d\/mgamenavigation\/navigation_list\? '.data.info_list |= map(select(.name == "关注" or .name == "推荐" or .name == "视频" or .name == "全部"))'
+http-response-jq ^https?:\/\/api\.cc\.163\.com\/v\d\/mgamerecpage\/recommend_page\? '.data.plugins|=map(select(.module_type!="banner"))|.data.plugins|=map(select(.module_type!="show_list"))|.data.plugins|=map(select(.title!="推荐品类"))'
+
+[MITM]
+hostname = %APPEND% api.cc.163.com,appapi.cc.163.com,cc.163.com,mshare.cc.163.com

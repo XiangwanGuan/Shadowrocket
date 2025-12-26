@@ -1,0 +1,9 @@
+#!name=独立模块-首旅如家 小程序
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/app\.homeinns\.com\/api\/v\d\/(?:index|local) - reject-dict
+^https?:\/\/wx\.bthhotels\.com\/miniapp\/weixin\/v\d\/home\/index_banner - reject-dict
+
+[MITM]
+hostname = %APPEND% app.homeinns.com,wx.bthhotels.com

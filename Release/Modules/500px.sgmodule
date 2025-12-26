@@ -1,0 +1,8 @@
+#!name=独立模块-500px
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/500px\.com\.cn\/community\/apk\/downloadApk - reject-dict
+
+[MITM]
+hostname = %APPEND% 500px.com.cn

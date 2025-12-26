@@ -1,0 +1,9 @@
+#!name=独立模块-曜影医疗
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/patient-api\.suh\.cn\/apt\/api\/userinfo\/GetNotice\?appname=pmsys&channel=6&device=ios&language=1&source=2&version= - reject-dict
+^https?:\/\/userpms-api\.suh\.cn\/apt\/api\/bannar\/PageList\?sysSearchKey=sysPat&showSearchKey=advertising&pageIndex=1&pagesize=100&lanSearchValue=1&locationSearchKey=&status=1& - reject-dict
+
+[MITM]
+hostname = %APPEND% patient-api.suh.cn,userpms-api.suh.cn

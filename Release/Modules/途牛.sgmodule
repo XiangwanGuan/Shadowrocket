@@ -1,0 +1,8 @@
+#!name=独立模块-途牛
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/m\.tuniu\.com\/api\/operation\/splash\/ - reject-200
+
+[MITM]
+hostname = %APPEND% m.tuniu.com

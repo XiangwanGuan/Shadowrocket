@@ -1,0 +1,12 @@
+#!name=独立模块-饿了么 小程序
+#!desc=2025-12-25 14:46:45
+
+[URL Rewrite]
+^https?:\/\/shopping\.ele\.me\/(gw|h5)\/mtop\.o2o\.ad\.exposure\.get - reject-dict
+^https?:\/\/waimai-guide\.ele\.me\/(gw|h5)\/mtop\.alsc\.eleme\.trigger\.respond - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/waimai-guide\.ele\.me\/(gw|h5)\/mtop\.alsc\.eleme\.miniapp\.homepage 'del(.data?.data?.miniapp_suspension_template, .data?.data?.frontend_suspension_template)'
+
+[MITM]
+hostname = %APPEND% shopping.ele.me,waimai-guide.ele.me

@@ -1,0 +1,8 @@
+#!name=独立模块-555电影
+#!desc=2025-12-09 14:29:01
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(app-v1\.ecoliving168\.com|852b95d36\.xwlpk\.cn)\/api\/v1\/movie\/index_recommend\? '.data[].list |= map(select(.type != 3)) | .data |= map(select(.layout != "advert_self"))'
+
+[MITM]
+hostname = %APPEND% 852b95d36.xwlpk.cn,app-v1.ecoliving168.com

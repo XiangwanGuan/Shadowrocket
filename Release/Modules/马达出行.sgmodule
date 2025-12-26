@@ -1,0 +1,11 @@
+#!name=独立模块-马达出行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/ebk\.17u\.cn\/tctrafficappversionadmin\/api\/getLatestVersionApp - reject-dict
+^https?:\/\/mada-travel\.17u\.cn\/mdapi\/config\/ads - reject-dict
+^https?:\/\/mada-travel\.17u\.cn\/mdapi\/config\/mine - reject-dict
+^https?:\/\/mada-travel\.17u\.cn\/mdapi\/config\/tabAct - reject-dict
+
+[MITM]
+hostname = %APPEND% *.17u.cn

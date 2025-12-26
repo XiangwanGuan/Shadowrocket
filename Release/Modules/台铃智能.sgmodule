@@ -1,0 +1,8 @@
+#!name=独立模块-台铃智能
+#!desc=2025-12-09 14:29:02
+
+[Body Rewrite]
+http-response ^https?:\/\/www\.tailgdd\.com\/v\d\/smart\/app\/config\/get$ footResource footResource0
+
+[MITM]
+hostname = %APPEND% www.tailgdd.com
