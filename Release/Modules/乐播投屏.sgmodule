@@ -1,0 +1,16 @@
+#!name=独立模块-乐播投屏
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN-SUFFIX, ad.hpplay.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, adeng.hpplay.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app-user-banner - reject-dict
+^https?:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_home_pop_up - reject-dict
+^https?:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_home_tips - reject-dict
+^https?:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_index_operate2 - reject-dict
+^https?:\/\/saas\.hpplay\.cn\/api\/lebo-rabbit\/app-card\/list - reject-dict
+
+[MITM]
+hostname = %APPEND% saas.hpplay.cn

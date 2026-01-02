@@ -1,0 +1,8 @@
+#!name=独立模块-中油优途
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/sichuan\.95504\.net\/v\d\/gd\/index\/get - reject-200
+
+[MITM]
+hostname = %APPEND% sichuan.95504.net

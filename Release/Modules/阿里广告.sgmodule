@@ -1,0 +1,18 @@
+#!name=独立模块-阿里广告
+#!desc=2025-12-31 18:17:23
+
+[Rule]
+URL-REGEX, "^https?:\/\/.+\/amdc\/mobileDispatch", REJECT
+
+[URL Rewrite]
+^https?:\/\/(gw|heic)\.alicdn\.com\/imgextra\/\w{2}\/\w+!+(?!600000000(5412|6148|4021|5802))\d*-\d-tps-(?!1035)\d{3,4}-(?!570)\d{3,4}\.(?:jpg|png)_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q\d0\.jpg_\.(?:heic|webp) - reject
+^https?:\/\/(gw|heic)\.alicdn\.com\/mt\/ - reject
+^https?:\/\/(gw|heic)\.alicdn\.com\/t(?:f|p)s\/.+\d{3,4}-\d{4} - reject
+^https?:\/\/g\.alicdn\.com\/(?:alilog|trace) - reject-200
+^https?:\/\/yixiu-abtest\.alicdn\.com\/ut-abtest\/config - reject-dict
+
+[Script]
+alicdn =type=http-response, pattern=^https?:\/\/g\.alicdn\.com\/.*o2o-ad, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/alicdn.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% g.alicdn.com,gw.alicdn.com,heic.alicdn.com,yixiu-abtest.alicdn.com

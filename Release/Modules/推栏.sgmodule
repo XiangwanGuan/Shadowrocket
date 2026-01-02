@@ -1,0 +1,9 @@
+#!name=独立模块-推栏
+#!desc=2025-12-09 14:29:02
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/m\.pvp\.xoyo\.com\/conf\/server-mapping$ 'delpaths([["data","splashConf"]])'
+http-response-jq ^https?:\/\/m\.pvp\.xoyo\.com\/conf\/server-mapping$ 'delpaths([["data","splashConfNew"]])'
+
+[MITM]
+hostname = %APPEND% m.pvp.xoyo.com

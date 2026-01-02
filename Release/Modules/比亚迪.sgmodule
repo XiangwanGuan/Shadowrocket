@@ -1,0 +1,8 @@
+#!name=独立模块-比亚迪
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cache\.bydauto\.com\.cn\/dilink_user_upload\/20 - reject-200
+
+[MITM]
+hostname = %APPEND% cache.bydauto.com.cn

@@ -1,0 +1,9 @@
+#!name=独立模块-牛听听
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/gateway\.benewtech\.cn\/resources-app\/app\/startup\/prepage - reject-dict
+^https?:\/\/ntt-app\.benewtech\.cn\/v6\/user\/\d+\/messages\/event - reject-dict
+
+[MITM]
+hostname = %APPEND% gateway.benewtech.cn,ntt-app.benewtech.cn

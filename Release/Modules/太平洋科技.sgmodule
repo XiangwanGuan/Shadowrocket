@@ -1,0 +1,19 @@
+#!name=独立模块-太平洋科技
+#!desc=2025-12-11 16:17:40
+
+[Rule]
+DOMAIN, ad-analysis.pconline.com.cn, REJECT,pre-matching
+DOMAIN, iad0ssl.pcauto.com.cn, REJECT,pre-matching
+DOMAIN, iad0ssl.pconline.com.cn, REJECT,pre-matching
+DOMAIN, imgad0.pcauto.com.cn, REJECT,pre-matching
+DOMAIN, imgad0.pconline.com.cn, REJECT,pre-matching
+DOMAIN, ivy.pchouse.com.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/agent-count\.(?:pcauto|pconline)\.com\.cn\/counter\/adAnalyse\/ - reject
+^https?:\/\/mrobot\.(?:pcauto|pconline)\.com\.cn\/[a-z0-9-]+\/onlineinfo\/(ad|cms\/launch) - reject-200
+^https?:\/\/mrobot\.(?:pcauto|pconline)\.com\.cn\/v\d\/ad - reject
+^https?:\/\/mrobot\.(?:pcauto|pconline)\.com\.cn\/xsp\/s\/auto\/info\/(ad|preload) - reject
+
+[MITM]
+hostname = %APPEND% agent-count.pcauto.com.cn,agent-count.pconline.com.cn,mrobot.pcauto.com.cn,mrobot.pconline.com.cn

@@ -1,0 +1,9 @@
+#!name=独立模块-QQ钱包
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/m\.qianbao\.qq\.com\/pages\/walletHome\?invisible - reject
+^https?:\/\/m\.qianbao\.qq\.com\/services\/walletHome\/get(QQshop|Game|Foot)Data - reject-dict
+
+[MITM]
+hostname = %APPEND% m.qianbao.qq.com

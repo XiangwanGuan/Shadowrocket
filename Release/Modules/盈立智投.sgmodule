@@ -1,0 +1,8 @@
+#!name=独立模块-盈立智投
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/hz\.yxzq\.com\/news-configserver\/api\/v1\/query\/banner_advertisement - reject-dict
+
+[MITM]
+hostname = %APPEND% hz.yxzq.com

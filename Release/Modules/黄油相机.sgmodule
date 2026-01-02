@@ -1,0 +1,8 @@
+#!name=独立模块-黄油相机
+#!desc=2025-12-26 09:10:06
+
+[URL Rewrite]
+^https?:\/\/api\d\.bybutter\.com\/v\d\/app\/placements\/\d\/advertisements - reject
+
+[MITM]
+hostname = %APPEND% api*.bybutter.com

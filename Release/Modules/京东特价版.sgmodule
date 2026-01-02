@@ -1,0 +1,10 @@
+#!name=独立模块-京东特价版
+#!desc=2025-12-25 10:38:28
+
+[Body Rewrite]
+http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_SmartPush pushData SUCCEED
+http-response ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising jdLiteAdvertisingVO SUCCEED
+http-response-jq ^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show '.data.materialList.startTime = 3667476800000 | .data.materialList.endTime = 3667908800000'
+
+[MITM]
+hostname = %APPEND% api.m.jd.com

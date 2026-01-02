@@ -1,0 +1,39 @@
+#!name=独立模块-大众点评
+#!desc=2025-12-19 08:22:49
+
+[Rule]
+DOMAIN, dpmtpush.dianping.com, REJECT,pre-matching
+DOMAIN, dynamicf.sankuai.com, REJECT,pre-matching
+DOMAIN, live-monitor-broker.sankuai.com, REJECT,pre-matching
+DOMAIN, lx0.meituan.com, REJECT,pre-matching
+DOMAIN, r.dianping.com, REJECT,pre-matching
+DOMAIN, tte.meituan.com, REJECT,pre-matching
+DOMAIN-SUFFIX, lx.meituan.net, REJECT,pre-matching
+IP-CIDR, 101.32.16.204/32, REJECT,no-resolve
+IP-CIDR, 119.29.126.137/32, REJECT,no-resolve
+
+[URL Rewrite]
+^https?:\/\/103\.37\.155\.60\/fetch - reject
+^https?:\/\/awp-assets\.meituan\.net\/hfe\/fep\/\w+\.json - reject
+^https?:\/\/catdot\.dianping\.com\/broker-service\/hijack - reject
+^https?:\/\/catfront\.dianping\.com\/api\/metric\?v=\d&p=rn_gcbu_mrn-joy-poidetail - reject
+^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/(?:ehc|titansx|ddblue|edfu)\/ - reject
+^https?:\/\/mapi\.dianping\.com\/adshopping - reject
+^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex - reject-dict
+^https?:\/\/mapi\.dianping\.com\/mapi\/operating\/(?:indexopsmodules|loadsplashconfig) - reject
+^https?:\/\/mapi\.dianping\.com\/wdrpreload\/userprediction - reject
+^https?:\/\/p\.meituan\.com\/api\/privacy\/config - reject
+^https?:\/\/p\d\.meituan\.net\/nrpresourcevenus\/\w+\.gif - reject-img
+^https?:\/\/p\d\.meituan\.net\/travelcube\/(?!c129a661)\w+\.gif - reject-img
+^https?:\/\/rms\.meituan\.com\/api\/v\d\/rmsmina\/c\/queryWechatAdvertisement - reject-dict
+^https?:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf - reject
+^https?:\/\/www\.dpfile\.com\/app\/fecommonservice-lottie\/ugc-write-done\/media - reject
+^https?:\/\/www\.dpfile\.com\/picasso\/picasso-qa\/src\/AnswerList\/AnswerList-bundle - reject
+^https?:\/\/www\.dpfile\.com\/sc\/indexpromotion - reject
+
+[Script]
+dianping =type=http-response, pattern=^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/picassovc, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/dianping.js, requires-body=true, max-size=0
+dianping =type=http-response, pattern=^https?:\/\/img\.meituan\.net\/(?:dpmobile|goodsawardpic)\/, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/dianping.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% *.dianping.com,103.37.155.60,awp-assets.meituan.net,ddplus.meituan.net,img.meituan.net,p*.meituan.net,p.meituan.com,rms.meituan.com,s3plus.meituan.net,www.dpfile.com

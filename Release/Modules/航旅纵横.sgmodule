@@ -1,0 +1,16 @@
+#!name=独立模块-航旅纵横
+#!desc=2026-01-02 12:07:11
+
+[Rule]
+DOMAIN, analytics.umetrip.com, REJECT,pre-matching
+DOMAIN, sensors.umetrip.com.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
+^https?:\/\/oss\.umetrip\.com\/fs\/advert\/polite - reject-dict
+
+[Script]
+umetrip =type=http-response, pattern=^https?:\/\/(bkclient|umerp|home)\.umetrip\.com(\.cn){0,1}\/gateway\/api\/umetrip\/native, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/umetrip.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% bkclient.umetrip.com.cn,discardrp.umetrip.com,home.umetrip.com,oss.umetrip.com,startup.umetrip.com,umerp.umetrip.com,umerp.umetrip.com.cn

@@ -1,0 +1,9 @@
+#!name=独立模块-工时记录
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ - reject
+^https?:\/\/yun\.tuitiger\.com\/mami-media - reject-200
+
+[MITM]
+hostname = %APPEND% open.e.kuaishou.com,yun.tuitiger.com

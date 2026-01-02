@@ -1,0 +1,15 @@
+#!name=独立模块-悠洗
+#!desc=2025-12-24 15:41:08
+
+[URL Rewrite]
+^https?:\/\/api\.ulife\.group\/auth\/account\/entrance - reject-dict
+^https?:\/\/api\.ulife\.group\/auth\/account\/getUpgradeStrategy - reject-dict
+^https?:\/\/api\.ulife\.group\/market\/frontEntrance\/getThirdAdvertising - reject-dict
+^https?:\/\/api\.ulife\.group\/market\/memberCard\/listMemberCard\?isShowSecondaryCard=1 - reject-dict
+^https?:\/\/api\.ulife\.group\/signintask\/adServing - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.ulife\.group\/market\/homeIconDetail\/list\/v7 '.data.topFunctionalArea? |= (if . != null then .[0:4] else . end)'
+
+[MITM]
+hostname = %APPEND% api.ulife.group

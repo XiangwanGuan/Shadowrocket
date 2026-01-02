@@ -1,0 +1,8 @@
+#!name=独立模块-酷狗铃声
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.ring\.kugou\.com\/user\/notice\/recommend$ - reject-dict
+
+[MITM]
+hostname = %APPEND% api.ring.kugou.com

@@ -1,0 +1,14 @@
+#!name=独立模块-360摄像机
+#!desc=2025-12-11 16:17:35
+
+[Rule]
+DOMAIN, ad.iot.360.cn, REJECT,pre-matching
+DOMAIN, ad.jia.360.cn, REJECT,pre-matching
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/jia\.360\.cn\/conf\/v1\.json 'delpaths([["activity"]])'
+http-response-jq ^https?:\/\/jia\.360\.cn\/conf\/v1\.json 'delpaths([["ad_conf"]])'
+http-response-jq ^https?:\/\/jia\.360\.cn\/conf\/v1\.json 'delpaths([["tab_conf"]])'
+
+[MITM]
+hostname = %APPEND% jia.360.cn

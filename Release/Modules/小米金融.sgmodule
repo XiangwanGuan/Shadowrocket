@@ -1,0 +1,9 @@
+#!name=独立模块-小米金融
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.jr\.mi\.com\/jr\/api\/playScreen - reject-200
+^https?:\/\/api\.jr\.mi\.com\/v\d\/adv\/ - reject-200
+
+[MITM]
+hostname = %APPEND% api.jr.mi.com

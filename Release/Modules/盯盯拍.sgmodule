@@ -1,0 +1,11 @@
+#!name=独立模块-盯盯拍
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.htp\.ad-scope\.com\.cn.* - reject
+^https?:\/\/appgw\.ddpai\.com.*\/ad\/list.* - reject
+^https?:\/\/apphw\.ddpai\.com:\d+\/onroad\/api\/v\d\/\w+\/list - reject-dict
+^https?:\/\/init\.sms\.mob\.com\/.*sdk\/init.* - reject
+
+[MITM]
+hostname = %APPEND% api.htp.ad-scope.com.cn,appgw.ddpai.com,apphw.ddpai.com,init.sms.mob.com

@@ -1,0 +1,9 @@
+#!name=独立模块-小蚁
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api.xiaoyi.com\/v5\/app\/config\?userid=.* - reject
+^https?:\/\/api.xiaoyi.com\/v5\/app\/mobile\/ads - reject
+
+[MITM]
+hostname = %APPEND% api.xiaoyi.com

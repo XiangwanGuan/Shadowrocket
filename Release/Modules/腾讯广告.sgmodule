@@ -1,0 +1,19 @@
+#!name=独立模块-腾讯广告
+#!desc=2025-12-22 08:52:11
+
+[URL Rewrite]
+^https?:\/\/api2\.helper\.qq\.com\/game\/buttons - reject-img
+^https?:\/\/bk\.bingo\.qq\.com\/bk\/crx\/data\/videoAd - reject-dict
+^https?:\/\/bla\.gtimg\.com\/qqlive\/\d{6}.+?\.png - reject-img
+^https?:\/\/discuz\.gtimg\.cn\/cloud\/scripts\/discuz_tips - reject-img
+^https?:\/\/imgcache\.qq\.com\/qqlive\/ - reject-img
+^https?:\/\/mmgr\.gtimg\.com\/gjsmall\/qiantu\/upload\/ - reject-img
+^https?:\/\/mmgr\.gtimg\.com\/gjsmall\/qqpim\/public\/ios\/splash\/.+?\/\d{4}_\d{4} - reject-img
+^https?:\/\/qt\.qq\.com\/lua\/mengyou\/get_splash_screen_info - reject-200
+^https?:\/\/qzonestyle\.gtimg\.cn\/qzone\/biz\/gdt\/mob\/sdk\/ios\/v\d\/ - reject-img
+^https?:\/\/splashqqlive\.gtimg\.com\/website\/\d{6} - reject-img
+^https?:\/\/vv\.video\.qq\.com\/getvmind\? - reject-200
+^https?:\/\/y\.gtimg\.cn\/music\/.*?_Ad/\d+\.png - reject-img
+
+[MITM]
+hostname = %APPEND% api2.helper.qq.com,bk.bingo.qq.com,bla.gtimg.com,discuz.gtimg.cn,imgcache.qq.com,mmgr.gtimg.com,qt.qq.com,qzonestyle.gtimg.cn,splashqqlive.gtimg.com,vv.video.qq.com,y.gtimg.cn

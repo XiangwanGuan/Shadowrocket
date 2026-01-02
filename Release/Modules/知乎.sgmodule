@@ -1,0 +1,56 @@
+#!name=独立模块-知乎
+#!desc=2025-12-19 08:22:54
+
+[Rule]
+DOMAIN, appcloud.zhihu.com, REJECT,pre-matching
+DOMAIN, appcloud2.in.zhihu.com, REJECT,pre-matching
+DOMAIN, crash2.zhihu.com, REJECT,pre-matching
+DOMAIN, mqtt.zhihu.com, REJECT,pre-matching
+DOMAIN, sugar.zhihu.com, REJECT,pre-matching
+DOMAIN, zxid-m.mobileservice.cn, REJECT,pre-matching
+IP-CIDR, 103.41.167.237/32, REJECT,no-resolve
+IP-CIDR, 118.89.204.198/32, REJECT,no-resolve
+IP-CIDR, 182.61.194.7/32, REJECT,no-resolve
+IP-CIDR, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT,no-resolve
+
+[URL Rewrite]
+^https?:\/\/api\.zhihu\.com\/(moments\/lastread|drama\/hot-drama-list) - reject-dict
+^https?:\/\/api\.zhihu\.com\/\w+\/\d+\/comments\/featured-comment-ad - reject
+^https?:\/\/api\.zhihu\.com\/ab\/api\/v\d\/products\/zhihu\/platforms\/ios\/config - reject
+^https?:\/\/api\.zhihu\.com\/ad - reject-dict
+^https?:\/\/api\.zhihu\.com\/appview\/api\/v\d\/answers\/\d+\/recommendations - reject
+^https?:\/\/api\.zhihu\.com\/comment_v\d\/answers\/\d+\/list-headers - reject-dict
+^https?:\/\/api\.zhihu\.com\/commercial_api\/(banners_v\d\/app_topstory_banner|launch_v|real_time_launch_v) - reject-dict
+^https?:\/\/api\.zhihu\.com\/content-distribution-core\/bubble\/common\/settings - reject-dict
+^https?:\/\/api\.zhihu\.com\/distribute\/rhea\/qa_ad_card\/h5\/recommendation\? - reject-dict
+^https?:\/\/api\.zhihu\.com\/feed\/render\/revisit\/current_reading - reject-dict
+^https?:\/\/api\.zhihu\.com\/me\/guides - reject-dict
+^https?:\/\/api\.zhihu\.com\/root\/window - reject-dict
+^https?:\/\/api\.zhihu\.com\/search\/preset_words - reject-dict
+^https?:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
+^https?:\/\/api\.zhihu\.com\/v\d\.\d\/topics\/answer\/\d+\/relation - reject-dict
+^https?:\/\/appcloud2\.zhihu\.com\/v\d\/resource\?group_name=mp - reject-dict
+^https?:\/\/link\.zhihu\.com\/\?target=(https?)?(%3A|:)?(\/\/|%2F%2F)?(.*?)(&source.*)?$ http://$4 302
+^https?:\/\/www\.zhihu\.com\/api\/v\d/(questions|anwsers)\/\d+/related-readings - reject
+^https?:\/\/www\.zhihu\.com\/api\/v\d\/hot_recommendation - reject
+^https?:\/\/www\.zhihu\.com\/api\/v\d\/mcn\/v\d\/linkcards\? - reject
+^https?:\/\/www\.zhihu\.com\/api\/v\d\/search\/related_queries\/(answer|article)\/\d+ - reject-dict
+^https?:\/\/www\.zhihu\.com\/appview\/v\d\/zhmore - reject
+^https?:\/\/www\.zhihu\.com\/commercial_api\/banners_v\d\/mobile_banner - reject
+^https?:\/\/zhuanlan\.zhihu\.com\/api\/articles\/\d+\/recommendation - reject
+
+[Body Rewrite]
+http-response ^https?:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recommend_queries":\{.+\} "recommend_queries":{}
+
+[Script]
+zhihu =type=http-response, pattern=^https?:\/\/api\.zhihu\.com\/(moments_v\d|topstory\/recommend(_v\d)?), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/api\.zhihu\.com\/(v\d\/)?questions\/\d+\/(feeds|answers)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/api\.zhihu\.com\/commercial_api\/app_float_layer, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/api\.zhihu\.com\/next-(bff|data|render)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/appcloud2\.zhihu\.com\/v\d\/config, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/m-cloud\.zhihu\.com\/api\/cloud\/config\/all\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+zhihu =type=http-response, pattern=^https?:\/\/www\.zhihu\.com\/api\/v\d\/(answers|articles)\/\d+\/recommendations?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/zhihu.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.zhihu.com,appcloud2.zhihu.com,link.zhihu.com,m-cloud.zhihu.com,www.zhihu.com,zhuanlan.zhihu.com

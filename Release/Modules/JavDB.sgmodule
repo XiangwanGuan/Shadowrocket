@@ -1,0 +1,11 @@
+#!name=独立模块-JavDB
+#!desc=2025-12-25 18:08:24
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.btyjscl\.com\/api\/v\d\/ads 'if .data?.ads then .data.ads.index_top |= map(select(.url? | test("https?://") | not)) | .data.ads.web_magnets_top |= map(select(.url? | test("https?://") | not)) else . end'
+http-response-jq ^https?:\/\/api\.btyjscl\.com\/api\/v\d\/movies 'if .data?.show_vip_banner then .data.show_vip_banner = false else . end'
+http-response-jq ^https?:\/\/api\.btyjscl\.com\/api\/v\d\/startup 'if .data then (.data.splash_ad.enabled = false | .data.splash_ad.overtime = 0 | .data.feedback = {} | del(.data.settings.NOTICE) | if .data.user then .data.user.vip_expired_at = "2090-12-31T23:59:59.000+08:00" | .data.user.is_vip = true else . end) else . end'
+http-response-jq ^https?:\/\/api\.btyjscl\.com\/api\/v\d\/users 'if .data?.user then .data.user.vip_expired_at = "2090-12-31T23:59:59.000+08:00" | .data.user.is_vip = true else . end'
+
+[MITM]
+hostname = %APPEND% api.btyjscl.com

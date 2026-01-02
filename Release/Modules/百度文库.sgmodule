@@ -1,0 +1,23 @@
+#!name=独立模块-百度文库
+#!desc=2025-12-10 08:40:00
+
+[URL Rewrite]
+^https?:\/\/appwk\.baidu\.com\/activity\/interface\/wkapppopup\? - reject
+^https?:\/\/appwk\.baidu\.com\/appapi\/abg\/index\? - reject
+^https?:\/\/appwk\.baidu\.com\/appapi\/search\/hot\? - reject
+^https?:\/\/appwk\.baidu\.com\/appapi\/task\/viptasklist\? - reject
+^https?:\/\/appwk\.baidu\.com\/naapi\/recommend\/recommenddoc\? - reject
+^https?:\/\/appwk\.baidu\.com\/naapi\/recommend\/vipdoccard\? - reject
+^https?:\/\/appwk\.baidu\.com\/naapi\/search\/wkhotwords\? - reject
+^https?:\/\/appwk\.baidu\.com\/xpage\/interface\/wknaad\? - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(appwk|tanbi)\.baidu\.com\/gsula\/sula\/syncmrecall$ 'delpaths([["data","items"]])'
+http-response-jq ^https?:\/\/appwk\.baidu\.com\/appapi\/forum\/feed\?reqMode=wenkuapp_main_feed 'delpaths([["data"]])'
+http-response-jq ^https?:\/\/appwk\.baidu\.com\/appapi\/index\/home\? 'delpaths([["data","bannerInfo"]])'
+http-response-jq ^https?:\/\/appwk\.baidu\.com\/appapi\/index\/home\? 'delpaths([["data","bannerList"]])'
+http-response-jq ^https?:\/\/appwk\.baidu\.com\/appapi\/index\/home\? 'delpaths([["data","bannerListV2"]])'
+http-response-jq ^https?:\/\/appwk\.baidu\.com\/appapi\/index\/tab\? 'delpaths([["data"]])'
+
+[MITM]
+hostname = %APPEND% appwk.baidu.com,tanbi.baidu.com

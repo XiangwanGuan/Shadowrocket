@@ -1,0 +1,12 @@
+#!name=独立模块-一号店
+#!desc=2025-12-11 16:17:41
+
+[Rule]
+DOMAIN-SUFFIX, api.dsp.yhd.com, REJECT,pre-matching
+DOMAIN-SUFFIX, tracker.yhd.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/venus\.yhd\.com\/memhome\/launchConfig - reject
+
+[MITM]
+hostname = %APPEND% venus.yhd.com

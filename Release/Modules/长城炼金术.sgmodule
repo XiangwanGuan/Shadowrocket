@@ -1,0 +1,8 @@
+#!name=独立模块-长城炼金术
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/fintechappdr\.cgws\.com\/api\/business-operation\/app\/a\/flash\/window\/get\?type=2 - reject-dict
+
+[MITM]
+hostname = %APPEND% fintechappdr.cgws.com

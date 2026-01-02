@@ -1,0 +1,36 @@
+#!name=独立模块-酷狗音乐
+#!desc=2025-12-11 16:17:38
+
+[Rule]
+DOMAIN, ad.tencentmusic.com, REJECT,pre-matching
+DOMAIN, ads.service.kugou.com, REJECT,pre-matching
+DOMAIN, adservice.kugou.com, REJECT,pre-matching
+DOMAIN, adserviceretry.kglink.cn, REJECT,pre-matching
+DOMAIN, adserviceretry.kugou.com, REJECT,pre-matching
+DOMAIN, adsmind.gdtimg.com, REJECT,pre-matching
+DOMAIN, adstats.tencentmusic.com, REJECT,pre-matching
+DOMAIN, splashimgretrybssdl.cloud.kugou.com, REJECT,pre-matching
+URL-REGEX, "^https?:\/\/log\.stat\.kugou\.com\/mobile\/ad\.html", REJECT
+
+[URL Rewrite]
+^https?:\/\/ep\.kugou\.com\/v\d\/album_shop\/get_entrance_info - reject-dict
+^https?:\/\/fx\.service\.kugou\.com\/mfx-kugoulive\/ad\/ - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/adp\/ad\/ - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/adp\/bubble\/v\d\/song_play - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/ads\.gateway\/ - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/mstc\/musicsymbol\/v\d\/system\/profile - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/ocean\/v\d\/sound\/banner - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/r\/v\d\/general\/putin\/midad - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/searchnofocus\/v\d\/search_no_focus_word - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/singerdiscuss\/v\d\/entrance\/comment - reject-dict
+^https?:\/\/gateway(retry)?\.kugou\.com\/v\d\/feeds\/follow_feed_fallback - reject-dict
+^https?:\/\/gzacshow\.kugou\.com\/mfanxing-home\/cdn\/room\/index\/list_v2 - reject-dict
+^https?:\/\/gzacshow\.kugou\.com\/mfx-rt-show\/cdn\/mo\/show\/headline - reject-dict
+^https?:\/\/hwstore\.kugou\.com\/v\d\/get_store_data - reject-dict
+^https?:\/\/m1fxgroup\.kugou\.com\/fxsing\/yqc\/alongInfo\/getUserAlongInfo - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/gateway(retry)?\.kugou\.com\/ocean\/v\d\/tab\/list_v\d 'def namesToRemove:["AI帮唱","长相思2","K歌","小说","游戏"];def removeParentIfNameMatches:if type=="object"then with_entries(select(.value|(type=="object"and .name as $name|$name|IN(namesToRemove[])|not)))|map_values(removeParentIfNameMatches)else. end;removeParentIfNameMatches'
+
+[MITM]
+hostname = %APPEND% ep.kugou.com,fx.service.kugou.com,gateway.kugou.com,gatewayretry.kugou.com,gzacshow.kugou.com,hwstore.kugou.com,m1fxgroup.kugou.com

@@ -1,0 +1,8 @@
+#!name=独立模块-乐橙
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/dl-cu-hz\.lechange\.cn\/oms-online\/advertisementPush - reject
+
+[MITM]
+hostname = %APPEND% dl-cu-hz.lechange.cn

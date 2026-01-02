@@ -1,0 +1,8 @@
+#!name=独立模块-美团充电宝 小程序
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cdb\.meituan\.com\/marketing\/source\/getPageSlotList - reject-dict
+
+[MITM]
+hostname = %APPEND% cdb.meituan.com

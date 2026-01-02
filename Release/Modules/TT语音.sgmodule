@@ -1,0 +1,8 @@
+#!name=独立模块-TT语音
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/ga-album-cdnqn\.52tt\.com\/prod-yunying\/.+.jpg - reject-dict
+
+[MITM]
+hostname = %APPEND% ga-album-cdnqn.52tt.com

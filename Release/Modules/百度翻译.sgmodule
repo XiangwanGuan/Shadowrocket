@@ -1,0 +1,9 @@
+#!name=独立模块-百度翻译
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/mime\.baidu\.com\/v\d\/IosStart\/getStartInfo - reject
+^https?:\/\/mime\.baidu\.com\/v\d\/activity\/advertisement - reject
+
+[MITM]
+hostname = %APPEND% mime.baidu.com

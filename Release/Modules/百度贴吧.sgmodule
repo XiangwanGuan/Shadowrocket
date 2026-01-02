@@ -1,0 +1,12 @@
+#!name=独立模块-百度贴吧
+#!desc=2025-12-19 08:22:49
+
+[Rule]
+IP-CIDR, 180.76.76.200/32, REJECT,no-resolve
+
+[Script]
+tieba-json =type=http-response, pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(ad\/getSplashAd|frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/tieba-json.js, requires-body=true, max-size=0
+tieba-proto =type=http-response, pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/(b\/ad\/adBid|f\/(frs\/(page|threadlist|generalTabList)|ad\/getFeedAd|pb\/page|excellent\/personalized))\?cmd, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/tieba-proto.js, requires-body=true, max-size=0, binary-body-mode=true
+
+[MITM]
+hostname = %APPEND% tiebac.baidu.com

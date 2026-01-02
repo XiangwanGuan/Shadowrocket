@@ -1,0 +1,13 @@
+#!name=独立模块-中国建设银行
+#!desc=2025-12-30 07:13:23
+
+[Rule]
+DOMAIN-SUFFIX, adv.ccb.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/cy\.cloud\.ccb\.com\/\/gateway\/user-server\/user\/qyCenter\/getCustomizedAdv - reject-dict
+^https?:\/\/image1\.ccb\.com\/newsinfo\/eBranch\/check\/(nf\/newfin\/activity|po\/poortheme\/activity)\/\w+\.png - reject
+^https?:\/\/imageadv\.ccb\.com\/adpic\/sszserver\/upload\/activity\/\d{8}\/\w+\.(?:gif|png|jpg)$ - reject
+
+[MITM]
+hostname = %APPEND% cy.cloud.ccb.com,image1.ccb.com,imageadv.ccb.com

@@ -1,0 +1,26 @@
+#!name=独立模块-盒马
+#!desc=2025-12-31 18:17:23
+
+[Rule]
+IP-CIDR, 59.82.14.1/32, REJECT,no-resolve
+IP-CIDR, 59.82.14.161/32, REJECT,no-resolve
+IP-CIDR, 59.82.34.147/32, REJECT,no-resolve
+IP-CIDR, 59.82.34.255/32, REJECT,no-resolve
+IP-CIDR, 59.82.113.10/32, REJECT,no-resolve
+IP-CIDR, 59.82.113.219/32, REJECT,no-resolve
+URL-REGEX, "^https?:\/\/.+\/amdc\/mobileDispatch", REJECT
+
+[URL Rewrite]
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.alibaba\.emas\.publish\.update\.get - reject-dict
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.crm\.platform\.ma\.recommend - reject-dict
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.fc\.recommend\.feedscommondservice - reject-dict
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.hippotown\.tabbar\.info - reject
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.mimir\.recommend(?!\.hgitems) - reject-dict
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.querysinglepage - reject-200
+^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.sg\.querysinglescene - reject-dict
+
+[Script]
+freshippo =type=http-response, pattern=^https?:\/\/acs(\.|-)m\.(taobao|freshippo)\.com\/gw\/mtop\.wdk\.render\.query(?:indexpage|mypage|tabfeedstream), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/freshippo.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% acs-m.freshippo.com,acs.m.taobao.com

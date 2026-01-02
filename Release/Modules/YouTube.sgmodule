@@ -1,0 +1,17 @@
+#!name=独立模块-YouTube
+#!desc=2025-12-19 08:22:54
+#!arguments=YouTube ·屏蔽上传按钮:true, YouTube ·屏蔽选段按钮:true, YouTube ·屏蔽短片按钮:false, YouTube ·字幕翻译语言:off, YouTube ·歌词翻译语言:off
+#!arguments-desc=\n 参数说明：\n YouTube翻译语言：默认关闭，填入zh-Hans开启；\n 
+
+[Rule]
+AND, ((PROTOCOL,QUIC),(DOMAIN,youtubei.googleapis.com)), REJECT-NO-DROP
+AND, ((PROTOCOL,QUIC),(DOMAIN-SUFFIX,googlevideo.com)), REJECT-NO-DROP
+
+[URL Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-200
+
+[Script]
+youtube.response =type=http-response, pattern=^https?:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch))(\?(.*))?$, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/youtube.response.js, requires-body=true, max-size=0, binary-body-mode=true, argument="{"lyricLang":"{{{YouTube ·歌词翻译语言}}}","captionLang":"{{{YouTube ·字幕翻译语言}}}","blockUpload":{{{YouTube ·屏蔽上传按钮}}},"blockImmersive":{{{YouTube ·屏蔽选段按钮}}},"blockShorts":{{{YouTube ·屏蔽短片按钮}}},"debug":false}"
+
+[MITM]
+hostname = %APPEND% *.googlevideo.com,youtubei.googleapis.com

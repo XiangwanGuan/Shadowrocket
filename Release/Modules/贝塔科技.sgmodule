@@ -1,0 +1,8 @@
+#!name=独立模块-贝塔科技
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/cdn\.api\.fotoable\.com\/Advertise\/ - reject-200
+
+[MITM]
+hostname = %APPEND% cdn.api.fotoable.com

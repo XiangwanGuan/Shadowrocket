@@ -1,0 +1,8 @@
+#!name=独立模块-澎湃新闻
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/adpai\.thepaper\.cn\/.+&ad= - reject
+
+[MITM]
+hostname = %APPEND% adpai.thepaper.cn

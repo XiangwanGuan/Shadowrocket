@@ -1,0 +1,11 @@
+#!name=独立模块-Trip
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/download\.trip\.com\/html5 - reject
+^https?:\/\/m\.trip\.com\/quic - reject
+^https?:\/\/m\.trip\.com\/restapi\/.*\/(queryAdsDisplayData|queryBadge|isPopUp|(?:G|g)etAppConfig|getRecommendResource|appWelcomeImage|uploadConfigContent|appData|appAttributionLog|heartBeat|GetUserUpgradeNoticeInfo|incrQueryTrans|getTopPic|getABTestData) - reject
+^https?:\/\/pages\.trip\.com\/js\/market - reject
+
+[MITM]
+hostname = %APPEND% download.trip.com,m.trip.com,pages.trip.com

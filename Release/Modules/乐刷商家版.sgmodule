@@ -1,0 +1,12 @@
+#!name=独立模块-乐刷商家版
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/m\.fqfin\.cn\/cls\/leshuapay\/preCredit\.json$ - reject-dict
+^https?:\/\/syt\.leshuazf\.com\/merchant\/merchant\/getBannerConfig$ - reject-dict
+^https?:\/\/syt\.leshuazf\.com\/merchant\/merchant\/showOpenScreenAd$ - reject-dict
+^https?:\/\/syt\.leshuazf\.com\/merchant\/messageCenter\/stationLetterList$ - reject-dict
+^https?:\/\/syt\.leshuazf\.com\/merchant\/popup\/getPopupInfo$ - reject-dict
+
+[MITM]
+hostname = %APPEND% m.fqfin.cn,syt.leshuazf.com

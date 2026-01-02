@@ -1,0 +1,8 @@
+#!name=独立模块-爱阅书香
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/icc\.one\/iFreeTime\/xid32uxaoecnfv2\/ - reject
+
+[MITM]
+hostname = %APPEND% icc.one

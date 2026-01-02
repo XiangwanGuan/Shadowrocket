@@ -1,0 +1,9 @@
+#!name=独立模块-动卡空间
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/m\.creditcard\.ecitic\.com\/citiccard\/mbk\/appspace-getway\/getWay\/dkkj-system-web\/system\/v\d\/init-config - reject-200
+^https?:\/\/ump\.sz\.creditcard\.ecitic\.com\/citiccard\/cm-ump\/ump-gateway\/ump-net-app\/ump-net-app\/adv - reject-dict
+
+[MITM]
+hostname = %APPEND% m.creditcard.ecitic.com,ump.sz.creditcard.ecitic.com

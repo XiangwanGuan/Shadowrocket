@@ -1,0 +1,12 @@
+#!name=独立模块-旅途随身听
+#!desc=2025-12-25 10:04:35
+
+[URL Rewrite]
+^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/(guideScenic\/getRecentlyUpdatedScenic|city\/getWeatherByCityName) - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/city\/getAllBannelByCity 'if .content | type == "array" then .content |= map(select(.bannerType == 1)) else . end'
+http-response-jq ^https?:\/\/www\.1314zhilv\.com\/ltsstnew\/common\/getJGQIconNew 'if .content then .content |= del(.specialBanner) else . end'
+
+[MITM]
+hostname = %APPEND% www.1314zhilv.com

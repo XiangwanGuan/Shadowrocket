@@ -1,0 +1,8 @@
+#!name=独立模块-crunchyroll
+#!desc=2025-12-09 14:29:01
+
+[Body Rewrite]
+http-response ^https?:\/\/beta-api\.crunchyroll\.com\/cms offset_ms":\d+ offset_ms":99999999999999
+
+[MITM]
+hostname = %APPEND% beta-api.crunchyroll.com

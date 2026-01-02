@@ -1,0 +1,8 @@
+#!name=独立模块-看理想
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.vistopia\.com\.cn\/api\/v\d\/home\/advertisement - reject
+
+[MITM]
+hostname = %APPEND% api.vistopia.com.cn

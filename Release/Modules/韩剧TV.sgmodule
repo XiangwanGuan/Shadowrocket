@@ -1,0 +1,13 @@
+#!name=独立模块-韩剧TV
+#!desc=2025-12-11 16:17:38
+
+[Rule]
+DOMAIN, adx-os.bridgeturbo.com, REJECT,pre-matching
+DOMAIN, da.bridgeturbo.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/api\.hanju\.koudaibaobao\.com\/api\/carp\/kp\? - reject
+^https?:\/\/gfp\.veta\.naver\.com\/adcall\? - reject
+
+[MITM]
+hostname = %APPEND% api.hanju.koudaibaobao.com,gfp.veta.naver.com

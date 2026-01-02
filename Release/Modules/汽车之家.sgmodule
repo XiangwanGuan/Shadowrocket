@@ -1,0 +1,26 @@
+#!name=独立模块-汽车之家
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/extendedcards - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/findEquitysV5 - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/mycardv6 - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/chat\/gse\/recquery - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getdealertab - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/gethotactcards - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getoillist - reject-dict
+^https?:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getwashcarlist - reject-dict
+^https?:\/\/a\.athm\.cn\/clientlive\.api\.autohome\.com\.cn\/api\/live\/getserieswindowsinfo - reject-dict
+^https?:\/\/adproxy\.autohome\.com\.cn\/AdvertiseService\/AppHandler\.ashx - reject-dict
+^https?:\/\/autoapi\.autohome\.com\.cn\/arvr-dealercloud-api\/online\/aggregation\/exhibitionList - reject-dict
+^https?:\/\/autoapi\.autohome\.com\.cn\/ypttd\/yjc\/web\/mkgt\/act\/seckillInfo - reject-dict
+^https?:\/\/club\.app\.autohome\.com\.cn\/club_v\d+(?:\.\d+){2}\/club\/channelqa\/header - reject-dict
+^https?:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=platform\.search - reject-dict
+^https?:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=super\.list - reject-dict
+^https?:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=vrcore\.list - reject-dict
+^https?:\/\/maam\.pingan\.com\.cn\/maam\/buoy\/getBuoyList\.do - reject-dict
+^https?:\/\/news\.app\.autohome\.com\.cn\/cont_v\d+(?:\.\d+){2}\/api\/article\/extenddata - reject-dict
+^https?:\/\/pcmx\.autohome\.com\.cn\/queryCreativeList - reject-dict
+
+[MITM]
+hostname = %APPEND% a.athm.cn,adproxy.autohome.com.cn,autoapi.autohome.com.cn,club.app.autohome.com.cn,dealer.m.autohome.com.cn,maam.pingan.com.cn,mobile.app.autohome.com.cn,news.app.autohome.com.cn,pcmx.autohome.com.cn

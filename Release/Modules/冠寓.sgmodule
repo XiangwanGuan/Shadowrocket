@@ -1,0 +1,8 @@
+#!name=独立模块-冠寓
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/guanyu\.longfor\.com\/app-server\/api\/v1\/main\/start - reject
+
+[MITM]
+hostname = %APPEND% guanyu.longfor.com

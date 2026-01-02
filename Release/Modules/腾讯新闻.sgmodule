@@ -1,0 +1,13 @@
+#!name=独立模块-腾讯新闻
+#!desc=2025-12-25 18:23:56
+
+[URL Rewrite]
+^https?:\/\/r\.inews\.qq\.com\/(?:adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - reject
+^https?:\/\/r\.inews\.qq\.com\/(?:getBannerAds|getNewsRemoteConfig|getSplash|searchHotCatList|upLoadLoc) - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(news\.ssp\.qq\.com\/app|r\.inews\.qq\.com\/(get(QQNewsUnreadList|TagFeedList)|news_feed\/hot_module_list)) 'if .adList then .adList = null else . end'
+http-response-jq ^https?:\/\/r\.inews\.qq\.com\/gw\/page\/event_detail 'if .data?.widget_list then .data.widget_list |= map(select(.widget_type != "ad_list")) else . end'
+
+[MITM]
+hostname = %APPEND% news.ssp.qq.com,r.inews.qq.com

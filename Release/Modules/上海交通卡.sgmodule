@@ -1,0 +1,16 @@
+#!name=独立模块-上海交通卡
+#!desc=2026-01-02 11:03:10
+
+[Rule]
+DOMAIN-SUFFIX, medproad.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/jiguang\.sptcc\.com\/smartop\/\d/getEvent - reject
+^https?:\/\/online\.sptcc\.com:\d+\/handapp_app\/(?:ActivityGetServlet|queryWebUrlConfig) - reject
+^https?:\/\/online\.sptcc\.com:\d+\/handapp_zx\/rss_info - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/online\.sptcc\.com:\d+\/handapp_update\/AppInfo '(.myPageBanner? |= []) | (.mainPage_recommend?.waterfallFlow? |= []) | (.ggLykImgArray? |= []) | (.ggLykLinkArray? |= [])'
+
+[MITM]
+hostname = %APPEND% jiguang.sptcc.com,online.sptcc.com

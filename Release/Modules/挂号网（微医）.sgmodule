@@ -1,0 +1,10 @@
+#!name=独立模块-挂号网（微医）
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/app\.wy\.guahao\.com\/json\/white\/dayquestion\/getpopad - reject
+^https?:\/\/kano\.guahao\.cn\/.+?\?resize=\d{3}-\d{4} - reject-img
+^https?:\/\/kano\.guahao\.cn\/[a-zA-Z0-9]{12} - reject-200
+
+[MITM]
+hostname = %APPEND% app.wy.guahao.com,kano.guahao.cn

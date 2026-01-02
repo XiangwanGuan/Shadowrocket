@@ -1,0 +1,9 @@
+#!name=独立模块-广汽传祺
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/gsp\.gacmotor\.com\/gateway\/app-api\/app\/version\/latestupdate\?flatform=2&innerVersion= - reject-dict
+^https?:\/\/gsp\.gacmotor\.com\/gateway\/webapi\/baseinfo\/advertise\/getAdvertiseByPositionCode\?positionCode=1 - reject-dict
+
+[MITM]
+hostname = %APPEND% gsp.gacmotor.com

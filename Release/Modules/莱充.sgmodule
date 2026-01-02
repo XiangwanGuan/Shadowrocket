@@ -1,0 +1,8 @@
+#!name=独立模块-莱充
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/(mobile|shop)\.laichon\.com\/api\/(v1\/goods\/goodsList|exposureAdvStatistics|getWebAdvList) - reject
+
+[MITM]
+hostname = %APPEND% mobile.laichon.com,shop.laichon.com

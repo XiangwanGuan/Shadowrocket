@@ -1,0 +1,9 @@
+#!name=独立模块-网易蜗牛读书
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/easyreadfs\.nosdn\.127\.net\/ad-material\/ - reject-200
+^https?:\/\/p\.du\.163\.com\/ad\/ - reject-200
+
+[MITM]
+hostname = %APPEND% easyreadfs.nosdn.127.net,p.du.163.com

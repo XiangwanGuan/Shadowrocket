@@ -1,0 +1,8 @@
+#!name=独立模块-在意天气
+#!desc=2025-12-13 22:08:39
+
+[URL Rewrite]
+^https?:\/\/air-matters\.com\/ads - reject
+
+[MITM]
+hostname = %APPEND% air-matters.com

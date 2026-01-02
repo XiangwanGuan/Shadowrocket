@@ -1,0 +1,8 @@
+#!name=独立模块-RQrun
+#!desc=2025-12-29 08:25:43
+
+[URL Rewrite]
+^https?:\/\/api\.rq\.run\/Api\/Spreadimg\/spreadimg_type_list$ - reject-dict
+
+[MITM]
+hostname = %APPEND% api.rq.run

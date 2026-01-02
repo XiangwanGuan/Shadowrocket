@@ -1,0 +1,8 @@
+#!name=独立模块-中国国航
+#!desc=2025-12-19 08:22:54
+
+[Script]
+airchina =type=http-response, pattern=^https?:\/\/m\.airchina\.com\.cn\/airchina\/gateway\/v\d(\.\d)*\/api\/services, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/airchina.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% m.airchina.com.cn

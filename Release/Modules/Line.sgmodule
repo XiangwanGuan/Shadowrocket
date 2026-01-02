@@ -1,0 +1,43 @@
+#!name=独立模块-Line
+#!desc=2025-12-10 08:40:02
+
+[Rule]
+URL-REGEX, "^https?:\/\/a\.line\.me\/cs\/v\d\/oa$", REJECT-DROP
+URL-REGEX, "^https?:\/\/a\.line\.me\/er\/l.*\/v\d\/event\/image", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/a\.line\.me\/er\/lads\/v\d\/ei\?", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/a\.line\.me\/lass\/api\/v\d\/ads$", REJECT-DROP
+URL-REGEX, "^https?:\/\/a\.line\.me\/oa\/v\d\/e$", REJECT-DROP
+URL-REGEX, "^https?:\/\/crs-event\.line\.me\/v\d\/imp", REJECT-DROP
+URL-REGEX, "^https?:\/\/d\.line-scdn\.net\/lcp-prod-photo\/20.+\.(jpg|jpeg|png)", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/ec-bot-obs\.line-scdn\.net\/0h[0-9a-zA-Z_-]{50}[0-9a-zA-Z_-]*", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/obs\.line-scdn\.net\/0h.+\/(o|m)\d+x\d+$", REJECT-DROP
+URL-REGEX, "^https?:\/\/obs\.line-scdn\.net\/0h.+\/\d+p\.mp4$", REJECT-DROP
+URL-REGEX, "^https?:\/\/obs\.line-scdn\.net\/0hGH\d", REJECT-DROP
+URL-REGEX, "^https?:\/\/obs\.line-scdn\.net\/0h[a-zA-Z0-9_-]{50}[a-zA-Z0-9_-]*", REJECT-DROP
+URL-REGEX, "^https?:\/\/obs\.line-scdn\.net\/r\/linecrs\/.+\/m180x180$", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/scdn\.line-apps\.com\/lan\/document\/pageEvent\/line\/ios\/", REJECT-DROP
+URL-REGEX, "^https?:\/\/scdn\.line-apps\.com\/lan\/image\/line\/bannerImageEvent\/", REJECT-DROP
+URL-REGEX, "^https?:\/\/sch\.line\.me\/api\/v\d\/ads$", REJECT-DROP
+URL-REGEX, "^https?:\/\/uts-front\.line-apps\.com\/event$", REJECT-DROP
+URL-REGEX, "^https?:\/\/uts-front\.line-apps\.com\/settings$", REJECT-DROP
+URL-REGEX, "^https?:\/\/web-mmap-pay\.line-apps\.com\/tw\/liff\/campaign\/v1\/aggregate\/ad\/banner\/", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/w\.line\.me\/adp\/api\/ad\/v\d\/", REJECT-DROP
+
+[URL Rewrite]
+^https?:\/\/ad\.line-scdn\.net\/0h - reject
+^https?:\/\/buy\.line\.me\/api\/graphql\?variables - reject
+^https?:\/\/cix\.line-apps\.com\/R4\? - reject
+^https?:\/\/gw\.line\.naver\.jp\/ext\/lgfp\/lad\/v1$ - reject
+^https?:\/\/gw\.line\.naver\.jp\/lass\/api\/v1\/ads$ - reject
+^https?:\/\/gw\.line\.naver\.jp\/tr\/event$ - reject
+^https?:\/\/lan\.line\.me\/v1\/line\/ios - reject
+^https?:\/\/legy\.line-apps\.com:443\/ext\/lgfp\/lad\/v1$ - reject
+^https?:\/\/legy\.line-apps\.com:443\/ext\/smartch\/banner\/sch\/v1$ - reject
+^https?:\/\/legy\.line-apps\.com:443\/tr\/event$ - reject
+^https?:\/\/legy\.line-apps\.com\/line\.gcs\.GcsModuleService\/GetModulesByModuleIds$ - reject
+^https?:\/\/nelo2-col\.linecorp\.com\/_store$ - reject
+^https?:\/\/scdn\.line-apps\.com\/appresources\/moretab\/list\.json - reject
+^https?:\/\/static\.line-scdn\.net\/ad-sdk\/ - reject
+
+[MITM]
+hostname = %APPEND% a.line.me,ad.line-scdn.net,buy.line.me,cix.line-apps.com,crs-event.line.me,d.line-scdn.net,ec-bot-obs.line-scdn.net,gw.line.naver.jp,lan.line.me,legy.line-apps.com,nelo2-col.linecorp.com,obs.line-scdn.net,scdn.line-apps.com,sch.line.me,static.line-scdn.net,uts-front.line-apps.com,w.line.me

@@ -1,0 +1,10 @@
+#!name=独立模块-Boss直聘
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api-ios\.zhipin\.com\/api\/zpCommon\/upgrade\/check - reject-dict
+^https?:\/\/api-ios\.zhipin\.com\/api\/zpCommon\/user\/startupAd - reject-dict
+^https?:\/\/apm-ios\.zhipin\.com\/api\/zpApm\/ios\/gray\/release\/check - reject-dict
+
+[MITM]
+hostname = %APPEND% api-ios.zhipin.com,apm-ios.zhipin.com

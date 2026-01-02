@@ -1,0 +1,9 @@
+#!name=独立模块-东方航空
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/app\.ceair\.com\/customize\/main\/adScreen - reject-dict
+^https?:\/\/app\.ceair\.com\/customize\/security\/update - reject-200
+
+[MITM]
+hostname = %APPEND% app.ceair.com

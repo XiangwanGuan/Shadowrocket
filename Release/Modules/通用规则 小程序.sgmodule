@@ -1,0 +1,14 @@
+#!name=独立模块-通用规则 小程序
+#!desc=2025-12-24 18:35:36
+
+[URL Rewrite]
+^https?:\/\/(?:webapi|miniapp)\.qmai\.cn\/web\/cmk-center\/marketing\/canvas\/advert - reject
+^https?:\/\/mp\.weixin\.qq\.com\/wapad\/getaddata\?action=getad - reject-200
+^https?:\/\/mp\.weixin\.qq\.com\/wapad\/reportaddata\?action=exposure_report - reject-200
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(?:webapi|miniapp)\.qmai\.cn\/web\/catering([0-9]-apiserver)?\/advertising\/ad\/advertiseInfo '.data? |= (if type=="array" then map(if .detailInfo? then .detailInfo += {"popDayLimit":0,"adType":4,"closeButtonLocation":0,"skipButtonLocation":0,"adLandingInfoList":[{"id":"","imgSource":null,"landingPageModel":"","landingPageLink":null,"landingPageType":null,"landingGroup":null,"styleType":null,"orderIndex":1,"landingPageText":null,"landingPageImg":"","landingPageName":"","messageModel":null}]} else . end) else . end)'
+http-response-jq ^https?:\/\/rms\.meituan\.com\/api\/v\d\/rmsmina\/c\/queryPortalInfo '.data.modules |= map(select(.data.advType != true and .name != "float-window"))'
+
+[MITM]
+hostname = %APPEND% miniapp.qmai.cn,mp.weixin.qq.com,rms.meituan.com,webapi.qmai.cn

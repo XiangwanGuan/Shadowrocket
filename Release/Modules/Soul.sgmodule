@@ -1,0 +1,31 @@
+#!name=独立模块-Soul
+#!desc=2025-12-19 08:22:52
+
+[Rule]
+DOMAIN-SUFFIX, soulapp.cn, DIRECT
+IP-CIDR, 8.210.3.170/32, DIRECT,no-resolve
+IP-CIDR, 47.75.72.47/32, DIRECT,no-resolve
+DOMAIN, ad-h5-cdn.soulapp.cn, REJECT,pre-matching
+DOMAIN, ad-h5-station-cdn.soulapp.cn, REJECT,pre-matching
+DOMAIN, ad-r.soulapp.cn, REJECT,pre-matching
+DOMAIN, soul-ad.soulapp.cn, REJECT,pre-matching
+IP-CIDR, 47.56.131.76/32, REJECT,no-resolve
+IP-CIDR, 47.97.215.55/32, REJECT,no-resolve
+IP-CIDR, 47.99.42.29/32, REJECT,no-resolve
+IP-CIDR, 47.110.187.87/32, REJECT,no-resolve
+IP-CIDR, 47.243.147.125/32, REJECT,no-resolve
+IP-CIDR, 120.27.235.201/32, REJECT,no-resolve
+IP-CIDR, 121.196.197.147/32, REJECT,no-resolve
+
+[URL Rewrite]
+^https?:\/\/chat-live\.soulapp\.cn\/live\/planet\/recListV2 - reject-200
+^https?:\/\/ssp\.soulapp\.cn\/api\/q - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/(?:api-\w+|gateway-mobile-gray|post)\.soulapp\.cn\/(?:furion\/position\/content|hot\/soul\/rank|mobile\/app\/version\/queryIos|official\/scene\/module|teenager\/config|v2\/post\/gift\/list|v\d\/post\/homepage\/guide\/card) 'delpaths([["data"]])'
+
+[Script]
+soul_ads =type=http-response, pattern=^https?:\/\/(?:api-\w+|chat-live|post)\.soulapp\.cn\/(?:chat\/limitInfo|chatroom\/chatClassifyRoomList|homepage\/diamond\/position\/info|v2\/post\/recSquare\/subTabs|v6\/planet\/config), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/soul_ads.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api*.soulapp.cn,gateway-mobile-gray.soulapp.cn,post.soulapp.cn,ssp.soulapp.cn

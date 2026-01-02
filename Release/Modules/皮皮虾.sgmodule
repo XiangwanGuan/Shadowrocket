@@ -1,0 +1,14 @@
+#!name=独立模块-皮皮虾
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api(5-lq)?\.pipix\.com\/api\/ad\/ - reject-dict
+^https?:\/\/api(5-lq)?\.pipix\.com\/bds\/banner\/ - reject-dict
+^https?:\/\/api(5-lq)?\.pipix\.com\/bds\/feed\/follow_feed\/ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api(5-lq)?\.pipix\.com\/bds\/feed\/stream\/v2\/ '.data.data |= map(select(has("ad_info") | not))'
+http-response-jq ^https?:\/\/api(5-lq)?\.pipix\.com\/bds\/user\/check_in\/ '.data.profile_entrances |= map(select(.title != "放心借" and .title != "洋钱罐借款")) | del(.data.pet_interface_message)'
+
+[MITM]
+hostname = %APPEND% api.pipix.com,api5-lq.pipix.com

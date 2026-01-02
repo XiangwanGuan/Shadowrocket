@@ -1,0 +1,11 @@
+#!name=独立模块-小黑盒
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.xiaoheihe\.cn\/account\/get_ads_info - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.xiaoheihe\.cn\/bbs\/app\/feeds\/news '.result.links |= map(if .content_type == 27 then del(.title, .ad_pm, .img_gif, .idea_id, .ad_report, .label, .source, .intranet_only, .ad_cm, .content_type, .PROTOCOL, .img, .ad_ratio) else . end)'
+
+[MITM]
+hostname = %APPEND% api.xiaoheihe.cn

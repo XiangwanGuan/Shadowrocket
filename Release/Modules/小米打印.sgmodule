@@ -1,0 +1,9 @@
+#!name=独立模块-小米打印
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api-miprint\.hannto\.com\/v1\/c\/res\/app\/ad\/\?app_version - reject-dict
+^https?:\/\/api\.indeedpower\.com\/v1\/m\/edu\/module\/homepage_banner\/\?randomStr - reject-dict
+
+[MITM]
+hostname = %APPEND% api-miprint.hannto.com,api.indeedpower.com

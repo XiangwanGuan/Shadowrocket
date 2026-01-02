@@ -1,0 +1,8 @@
+#!name=独立模块-今日水印相机
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.sogaha\.cn\/ssp\/ad\/get\?ip - reject-dict
+
+[MITM]
+hostname = %APPEND% api.sogaha.cn

@@ -1,0 +1,8 @@
+#!name=独立模块-创客贴设计
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/gw\.chuangkit\.com\/team\/app\/common\/ad\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% gw.chuangkit.com

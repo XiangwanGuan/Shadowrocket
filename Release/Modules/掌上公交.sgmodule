@@ -1,0 +1,11 @@
+#!name=独立模块-掌上公交
+#!desc=2026-01-02 11:03:10
+
+[URL Rewrite]
+^https?:\/\/quanguo\.mygolbs\.com:8081\/MyBusServer\/servlet\/MyGoServer\.HttpPool\.HttpHandlerServlet - reject-200
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/wx\.mygolbs\.com\/WxBusServer\/ApiData\.do 'with_entries(if ((.key | ascii_downcase | test("ad(_ab)?(_.*)?$")) and (.value | type=="number")) then .value = 0 else . end)'
+
+[MITM]
+hostname = %APPEND% quanguo.mygolbs.com,wx.mygolbs.com

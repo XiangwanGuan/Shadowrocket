@@ -1,0 +1,11 @@
+#!name=独立模块-懒人听书
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/.*\/yyting\/advertclient\/ClientAdvertList.action - reject
+^https?:\/\/118\.178\.214\.118\/yyting\/advertclient\/ClientAdvertList\.action - reject-img
+^https?:\/\/dapis\.mting\.info\/yyting\/advertclient\/ClientAdvertList\.action - reject-img
+^https?:\/\/display\.wting\.info\/.*.jpeg - reject-200
+
+[MITM]
+hostname = %APPEND% 118.178.214.118,dapis.mting.info,display.wting.info

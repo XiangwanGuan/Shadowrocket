@@ -1,0 +1,14 @@
+#!name=独立模块-飞客
+#!desc=2025-12-25 17:41:03
+
+[URL Rewrite]
+^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?module=advis - reject-dict
+^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?module=basicdata&type=appinfo - reject-dict
+
+[Body Rewrite]
+http-response ^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?.*module=basicdata&type=forumlist adv adv0
+http-response ^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*\.php\?.*module=threadpost relatedrecommend relatedrecommend0
+http-response-jq ^https?:\/\/www\.flyert(rip)?\.com(\.cn)?\/.*plugin 'if .Variables?.data?.adv then .Variables.data.adv = {} else . end'
+
+[MITM]
+hostname = %APPEND% www.flyert.com,www.flyert.com.cn,www.flyetrip.com,www.flyetrip.com.cn

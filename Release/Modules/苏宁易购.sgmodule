@@ -1,0 +1,10 @@
+#!name=独立模块-苏宁易购
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/image\.suning\.cn\/uimg\/ma\/ad\/ - reject-200
+^https?:\/\/luckman\.suning\.com\/luck-web\/policy\/v\d\/msf\/index\.do - reject-200
+^https?:\/\/mpcs\.suning\.com\/mpcs\/dm\/getDmInfo - reject
+
+[MITM]
+hostname = %APPEND% image.suning.com,luckman.suning.com,mpcs.suning.com

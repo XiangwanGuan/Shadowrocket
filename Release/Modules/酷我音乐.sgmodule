@@ -1,0 +1,25 @@
+#!name=独立模块-酷我音乐
+#!desc=2025-12-10 14:36:50
+
+[Rule]
+IP-CIDR, 111.206.98.63/32, REJECT,no-resolve
+URL-REGEX, "^https?:\/\/rich\.kuwo\.cn\/AdService\/", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/rich\.kuwo\.cn\/EcomResourceServer\/", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/searchrecterm\.kuwo\.cn\/recterm\.s", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/vip\d\.kuwo\.cn\/vip\/v\d\/sysinfo\?op=getRePayAndDoPayBox", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/album\/adBar\/", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/app\/newMenuList\/menuListInfo", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/app\/pasterAdvert\/", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/app\/startup\/config", REJECT-TINYGIF
+URL-REGEX, "^https?:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/user\/freeMode\/", REJECT-TINYGIF
+
+[URL Rewrite]
+^https?:\/\/appi\.kuwo\.cn\/kuwopay\/personal\/cells - reject-dict
+^https?:\/\/tingshu\.kuwo\.cn\/v2\/api\/pay\/user\/info - reject-dict
+^https?:\/\/vip\d\.kuwo\.cn\/commercia\/vipconf\/projectPage\/getPageContent - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/tingshu\/index\/radio 'walk(if type == "object" and .type == "stripAdvert" then del(.child) else . end)'
+
+[MITM]
+hostname = %APPEND% appi.kuwo.cn,mc.tencentmusic.com,tingshu.kuwo.cn,vip*.kuwo.cn

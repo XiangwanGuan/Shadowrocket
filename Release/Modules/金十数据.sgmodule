@@ -1,0 +1,8 @@
+#!name=独立模块-金十数据
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/jad-api\.jin10\.com\/ad - reject
+
+[MITM]
+hostname = %APPEND% jad-api.jin10.com

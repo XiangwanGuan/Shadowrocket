@@ -1,0 +1,14 @@
+#!name=独立模块-阿里云盘
+#!desc=2025-12-25 17:32:13
+
+[URL Rewrite]
+^https?:\/\/api\.alipan\.com\/adrive\/v\d\/file\/getTopFolders - reject-dict
+^https?:\/\/member\.alipan\.com\/v\d\/activity\/sign_in_(?:info|luckyBottle) - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api\.alipan\.com\/apps\/v\d\/user[s]?\/home\/widgets 'del(.banners, .coreFeatures, .mainBackup, .minorBackup, .signIn)'
+http-response-jq ^https?:\/\/api\.alipan\.com\/apps\/v\d\/users\/home\/news 'if .result then .result |= map(select(.code? | test("productUpdate")? | not)) else . end'
+http-response-jq ^https?:\/\/member\.alipan\.com\/v\d\/users\/onboard_list 'if .result then .result |= map(select(.anchor? | IN("backup_list_under_mydevice_banner","backup_top_banner","home_top_banner","resource_top_banner") | not)) else . end'
+
+[MITM]
+hostname = %APPEND% api.alipan.com,member.alipan.com

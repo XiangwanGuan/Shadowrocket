@@ -1,0 +1,12 @@
+#!name=独立模块-东方财富
+#!desc=2025-12-11 16:17:37
+
+[Rule]
+DOMAIN, emdcadvertise.eastmoney.com, REJECT,pre-matching
+DOMAIN, emdcadvertisepj.eastmoney.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/swdlcdn\.eastmoney\.com\/app\/adimg\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% swdlcdn.eastmoney.com

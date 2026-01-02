@@ -1,0 +1,13 @@
+#!name=独立模块-IT之家
+#!desc=2025-12-25 15:45:32
+
+[URL Rewrite]
+^https?:\/\/api\.zuihuimai\.com\/static\/.*\/hongbao - reject
+^https?:\/\/dat\.ruanmei\.com\/ithome\/money\/acd\.json$ - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/napi\.ithome\.com\/api\/news\/index 'if .data.list then .data.list |= map(select((.feedContent.smallTags | if . == null then true else map(.text? | contains("广告")?) | any | not end) and (.feedType | . != 10002 and . != 10003))) else . end'
+http-response-jq ^https?:\/\/napi\.ithome\.com\/api\/topmenu\/getfeeds 'if .data.list then .data.list |= map(select((.feedContent.smallTags | if . == null then true else map(.text? | contains("广告")?) | any | not end) and (.feedType | . != 10002 and . != 10003))) else . end'
+
+[MITM]
+hostname = %APPEND% api.zuihuimai.com,dat.ruanmei.com,napi.ithome.com

@@ -1,0 +1,27 @@
+#!name=独立模块-粉笔
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/hera-webapp\.fenbi\.com\/(iphone|ipad)\/announcement\/hotquery\/list\? - reject-dict
+^https?:\/\/hera-webapp\.fenbi\.com\/(iphone|ipad)\/explore\/consts\? - reject-dict
+^https?:\/\/hera-webapp\.fenbi\.com\/(iphone|ipad)\/topic\/hotquery\/list\? - reject-dict
+^https?:\/\/ke\.fenbi\.com\/(iphone|ipad)\/v3\/timetable\/today_with_public_episodes\? - reject-dict
+^https?:\/\/ke\.fenbi\.com\/(iphone|ipad)\/v3\/user_member\/entry\? - reject-dict
+^https?:\/\/keapi\.fenbi\.com\/app\/(iphone|ipad)\/position_resource\/get_banners\? - reject-dict
+^https?:\/\/keapi\.fenbi\.com\/app\/(iphone|ipad)\/position_resource\/get_home_banners\?.*position_resource_type=2 - reject-dict
+^https?:\/\/keapi\.fenbi\.com\/app\/iphone\/\w+\/reddot\? - reject-dict
+^https?:\/\/market-api\.fenbi\.com\/(iphone|ipad)\/v1\/assistant\/info\? - reject-dict
+^https?:\/\/market-api\.fenbi\.com\/(iphone|ipad)\/v1\/assistant\/my\? - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/hera-webapp\.fenbi\.com\/(iphone|ipad)\/recommend\/info\? 'delpaths([["data","rollingBanner"]])'
+http-response-jq ^https?:\/\/ke\.fenbi\.com\/(iphone|ipad)\/v3\/apps\/config\? 'delpaths([["data","bottomIconInfos","position","iconDefaultUrl"]])'
+http-response-jq ^https?:\/\/ke\.fenbi\.com\/(iphone|ipad)\/v3\/apps\/config\? 'delpaths([["data","bottomIconInfos","position","iconSelectedUrl"]])'
+http-response-jq ^https?:\/\/ke\.fenbi\.com\/(iphone|ipad)\/v3\/apps\/config\? 'delpaths([["data","bottomIconInfos","position","nightModeIconDefaultUrl"]])'
+http-response-jq ^https?:\/\/ke\.fenbi\.com\/(iphone|ipad)\/v3\/apps\/config\? 'delpaths([["data","bottomIconInfos","position","nightModeIconSelectedUrl"]])'
+
+[Map Local]
+^https?:\/\/keapi\.fenbi\.com\/app\/(iphone|ipad)\/position_resource\/get_home_banners\?.*position_resource_type=1 data-type=json data="{"code":1,"msg":"","data":{"positionResourceType":1,"payload":{"items":[{"id":17868,"courseSetId":2,"content":"妹子图","imageUrl":"https://i.im.ge/2025/11/24/4DrVp0.mm.png","url":null,"redirectType":1,"ordinal":8,"createdTime":1746799144383,"startTime":1759850171000,"endTime":4070880000000,"type":0,"bizType":4}],"count":1}}}" status-code=200 header="content-type: application/json"
+
+[MITM]
+hostname = %APPEND% hera-webapp.fenbi.com,ke.fenbi.com,keapi.fenbi.com,market-api.fenbi.com

@@ -1,0 +1,13 @@
+#!name=独立模块-小蚕霸王餐
+#!desc=2025-12-09 14:29:02
+
+[Rule]
+AND, ((URL-REGEX,"^https?:\/\/gw\.xiaocantech\.com\/rpc"),(USER-AGENT,"GetBannerList*")), REJECT
+
+[URL Rewrite]
+^https?:\/\/gw\.xiaocantech\.com\/g\/pa - reject-dict
+^https?:\/\/sdk\.1rtb\.net\/sdk\/req_ad\? - reject-dict
+^https?:\/\/web2\.realtech-inc\.com\/oss\/xc-app-assets\/configs\/common\/theme\.json - reject-dict
+
+[MITM]
+hostname = %APPEND% gw.xiaocantech.com,sdk.1rtb.net,web2.realtech-inc.com

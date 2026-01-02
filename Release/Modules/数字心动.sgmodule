@@ -1,0 +1,18 @@
+#!name=独立模块-数字心动
+#!desc=2025-12-29 08:25:44
+
+[URL Rewrite]
+^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-basic-center-api\/api\/advertisement\/ - reject-dict
+^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-basic-center-api\/api\/appConfigBanner\/listBannerRelease\? - reject-dict
+^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-common-proxy-api\/api\/advertising\/ - reject-dict
+^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-content-center-api\/api\/global\/search\/hotSearch\/list$ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-race-proxy-api\/api\/home\/page\/get$ '.data.recommendList |= map(select(.raceAdList | not or length == 0))'
+http-response-jq ^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-race-proxy-api\/api\/home\/page\/get$ 'delpaths([["data","bannerListTwo"]])'
+http-response-jq ^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-race-proxy-api\/api\/home\/page\/get$ 'delpaths([["data","textAdvertisementList"]])'
+http-response-jq ^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-race-proxy-api\/api\/home\/page\/get$ 'delpaths([["data","topHotSearchList"]])'
+http-response-jq ^https?:\/\/api-changzheng\.chinaath\.com\/changzheng-race-proxy-api\/api\/home\/page\/getBrand$ '.data |= map(select(.advertisementName == "路跑赛事" or .advertisementName == "线上赛" or .advertisementName == "越野赛事"))'
+
+[MITM]
+hostname = %APPEND% api-changzheng.chinaath.com

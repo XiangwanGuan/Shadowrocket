@@ -1,0 +1,8 @@
+#!name=独立模块-希尔顿
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/wcprd\.hilton\.com\.cn\/app-middleware\/graphql\?type=splashAd - reject-200
+
+[MITM]
+hostname = %APPEND% wcprd.hilton.com.cn

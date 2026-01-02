@@ -1,0 +1,8 @@
+#!name=独立模块-红版报
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/fbchina\.flipchina\.cn\/v\d\/ad\/query - reject
+
+[MITM]
+hostname = %APPEND% fbchina.flipchina.cn

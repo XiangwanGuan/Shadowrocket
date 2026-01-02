@@ -1,0 +1,24 @@
+#!name=独立模块-百度网盘
+#!desc=2025-12-19 08:22:49
+
+[URL Rewrite]
+^https?:\/\/fc-video\.cdn\.bcebos\.com - reject
+^https?:\/\/ndstatic\.cdn\.bcebos\.com\/activity\/welfare - reject
+^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry - reject
+^https?:\/\/pan\.baidu\.com\/act\/v\d\/(bchannel|welfare)\/list - reject
+^https?:\/\/pan\.baidu\.com\/api\/certuser\/get - reject
+^https?:\/\/pan\.baidu\.com\/api\/useractivity\/activity - reject
+^https?:\/\/pan\.baidu\.com\/component\/view\/(1510|1130)\?vip - reject
+^https?:\/\/pan\.baidu\.com\/pmall\/order\/privilege\/info - reject
+^https?:\/\/pan\.baidu\.com\/rest\/.+\/pcs\/adx - reject
+^https?:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/ad - reject
+^https?:\/\/rp\.hpplay\.cn\/logouts - reject
+^https?:\/\/staticsns\.cdn\.bcebos\.com\/amis\/.+/banner.png - reject
+^https?:\/\/update\.pan\.baidu\.com\/statistics - reject
+
+[Script]
+baiduPan =type=http-response, pattern=^https?:\/\/pan\.baidu\.com\/api\/getsyscfg\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/baiduPan.js, requires-body=true, max-size=0
+baiduPan =type=http-response, pattern=^https?:\/\/pan\.baidu\.com\/rest\/\d\.\d\/membership\/user, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/baiduPan.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% fc-video.cdn.bcebos.com,ndstatic.cdn.bcebos.com,pan.baidu.com,rp.hpplay.cn,staticsns.cdn.bcebos.com,update.pan.baidu.com

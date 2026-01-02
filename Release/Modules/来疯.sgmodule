@@ -1,0 +1,9 @@
+#!name=独立模块-来疯
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.jxedt\.com\/ad\/ - reject-200
+^https?:\/\/api\.laifeng\.com\/v\d\/start\/ads - reject
+
+[MITM]
+hostname = %APPEND% api.jxedt.com,api.laifeng.com

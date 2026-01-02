@@ -1,0 +1,12 @@
+#!name=独立模块-贝壳找房 小程序
+#!desc=2025-12-15 20:41:12
+
+[URL Rewrite]
+^https?:\/\/wx(app)?\.api\.ke\.com\/pt\/platform\/platform\/shellxcx\/homepage\/popup - reject-dict
+^https?:\/\/wx(app)?\.api\.ke\.com\/pt\/pt-xcx\/boot\/ping - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/wx(app)?\.api\.ke\.com\/pt\/pt-xcx-php\/index\/v\d\/home '.data.modules |= map(select(.type != "popup" and .type != "icon"))'
+
+[MITM]
+hostname = %APPEND% wx.api.ke.com,wxapp.api.ke.com

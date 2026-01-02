@@ -1,0 +1,11 @@
+#!name=独立模块-动画疯
+#!desc=2025-12-19 08:22:49
+
+[URL Rewrite]
+^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d\/anime_get_question\.php - reject-dict
+
+[Script]
+BahamutAnimeAds =type=http-response, pattern=^https?:\/\/api\.gamer\.com\.tw\/mobile_app\/anime\/v\d/(?:token|m3u8).php\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/BahamutAnimeAds.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.gamer.com.tw

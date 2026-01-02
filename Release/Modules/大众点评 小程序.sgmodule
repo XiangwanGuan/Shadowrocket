@@ -1,0 +1,11 @@
+#!name=独立模块-大众点评 小程序
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/m\.dianping\.com\/an\/gear\/dpmapp\/api\/readLionConfig\/config - reject-dict
+^https?:\/\/m\.dianping\.com\/mapi\/mgw\/growth\/queryhaima - reject-dict
+^https?:\/\/m\.dianping\.com\/wxmapi\/shop\/friendslike - reject-dict
+^https?:\/\/mapi\.dianping\.com\/mapi\/mgw\/growth\/clipboardquery - reject-dict
+
+[MITM]
+hostname = %APPEND% *.dianping.com

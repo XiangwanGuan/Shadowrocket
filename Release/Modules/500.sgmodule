@@ -1,0 +1,8 @@
+#!name=独立模块-500
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/evs\.500\.com\/esinfo\/loading\/loading - reject
+
+[MITM]
+hostname = %APPEND% evs.500.com

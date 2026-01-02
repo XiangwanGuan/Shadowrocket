@@ -1,0 +1,12 @@
+#!name=独立模块-Talkatone
+#!desc=2025-12-11 16:17:40
+
+[Rule]
+DOMAIN-SUFFIX, tappx.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/alt-r\.my\.com\/mobile - reject-dict
+^https?:\/\/imgx\.jampp\.com\/imgsrv\/tn - reject-img
+
+[MITM]
+hostname = %APPEND% alt-r.my.com,imgx.jampp.com

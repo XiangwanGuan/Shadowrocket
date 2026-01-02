@@ -1,0 +1,10 @@
+#!name=独立模块-中信银行
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/imcs\.citicbank\.com\/cloud\/([a-fA-F0-9]{32})\.(jpg|png) - reject
+^https?:\/\/imcs\.citicbank\.com\/cloud\/.+(1125.+2436|1242.+2688|750.+1638|563.+1218) - reject-dict
+^https?:\/\/wap.bank\.ecitic\.com:6443\/NMBFOServer\/cbframework\.do\?act=CUBEPAGEDATA - reject-200
+
+[MITM]
+hostname = %APPEND% imcs.citicbank.com,wap.bank.ecitic.com

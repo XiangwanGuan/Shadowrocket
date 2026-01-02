@@ -1,0 +1,44 @@
+#!name=独立模块-美团
+#!desc=2025-12-19 08:22:51
+
+[Rule]
+DOMAIN, hlx.meituan.com, REJECT,pre-matching
+DOMAIN, httpdnsmultiapi.meituan.com, REJECT,pre-matching
+DOMAIN, httpdnsmultiapivip.meituan.com, REJECT,pre-matching
+DOMAIN, layout.meituan.net, REJECT,pre-matching
+DOMAIN-SUFFIX, ad.e.waimai.sankuai.com, REJECT,pre-matching
+DOMAIN-SUFFIX, d.meituan.net, REJECT,pre-matching
+DOMAIN-SUFFIX, httpdns.meituan.com, REJECT,pre-matching
+DOMAIN-SUFFIX, mads.meituan.com, REJECT,pre-matching
+DOMAIN-SUFFIX, meituan.xn, REJECT,pre-matching
+DOMAIN-SUFFIX, meituan.yoga, REJECT,pre-matching
+DOMAIN-SUFFIX, meituangov.cn, REJECT,pre-matching
+DOMAIN-SUFFIX, wmlog.meituan.com, REJECT,pre-matching
+DOMAIN-KEYWORD, dnspod.meituan.httpdns, REJECT,pre-matching
+DOMAIN-KEYWORD, report.meituan, REJECT,pre-matching
+IP-CIDR, 103.37.155.60/32, REJECT,no-resolve
+
+[URL Rewrite]
+^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/.+\.(?:gif|jpg|mp4) - reject-img
+^https?:\/\/apimobile\.meituan\.com\/appupdate - reject
+^https?:\/\/apimobile\.meituan\.com\/group\/v\d\/recommend\/unity\/recommends - reject
+^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/.+\.(gif|jpg)\.webp$ - reject-img
+^https?:\/\/img\.meituan\.net\/bizad - reject
+^https?:\/\/img\.meituan\.net\/groceryimages\/\w+\.gif - reject-img
+^https?:\/\/img\.meituan\.net\/groceryimages\/\w+\.png@220w_220h_1e_1l - reject-img
+^https?:\/\/p\d\.meituan\.net\/(\d+\.\d+\.\d+\/)?wmbanner\/(?!fb51b9d|4e9d3c4).+\.gif - reject-img
+^https?:\/\/p\d\.meituan\.net\/(display|mmc)\/ - reject
+^https?:\/\/p\d\.meituan\.net\/movie\/.+?\.jpg\?may_covertWebp - reject-img
+^https?:\/\/p\d\.meituan\.net\/travelcube\/(?!1d4a663|52e9bfc|29a6227|412c4ac|6ee35c4|13bf0bf|ab8692e|6858b1d).+@100w_100h - reject-img
+^https?:\/\/portal-portm\.meituan\.com\/horn_ios - reject-dict
+^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_\w+\/brandcpt - reject
+^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_\w+\/waimai-alita\/\w+\.zip$ - reject
+^https?:\/\/sqt\.meituan\.com\/s\/gateway\/mweb\/api\/marketingResource\/show - reject
+^https?:\/\/w\.meituan\.net\/v\d\/mss_\w+\/waimai-mach\/\d+\/\d+\/pt-im-(?:guider|coupon-card-stateful) - reject
+^https?:\/\/www\.meituan\.com\/api\/v\d\/appstatus\? - reject
+
+[Script]
+meituan =type=http-response, pattern=^https?:\/\/p\d\.meituan\.net\/linglong\/, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/meituan.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% apimobile.meituan.com,flowplus.meituan.net,img.meituan.net,p*.meituan.net,portal-portm.meituan.com,s3plus.meituan.net,sqt.meituan.com,w.meituan.net

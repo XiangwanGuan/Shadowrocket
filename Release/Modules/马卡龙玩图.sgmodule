@@ -1,0 +1,9 @@
+#!name=独立模块-马卡龙玩图
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/app\.api\.versa-ai\.com\/launch\/ads\? - reject-200
+^https?:\/\/static01\.versa-ai\.com\/upload\/ec0ba51d68f9\/.*.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% app.api.versa-ai.com,static01.versa-ai.com

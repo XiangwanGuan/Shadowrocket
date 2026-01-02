@@ -1,0 +1,10 @@
+#!name=独立模块-米读
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/apiwz\.midukanshu\.com\/advert\/getPopup$ - reject
+^https?:\/\/apiwz\.midukanshu\.com\/advert\/treasureInfo$ - reject
+^https?:\/\/apiwz\.midukanshu\.com\/config\/getAds$ - reject
+
+[MITM]
+hostname = %APPEND% apiwz.midukanshu.com

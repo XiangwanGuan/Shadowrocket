@@ -1,0 +1,18 @@
+#!name=独立模块-快对
+#!desc=2025-12-11 16:17:38
+
+[Rule]
+DOMAIN, adx.zuoyebang.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/apivip\.kuaiduizuoye\.com\/viponline\/scancode\/mycard$ - reject-dict
+^https?:\/\/www\.kuaiduizuoye\.com\/activity\/init\/checkappconfig$ - reject-dict
+^https?:\/\/www\.kuaiduizuoye\.com\/init\/ad\/ - reject-dict
+^https?:\/\/www\.kuaiduizuoye\.com\/kdapi\/conf\/appbannersv3$ - reject-dict
+^https?:\/\/www\.kuaiduizuoye\.com\/kdapi\/conf\/initbanner$ - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/www\.kuaiduizuoye\.com\/codesearch\/aid\/home$ 'delpaths([["data","homeBannerList"]])'
+
+[MITM]
+hostname = %APPEND% apivip.kuaiduizuoye.com,www.kuaiduizuoye.com

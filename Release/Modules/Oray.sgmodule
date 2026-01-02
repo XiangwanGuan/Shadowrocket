@@ -1,0 +1,9 @@
+#!name=独立模块-Oray
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/slapi\.oray\.net\/adver - reject
+^https?:\/\/slapi\.oray\.net\/client\/ad - reject
+
+[MITM]
+hostname = %APPEND% slapi.oray.net

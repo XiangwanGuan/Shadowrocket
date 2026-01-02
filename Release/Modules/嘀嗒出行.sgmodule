@@ -1,0 +1,12 @@
+#!name=独立模块-嘀嗒出行
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/adx-cn\.anythinktech\.com\/bid - reject-dict
+^https?:\/\/capis(-?\w*)?\.didapinche\.com\/publish\/api\/upgrade - reject-dict
+^https?:\/\/capis(-\d)?\.didapinche\.com\/ad\/ - reject
+^https?:\/\/capis(-\d)?\.didapinche\.com\/adbase - reject
+^https?:\/\/www\.didapinche\.com\/app\/adstat\/ - reject-200
+
+[MITM]
+hostname = %APPEND% adx-cn.anythinktech.com,capis*.didapinche.com,www.didapinche.com

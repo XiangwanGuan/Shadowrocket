@@ -1,0 +1,29 @@
+#!name=独立模块-快看漫画
+#!desc=2025-12-19 08:22:50
+
+[URL Rewrite]
+^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ad - reject
+^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/business\/activities\/get - reject-dict
+^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/business\/fake_push\/info - reject-dict
+^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/business\/mine\/business_config - reject-dict
+^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/checkin\/api\/new_user\/tab_info - reject-dict
+^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/checkin\/task_center\/get_by_task_type - reject-dict
+^https?:\/\/(cdn-)?h5\.kuaikanmanhua\.com\/game-h5\/new-user-welfare\/index\.html - reject-200
+^https?:\/\/(cdn-)?h5\.kuaikanmanhua\.com\/user\/scene\/api\/new_user\/sign_in\/list - reject-dict
+^https?:\/\/(cdn-)?h5\.kuaikanmanhua\.com\/v\d\/kb\/recharge_good\/list_h5 - reject-dict
+^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/kb\/(?:wallet|comic_page_banner) - reject-dict
+^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/vip\/(?:banner|charge)_tip_list - reject-dict
+^https?:\/\/(cdn-)?pay\.kkmh\.com\/v\d\/vip\/platform_base\/popups_display - reject-dict
+^https?:\/\/(cdn-)?shop\.kkmh\.com\/mbff\/popup_administration - reject-dict
+^https?:\/\/(cdn-)?topic\.kkmh\.com\/gamecard\/v\d\/activityModule\/fetchButtonInfo\?buttonConfigId - reject-dict
+^https?:\/\/(cdn-)?topic\.kkmh\.com\/gamecard\/v\d\/activityModule\/userSignInInfo\?activitySignInConfigId - reject-dict
+^https?:\/\/(cdn-)?topic\.kkmh\.com\/gamecard\/v\d\/activityText\/getUserActivityTextInfo\?activityTextConfigId - reject-dict
+
+[Script]
+kkmh =type=http-response, pattern=^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ironman\/comic\/recommend, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/kkmh.js, requires-body=true, max-size=0
+kkmh =type=http-response, pattern=^https?:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ironman\/discovery_v\d\/tab_list_v\d, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/kkmh.js, requires-body=true, max-size=0
+kkmh =type=http-response, pattern=^https?:\/\/(cdn-)?social\.kkmh\.com\/v\d\/graph\/homepage\/comicVideo\/v\d\/configs, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/kkmh.js, requires-body=true, max-size=0
+kkmh =type=http-response, pattern=^https?:\/\/(cdn-)?social\.kkmh\.com\/v\d\/graph\/unified_feed, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/kkmh.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% api.kkmh.com,cdn-api.kkmh.com,cdn-h5.kuaikanmanhua.com,cdn-pay.kkmh.com,cdn-shop.kkmh.com,cdn-social.kkmh.com,cdn-topic.kkmh.com,h5.kuaikanmanhua.com,pay.kkmh.com,shop.kkmh.com,social.kkmh.com,topic.kkmh.com

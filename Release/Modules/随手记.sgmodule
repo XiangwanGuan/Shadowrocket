@@ -1,0 +1,13 @@
+#!name=独立模块-随手记
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.feidee\.net\/v1\/configs\/client\/configs - reject
+^https?:\/\/tg\.feidee\.com\/online_ad\/api\/search\.do$ - reject-dict
+^https?:\/\/tg\.feidee\.com\/vis-ad-engine-ws\/api\/show - reject-dict
+^https?:\/\/tg\.feidee\.com\/vis-ad-engine-ws\/api\/v2\/ads\/.+esultNum - reject-dict
+^https?:\/\/yun\.feidee\.net\/cab-periodic-activity-ws\/terminal\/v1\/members\/status - reject-dict
+^https?:\/\/yunmk\.feidee\.net\/cab-market-ws\/market\/v2\/contents$ - reject-dict
+
+[MITM]
+hostname = %APPEND% api.feidee.net,community.feidee.com,tg.feidee.com,yun.feidee.net,yunmk.feidee.net

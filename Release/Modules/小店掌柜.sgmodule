@@ -1,0 +1,8 @@
+#!name=独立模块-小店掌柜
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/mch\.juhesaas\.com\/api\/advertisement\/ - reject-dict
+
+[MITM]
+hostname = %APPEND% mch.juhesaas.com

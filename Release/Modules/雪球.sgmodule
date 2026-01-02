@@ -1,0 +1,38 @@
+#!name=独立模块-雪球
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/api\.xueqiu\.com\/lightsnow\/launch\/plan\/bee\/query\.json\? - reject-dict
+^https?:\/\/api\.xueqiu\.com\/lightsnow\/optional\/banner\/query\.json - reject-dict
+^https?:\/\/api\.xueqiu\.com\/livestream\/structure\/live\/hotCard\.json - reject-dict
+^https?:\/\/api\.xueqiu\.com\/query\/v1\/hot_event\/tag\.json\? - reject-dict
+^https?:\/\/api\.xueqiu\.com\/recommend-proxy\/card\/portfolio_tab_symbol\.json - reject-dict
+^https?:\/\/api\.xueqiu\.com\/recommend-proxy\/card\/zj_card\.json\?feed_id=207 - reject-dict
+^https?:\/\/api\.xueqiu\.com\/snowflake-theme\/query\/v1\/hot_event\/rich_tag_new\.json\? - reject-dict
+^https?:\/\/api\.xueqiu\.com\/snowpard\/launch_strategy\/query\.json\? - reject-dict
+^https?:\/\/api\.xueqiu\.com\/ucprofile\/api\/user\/batchGetUserBasicInfo\.json - reject-dict
+^https?:\/\/fund\.xueqiu\.com\/fundx\/activity\/x\/web\/c\/index\/dataByCode\? - reject-dict
+^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.+cube_detail_bottom_operation_trade_button - reject-dict
+^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.+home_visitor_relation_config - reject-dict
+^https?:\/\/stock\.xueqiu\.com\/v5\/stock\/group\/recommend\/default\/list\.json - reject-dict
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","brokers_router_config"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","community_ad_download_msg"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","home_tab_dynamic"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","home_tab_dynamic_after"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","home_tab_dynamic_before"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","im_notice_show"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","my_page_right_items"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","open_wechat_mini_app_config"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","profileMenuConfig_anonymous_V12"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","request_notice_show"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","timeline_tab_name"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","trade_open_account_promotion_url"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","trade_unify_open_account_list"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data","user_guide_contact_config"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["data"]])'
+http-response-jq ^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?.*timeline_tab_name 'delpaths([["isitor_page_login_config"]])'
+
+[MITM]
+hostname = %APPEND% 101.201.175.228,101.201.62.20,101.201.62.26,124.250.48.3,182.92.145.50,182.92.251.113,39.103.79.14,39.106.97.84,47.95.49.75,api.xueqiu.com,fund.xueqiu.com,open.xueqiu.com,stock.xueqiu.com

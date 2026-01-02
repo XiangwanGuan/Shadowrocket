@@ -1,0 +1,12 @@
+#!name=独立模块-中国银行
+#!desc=2025-12-31 13:50:00
+
+[Rule]
+DOMAIN, iisp-oidea.mbs.boc.cn, REJECT,pre-matching
+DOMAIN, iisp.mbs.boc.cn, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/mbs\.boc\.cn\/ubas-mgateway-static\/images\/advertType\/.+.jpg - reject-200
+
+[MITM]
+hostname = %APPEND% mbs.boc.cn

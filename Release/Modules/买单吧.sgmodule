@@ -1,0 +1,19 @@
+#!name=独立模块-买单吧
+#!desc=2026-01-02 18:11:29
+
+[Rule]
+DOMAIN-SUFFIX, track.bankcomm.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/creditcard.*\.bankcomm\.(com|cn)\/.*Ads\.do - reject
+^https?:\/\/creditcard\.bankcomm\.(com|cn)\/tfimg\/public00\/M00\/4C\/6F - reject-img
+^https?:\/\/creditcard\.bankcomm\.(com|cn)\/tofimg\/bucket-pj-btss-tfcn-dmz\/OSS-F\/a8f2e8 - reject-img
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/CnsvMdbaptFinclipWeb - reject-dict
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb\/homepage(\/discovery)?\/promote - reject-dict
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_collection - reject
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/appInfo\/appNewestVersion - reject-200
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/common\/globalNotify - reject
+^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/qryHighRiskUser - reject
+
+[MITM]
+hostname = %APPEND% *.bankcomm.cn,*.bankcomm.com

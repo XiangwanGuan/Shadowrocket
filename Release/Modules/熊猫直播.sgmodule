@@ -1,0 +1,8 @@
+#!name=独立模块-熊猫直播
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/static\.api\.m\.panda\.tv\/index\.php\?method=clientconf\.firstscreen&__version=(play_cnmb|(\d+\.){0,3}\d+)&__plat=ios&__channel=appstore - reject-img
+
+[MITM]
+hostname = %APPEND% static.api.m.panda.tv

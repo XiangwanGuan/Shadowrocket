@@ -1,0 +1,9 @@
+#!name=独立模块-AcFun
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/aes\.acfun\.cn\/s\?adzones - reject
+^https?:\/\/api-new\.app\.acfun\.cn\/rest\/app\/flash\/screen\/ - reject
+
+[MITM]
+hostname = %APPEND% aes.acfun.cn,api-new.app.acfun.cn

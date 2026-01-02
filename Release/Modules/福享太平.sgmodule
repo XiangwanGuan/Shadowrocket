@@ -1,0 +1,8 @@
+#!name=独立模块-福享太平
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/ecloud\.tppension\.cntaiping\.com\/fxtpplatform\/common\/anonymous\/common\/page\/queryStartPageNew\?language=zh-CN - reject-dict
+
+[MITM]
+hostname = %APPEND% ecloud.tppension.cntaiping.com

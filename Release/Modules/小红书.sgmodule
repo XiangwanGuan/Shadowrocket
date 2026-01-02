@@ -1,0 +1,35 @@
+#!name=独立模块-小红书
+#!desc=2025-12-19 08:22:54
+
+[Rule]
+DOMAIN, ads-img-qc.xhscdn.com, REJECT,pre-matching
+DOMAIN, ads-video-al.xhscdn.com, REJECT,pre-matching
+DOMAIN, ads-video-qc.xhscdn.com, REJECT,pre-matching
+DOMAIN, t-ads.xiaohongshu.com, REJECT,pre-matching
+AND, ((PROTOCOL,QUIC),(DOMAIN-SUFFIX,xiaohongshu.com)), REJECT-NO-DROP
+
+[URL Rewrite]
+^https?:\/\/ci\.xiaohongshu\.com\/system_config\/watermark - reject-img
+^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/guide\/user_banner - reject-dict
+^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/detailfeed\/preload\? - reject-dict
+^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/guide\? - reject-dict
+^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/surprisebox\/(?:get_style|open|submit_action) - reject-dict
+^https?:\/\/www\.xiaohongshu\.com\/api\/marketing\/box\/trigger\? - reject-dict
+^https?:\/\/www\.xiaohongshu\.com\/api\/sns\/(?:v\d+\/ads\/resource|v\d+\/hey\/\w+\/hey_gallery) - reject-dict
+
+[Script]
+xiaohongshu =type=http-response, pattern=^https?:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/(?:v2\/note\/feed|v3\/note\/videofeed)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/(?:v4\/note\/videofeed|v10\/note\/video\/save)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/(?:followfeed|homefeed)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/(?:imagefeed|live_photo\/save), script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/(?:so|edith)\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/notes\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/(?:v5\/note\/comment\/list|v3\/note\/comment\/sub_comments)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/interaction\/comment\/video\/download\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/widgets, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/(?:banner|hot)_list, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/(?:hint|trending)\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/config\?, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+xiaohongshu =type=http-response, pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash_config, script-path=https://xiangwanguan.github.io/Shadowrocket/Rewrite/JS/xiaohongshu.js, requires-body=true, max-size=0
+
+[MITM]
+hostname = %APPEND% ci.xiaohongshu.com,edith.xiaohongshu.com,rec.xiaohongshu.com,so.xiaohongshu.com,www.xiaohongshu.com

@@ -1,0 +1,9 @@
+#!name=独立模块-超格教育
+#!desc=2026-01-02 13:35:11
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/mapi\.chaogejiaoyu\.com\/api\/ad\/getPageAdList '. = { "status": 0, "message": "success", "data": {} }'
+http-response-jq ^https?:\/\/mapi\.chaogejiaoyu\.com\/api\/outline\/getAppBanner '. = { "status": 0, "message": "success", "data": null }'
+
+[MITM]
+hostname = %APPEND% mapi.chaogejiaoyu.com

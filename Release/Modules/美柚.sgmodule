@@ -1,0 +1,15 @@
+#!name=独立模块-美柚
+#!desc=2025-12-11 16:17:39
+
+[Rule]
+DOMAIN, ad.seeyouyima.com, REJECT,pre-matching
+DOMAIN, axxd.xmseeyouyima.com, REJECT,pre-matching
+
+[URL Rewrite]
+^https?:\/\/circle\.(xm)?seeyouyima\.com\/v\d\/article_recommend\? - reject
+
+[Body Rewrite]
+http-response-jq ^https?:\/\/common\.seeyouyima\.com\/v2\/conf_list$ 'delpaths([["data","confList","Minor_mode_card"]])'
+
+[MITM]
+hostname = %APPEND% circle.seeyouyima.com,circle.xmseeyouyima.com,common.seeyouyima.com

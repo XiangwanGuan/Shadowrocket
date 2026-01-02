@@ -1,0 +1,8 @@
+#!name=独立模块-心悦俱乐部
+#!desc=2025-12-09 14:29:02
+
+[URL Rewrite]
+^https?:\/\/bgw\.xinyue\.qq\.com\/xyapi\.PageService\/GetIndexPopFlash - reject-200
+
+[MITM]
+hostname = %APPEND% bgw.xinyue.qq.com

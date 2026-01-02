@@ -1,0 +1,8 @@
+#!name=独立模块-菜鸟裹裹 小程序
+#!desc=2025-12-31 21:04:07
+
+[URL Rewrite]
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads - reject-dict
+
+[MITM]
+hostname = %APPEND% guide-acs.m.taobao.com

@@ -1,0 +1,9 @@
+#!name=独立模块-看天下
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/open3\.vistastory\.com\/v\d\/api.*get_popup - reject
+^https?:\/\/open3\.vistastory\.com\/v\d\/api\/index\/loading_ad - reject
+
+[MITM]
+hostname = %APPEND% open3.vistastory.com

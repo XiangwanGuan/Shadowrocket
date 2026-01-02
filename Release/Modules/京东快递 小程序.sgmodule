@@ -1,0 +1,13 @@
+#!name=独立模块-京东快递 小程序
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/lop-proxy\.jd\.com\/BeaconFireApi\/queryMarketingRecommendRuleConfigInfo - reject-dict
+^https?:\/\/lop-proxy\.jd\.com\/csat\/getNPSQuestionnaire - reject-dict
+^https?:\/\/lop-proxy\.jd\.com\/home\/banner - reject-dict
+^https?:\/\/lop-proxy\.jd\.com\/index\/queryTabBubble - reject
+^https?:\/\/lop-proxy\.jd\.com\/order\/getCarbonIntegral - reject-dict
+^https?:\/\/lop-proxy\.jd\.com\/search\/getQuestionnaireByOrderInfo - reject-dict
+
+[MITM]
+hostname = %APPEND% lop-proxy.jd.com

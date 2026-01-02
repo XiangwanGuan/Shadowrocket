@@ -1,0 +1,8 @@
+#!name=独立模块-嘉会医疗
+#!desc=2025-12-09 14:29:01
+
+[URL Rewrite]
+^https?:\/\/api\.jiahui\.com\/app-rest\/app\/notice\/getAppNotice - reject
+
+[MITM]
+hostname = %APPEND% api.jiahui.com
