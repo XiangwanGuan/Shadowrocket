@@ -1,0 +1,11 @@
+# _config.yml
+
+remote_theme: "godalming123/minimal"
+
+plugins:
+  - jekyll-remote-theme
+
+color-scheme: auto
+show_downloads: false
+
+title: Xiangwan's GitHub
